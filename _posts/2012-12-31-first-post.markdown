@@ -1,12 +1,22 @@
 ---
 layout: post
 title:  First test post!
+subtitle: The first subtitle...
 date:   2012-12-31 16:16:01 -0600
 categories: jekyll update
-autho: pjl
-banner: greenland.jpg
+author: pjl
+banner: None
 ---
 
-This is an intriguing post...
+This is an intriguing post... $$a^2 + b^2 = c^2$$
 
-And this is the rest of it.
+$$ \cos \theta $$
+
+And this is {{page.author}} <{{page.banner | inspect}}> the rest of it.
+
+
+{% highlight python %}
+def foo():
+  print 'foo'
+
+{% endhighlight %}

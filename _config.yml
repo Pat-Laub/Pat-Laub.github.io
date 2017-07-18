@@ -27,38 +27,5 @@ markdown: kramdown
 theme: minima
 plugins_dir:
   - jekyll-feed
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-# image: ruby:2.3
-
-# test:
-#   stage: test
-#   script:
-#   - gem install jekyll
-#   - jekyll build -d test
-#   artifacts:
-#     paths:
-#     - test
-#   except:
-#   - master
-
-# pages:
-#   stage: deploy
-#   script:
-#   - gem install jekyll
-#   - jekyll build -d public
-#   artifacts:
-#     paths:
-#     - public
-#   only:
-#   - master
+sass:
+    style: compressed

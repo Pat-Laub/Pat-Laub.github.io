@@ -3,13 +3,12 @@ layout: default
 ---
 <div id="main">
 
-
   <!-- Post -->
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
       <div class="title">
       <h2>{{ page.title | escape }}</h2>
-      <p>Sub-title...</p>
+      <p>{{ page.subtitle }}</p>
       </div>
 
       <div class="meta">
@@ -22,13 +21,17 @@ layout: default
             • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
           {% endif %}</p>
       </div>
-<!--       
+      <!--       
         <time class="published" datetime="2015-11-01">November 1, 2015</time>
         <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
       </div> -->
     </header>
-    <span class="image featured"><img src="/images/{{ page.banner }}" alt="" /></span>
-       <div class="post-content" itemprop="articleBody">
+
+    {% if page.banner != 'None' %}
+        <span class="image featured"><img src="/images/{{ page.banner }}" alt="" /></span>
+    {% endif %}
+    
+    <div class="post-content" itemprop="articleBody">
       {{ content }}
     </div>
 
@@ -40,7 +43,6 @@ layout: default
         <li><a href="#" class="icon fa-comment">128</a></li>
       </ul>
     </footer>
-  </article>
 
     {% if site.disqus.shortname %}
       {% include disqus_comments.html %}
@@ -48,16 +50,3 @@ layout: default
   </article>
 
 </div>
-
-
-<!-- Footer -->
-<section id="footer" style="text-align: center;">
-  <ul class="icons">
-    <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-    <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-    <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-    <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-    <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
-  </ul>
-  <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
-</section>
