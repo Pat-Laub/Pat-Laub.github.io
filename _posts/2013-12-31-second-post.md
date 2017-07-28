@@ -2,8 +2,7 @@
 layout: post
 title:  The latest post!
 subtitle: The latest subtitle...
-date:   2013-12-31 16:16:01 -0600
-categories: jekyll update
+categories: testing
 author: pjl
 banner: montreal.jpg
 ---

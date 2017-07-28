@@ -35,18 +35,8 @@ layout: default
       {{ content }}
     </div>
 
-
-    <footer>
-      <ul class="stats">
-        <li><a href="#">General</a></li>
-        <li><a href="#" class="icon fa-heart">28</a></li>
-        <li><a href="#" class="icon fa-comment">128</a></li>
-      </ul>
-    </footer>
-
-    {% if site.disqus.shortname %}
-      {% include disqus_comments.html %}
-    {% endif %}
   </article>
+
+  {% include disqus_comments.html %}
 
 </div>
