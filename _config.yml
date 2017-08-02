@@ -1,7 +1,7 @@
-title: Pat Laub's Blog
+title: pjl
 email: some.email@domain.com
 description: >
-  A blog on maths / programming things.
+  Maths and programming etc.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://pat-laub.github.io
 twitter_username: MileyCyrus
@@ -21,3 +21,5 @@ compress_html:
   clippings: all
   comments:  ["<!-- ", " -->"]
   endings:   all
+  blanklines: true
+permalink: /:categories/:title/

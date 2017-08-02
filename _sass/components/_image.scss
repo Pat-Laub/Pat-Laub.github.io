@@ -5,6 +5,11 @@
 ///
 
 /* Image */
+	.center-image
+	{
+	    margin: 0 auto;
+	    display: block;
+	}
 
 	.image {
 		border: 0;
@@ -14,7 +19,6 @@
 		img {
 			display: block;
 		}
-
 		&.left,
 		&.right {
 			max-width: 40%;

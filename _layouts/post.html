@@ -20,14 +20,14 @@ layout: default
           {% if page.author %}
             • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
           {% endif %}</p>
+
+        <!-- <time class="published" datetime="2015-11-01">November 1, 2015</time> -->
+        <a href="#" class="author"><span class="name">{{ post.author }}</span><img src="{{ site.url }}/images/avatar.jpg" alt="" /></a>
       </div>
-      <!--       
-        <time class="published" datetime="2015-11-01">November 1, 2015</time>
-        <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-      </div> -->
+      
     </header>
 
-    {% if page.banner != 'None' %}
+    {% if page.banner %}
         <span class="image featured"><img src="/images/{{ page.banner }}" alt="" /></span>
     {% endif %}
     

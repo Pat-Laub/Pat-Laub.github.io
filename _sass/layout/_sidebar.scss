@@ -23,11 +23,19 @@
 			padding-top: 0;
 		}
 
+		#recent-books {
+			@include breakpoint(large) {
+				visibility: hidden;
+			}
+		}
+
 		@include breakpoint(large) {
 			border-top: solid 1px _palette(border);
 			margin: _size(section-spacing) 0 0 0;
 			min-width: 0;
 			padding: _size(section-spacing) 0 0 0;
 			width: 100%;
+
+
 		}
 	}
