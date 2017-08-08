@@ -1,0 +1,2034 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-08-05T20:44:22+10:00</updated><id>http://localhost:4000/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
+</subtitle><entry><title type="html">Around-the-world conference trip</title><link href="http://localhost:4000/travel/2017/08/01/around-the-world.html" rel="alternate" type="text/html" title="Around-the-world conference trip" /><published>2017-08-01T00:00:00+10:00</published><updated>2017-08-01T00:00:00+10:00</updated><id>http://localhost:4000/travel/2017/08/01/around-the-world</id><content type="html" xml:base="http://localhost:4000/travel/2017/08/01/around-the-world.html">&lt;p&gt;There was a lot of jetlag…&lt;/p&gt;</content><author><name>pjl</name></author><category term="photos" /><summary type="html">There was a lot of jetlag…</summary></entry><entry><title type="html">Greenland conference and hike</title><link href="http://localhost:4000/travel/2016/08/01/greenland-hike.html" rel="alternate" type="text/html" title="Greenland conference and hike" /><published>2016-08-01T00:00:00+10:00</published><updated>2016-08-01T00:00:00+10:00</updated><id>http://localhost:4000/travel/2016/08/01/greenland-hike</id><content type="html" xml:base="http://localhost:4000/travel/2016/08/01/greenland-hike.html">&lt;p&gt;It was cold…&lt;/p&gt;</content><author><name>pjl</name></author><category term="photos" /><summary type="html">It was cold…</summary></entry><entry><title type="html">Cross-entropy example</title><link href="http://localhost:4000/math6006/2014/09/01/l3.html" rel="alternate" type="text/html" title="Cross-entropy example" /><published>2014-09-01T00:00:00+10:00</published><updated>2014-09-01T00:00:00+10:00</updated><id>http://localhost:4000/math6006/2014/09/01/l3</id><content type="html" xml:base="http://localhost:4000/math6006/2014/09/01/l3.html">&lt;h1 id=&quot;problem&quot;&gt;Problem&lt;/h1&gt;
+
+&lt;p&gt;Consider minimising the test function – named Rastrigin’s function –
+defined by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S({\boldsymbol{x}}) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).&lt;/script&gt;
+
+&lt;p&gt;This is how it looks:
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastrigin.png&quot; alt=&quot;image&quot; class=&quot;image featured&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;One cross-entropy approach could be as follows.&lt;/p&gt;
+
+&lt;h1 id=&quot;formulation&quot;&gt;Formulation&lt;/h1&gt;
+
+&lt;p&gt;State that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S({\boldsymbol{x}}^*) = \gamma^* = \max_{ {\boldsymbol{x}}\in {\mathbb{R}}^2} S({\boldsymbol{x}}).&lt;/script&gt;
+
+&lt;p&gt;Consider a family of pdfs
+$\{ f(\cdot\,; {\boldsymbol{v}}) : v \in \mathcal{V} \}$ on
+${\mathbb{R}}^2$. We will construct a sequence of pdfs&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(f(\cdot\,; {\boldsymbol{u}}), f(\cdot\,; {\boldsymbol{v}}_1), f(\cdot\,; {\boldsymbol{v}}_2), \dots, f(\cdot\,; {\boldsymbol{v}}_N))&lt;/script&gt;
+
+&lt;p&gt;which start with parameter ${\boldsymbol{u}}={\boldsymbol{v}}_0$ and aim
+to converge on the zero-variance distribution whose mass is on the point
+${\boldsymbol{x}}^*$. In order to do this, we need to be able to solve
+the program:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\boldsymbol{v}}_t = \underset{ {\boldsymbol{v}}}{\arg\max} \, \frac{1}{N} \sum_{i=1}^N I_{\\{S({\boldsymbol{X}}_i) \geq \hat{\gamma}_t\\}} \ln f({\boldsymbol{X}}_i; {\boldsymbol{v}})&lt;/script&gt;
+
+&lt;p&gt;where the
+${ {\boldsymbol{X}}&lt;em&gt;i } {\overset{iid}{\sim}}f(\cdot\,; {\boldsymbol{v}}&lt;/em&gt;{t-1})$.
+Though this is simpler when ${\boldsymbol{v}}_t$ is viewed as the
+maximum likelihood estimates (MLEs) of $\{ {\boldsymbol{X}}_i \}$, which
+is known analytically for many distributions.\
+In this case we’ve chosen $f$ to be of family of bivariate normal
+distributions, i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f({\boldsymbol{x}}; {\boldsymbol{v}}_i) = f({\boldsymbol{x}}; ({\boldsymbol{\mu}}_i, \Sigma_i)) = (2\pi)^{-1} \Sigma_i^{-1/2} \exp \left\\{-\frac{1}{2} ({\boldsymbol{x}}-{\boldsymbol{\mu}}_i)^t \Sigma_i^{-1} ({\boldsymbol{x}}-{\boldsymbol{\mu}}_i) \right\\}.&lt;/script&gt;
+
+&lt;p&gt;The MLEs for ${\boldsymbol{\mu}}_i$ and $\Sigma_i$ given some data
+$\{ {\boldsymbol{X}}_i\}$ is simply the sample mean and the sample
+covariance matrix respectively.&lt;/p&gt;
+
+&lt;h1 id=&quot;implementation&quot;&gt;Implementation&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/math6006/progress.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/logprogress.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast1.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens1.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast2.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens2.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast3.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens3.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast4.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens4.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast5.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens5.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast7.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens7.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast10.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens10.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast15.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens15.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast20.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens20.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast21.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens21.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast22.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens22.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rast26.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/images/math6006/rastImpDens26.jpg&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Program output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Minimum: 566.6  mu: (100,100)   sum(sigma): 1e+04
+Minimum: 105.6  mu: (38.19,23.61)   sum(sigma): 2947
+Minimum: 17.88  mu: (17.86,1.62)    sum(sigma): 628
+Minimum: 8.878  mu: (4.078,0.9193)  sum(sigma): 79.88
+Minimum: 3.927  mu: (1.031,0.1458)  sum(sigma): 5.894
+Minimum: 2.804  mu: (0.366,-0.07075)    sum(sigma): 2.539
+Minimum: 2.621  mu: (0.3736,-0.2191)    sum(sigma): 2.696
+Minimum: 3.371  mu: (0.4345,0.05753)    sum(sigma): 2.68
+Minimum: 2.248  mu: (-0.1047,-0.09262)  sum(sigma): 2.998
+Minimum: 1.492  mu: (-0.2859,0.1824)    sum(sigma): 1.594
+Minimum: 1.587  mu: (-0.3357,0.1226)    sum(sigma): 0.8068
+Minimum: 0.7777 mu: (-0.2582,0.1078)    sum(sigma): 0.8715
+Minimum: 0.2609 mu: (-0.3372,-0.1298)   sum(sigma): 0.6092
+Minimum: 0.4489 mu: (-0.3467,0.01045)   sum(sigma): 0.8966
+Minimum: 1.491  mu: (-0.1771,0.1859)    sum(sigma): 1.005
+Minimum: 0.469  mu: (-0.04962,0.3966)   sum(sigma): 1.375
+Minimum: 1.251  mu: (-0.05884,0.2697)   sum(sigma): 1.046
+Minimum: 1.53   mu: (-0.2133,0.006174)  sum(sigma): 1.104
+Minimum: 1.082  mu: (-0.1391,-0.1123)   sum(sigma): 0.99
+Minimum: 0.2011 mu: (-0.04912,-0.006557)    sum(sigma): 0.6049
+Minimum: 0.1566 mu: (-0.05435,0.002617) sum(sigma): 0.1822
+Minimum: 0.0002754  mu: (-0.02384,0.0008551)    sum(sigma): 0.004705
+Minimum: 0.002779   mu: (-0.005473,-0.003327)   sum(sigma): 0.0003641
+Minimum: 5.379e-05  mu: (0.0002474,5.669e-05)   sum(sigma): 7.661e-05
+Minimum: 9.127e-05  mu: (-0.0003505,-7.848e-05) sum(sigma): 1.049e-05
+Minimum: 1.624e-07  mu: (6.175e-05,0.0002736)   sum(sigma): 1.791e-06
+Minimum: 5.834e-08  mu: (-2.88e-05,0.0001088)   sum(sigma): 9.217e-08
+Converged after 27 iterations.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>pjl</name></author><category term="math6006" /><category term="math" /><category term="monte carlo" /><summary type="html">Consider minimising the test function – named Rastrigin’s function – defined by $$S({\boldsymbol{x}}) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).$$ One cross-entropy approach could be as follows.</summary></entry><entry><title type="html">Stochastic differential equations</title><link href="http://localhost:4000/math6006/2014/09/01/l2.html" rel="alternate" type="text/html" title="Stochastic differential equations" /><published>2014-09-01T00:00:00+10:00</published><updated>2014-09-01T00:00:00+10:00</updated><id>http://localhost:4000/math6006/2014/09/01/l2</id><content type="html" xml:base="http://localhost:4000/math6006/2014/09/01/l2.html">&lt;h2 id=&quot;background-brownian-motion&quot;&gt;Background: Brownian Motion&lt;/h2&gt;
+&lt;p&gt;$\newcommand{\dif}{\,\mathrm{d}} $
+A process $(B(t, \omega) : t \geq 0, \omega \in \Omega)$ is a standard
+Brownian Motion iff&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$B(0) = 0$,&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Independent increments, i.e
+$\forall~0 \leq t_1 \leq t_2 \leq t_3 \leq t_4$ then&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\left( B(t_4)-B(t_3)~|~B(t_2)-B(t_1) \right) \sim B(t_4)-B(t_3),&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$\forall~t,h\geq0 : B(t+h)-B(t) \sim \mathrm{N}(0,h)$,&lt;/li&gt;
+  &lt;li&gt;$B(t)$ is almost-surely continuous w.r.t $t$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;itô-integral&quot;&gt;Itô Integral&lt;/h2&gt;
+
+&lt;p&gt;An Itô integral on $[0, T]$ is first defined for step processes. Say
+that the process $(X_n(t, \omega) : t \geq 0, \omega \in \Omega)$ is of
+the form&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;X_n(t, \omega) = \sum_{i=1}^n A_i(\omega) {\boldsymbol{1}}_{(t_i, t_{i+1}]}(t)&lt;/script&gt;
+
+&lt;p&gt;for $\omega \in \Omega$, $0 \leq t_1 \leq t_2 \leq {…}\leq t_n \leq T$
+and ${\mathcal{F}}(t_i)$-measurable $A_i$. Then define the Itô integral
+to be&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^T X(s, \omega) \dif B(s) = \sum_{i=1}^n A_i(\omega)(B(t_{i+1})-B(t_i)).&lt;/script&gt;
+
+&lt;p&gt;Next consider an $(X(t, \omega) : t \geq 0, \omega \in \Omega)$
+process&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. We will approximate the process by a sequence of step
+processes
+${ X_n(t, \omega) : n \in {\mathbb{N}}, \omega \in \Omega }$. For all
+such $X(t, \omega)$ there exists an approximating sequence that, for all
+$t \geq 0$, satisfies&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lim_{n \rightarrow \infty} {\mathbb{E}}\left[ (X_n(t,\omega) - X(t,\omega))^2 \right] = 0.&lt;/script&gt;
+
+&lt;p&gt;So define the general Itô integral to be the limit of integrals of step
+processes, i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^T X(s, \omega) \dif B(s) = \lim_{n\rightarrow\infty} \int_0^T X_n(s, \omega) \dif B(s).&lt;/script&gt;
+
+&lt;h2 id=&quot;itô-processes&quot;&gt;Itô Processes&lt;/h2&gt;
+
+&lt;p&gt;For measurable processes $(a(t, \omega) : t \geq 0, \omega \in \Omega)$
+and $(b(t, \omega) : t \geq 0, \omega \in \Omega)$ then an Itô process
+$(X(t, \omega) : t \geq 0, \omega \in \Omega)$ is written as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\dif X(t, \omega) = a(t, \omega) \dif t + b(t, \omega) \dif B(t, \omega)&lt;/script&gt;
+
+&lt;p&gt;which is shorthand for&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;X(t, \omega) = \int_0^t a(s, \omega) \dif s + \int_0^t b(s, \omega) \dif B(s, \omega).&lt;/script&gt;
+
+&lt;h2 id=&quot;diffusion-processes-subset-itô-processes&quot;&gt;Diffusion Processes $\subset$ Itô Processes&lt;/h2&gt;
+
+&lt;p&gt;A pair of deterministic functions $a(t, x)$ and $b(t, x)$ define a
+diffusion process $(X(t, \omega) : t \geq 0, \omega \in \Omega)$ by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\dif X(t, \omega) = a(t, X(t, \omega)) \dif t + b(t, X(t,\omega)) \dif B(t, \omega)&lt;/script&gt;
+
+&lt;p&gt;which is shorthand for&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;X(t, \omega) = \int_0^t a(s, X(s,\omega)) \dif s + \int_0^t b(s, X(s, \omega)) \dif B(s, \omega).&lt;/script&gt;
+
+&lt;h2 id=&quot;simulating-brownian-motion&quot;&gt;Simulating Brownian Motion&lt;/h2&gt;
+
+&lt;h3 id=&quot;at-some-fixed-time-t&quot;&gt;At some fixed time $T$&lt;/h3&gt;
+
+&lt;p&gt;As $B(T) \sim N(0, T)$ then simply generate (noting that MATLAB uses
+standard deviation instead of variance for many functions)&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Time to sample the Brownian motion&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;B_T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Generate sample&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;on-some-finite-mesh&quot;&gt;On some finite mesh&lt;/h3&gt;
+
+&lt;p&gt;Say for a mesh ${ t_1, {…}, t_n }$ then we know that
+$B(t_{i+1})-B_(t_i) \sim \mathrm{N}(0, t_{i+1}-t_i)$ so&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;B(t_k,\omega) = B(t_1,\omega) + \sum_{i=1}^k B(t_i,\omega)-B(t_{i-1},\omega).&lt;/script&gt;
+
+&lt;p&gt;Then to simulate&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Setup time mesh (need not be an evenly spaced grid)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;timeDiffs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Calculate the time increments&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;incs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timeDiffs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Generate the BM increments&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cumsum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;incs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Add them all up&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;or in one line&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cumsum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;simulating-diffusion-processes-by-the-euler-maruyama-scheme&quot;&gt;Simulating diffusion processes by the Euler-Maruyama scheme&lt;/h2&gt;
+
+&lt;p&gt;Consider some time mesh ${ t_1, {…}, t_n }$. Approximate
+$\dif t_i, \dif B(t_i)$ by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta t_i := t_i-t_{i-1}, \quad \Delta B(t_i) := B(t_i)-B(t_{i-1})&lt;/script&gt;
+
+&lt;p&gt;respectively and say&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta X(t_i,\omega) := a(t_i, X(t_{i-1},\omega)) \Delta t_i + b(t_i, X(t_{i-1},\omega)) \Delta B(t_i).&lt;/script&gt;
+
+&lt;p&gt;The Euler-Maruyama scheme approximates a diffusion process on a given
+time mesh by &lt;script type=&quot;math/tex&quot;&gt;\dif X(t_i,\omega) \approx \Delta X(t_i,\omega)&lt;/script&gt; so&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;X(t_n,\omega) \approx X(0,\omega) + \sum_{i=1}^n \Delta X(t_i,\omega).&lt;/script&gt;
+
+&lt;p&gt;Say for example geometric Brownian motion is being simulated, i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\dif X(t,\omega) = \mu X(t,\omega) \dif t + \sigma X(t,\omega) \dif B(t)&lt;/script&gt;
+
+&lt;p&gt;for $\mu, \sigma \in {\mathbb{R}}$.&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c1&quot;&gt;% Constants&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Time grid&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Drift&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Diffusion&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Starting value (could be random)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;% Output vector for realisation&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+
+    &lt;span class=&quot;c1&quot;&gt;% Helper functions&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;deltaB&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;deltaX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deltaX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'X(t)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Example GBM'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Or simply use MATLAB’s builtin SDE toolbox, the ‘gbm’ function&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nPeriods&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gbm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'StartState'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;simulate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nPeriods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'DeltaTime'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'X(t)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Example GBM'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;or more generally just using the ‘sde’ function&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nPeriods&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sde&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'StartState'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;simulate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nPeriods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'DeltaTime'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'X(t)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Example GBM'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/math6006/gbm.png&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;simulating-multi-dimensional-itô-processes-by-the-euler-maruyama-scheme&quot;&gt;Simulating multi-dimensional Itô processes by the Euler-Maruyama scheme&lt;/h2&gt;
+
+&lt;p&gt;Equivalently the Euler-Maruyama method extends to multiple dimensions
+and works on general Itô processes. For example, for
+$({\boldsymbol{X}}(t, \omega) \in {\mathbb{R}}^2 : t \geq 0, \omega \in \Omega)$
+then take&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\dif {\boldsymbol{X}}(t, \omega) = -{\boldsymbol{X}}(t, \omega) \dif t + (\sin(t), \cos(t))^T \dif {\boldsymbol{B}}(t).&lt;/script&gt;
+
+&lt;p&gt;The algorithm&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; to simulate this is given below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/math6006/multi.png&quot; alt=&quot;image&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c1&quot;&gt;% Time step, and some useful functions to calculate dBt &amp;amp; dXt&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dBt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dBt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;% Time horizon to plot over&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;% Xt simulated values&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;% Perform Euler-Maruyama simulation&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(:,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(:,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(:,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;% Plot the results&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;milsteins-method&quot;&gt;Milstein’s Method&lt;/h2&gt;
+
+&lt;p&gt;Remember Taylor’s expansion about $(x_0, y_0)$ of a bivariate function&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+    f(x,y) \approx &amp;f(x_0,y_0)~+ \\
+                   &amp;f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)~+ \\
+                   &amp;\frac{1}{2}f_{xx}(x_0,y_0)(x-x_0)^2 + \frac{1}{2}f_{yy}(x_0,y_0)(y-y_0)^2 + f_{xy}(x_0,y_0)(x-x_0)(y-y_0)\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;so therefore if $(x,y)$ is close to $(x_0,y_0)$ then an approximation
+for the derivative is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+    f(x,y)-f(x_0,y_0) \approx &amp;f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)~+ \\
+                   &amp;\frac{1}{2}f_{xx}(x_0,y_0)(x-x_0)^2 + \frac{1}{2}f_{yy}(x_0,y_0)(y-y_0)^2 + f_{xy}(x_0,y_0)(x-x_0)(y-y_0)\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;If we apply this to our SDE then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+    \Delta X(t_i) \approx &amp;a(t_{i-1}, X(t_{i-1}))\Delta t_i + b(t_{i-1}, X(t_{i-1})) \Delta B(t_i)~+ \\
+        &amp; + \frac{1}{2}  \frac{\dif b(t_{i-1}, X(t_{i-1}))}{\dif X(t_{i-1})} \Delta t_i \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta t_i \approx 0, \quad \Delta t_i \Delta B(t_i) \approx 0, \quad \left(\Delta B(t_i)\right)^2 \approx \Delta t_i.&lt;/script&gt;
+
+&lt;p&gt;References: Higham, D. J. (2001). An algorithmic introduction to
+numerical simulation of stochastic differential equations. SIAM review,
+43(3), 525-546.
+Available at: http://www.caam.rice.edu/~cox/stoch/dhigham.pdf&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt; writing $B(t)$ for $B(t,\omega)$&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt; which is progressively measurable and has
+${\mathbb{E}}[\int_0^\infty X(s)^s \dif s] &amp;lt; \infty$&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt; taken from work previously suboldsymbolitted in STAT4403.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>pjl</name></author><category term="math6006" /><category term="math" /><category term="monte carlo" /><summary type="html">An Itô integral on $[0, T]$ is first defined for step processes. Say that the process $(X_n(t, \omega) : t \geq 0, \omega \in \Omega)$ is of the form $$X_n(t, \omega) = \sum_{i=1}^n A_i(\omega) {\boldsymbol{1}}_{(t_i, t_{i+1}]}(t)$$ for $\omega \in \Omega$, $0 \leq t_1 \leq t_2 \leq {...}\leq t_n \leq T$ and ${\mathcal{F}}(t_i)$-measurable $A_i$...</summary></entry><entry><title type="html">Variance reduction techniques</title><link href="http://localhost:4000/math6006/2014/09/01/l1.html" rel="alternate" type="text/html" title="Variance reduction techniques" /><published>2014-09-01T00:00:00+10:00</published><updated>2014-09-01T00:00:00+10:00</updated><id>http://localhost:4000/math6006/2014/09/01/l1</id><content type="html" xml:base="http://localhost:4000/math6006/2014/09/01/l1.html">&lt;h1 id=&quot;antithetic-sampling&quot;&gt;Antithetic Sampling&lt;/h1&gt;
+
+&lt;p&gt;A typical CMC estimator for $l = {\mathbb{E}}[Z]$ is to take $N$ iid
+replications $\{Z_1, Z_2, \dots, Z_N\}$ and use their sample average,
+i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{l}_{CMC} = \frac{1}{N} \sum_{i=1}^N Z_i.&lt;/script&gt;
+
+&lt;p&gt;This estimator will have variance&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\sigma^2_{CMC} &amp;= \frac{1}{N^2} \mathrm{Var}\left[\sum_{i=1}^N Z_i\right] \\
+&amp;= \frac{N}{N^2} \mathrm{Var}[Z_1] \\
+\Rightarrow \sigma^2_{CMC} &amp;= \frac{\mathrm{Var}[Z_1]}{N}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Another approach is to not sample $N$ random variables independently,
+but $N/2$ pairs of variables which have negative correlation. I.e.
+sample&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\{ (Z_1, Z^*_1), (Z_2, Z^*_2), \dots, (Z_{N/2}, Z^*_{N/2}) \}&lt;/script&gt;
+
+&lt;p&gt;where they are all of the same distribution and independent except for
+$Z_i$ with $Z^*_i$. The estimator is then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \hat{l}_{AS} &amp;= \frac{1}{N/2} \sum_{i=1}^{N/2} \frac{Z_i+Z^*_i}{2} \\
+        &amp;= \frac{1}{N} \sum_{i=1}^{N/2} Z_i+Z^*_i.\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;This has variance&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\sigma^2_{AS} &amp;= \frac{1}{N^2} {\mathrm{Var}}\left[\sum_{i=1}^{N/2} Z_i+Z^*_i \right] \\
+    &amp;= \frac{N/2}{N^2} {\mathrm{Var}}\left[Z_1+Z^*_1] \right]  \\
+    &amp;= \frac{1}{2N} \left[{\mathrm{Var}}[Z_1]+{\mathrm{Var}}[Z^*_1] + 2{\mathrm{Cov}}[Z_1, Z^*_1] \right]  \\
+    &amp;= \frac{1}{2N} \left[2{\mathrm{Var}}[Z_1] + 2{\mathrm{Cov}}[Z_1, Z^*_1] \right]  \\
+    &amp;= \frac{\mathrm{Var}[Z_1] + {\mathrm{Cov}}[Z_1, Z^*_1]}{N} \\
+\Rightarrow \sigma^2_{AS} &amp;= \sigma^2_{CMC} + \frac{\mathrm{Cov}[Z_1, Z^*_1]}{N}\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Therefore&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+{\mathrm{Cov}}[Z_i, Z^*_i] &lt; 0 \Rightarrow \sigma^2_{AS} &lt; \sigma^2_{CMC}. %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Say that random variables $X$ and $Y$ have the same marginal
+distributions ($F_X(z) = F_Y(z) = F(z)$) but are generated using
+$U_i {\overset{iid}{\sim}}U(0,1)$ by $X_i = F^{-1}(U_i)$ and
+$Y_i = F^{-1}(1-U_i)$ then ${\mathrm{Cov}}(X,Y)$ is minimal (see Theorem
+5.3 in Ripley 2009, p. 130).\
+Introduce dependence (specifically negative correlation) in your
+iterates to reduce variance.\&lt;/p&gt;
+
+&lt;h1 id=&quot;control-variates&quot;&gt;Control Variates&lt;/h1&gt;
+
+&lt;p&gt;Say a simulation produces an output $Y$, and the same simulation also
+outputs another random variable $\tilde{Y}$ which is correlated with $Y$
+and whose expectation $\tilde{l} = {\mathbb{E}}[\tilde{Y}]$ is known.
+The $\tilde{Y}$ is called a control variable for $Y$. Use the estimator&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{l}_{CV}  = \frac{1}{N} \sum_{k=1}^N \left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right].&lt;/script&gt;
+
+&lt;p&gt;This will have variance&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+ \sigma^2_{CV} &amp;= \frac{1}{N^2} {\mathrm{Var}}\left[ \sum_{k=1}^N \left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right] \right] \\
+ &amp;= \frac{1}{N^2} \left[ \sum_{k=1}^N {\mathrm{Var}}\left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right] \right] \\
+  &amp;= \frac{N}{N^2} \left[ {\mathrm{Var}}\left[ Y_1 - \alpha (\tilde{Y_1} - \tilde{l}) \right] \right] \\
+  &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + {\mathrm{Var}}[-\alpha (\tilde{Y_1} - \tilde{l})] + 2{\mathrm{Cov}}[Y_1, -\alpha (\tilde{Y_1} - \tilde{l})] \right] \\
+  &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + (-\alpha)^2 {\mathrm{Var}}[\tilde{Y_1}] + 2{\mathrm{Cov}}[Y_1, -\alpha (\tilde{Y_1} - \tilde{l})] \right] \\
+ \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Note that:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    {\mathrm{Cov}}[Y_1, -\alpha(\tilde{Y}_1 - \tilde{l})] &amp;= {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(-\alpha(\tilde{Y}_1 - \tilde{l}) - {\mathbb{E}}[-\alpha(\tilde{Y}_1 - \tilde{l})])] \\
+    &amp;= {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(-\alpha)(\tilde{Y}_1 - \tilde{l})] \\
+    &amp;= -\alpha {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(\tilde{Y}_1 - \tilde{l})] \\
+    &amp;= -\alpha {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(\tilde{Y}_1 - {\mathbb{E}}[\tilde{Y}_1])] \\
+    &amp;= -\alpha {\mathrm{Cov}}[Y_1, \tilde{Y}_1] \\\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So therefore&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma^2_{CV} = \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \alpha^2 {\mathrm{Var}}[\tilde{Y_1}] - 2\alpha {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right]&lt;/script&gt;
+
+&lt;p&gt;To find the $\alpha$ which minimises the variance then look for
+stationary points&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+ \frac{\mathrm{d} \sigma^2_{CV}}{\mathrm{d} \alpha} = 0 &amp;= \frac{1}{N} \left[ 2\alpha {\mathrm{Var}}[\tilde{Y_1}] - 2{\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
+ \Rightarrow 0 &amp;= \left[ \alpha {\mathrm{Var}}[\tilde{Y_1}] - {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
+ \Rightarrow \alpha {\mathrm{Var}}[\tilde{Y_1}] &amp;= {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \\
+ \Rightarrow \alpha  &amp;= \frac{\mathrm{Cov}[Y_1, \tilde{Y_1}]}{\mathrm{Var}[\tilde{Y_1}]} \\
+ \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So the minimum variance achieved by using control variates is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \hat{\sigma}^2_{CV} &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \left(\frac{\mathrm{Cov}[Y_1, \tilde{Y_1}]}{\mathrm{Var}[\tilde{Y_1}]}\right)^2 {\mathrm{Var}}[\tilde{Y_1}] - 2\left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
+    &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) - 2\left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) \right] \\
+    &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] - \left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) \right] \\
+    &amp;= \frac{ {\mathrm{Var}}[Y_1]}{N} - \frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{N{\mathrm{Var}}[\tilde{Y_1}]} \\\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow \hat{\sigma}^2_{CV} = \sigma^2_{CMC} - \frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{N{\mathrm{Var}}[\tilde{Y_1}]}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\Rightarrow \hat{\sigma}^2_{CV} &lt; \sigma^2_{CMC} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;For each simulation find another variable – the control variable – that
+is highly correlated (positively or negatively) with the variable of
+interest which has known expectation (and preferably small variance).&lt;/p&gt;
+
+&lt;h1 id=&quot;stratification&quot;&gt;Stratification&lt;/h1&gt;
+
+&lt;p&gt;Stratified sampling uses the form $l = {\mathbb{E}}[{\mathbb{E}}[Y|Z]]$
+and calculates the ${\mathbb{E}}[Y|Z]$ by partitioning the state space
+$\Omega$ into ${Z=i}, i=1, \dots, m$, the sections called &lt;em&gt;strata&lt;/em&gt;.
+The general equation utilised is the law of total expectation, i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\mathbb{E}}[Y|Z] = \sum_{i=1}^m {\mathbb{E}}[Y|Z=i] {\mathbb{P}}(Z=i).&lt;/script&gt;
+
+&lt;p&gt;Say that ${\mathbb{P}}(Z=i)=p_i$ are known constants, then for each
+strata choose $N_i$ (where $\sum_i N_i = N$) as the number to sample
+from that strata, and use the estimator:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;l_{S} = \sum_{i=1}^m p_i \frac{1}{N_i} \sum_{j=1}^{N_i} Y_{j|Z=i}&lt;/script&gt;
+
+&lt;p&gt;Note that we are sampling from the conditional distributions of $Y$
+given $Z=i$. The variance of this estimator is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \sigma^2_{S} &amp;= {\mathrm{Var}}\left[\sum_{i=1}^m p_i \frac{1}{N_i} \sum_{j=1}^{N_i} Y_{j|Z=i}\right] \\
+    &amp;= \sum_{i=1}^m \frac{p_i^2}{N_i^2} {\mathrm{Var}}\left[\sum_{j=1}^{N_i} Y_{j|Z=i}\right]\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So say ${\mathrm{Var}}[Y_{j \mid Z=i}] = \sigma^2_i$ then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma^2_{S} = \sum_{i=1}^m \frac{p_i^2\sigma^2_i}{N_i^2}&lt;/script&gt;
+
+&lt;p&gt;In order to minimise the variance then select the $N_i$ by the rule&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;N_i = N \frac{p_i \sigma_i}{\sum_{k=1}^m p_k \sigma_k} , \qquad i=1,\dots,m.&lt;/script&gt;
+
+&lt;p&gt;However it is rare that the variance of each strata is known so a pilot
+run can be used to estimate $\sigma_i$ using the sample variance.
+If using $N_i$ selected optimally as above, then the best variance of
+the estimator is then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{\sigma}^2_{S} = \frac{1}{N} \left( \sum_{i=1}^m p_i \sigma_i \right)^2&lt;/script&gt;
+
+&lt;p&gt;Look for different “classes” in your state space (i.e strata) that
+partition the space, and have small variance, so that you can sample
+more effectively the noisy parts of the state space and infrequently
+sample the less noisy parts.
+See Ripley (2009, Chapter 5) for a detailed look at stratified sampling
+in statistics/survey theory.&lt;/p&gt;
+
+&lt;p&gt;References:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cochran, W. G. (2007). Sampling techniques. John Wiley &amp;amp; Sons.&lt;/li&gt;
+  &lt;li&gt;Ripley, B. D. (2009). Stochastic simulation (Vol. 316). John Wiley &amp;amp;
+Sons.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>pjl</name></author><category term="math6006" /><category term="math" /><category term="monte carlo" /><summary type="html">A typical CMC estimator for $l = {\mathbb{E}}[Z]$ is to take $N$ iid replications $\\{Z_1, Z_2, \dots, Z_N\\}$ and use their sample average, i.e. $$ \hat{l}_{CMC} = \frac{1}{N} \sum_{i=1}^N Z_i. $$ This estimator will have variance $$ \sigma^2_{CMC} = \frac{1}{N^2} \mathrm{Var}\left[\sum_{i=1}^N Z_i\right] = \frac{N}{N^2} \mathrm{Var}[Z_1] $$ so $\sigma^2_{CMC} = \mathrm{Var}[Z_1] / N$.</summary></entry><entry><title type="html">Stochastic root-finding review</title><link href="http://localhost:4000/stat4403/2014/05/01/stochastic-root-finding.html" rel="alternate" type="text/html" title="Stochastic root-finding review" /><published>2014-05-01T00:00:00+10:00</published><updated>2014-05-01T00:00:00+10:00</updated><id>http://localhost:4000/stat4403/2014/05/01/stochastic-root-finding</id><content type="html" xml:base="http://localhost:4000/stat4403/2014/05/01/stochastic-root-finding.html">&lt;h1 id=&quot;literature-review&quot;&gt;Literature Review&lt;/h1&gt;
+
+&lt;p&gt;Consider the inventory stocking problem for a submarine mechanic. At the
+outset of any voyage the mechanic must ensure that their stock of spare
+parts is sufficient for the voyage yet the exact demand of each part is
+not known ahead of time. To be rigorous, let’s say there are $k$
+different parts, and the inventory is originally stocked with
+$x \in {\mathbb{N}}^k$ parts. The demand during the voyage arrives as a
+general $k$ dimensional queuing network, which could be arbitrarily
+complex (e.g it could take into account substitutability of certain
+parts). Describe the cumulative demand by time $t$ as $D_t$, a random
+vector which takes values in ${\mathbb{N}}^k$. As $D_t$ is analytically
+intractable then analysis must rely on simulated estimates of this
+distribution. How does one select $x$ so that after a voyage of length
+$h$ time units then ${\mathbb{P}}(D_h \leq x) \geq 1 - \alpha$ for some
+level of $\alpha \in (0, 1]$? This problem, adapted from
+[@pasupathy2011], is an example of a stochastic root-finding problem.&lt;/p&gt;
+
+&lt;p&gt;A general stochastic root-finding problem (SRFP) starts with two main
+elements: a function which is unknown to the user $g(x)$ which maps
+$\Omega \subset {\mathbb{R}}^q \rightarrow {\mathbb{R}}^q$ and an
+unbiased sequence of estimators $G(x)$ (i.e.
+$\forall x \in \Omega: {\mathbb{E}}[G(x)] = g(x)$). Many questions can
+be asked about the roots of $g$, such as: do any roots exist, how many
+roots exist, where are all of the roots, what is an approximation for
+some or all of the roots, and what is an approximation for a single
+root? Some of these questions have been touched on by the literature,
+but the bulk of research has gone into answering the final question.
+That is to say, a SRFP typically searches for an estimate for the true
+root $x^*$ of $g$ only using $G(x)$.&lt;/p&gt;
+
+&lt;p&gt;SRFPs appear in an overwhelming number of fields including physics,
+economics, engineering, statistics and many others. Consider that the
+deterministic root-finding problem (DRFP), which is a special case of
+above where ${\mathrm{Var}}[G(x)] = 0$, can be interpreted as solving a
+nonlinear system of equations. The importance and applications of DRFPs
+also motivate the study of SRFPs. Many current applications of DRFPs are
+actually SRFPs where the randomness has been ignores; e.g. economic
+modeling based on some guess of future interest rates.&lt;/p&gt;
+
+&lt;p&gt;It is not just the importance of DRFPs that carries over to SRFPs, but
+also the deterministic algorithms. The “gold standard” in numerical
+deterministic root-finding is Newton’s method (aka the Newton-Raphson
+method). This method starts with an initial guess $x_0$ and produces a
+sequence of iterates ${x_1, x_2, \dots}$ by the recurrence&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.&lt;/script&gt;
+
+&lt;p&gt;For the multidimensional
+case, replace the derivative with the Jacobian $J(x) = {\nabla}f(x)$ to
+achieve&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x_{n+1} = x_n - J(x_n)^{-1}f(x_n).&lt;/script&gt;
+
+&lt;p&gt;With this background, the
+class of SRFPs algorithms called ‘Stochastic Approximation’ can be
+described.&lt;/p&gt;
+
+&lt;p&gt;In [-@robbins1951], [@robbins1951] introduced the iterative algorithm
+now described as Robbins-Monro Stochastic Approximation (RM-SA). For $g$
+which is one-dimensional, non-decreasing, has a single simple root at
+$x^*$, then the authors proved convergence of the iterates of random
+iterates&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;X_{n+1} = X_n - a_n G(X_n).&lt;/script&gt;
+
+&lt;p&gt;for a predetermined
+positive-valued sequence of ${a_n}$. They listed some regularity
+conditions on $g$, $G$ and on ${a_n}$ to prove that
+$X_n \rightarrow x^*$ in probability.&lt;/p&gt;
+
+&lt;p&gt;Robbins and Monro’s original paper created a surge of research into the
+field. The following year [@wolfowitz1952] answered two questions
+proposed by the original paper, and then [@kiefer1952] proposed an
+extension to RM-SA which incorporated finite-differences to estimate
+$g’(x)$. In the following years @kiefer1952’s algorithm received less
+attention than the original RM-SA [@ruppert1991]. Now, any stochastic
+approximation algorithm using a finite-differences derivative estimate
+is classed as a Kiefer-Wolfowitz stochastic approximation (KW-SA).&lt;/p&gt;
+
+&lt;p&gt;Significant work has since gone into relaxing the conditions in the
+algorithms of [@robbins1951] and [@kiefer1952], and into generalising
+their results (both only considered problems in one dimension).
+[@blum1954] proved that RM-SA convergence occurred with probability one,
+and was the first to prove the same result for the multidimensional
+extension in [@blum1954multi].&lt;/p&gt;
+
+&lt;p&gt;Unfortunately KW-SA did not extend to high-dimensions gracefully.
+Traditionally finite differences approximation of ${\nabla}f(x)$ in $q$
+dimensions requires $q+1$ evaluations of the $f$ function. [@spall1987]
+introduced a method for approximating the derivative using only two
+function evaluations, called Simultaneous Perturbation Stochastic
+Approximation (SPSA). The name is (perhaps obviously) derived from the
+fact that the method perturbs every direction at the same time, trading
+off accuracy for a significantly faster compute time (for large $q$).
+See [@spall1998] for a well-written introduction to the field, and
+[@spall2000] for a more developed form of SPSA.&lt;/p&gt;
+
+&lt;p&gt;One large implementation problem when using these algorithms is to
+choose which sequence/s should be supplied to the algorithm. In RM-SA
+the user must specify a step-size sequence $a_n$ such that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\sum_{i=0}^\infty a_i = \infty, \quad \sum_{i=0}^\infty a_i^2 &lt; \infty. %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Though the asymptotic results for rate of convergence hold for any
+$a_n$, it has been seen that the finite-time performance is hugely
+impacted by this selection. [@robbins1951] originally suggested the form
+$a_n = 1/n$ which is very similar to the best current rule-of-thumb 62
+years later [@pasupathy2011].&lt;/p&gt;
+
+&lt;p&gt;[@polyak1992] and [@ruppert1988] independently arrived at a method to
+diminish the impact of a poor selection of $a_n$. They suggested larger
+step sizes than the typical $a_n = 1/n$ and using
+$\bar{X}&lt;em&gt;n = \sum&lt;/em&gt;{i=0}^n X_i$ - the sample mean of the iterates - as
+the estimator of the root. This is shown to have the same optimal
+asymptotic rate of convergence as standard RM-SA yet with better
+finite-time characteristics [@thehandbook11], and is now very commonly
+used in practice [@asmussen2007]. An in-depth look at all stochastic
+approximation techniques and results can be found in [@kushner2003],
+[@chen2002], and [@spall2005].&lt;/p&gt;
+
+&lt;p&gt;Discussions of averaging lead to the major rival of stochastic
+approximation algorithms, which is known as the stochastic counterpart
+method (SC) or sample average approximation, or the sample-path method).
+In its simplest form, the stochastic counterpart the method replaces
+$g(x)$ with $\hat{g}(x)$ which is simply defined as the sample mean of
+$G(x)$ after $N$ samples, i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{g}(x) = \frac{1}{N} \sum_{i=0}^N G(x).&lt;/script&gt;
+
+&lt;p&gt;For an $N$ chosen
+sufficiently large (relative to ${\mathrm{Var}}[G(x)]$) then the root of
+the surrogate problem $\hat{g}(x)$ is a DRFP that can be solved using
+the vast array of algorithms in that field (many can be found in
+[@wright1999]). There are some major advantages to SC over SA.
+[@pasupathy2011] states that SC, when compared to SA, is very
+conceptually simple and that it is powerful as the tools developed for
+DRFPs can be utilised. In modern times SC is likely to be preferred over
+SA as it is easily parallelisable. Also SC allows examination of
+non-differentiable functions which would confuse SA methods [@wang2008].&lt;/p&gt;
+
+&lt;p&gt;Initial work on the stochastic counterpart method arose from
+[@healy1991] looking at a related concept which is retrospective
+optimization methodology. This work discussed the notion of optimizing
+the performance of a stochastic system – the context given was resource
+allocation and queuing problems – over a selection of available
+decisions. [@chen1994] then formally applied the methodology to
+stochastic root finding, and Schmeiser’s PhD student Pasupathy
+generalised the results to multiple dimensions [@pasupathy2005]. Initial
+results on convergence were already proved by [@shapiro1991] in the
+context of stochastic optimization. The topic is well-explained by many
+books, including: [@rubinstein1993], [@spall2005], and
+[@thehandbook11].\
+[@rubinstein1997] built on the original work on the stochastic
+counterpart method and produced a landmark application of the method for
+rare-event simulations. A simplified explanation can be found in
+[@thehandbook11], which describes how stochastic counterpart is a vital
+component of the cross-entropy method.&lt;/p&gt;
+
+&lt;p&gt;Modern work on stochastic approximation techniques seeks to automate the
+task of parameter selection. [@spall2000] outlines an adaptive extension
+to SPSA. Very recently [@broadie2014] outlined a fully adaptive
+extension to both RMSA and KWSA which works well in practice, yet has
+little founding in rigorous proofs. Another recent application of
+stochastic approximation is in evaluating portfolio risk, cf
+[@dunkel2010].&lt;/p&gt;
+
+&lt;p&gt;To conclude, a completely different approach to solving SRFPs called the
+probabilistic bisection method by [@waeber2011] will be described.
+Instead of iterating a single point $X_n$ towards $x^*$ in some form of
+descent method (which is basically all that SA and SC achieve), this
+approach iterates a sequences of probability distribution functions
+$f_n$ which hopefully converge to the pdf of the constant $x^*$. When
+viewed as a Bayesian approach then $f_0$ is the prior for the location
+of the root (typically constant over the considered range), and
+successive iterations add information from querying $G(x)$. Each
+iteration selects a point
+$X_n = {\mathrm{Median}}(f_n(x)) = F_n^{-1}(1/2)$ and queries the sign
+of this point&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Z_n(X_n) = {\mathrm{sgn}}(G(X_n)).&lt;/script&gt;
+
+&lt;p&gt;In this stylised
+problem the authors considered the case where&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x) = {\mathbb{P}}({\mathrm{sgn}}(G(x)) = {\mathrm{sgn}}(g(x)))&lt;/script&gt;
+
+&lt;p&gt;is
+known to the user. The values of $Z_n$ and $p(x)$ describes how to
+update the next posterior, i.e. if $Z_n = +1$ then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+f_{n+1}(x) =
+  \begin{cases}
+  2p(x) f_n(x), &amp; \text{if }x &gt; X_n \\
+  2(1-p(x)) f_n(x), &amp; \text{if }x \leq X_n
+  \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;else $Z_n = -1$ and&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+f_{n+1}(x) =
+  \begin{cases}
+  2(1-p(x)) f_n(x), &amp; \text{if }x &gt; X_n \\
+  2p(x) f_n(x), &amp; \text{if }x \leq X_n.
+  \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;For this highly stylised problem and some conditions on
+$p$, $g$, $g’(x)$ and ${\mathrm{Var}}[G(x)]$ the authors proved a.s.
+convergence of $F_n(x)$ to ${\boldsymbol{1}}(x \geq x^*)$. This approach
+appears to have much potential when competing against the existing
+methods; as SA &amp;amp; SC form Markov chains then all the work involved
+calculating $G(X_n)$ is thrown away after each step, whereas the
+Bayesian approach incorporates all previous queries of $G$ into
+$f_n$.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;main-theorems&quot;&gt;Main Theorems&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Proof of Robbins-Monro convergence almost surely:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Results listed below are adapted from the original proof by [@blum1954].&lt;/p&gt;
+
+&lt;p&gt;Say $g(x)$ is a Lebesgue measurable function and our available estimator
+$G(x)$ is unbiased (i.e. ${\mathbb{E}}[G(x)] = g(x)$) and that
+${a_n : n \in {\mathbb{N}}}$ is the user-supplied step sequence. The
+following conditions must be satisfied:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\textstyle \sum_{n=1}^\infty a_n = \infty \tag{A}\label{A}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\textstyle \sum_{n=1}^\infty a_n^2 &lt; \infty \tag{B}\label{B} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;|g(x)| \leq c + d|x| \tag{C}\label{C}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+{\mathrm{Var}}[G(x)] \leq \sigma^2 &lt; \infty \tag{D}\label{D} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+g(x) &lt; 0 \text{ for } x &lt; \theta, \quad g(x) &gt; 0 \text{ for } x &gt; \theta \tag{E}\label{E} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\inf_{\delta_1 \leq |x-\theta| \leq \delta_2} |g(x)| &gt; 0 \text{ for every pair } 0 &lt; \delta_1 &lt; \delta_2 &lt; \infty \tag{F}\label{F} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The assumptions are as follows: $\eqref{B}$ sets a minimum decrease rate
+of the step sequence, $\eqref{C}$ ensures the function isn’t too steep
+for root-finding, $\eqref{D}$ ensures the noise in our measurements is
+finite, $\eqref{E}$ states that there is at most one root and
+$\eqref{F}$ “ensures that the iterates do not accumulate at any finite
+point” [@pasupathy2011].&lt;/p&gt;
+
+&lt;p&gt;[lemma:sum] If $\eqref{B}$ and $\eqref{D}$ hold then the sequence
+${ X_{n+1} + \sum_{j=1}^n a_j g(X_j) }$ converges to a random variable
+with probability one.&lt;/p&gt;
+
+&lt;p&gt;[@blum1954] cites Lemma [lemma:sum] as a minor extension of Lemma 5.2
+in [@loeve1951].&lt;/p&gt;
+
+&lt;p&gt;[lemma:wp1] If $\eqref{B}$, $\eqref{C}$, $\eqref{D}$ and $\eqref{E}$
+hold then $X_n$ converges w.p.1.&lt;/p&gt;
+
+&lt;p&gt;First want to show&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\mathbb{P}}\left(\lim_{n\rightarrow \infty} X_n = \pm \infty\right) = 0.\label{conv:fin}&lt;/script&gt;
+
+&lt;p&gt;Suppose ${X_n }$ is a sample sequence which diverges to $+\infty$ (a
+similar argument holds for $-\infty$). This means $X_n \leq \theta$ for
+only finitely many $n$, so $\eqref{E}$ $\Rightarrow a_ng(X_n) &amp;gt; 0$ for
+large enough $n$. Then in the limit&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lim_{n\rightarrow \infty} X_{n+1} + \sum_{j=1}^n a_jg(X_j) =+\infty&lt;/script&gt;
+
+&lt;p&gt;whereas Lemma [lemma:sum] states this limit converges with probability
+one. Therefore the limit diverges with probability zero and we have
+shown $\eqref{conv:fin}$ to be true.&lt;/p&gt;
+
+&lt;p&gt;Assume the statement of the lemma is false and it will be proved by
+contradiction. Lemma [lemma:sum] and $\eqref{conv:fin}$ imply that
+there exist sample sequences with positive probability such that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\label{contr1}
+  X_{n+1} + \sum_{j=1}^n a_jg(X_j) \text{ converges to a finite number.}&lt;/script&gt;
+
+&lt;p&gt;and the assumption of the lemma being false implies&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\label{contr2}
+  \lim \inf X_n &lt; \lim \sup X_n. %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Select such a sequence of $X_n$ and
+w.l.o.g assume $\lim \sup X_n &amp;gt; \theta$. We can select numbers $a$ and
+$b$ such that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+a &gt; \theta, \quad \lim \inf X_n &lt; a &lt; b &lt; \lim \sup X_n %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Now for $N$
+large enough then $N \leq n &amp;lt; m$ means&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\label{an_bounds}
+  a_n \leq \min \left\{ \frac{1}{3d}, \frac{b-a}{3(c + d|\theta|)} \right\}&lt;/script&gt;
+
+&lt;p&gt;which is fine since $\eqref{B}$ implies $a_n \rightarrow 0$, and also&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\label{bound}
+  \left| X_m - X_n + \sum_{j=n}^{m-1} a_j g(X_j) \right| \leq \frac{b-a}{3}&lt;/script&gt;
+
+&lt;p&gt;which is justified by $\eqref{contr1}$. Fix values for $m$ and $n$ so
+that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\label{summands}
+  N \leq n &lt; m, \quad X_n &lt; a, \quad X_m &gt; b, \quad n &lt; j &lt; m \Rightarrow a \leq X_j \leq b. %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;In particular note that for $n&amp;lt;j&amp;lt;m$ then $\eqref{summands}$ &amp;amp;
+$\eqref{E}$ means that $a_jg(X_j) &amp;gt; 0$. By rearranging $\eqref{bound}$
+and applying this note we can see that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\label{ineq}
+  X_m - X_n \leq \frac{b-a}{3} - \sum_{j=n}^{m-1} a_jg(X_j) 
+        \leq \frac{b-a}{3} - a_ng(X_n)&lt;/script&gt;
+
+&lt;p&gt;To finish the proof we take
+cases. If $\theta &amp;lt; X_n$ then $g(X_n) &amp;gt; 0$ so $\eqref{ineq}$ states that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;X_m - X_n \leq \frac{b-a}{3}&lt;/script&gt;
+
+&lt;p&gt;but $\eqref{summands}$ implies that
+$X_m - X_n &amp;gt; b-a$, so a contradiction! This leaves considering the case
+where $X_n \leq \theta$, so $g(X_n) &amp;lt; 0$ and by $\eqref{C}$:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+ \label{ineq2}
+  -g(X_n)  &amp;= |g(X_n)| \notag \\
+       &amp;\leq c + d|X_n| \notag \\
+       &amp;\leq c + d|\theta| + d|\theta - X_n| \notag \\
+       &amp;\leq c + d|\theta| + d(X_m - X_n)\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So plugging $\eqref{ineq2}$ into $\eqref{ineq}$ gives&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+ \label{anothercontr}
+  X_m - X_n &amp;\leq \frac{b-a}{3} + a_n(c + d|\theta| + d(X_m - X_n))\\
+        &amp;= \frac{b-a}{3} + a_n(c + d|\theta|) + a_n d(X_m - X_n)  \\
+        &amp;\leq \frac{b-a}{3} + \left(\frac{b-a}{3(c+d|\theta|)}\right)(c + d|\theta|) + \left(\frac{1}{3d}\right) d(X_m - X_n) \qquad \text{ by $\eqref{an_bounds}$}\\
+        &amp;\leq \frac{b-a}{3} + \frac{b-a}{3} + \frac{X_m - X_n}{3}\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Collecting $X_m - X_n$ terms together and multiplying by $\frac{3}{2}$
+gives&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(X_m-X_n) \leq b-a&lt;/script&gt;
+
+&lt;p&gt;which again contradicts $X_m - X_n &amp;gt; b-a$
+from $\eqref{summands}$! Therefore all cases lead to a contradiction so
+the lemma is proved.&lt;/p&gt;
+
+&lt;p&gt;If conditions $\eqref{A}$-$\eqref{F}$ hold then the Robbins-Monro
+iterates $X_n$ converge to the root $\theta$ w.p.1.&lt;/p&gt;
+
+&lt;p&gt;We have from Lemma [lemma:wp1] that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\mathbb{P}}\left(\lim_{n\rightarrow\infty} X_n = X\right) = 1&lt;/script&gt;
+
+&lt;p&gt;for
+some $X$. Again seek a contradiction by assuming that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\mathbb{P}}\left(X \not= \theta\right) &gt; 0.&lt;/script&gt;
+
+&lt;p&gt;Choose some
+$\epsilon_1, \epsilon_2$ s.t.
+$\theta &amp;lt; \epsilon_1 &amp;lt; \epsilon_2 &amp;lt; \infty$&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; and&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\label{epsilon}
+  {\mathbb{P}}(\epsilon_1 &lt; X &lt; \epsilon_2) &gt; 0 %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Consider all the
+sequences $X_n$ that, for a chosen $(\epsilon_1, \epsilon_2)$, satisfy
+$\eqref{epsilon}$. For $n$ large enough then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\epsilon_1 \leq X_n \leq \epsilon_2.&lt;/script&gt;
+
+&lt;p&gt;The set of all such sequences
+has positive probability. Lemma [lemma:sum] states that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;X_{n+1} + \sum_{j=1}^n a_j g(X_j) \text{ converges w.p.1}.&lt;/script&gt;
+
+&lt;p&gt;Yet
+consider applying $\eqref{F}$ so that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(X_n) &gt; 0&lt;/script&gt;
+
+&lt;p&gt;eventually and as
+$\eqref{A}$ states the $a_n$ also diverge so overall this sum would
+diverge almost surely. This is contradiction!&lt;/p&gt;
+
+&lt;p&gt;See [@kushner2003] for many more proofs on convergence guarantees and
+convergence speed of stochastic approximation algorithms.&lt;/p&gt;
+
+&lt;h1 id=&quot;algorithms&quot;&gt;Algorithms&lt;/h1&gt;
+
+&lt;h2 id=&quot;pseudocode&quot;&gt;Pseudocode&lt;/h2&gt;
+
+&lt;p&gt;$n \gets 0$ $a_n \gets a/(n+1)^{0.5}$
+$X_{n+1} = \Pi_{\Omega}(X_n-a_n G(X_n))$ $n \gets n+1$&lt;/p&gt;
+
+&lt;p&gt;$n \gets 0$ $a_n \gets a/(n+1)^{0.5}$ $c_n \gets c/(n+1)^\gamma$
+$U_n \gets (0, 0, \dots)$ $U_n(i) = (G(X_n + c_n) - G(X_n - c_n))/2c_n$
+$X_{n+1} = \Pi_{\Omega}(X_n-a_n U_n^{-1} G(X_n))$ $n \gets n+1$
+$X_t = \Pi_{\Omega}(-a_t G(X_{t-1}))$ $t \gets t+1$&lt;/p&gt;
+
+&lt;p&gt;The probabilistic bisection algorithm was sufficiently described in the
+text of the literature review.&lt;/p&gt;
+
+&lt;h2 id=&quot;matlab-implementation&quot;&gt;MATLAB Implementation&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function Xs = sa(G, x0, rm, N, a, alpha, n0, c, gamma, tol, maxIters)
+  % Cannot have empty G or x0 arguments
+  if isempty(G) || isempty(x0)
+    error('Must have a valid input G(x) function and x0 start pos.');
+  end
+  
+  % Number of dimensions in the domain
+  q = numel(x0);
+  
+  % Default to Robbins-Monro algorithm
+  if isempty(rm)
+    rm = true;
+  end
+  % Default value for N
+  if isempty(N)
+    N = 1;
+  end
+  % Default value for a
+  if isempty(a)
+    if rm
+      a = 0.3; % in [0.1, 0.5]
+    else
+      a = 1.5; % 1.5 or 2
+    end
+  end
+  % Default value for alpha
+  if isempty(alpha) &amp;amp;&amp;amp; rm
+    alpha = 0.5; % 0.5 or 0.6
+  end
+  % Default value for n0
+  if isempty(n0)
+    if rm
+      n0 = 10; % 5-10% of total number of iterations
+    else
+      n0 = 1;
+    end
+  end
+  % Default value for c
+  if isempty(c) &amp;amp;&amp;amp; ~rm
+    c = 0.5;
+  end
+  % Default value for gamma
+  if isempty(gamma) &amp;amp;&amp;amp; ~rm
+    gamma = 0.25;
+  end
+  % Default value for tolerance
+  if isempty(tol)
+    tol = 1e-3;
+  end
+  % Default value for max iterations
+  if isempty(maxIters)
+    maxIters = 1e4;
+  end
+  
+  % Setup sample average function
+  GN = @(x) (1/N)*sum(G(repmat(x, N, 1)), 1);
+  
+  % Setup the history of the iterates
+  % (note: X is row vector, so X_i is in Xs(i,:))
+  Xs = zeros(maxIters,q);
+  Xs(1,:) = x0;
+  X = x0;
+  
+  % Iterate until either give up or iterates converge
+  for n = 2:maxIters
+    % Setup the real-valued sequences
+    if rm
+       an = a/(n+n0)^alpha;
+    else
+       an = a/(n+n0);
+       cn = c/n^gamma;
+   
+       % Approximate the derivative using finite differences
+       J = zeros(1, q);
+       for i=1:q
+         e = zeros(1, q);
+         e(i) = 1;
+         J(i,:) = (GN(X+cn*e)-GN(X-cn*e))/(2*cn);
+       end
+    end
+    
+    GX = GN(X);
+    
+    if rm
+      X = X - an*GX;
+    else
+      X = X - (an*GX / J);
+    end
+    
+    % Update history
+    Xs(n,:) = X;
+   
+    % Check for convergence of iterates (to a specified tolerance)
+    if hypot(Xs(n-1,:), Xs(n,:)) &amp;lt; tol
+      display('Converged!');
+      Xs = Xs(1:n);
+      break;
+    end
+    
+    % Check for convergence in function space
+    if abs(GX) &amp;lt; tol
+      display('Function close to zero!');
+      Xs = Xs(1:n);
+      break;
+    end
+  end
+end
+
+function x = prob_bisection(N)
+    p = 0.6;
+    q = 1-p;
+    % start with g(x) = step function around 1/2
+    g = @(xn) 0.2532 .* (-1).^(xn &amp;gt;= 1/2);
+    
+    % noise Y is normal(0, 0.05^2)
+    Y = @(xn) g(xn) + 0.05*randn();
+    
+    syms t clear;
+    syms t;
+    
+    f = symfun(heaviside(t), t);
+    x = 1/2;
+    
+    for iter=2:N
+        ezplot(f, [0, 1]);
+        title(sprintf('Posterior after %d steps', iter-1));
+        drawnow;
+        
+        % Check the sign of this point
+        Z = (Y(x) &amp;gt; 0);
+
+        % Update posterior
+        if Z == 1            
+           f = f - (1-2*q)*heaviside(t) + 2*(2*p-1)*heaviside(t-x);
+        else
+           f = f - (1-2*p)*heaviside(t) + 2*(2*q-1)*heaviside(t-x);
+        end
+        
+        % Pick next point
+        Finv = finverse(int(f));
+        x = Finv(1/2);
+    end
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note that Listing [lst:bisect] is a terribly inefficient
+implementation of the algorithm. It performs symbolic integration and
+symbolic inversion which crash MATLAB once the function grows (after
+roughly 10-15 iterations). Since the pdf is a level function then some
+of the tasks should be simple to do manually, an attempt at this type of
+solution is attached in the appendix (Section [app:bisect]).&lt;/p&gt;
+
+&lt;h1 id=&quot;worked-examples-and-realisations&quot;&gt;Worked Examples and Realisations&lt;/h1&gt;
+
+&lt;p&gt;The main point to illuminate here is how difficult it is to actually
+find problems to apply stochastic approximation to. For example&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(x) = x^2, \text{or}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(x,y) = (x^2, y^2)&lt;/script&gt;
+
+&lt;p&gt;both fail the
+condition that the roots are not simple (i.e. quadratic at the root).&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(x,y) = x^2 y^2&lt;/script&gt;
+
+&lt;p&gt;would require special attention before SA could run
+as $g: {\mathbb{R}}^2 \rightarrow {\mathbb{R}}^1$ and not
+${\mathbb{R}}^q \rightarrow {\mathbb{R}}^q$.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(x, y) = (x+2y, 0)&lt;/script&gt;
+
+&lt;p&gt;has
+infinitely many roots and so would not converge to a single root. Even
+the general case where $c\in{\mathbb{R}}$ and&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(x, y) = (xy, c)&lt;/script&gt;
+
+&lt;p&gt;would cause trouble within the Kiefer-Wolfowitz framework as the second
+partial derivative is zero. Many of the test functions for deterministic
+optimization generate many local minima in an attempt to confuse any
+global optimisation solver. Functions with local minima typically do
+quite confuse stochastic approximation solvers.&lt;/p&gt;
+
+&lt;p&gt;A simple test in one dimension is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(x) = x, \quad G(x) \sim N(x, \sigma^2)&lt;/script&gt;
+
+&lt;p&gt;This error for this test, using a few values for $\sigma^2$, can be seen
+in Figure [fig:simpleRM] for $x_0 = 100$ (MATLAB to generate this
+result in Listing [lst:simple_test]).&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;g = @(x) x; Xs = [];
+
+for sigma = [1, 10, 100, 1000];
+  G = @(x) g(x) + sigma*randn(size(x));
+  x0 = 100;
+  X = sa(G, x0, true, 1, [], [], [], [], [], [], []);
+  Xs = [Xs , X];
+end
+  
+plot(Xs);
+title('G(x) \sim N(x, \sigma^2)'); ylabel('Error'); xlabel('Iteration Number');
+legend('\sigma = 1', '\sigma = 10', '\sigma = 100', '\sigma = 1000');
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Figure [fig:simpleRMvsKW] compares how KWSA performs relative to RMSA
+on this problem for $\sigma^2=1, x_0 = 100$.&lt;/p&gt;
+
+&lt;p&gt;Notice that KWSA performs horribly on this problem with the default
+recommended parameters. The problem is that since the noise is
+relatively large compared to the change in $g(x)$ then for a small
+finite difference interval $c_n = c / n^\gamma$ then the derivative will
+be estimated poorly. One can fix this by adjusting $c$ from 0.5 to 50,
+and the Figure [fig:simpleRMvsKWfixed] shows the improvement. Both
+Figure [fig:simpleRMvsKW] and Figure [fig:simpleRMvsKWfixed] were
+generated by Listing [lst:RMSAvsKWSA].&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;figure; hold on;
+g = @(x) x; 
+G = @(x) g(x) + randn(size(x));
+x0 = 100;
+
+% Show RMSA vs KWSA with default c value
+for i = 1:5
+  XRM = sa(G, x0, true, 1, [], [], [], [], [], [], []);
+  XKW = sa(G, x0, false, 1, [], [], [], 0.5, [], [], []);
+  plot(abs([XRM, XKW]));
+end
+xlabel('Iteration Number'); ylabel('Error');
+title('RMSA vs KWSA (c = 0.5)'); legend('RMSA', 'KWSA');
+
+% Show RMSA vs KWSA with larger c value
+figure; hold on;
+for i = 1:5
+  XRM = sa(G, x0, true, 1, [], [], [], [], [], [], []);
+  XKW = sa(G, x0, false, 1, [], [], [], 50, [], [], []);
+  plot(abs([XRM, XKW]));
+end
+xlabel('Iteration Number'); ylabel('Error');
+title('RMSA vs KWSA (c = 50)'); legend('RMSA', 'KWSA');
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The other way that the KWSA could be adjusted to better compete against
+the RMSA is to add in an element of stochastic counterpart. I.e. select
+some $N$ and then, in the algorithm for KWSA, replace any evaluation of
+the random function $G(x)$ with&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\label{adding-sc}
+  G_N(x) = \frac{1}{N} \sum_{i=1}^N G(x).&lt;/script&gt;
+
+&lt;p&gt;This would reduce how
+sensitive the derivative estimation is for large-noise environments.&lt;/p&gt;
+
+&lt;p&gt;Stochastic counterpart though does not handle too well in extreme
+variability, especially when considering the extra compute-time it
+entails. Figure [fig:sc] shows how RMSA with added SC (i.e. in the
+same manner as $\eqref{adding-sc}$) for $G(x) \sim N(x, 500^2)$ and
+$x_0 = 100$; MATLAB for this result can be seen in Listing [lst:sc].&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;g = @(x) x; 
+G = @(x) g(x) + 500*randn(size(x));
+x0 = 100;
+
+Xs = [];
+for N = [1, 2, 5, 10]
+  X = sa(G, x0, true, N, [], [], [], [], [], [], 1e5);
+  Xs = [Xs, X];
+end
+plot(abs(Xs));
+
+title('Stochastic Counterpart (on RMSA)');
+xlabel('Iteration Number'); ylabel('Error');
+legend('N=1', 'N=2', 'N=5', 'N=10');
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It is interesting to test RMSA against a function for which it should
+really fail on. One such function is Rastrigin’s function, $r(x)$; the
+two-dimensional version is plotted in Figure [fig:rastrigin].&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;r(x) = 10n + \sum_{i=1}^n (x_i^2 - 10\cos(2\pi x_i))&lt;/script&gt;
+
+&lt;p&gt;The first problem with applying SA is that, again, the function maps two
+arguments to one function value, so a dummy second value must be added.
+For example, one could consider&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(x) = (r(x), x_1), \quad g(x) = (r(x), x_1 + x_2), \quad g(x) = (r(x), x_1 x_2).&lt;/script&gt;
+
+&lt;p&gt;As it turns out, the choice makes little impact on the result of RMSA.
+Each option breaks the attached implementation after about 10 iterations
+(it returns NaN), though some results can be extracted if the algorithm
+is capped at a tiny number of iterations. For RMSA capped at five
+iterations and&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;G(x) \sim N((r(x), x_1), 5^2)&lt;/script&gt;
+
+&lt;p&gt;using a grid of
+$[-2, 2]^2$ for $x_0$, then the resulting error can be seen in Figure
+[fig:rast-results]&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note this plot shows the error of the final iterate (i.e. Euclidean norm
+of the iterate as the zero is at the origin) for each starting position.
+Twenty experiments were run for each starting location and the error
+plotted is the average over these trials. MATLAB code is shown in
+Listing [lst:rast-results].&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;g = @(x) [20+sum(x .^ 2 - 10*cos(2*pi*x), 2), x(:,1)];
+G = @(x) g(x) + 5*randn(size(x));
+N = 20; Xs = linspace(-2, 2, 100); Ys = linspace(-2, 2, 100);
+errors = zeros(numel(Xs), numel(Ys));
+
+for i=1:numel(Xs)
+  for j=1:numel(Ys)
+    X0 = [Xs(i), Ys(j)]
+    err = 0;
+    for rep=1:N
+      X = sa(G, X0, true, 1, [], [], [], [], [], [], 5);           
+      err = err + hypot(X(end,1), X(end,2));
+    end
+    errors(i,j) = err/N;
+  end
+end
+
+imagesc(Xs, Ys, errors);
+colorbar;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;An illuminating graphic is to see where the iterates move on the way to
+the root. Returning to a simple function,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(x) = (x_1, x_2)&lt;/script&gt;
+
+&lt;p&gt;then the
+location of the iterates can be seen in Figure [fig:iterates]. The
+MATLAB to generate this figure is in Listing [lst:iterates].&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;g = @(x) [x(:,1), x(:,2)]; 
+G = @(x) g(x) + randn(size(x));
+x0 = [1, 1];
+
+XRM = sa(G, x0, true, 4, [], [], [], [], [], [], 1e3);
+XKW = sa(G, x0, false, 4, [], [], [], [], [], [], 1e3);
+
+figure; hold on;
+quiver(XRM(1:(end-1),1), XRM(1:(end-1),2), diff(XRM(:,1)), diff(XRM(:,2)), 0);
+quiver(XKW(1:(end-1),1), XKW(1:(end-1),2), diff(XKW(:,1)), diff(XKW(:,2)), 0);
+
+a = axis();
+a = [min(a(1),a(3)), max(a(2),a(4)), min(a(1),a(3)), max(a(2),a(4))];
+ezcontour('sqrt(x^2+y^2)', a);
+
+legend('RMSA', 'KWSA'); title('g(x,y) = (x, y)');
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Consider a real SRFP (not simply a deterministic function plus noise)
+which is the task of planning a telephone network to achieve some grade
+of service. To use the typical notation used in fixed-route loss network
+theory [@kelly1991], take: the network to have $J$ links, set of routes
+$\mathcal{R}$, Poisson rate of offered traffic $\boldsymbol{\nu}$ (a
+vector of length $|\mathcal{R}|$), a call requirements matrix $A$ (of
+size $J \times |\mathcal{R}|$, assume a 0-1 matrix) and capacity
+constraints (number of circuits) vector ${\boldsymbol{C}}$ (of length
+$J$).&lt;/p&gt;
+
+&lt;p&gt;A reversible Markov Chain can be formed by considering a state
+${\boldsymbol{n}}= (n_r, r \in \mathcal{R})$ to be the vector counting
+how many calls are in progress along a route inside $\mathcal{R}$. The
+state space
+$S = { {\boldsymbol{n}}\in \mathbb{Z}_+^{|\mathcal{R}|}  : A{\boldsymbol{n}}\leq \boldsymbol{C}}$
+forms a polytope. In particular denote a state ${\boldsymbol{n}}$ to be
+blocking for route $r$ if
+${\boldsymbol{n}}+ \boldsymbol{e}_r \not\in S$.&lt;/p&gt;
+
+&lt;p&gt;Of particular interest is calculating the probability of a call along a
+certain route once the Markov Chain has reached its stationary
+distribution. Denote the probability of a connection being lost to be
+$L_r$ and the probability of a link being full as $B_j$.&lt;/p&gt;
+
+&lt;p&gt;When some simplifying assumptions on the model are made, then analytical
+solutions for $L_r$ and $B_j$ exist. The standard assumptions are to
+take: arrivals to be independent time-homogeneous Poisson processes,
+call lengths to be iid exponential (w.l.o.g with mean 1) and that calls
+made on a blocked route are discarded and do not queue. In an actual
+telecommunication system there are far more complicating factors,
+including: time-inhomogeneity, alternative routing, trunk reservation
+and packet-switched networks.&lt;/p&gt;
+
+&lt;p&gt;For the simple loss network described the stationary distribution is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi({\boldsymbol{n}}) = G({\boldsymbol{C}})^{-1} \prod_{r \in \mathcal{R}} \frac{\nu_r^{n_r}}{n_r!}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;G({\boldsymbol{C}}) = \sum_{ {\boldsymbol{n}}\in S({\boldsymbol{C}})} \prod_{r \in \mathcal{R}} \frac{\nu_r^{n_r}}{n_r!}.&lt;/script&gt;
+
+&lt;p&gt;With $\pi({\boldsymbol{n}})$ one can simply add up stationary
+probability for any state which is utilising $C_j$ links to get the link
+loss probabilities $B_j$. Then the route loss probabilities can be found
+by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L_r = 1 - \prod_{j \in r} (1 - B_j).&lt;/script&gt;
+
+&lt;p&gt;While this is helpful, it
+doesn’t give a practical solution to finding $L_r$ for reasonable-sized
+networks as computing $G({\boldsymbol{C}})$ is #P-complete. Sampling
+from $\pi({\boldsymbol{n}})$ is possible though as it is simply the
+multidimensional truncate Poisson distribution. Listing
+[lst:samp_pois] shows how one could (inefficiently) achieve this by
+crude acceptance-rejection.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function n = sample_poisson(nu, A, C, testEach)
+  if size(nu, 1) ~= size(A, 2)
+    error('Input arguments are of the wrong size');
+  end
+  
+  skip = 0;
+  maxIter = 1e5;
+  for iter=1:maxIter
+     n = zeros(size(nu, 1), 1);       
+     for i=1:numel(nu)
+      n(i) = poissrnd(nu(i));
+      if testEach &amp;amp;&amp;amp; mod(i,2) == 0 &amp;amp;&amp;amp; any(A*n &amp;gt; C)
+        skip = 1;
+        break;
+      end    
+     end
+
+     if skip == 1
+       skip = 0;
+       continue;
+     end
+     
+     if all(A*n &amp;lt;= C)
+       break
+     end
+  end
+
+  if iter==maxIter
+    error('Acceptance Rejection failed.');
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now the SRFP to solve can be described fully. Fix a network which has a
+star structure with 25 links ($J = 25$). The routes $\mathcal{R}$ are
+every pair of links, and each route $r$ requires one line on each link.
+The capacity ${\boldsymbol{C}}$ is identical for every link, so
+$C_i = C_j = C$ is the decision variable in this problem. Specify a
+grade of service, $\forall r \in \mathcal{R} : L_r = 0.05$, and find the
+root of the equation&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Error(C) = |L_r(C) - 0.05|.&lt;/script&gt;
+
+&lt;p&gt;One can construct
+an estimator for this function by using crude Monte Carlo, see Listing
+[lst:cmc] and Listing [lst:bp-cmc].&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function B = blocking_probability(indivCapacity, N)
+  % Parameters
+  individArrival = 1;
+
+  if isempty(indivCapacity)
+    indivCapacity = 35;
+  end
+  if isempty(N)
+    N = 1e3;
+  end
+
+  % Construct a Star Network
+  numLinks = 25;
+  numRoutes = nchoosek(numLinks, 2);
+
+  A = zeros(numLinks, numRoutes);
+  r = 0;
+  for i=1:numLinks
+    for j=i:numLinks
+      if i ~= j
+        r = r+1;
+        A(i,r) = 1;
+        A(j,r) = 1;
+      end
+    end
+  end
+  if r ~= numRoutes
+    error('Error constructing A matrix');
+  end
+
+  % Capacity of the network
+  C = indivCapacity .* ones(numLinks, 1);
+
+  % Arrival rates
+  nu = individArrival*ones(numRoutes, 1);
+
+  % CMC result
+  B = blocking_prob_cmc(nu, A, C, N);
+end
+
+function blockProb = blocking_prob_cmc(lambda, A, C, numSamples)
+  % CMC Estimate of Blocking
+  if isempty(numSamples)
+    numSamples = 1e5;
+  end
+  
+  blockProb = 0;
+  for sample=1:numSamples
+    n = sample_poisson(lambda, A, C, false);
+    if is_blocking(A, n, C)
+      blockProb = blockProb + 1;
+    end
+  end
+
+  blockProb = blockProb / numSamples;
+end
+
+function blocking = is_blocking(A, n, C)
+  blocking = any(C - A*n == 0);
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;When the grade of service considered is small then $C$ tends to large
+values and blocking becomes a rare event. In this situation then
+importance sampling can be applied to the problem to fix CMC reporting
+the blocking probabilities to be simply zero. One way is to scale the
+mean of the multidimensional truncated Poisson process being sampled
+from, such that it is much more likely to be near the blocking states.
+Listing [lst:bp-is] shows an implementation of this change of measure,
+though unfortunately it is intolerably slow as the acceptance-rejection
+in Listing [lst:samp_pois] fails almost certainly each time. An
+alternative change of measure that appears very applicable is in
+[@mandjes1997].&lt;/p&gt;
+
+&lt;p&gt;Using the CMC estimator, one can evaluate the loss probability for
+various selections of network capacity, see Figure [fig:block_prob].
+It appears that $C \in {30, \dots, 40}$ is the region which most
+closely matches the required grade of service $0.05$.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function blockProb = blocking_prob_is(nu, m, A, C, numSamples)
+  % Importance Sampling Estimate of Blocking
+  if isempty(numSamples)
+    numSamples = 1e5;
+  end
+  
+  % Change of measure
+  if isempty(m)
+    newN = floor(min(C)/(size(A,1)-1))
+    m = newN / max(nu);
+
+    if m &amp;lt; 1
+      display('Using a smaller nu!');
+    end
+  end
+  newNu = m .* nu;
+  
+  % Likelihood ratio of getting k on link i
+  factorials = [1, cumprod(1:max(C))];
+  
+  const = sum(newNu(1).^(0:C(1)) ./ factorials(1:(C(1)+1))) / ...
+    sum(nu(1).^(0:C(1)) ./ factorials(1:(C(1)+1)))
+  Wi = @(k, i) (1/m)^k * const;
+    
+  blockProb = 0;
+  
+  for sample=1:numSamples
+    n = sample_poisson(newNu, A, C, false);
+    if is_blocking(A, n, C)
+      % Calculate the combined likelihood ratio
+      W = 1;
+      for r=1:size(A,2)
+        for j=1:size(A,1)
+          if A(j, r) == 1 %&amp;amp;&amp;amp; n(r) &amp;gt; 0
+            W = W * Wi(n(r), j);
+          end
+        end
+      end
+        
+      blockProb = blockProb + W;
+    end
+  end
+
+  blockProb = blockProb / numSamples;
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now the test environment is almost ready to apply stochastic
+approximation to the CMC estimator in Listing [lst:cmc], though
+another estimate at the true solution will be stated with which to
+compare the experiment results. The true solution is estimated using
+Erlang’s Fixed Point Approximation (EFPA).&lt;/p&gt;
+
+&lt;p&gt;Assume each link blocks independently of all the other links (which is
+obviously not true) and assess the links separately. Erlang’s formula,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E(\nu, C) = \frac{\nu^C}{C!} \left[ \sum_{n=0}^C \frac{\nu^n}{n!} \right]^{-1}&lt;/script&gt;
+
+&lt;p&gt;will give the blocking probability of a single link with capacity $C$
+under offered load $\nu$. In the entire network&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;B_j = E(\rho_j, C_j).&lt;/script&gt;
+
+&lt;p&gt;where $\rho_j$ is the so called “reduced load”
+to this link (i.e. the expected arrival rate from
+$R_j \subset \mathcal{R}$ (the routes that use link $j$)). EFPA boils
+down to calculating the fixed point of the equation&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;B_j = E(\rho_j, C_j), \quad j \in J&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\rho_j = \sum_{r \in R_j} \nu_r \prod_{i \in r \setminus \{j\} } (1 - B_i), \quad j \in J&lt;/script&gt;
+
+&lt;p&gt;which can simply be done using fixed point iteration. Figure
+[tab:efpa] lists the estimates of $L_r$ under the specific SRFP
+problem previously described, and indicates that a value of $C = 31$ is
+the smallest capacity that achieves the grade of service required. The
+Python used to generate this table is attached in the appendix (Section
+[app:efpa]).&lt;/p&gt;
+
+&lt;p&gt;[2]{}&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;Capacity&lt;/em&gt;   &lt;em&gt;Loss Prob&lt;/em&gt;     &lt;em&gt;Error&lt;/em&gt;
+     $C_j$         $L_r$      $|L_r-0.05|$&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;Capacity&lt;/em&gt;   &lt;em&gt;Loss Prob&lt;/em&gt;     &lt;em&gt;Error&lt;/em&gt;
+     $C_j$         $L_r$      $|L_r-0.05|$&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;So the RMSA was applied to find the root of the error function&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\label{err-fn}
+  Error(x) = 0.05 - L_r(\lceil x \rceil)).&lt;/script&gt;
+
+&lt;p&gt;The ordering of the terms
+is intentional as $L_r$ is a non-increasing function and RMSA expects
+monotone increasing functions. As $L_r$ swiftly levels off to zero at
+$x \geq 50$ then $Error(x)$ is also flat with constant value of $0.05$.&lt;/p&gt;
+
+&lt;p&gt;RMSA also expects a problem which has an unconstrained continuous
+decision variable, whereas this problem has $x \in {\mathbb{N}}$; to
+address these issues the starting position was selected to be a positive
+number $x_0 = 100$ (and it was hoped that the solver would not jump too
+far into negative territory) and the ceiling function was added in
+$\eqref{err-fn}$. Listing [lst:gen-code] shows the specific parameters
+selected for the test.&lt;/p&gt;
+
+&lt;p&gt;Figure [fig:network] shows RMSA converging to an optimal value of
+$C=38$. This result agrees with prior CMC results shown in Figure
+[fig:block_prob] and is similar though larger than the EFP
+approximation in Figure [tab:efpa]. KWSA could not be applied since if
+started where $\nabla L_r(x) \approx 0$ then division by zero errors
+occur; also if started too close to the root then it almost always
+overshoots (when stumbling over a poor derivative estimate) into
+negative values of X or into values so small that the
+acceptance-rejection scheme continually rejects samples.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;G = @(x) 0.05 - blocking_probability(ceil(x), 100);
+x0 = 100;
+Xs = sa(G, x0, true, 1, 100, 0.01, [], [], [], [], []);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;app:efpa&quot;&gt;Appendix: EFPA Source Code&lt;/h1&gt;
+
+&lt;p&gt;Note: This code was re-used from research the author undertook as part
+of an AMSI Summer Vacation Scholarship over 2012/13.&lt;/p&gt;
+
+&lt;p&gt;``` {language=”python” tabsize=”2”}
+#!/usr/bin/python3.3
+import numpy as np
+import math
+from sets import Set
+import profile&lt;/p&gt;
+
+&lt;p&gt;################ Network Configurations ########################&lt;/p&gt;
+
+&lt;p&gt;def A_star(J):
+  “””
+  Generate the A matrix for a star network with J links&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A_star(int) -&amp;gt; Jx&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;matrix = Jx(J(J-1)/2) matrix&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;”””
+  routes = []&lt;/p&gt;
+
+&lt;p&gt;for i in range(J):
+    for j in range(i, J):
+      if i != j:
+        col = [0]*J
+        col[i] = 1
+        col[j] = 1
+        routes.append(col)&lt;/p&gt;
+
+&lt;p&gt;return np.matrix(routes).T&lt;/p&gt;
+
+&lt;p&gt;############### Erlang Fixed Point Approximation ###############&lt;/p&gt;
+
+&lt;p&gt;def E(v, c):
+  “””
+  Erlang’s Formula (1.1) for a single link with offered traffic v and c links.&lt;/p&gt;
+
+&lt;p&gt;E(float, int) -&amp;gt; float&lt;/p&gt;
+
+&lt;p&gt;”””
+  v = float(v)
+  c = int(c)
+  numer = v**c / math.factorial(c)&lt;/p&gt;
+
+&lt;p&gt;denom = 0.
+  for n in range(c):
+    denom += v**n/math.factorial(n)
+  denom += numer&lt;/p&gt;
+
+&lt;p&gt;return numer/denom&lt;/p&gt;
+
+&lt;p&gt;def rho(A, E, V, j):
+  “””
+  Parameter rho_j for use in EFPA.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rho(Jx&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;matrix, Jx1 matrix,&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;x1 matrix, int) -&amp;gt; float&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;”””
+  partial_sum = 0.&lt;/p&gt;
+
+&lt;p&gt;# for every route that contains link j
+  for r in A[j].nonzero()[1].flat:
+    prod = 1&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# for every link in route r
+for i in A[:,r].nonzero()[0].flat:
+  if i != j:
+    prod *= (1-E[j,0])
+
+partial_sum += V[r,0]*prod 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;return partial_sum&lt;/p&gt;
+
+&lt;p&gt;def fixed_point_iteration(A, C, V):
+  “””
+  Estimate the Erlang Fixed Point by using Fixed Point Iteration.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fixed_point_iteration(Jx&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;matrix, Jx1 matrix,&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;x1 matrix, int) -&amp;gt; Jx1 matrix&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;”””
+  # start iteration at the 0 vector
+  E_est = np.zeros(C.shape)&lt;/p&gt;
+
+&lt;p&gt;# do at most 1000 rounds of approximating
+  for i in range(1000):
+    E_next = np.zeros(E_est.shape)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for j in range(C.shape[0]): 
+  rho_j = rho(A, E_est, V, j)
+  E_next[j,0] = E(rho_j, C[j,0])
+
+
+delta = np.absolute(E_next - E_est).max()
+E_est = E_next
+
+# test for divergence
+if (E_est &amp;lt; 0).any():
+  raise RuntimeError(&quot;Fixed Point Iteration diverged: E_i became negative&quot;)
+if (E_est &amp;gt; 1).any():
+  raise RuntimeError(&quot;Fixed Point Iteration diverged: E_i became larger than 1&quot;)
+
+# test for convergence
+if delta &amp;lt; 1e-4:  
+  break
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;return E_est&lt;/p&gt;
+
+&lt;p&gt;def success_efpa_r(A, C, V, r):
+  “””
+  Calculate stationary probability for a call on route r to suceed.
+  Uses Fixed Point Approximation starting at E_i = 0.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;success_efpa_r(Jx&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;matrix, Jx1 matrix,&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;x1 matrix, int) -&amp;gt; float&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;”””
+  # use E_est to estimate success probabilities
+  E_est = fixed_point_iteration(A, C, V)
+  result = 1&lt;/p&gt;
+
+&lt;p&gt;# for every link in route r
+  for j in A[:,r].nonzero()[0].flat:
+    result *= (1 - E_est[j,0])&lt;/p&gt;
+
+&lt;p&gt;return result&lt;/p&gt;
+
+&lt;p&gt;def success_efpa(A, C, V):
+  “””
+  Calculate stationary probability for a call on each route to suceed.
+  Uses Fixed Point Approximation starting at E_i = 0.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;success_efpa(Jx&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;matrix, Jx1 matrix,&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;x1 matrix) -&amp;gt;&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;x1 matrix&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;”””
+  # use E_est to estimate success probabilities
+  E_est = fixed_point_iteration(A, C, V)
+  result = np.zeros(V.shape)&lt;/p&gt;
+
+&lt;p&gt;for r in range(V.shape[0]):
+    result[r,0] = 1&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# for every link in route r
+for j in A[:,r].nonzero()[0].flat:
+  result[r,0] *= (1 - E_est[j,0])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;return result&lt;/p&gt;
+
+&lt;p&gt;###################### Sampling Methods ########################&lt;/p&gt;
+
+&lt;p&gt;import sys&lt;/p&gt;
+
+&lt;p&gt;def get_sample_reject(A, C, V):
+  “””
+  Sample the stationary probability using rejection sampling.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;get_sample_reject(Jx&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;matrix, Jx1 matrix,&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;x1 matrix) -&amp;gt;&lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;x1 matrix&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;”””
+  n = np.zeros(V.shape)
+  rejected = 0&lt;/p&gt;
+
+&lt;p&gt;while rejected &amp;lt; 1e4:
+    for r in range(V.shape[0]):
+      n[r,0] = np.random.poisson(V[r,0])&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (A*n &amp;lt;= C).all():
+  break
+else:
+  rejected += 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;if rejected &amp;gt;= 1e4:
+    raise Exception(“Sampling error”)&lt;/p&gt;
+
+&lt;p&gt;return n&lt;/p&gt;
+
+&lt;p&gt;if name == ‘&lt;strong&gt;main&lt;/strong&gt;’:
+  A = A_star(25)
+  V = 1&lt;em&gt;np.ones((A.shape[1], 1))
+  C = 0&lt;/em&gt;np.ones((A.shape[0], 1))&lt;/p&gt;
+
+&lt;p&gt;m = 1;
+  err = abs(1 - success_efpa_r(A, C, V, 0) - 0.05)
+  for _ in range(120):
+    C += 1
+    err = abs(1 - success_efpa_r(A, C, V, 0) - 0.05)
+    print “%d, %.4f, %.4f” % (C[0,0], 1 - success_efpa_r(A, C, V, 0), err)&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;h1 id=&quot;app:bisect&quot;&gt;Appendix: Fast Probabilistic Bisection&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function x = prob_bisection_fast()
+    N = 50; p = 0.6; q = 1-p;
+    % start with g(x) = step function around 1/2
+    g = @(xn) 0.2532 .* (-1).^(xn &amp;gt;= 1/2);
+    
+    % noise Y is normal(0,0.1^2)
+    Y = @(xn) g(xn) + 0.1*randn(size(xn));
+    
+    x = 1/2;
+    xs = [0];
+    fs = [1];
+    
+    for iter=2:N
+        
+        % Check the sign of this point
+        Z = (Y(x) &amp;gt; 0);
+
+        % Update posterior
+        i = find(xs &amp;gt;= x, 1);
+        if ~isempty(i) % insert this x into the arrays
+            xs = [xs(1:(i-1)), x, xs(i:end)];
+            fs = [fs(1:(i-1)), fs(i-1), fs(i:end)]
+        else % this x is the largest one considered so far
+            i = numel(xs)+1;
+            xs = [xs, x];
+            fs = [fs, fs(end)];
+        end
+        
+        if Z == 1
+           fs(i:end) = fs(i:end) .* 2*p
+           fs(1:(i-1)) = fs(1:(i-1)) .* 2*q
+        else
+           fs(i:end) = fs(i:end) .* 2*q
+           fs(1:(i-1)) = fs(1:(i-1)) .* 2*p
+        end
+        
+        % Pick next point
+        Fs = cumsum(diff([xs, 1]) .* fs(1));
+        dist = makedist('piecewiselinear', xs, [0, Fs]);
+        x = median(dist)
+        
+        stairs(xs, fs);
+        title(sprintf('Posterior after %d steps', iter-1));
+        drawnow;
+    end
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Asmussen, S. and Glynn, P. W. (2007). , volume 57. Springer.&lt;/p&gt;
+
+&lt;p&gt;Blum, J. R. (1954a). Approximation methods which converge with
+probability one. , pages 382–386.&lt;/p&gt;
+
+&lt;p&gt;Blum, J. R. (1954b). Multidimensional stochastic approximation methods.
+, pages 737–744.&lt;/p&gt;
+
+&lt;p&gt;Broadie, M., Cicek, D. M., and Zeevi, A. (2014). Multidimensional
+stochastic approximation: Adaptive algorithms and applications. ,
+24(1):6.&lt;/p&gt;
+
+&lt;p&gt;Chen, H. and Schmeiser, B. W. (1994). Retrospective approximation
+algorithms for stochastic root finding. In [&lt;em&gt;Proceedings of the 26th
+Conference on Winter Simulation&lt;/em&gt;]{}, WSC ’94, pages 255–261, San Diego,
+CA, USA. Society for Computer Simulation International.&lt;/p&gt;
+
+&lt;p&gt;Chen, H.-F. (2002). Stochastic approximation and its applications,
+volume 64 of nonconvex optimization and its applications.&lt;/p&gt;
+
+&lt;p&gt;Dunkel, J. and Weber, S. (2010). Stochastic root finding and efficient
+estimation of convex risk measures. , 58(5):1505–1521.&lt;/p&gt;
+
+&lt;p&gt;Healy, K. and Schruben, L. W. (1991). Retrospective simulation response
+optimization. In [&lt;em&gt;Proceedings of the 23rd Conference on Winter
+Simulation&lt;/em&gt;]{}, WSC ’91, pages 901–906, Washington, DC, USA. IEEE
+Computer Society.&lt;/p&gt;
+
+&lt;p&gt;Kelly, F. P. (1991). Loss networks. , pages 319–378.&lt;/p&gt;
+
+&lt;p&gt;Kiefer, J. and Wolfowitz, J. (1952). Stochastic estimation of the
+maximum of a regression function. , 23(3):462–466.&lt;/p&gt;
+
+&lt;p&gt;Kroese, D., Taimre, T., and Botev, Z. I. (2011). . Wiley.&lt;/p&gt;
+
+&lt;p&gt;Kushner, H. J. and Yin, G. G. (2003). . Springer.&lt;/p&gt;
+
+&lt;p&gt;Lo[è]{}ve, M. et al. (1951). On almost sure convergence. In
+[&lt;em&gt;Proceedings of the Second Berkeley Symposium on Mathematical
+Statistics and Probability&lt;/em&gt;]{}. The Regents of the University of
+California.&lt;/p&gt;
+
+&lt;p&gt;Mandjes, M. (1997). Fast simulation of blocking probabilities in loss
+networks. , 101(2):393 – 405.&lt;/p&gt;
+
+&lt;p&gt;Pasupathy, R. and Kim, S. (2011). The stochastic root-finding problem:
+Overview, solutions, and open questions. , 21(3):19.&lt;/p&gt;
+
+&lt;p&gt;Pasupathy, R. K. (2005). . PhD thesis, Purdue University, West
+Lafayette, IN, USA.&lt;/p&gt;
+
+&lt;p&gt;Polyak, B. T. and Juditsky, A. B. (1992). Acceleration of stochastic
+approximation by averaging. , 30(4):838–855.&lt;/p&gt;
+
+&lt;p&gt;Robbins, H. and Monro, S. (1951). A stochastic approximation method. ,
+pages 400–407.&lt;/p&gt;
+
+&lt;p&gt;Rubinstein, R. Y. (1997). Optimization of computer simulation models
+with rare events. , 99(1):89 – 112.&lt;/p&gt;
+
+&lt;p&gt;Rubinstein, R. Y. and Shapiro, A. (1993). , volume 346. Wiley New York.&lt;/p&gt;
+
+&lt;p&gt;Ruppert, D. (1988). Efficient estimations from a slowly convergent
+robbins-monro process. Technical report, Cornell University Operations
+Research and Industrial Engineering.&lt;/p&gt;
+
+&lt;p&gt;Ruppert, D. (1991). Stochastic approximation. , pages 503–529.&lt;/p&gt;
+
+&lt;p&gt;Shapiro, A. (1991). Asymptotic analysis of stochastic programs. ,
+30(1):169–186.&lt;/p&gt;
+
+&lt;p&gt;Spall, J. C. (1987). A stochastic approximation technique for generating
+maximum likelihood parameter estimates. In [&lt;em&gt;American Control
+Conference, 1987&lt;/em&gt;]{}, pages 1161–1167. IEEE.&lt;/p&gt;
+
+&lt;p&gt;Spall, J. C. (1998). An overview of the simultaneous perturbation method
+for efficient optimization. , 19(4):482–492.&lt;/p&gt;
+
+&lt;p&gt;Spall, J. C. (2000). Adaptive stochastic approximation by the
+simultaneous perturbation method. , 45(10):1839–1853.&lt;/p&gt;
+
+&lt;p&gt;Spall, J. C. (2005). , volume 65. John Wiley &amp;amp; Sons.&lt;/p&gt;
+
+&lt;p&gt;Waeber, R., Frazier, P. I., and Henderson, S. G. (2011). A bayesian
+approach to stochastic root finding. In [&lt;em&gt;Simulation Conference (WSC),
+Proceedings of the 2011 Winter&lt;/em&gt;]{}, pages 4033–4045. IEEE.&lt;/p&gt;
+
+&lt;p&gt;Wang, H. and Schmeiser, B. (2008). Discrete stochastic optimization
+using linear interpolation. In [&lt;em&gt;Simulation Conference, 2008. WSC 2008.
+Winter&lt;/em&gt;]{}, pages 502–508.&lt;/p&gt;
+
+&lt;p&gt;Wolfowitz, J. (1952). On the stochastic approximation method of robbins
+and monro. , pages 457–461.&lt;/p&gt;
+
+&lt;p&gt;Wright, S. and Nocedal, J. (1999). , volume 2. Springer New York.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Note: the question of convergence speed was omitted from this
+report to reduce scope, and because it isn’t as interesting a topic
+to cover.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Also could choose $-\infty &amp;lt; \epsilon_1 &amp;lt; \epsilon_2 &amp;lt; \theta$.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;The error appears to be asymmetric whereas Rastrigin’s function is
+a symmetric function. Perhaps caused by a bug or a result of the
+function’s strangeness.&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>pjl</name></author><category term="stat4403" /><category term="math" /><category term="monte carlo" /><summary type="html">Consider the inventory stocking problem for a submarine mechanic. At the outset of any voyage the mechanic must ensure that their stock of spare parts is sufficient for the voyage yet the exact demand of each part is not known ahead of time. To be rigorous, let’s say there are $k$ different parts, and the inventory is originally stocked with $x \in {\mathbb{N}}^k$ parts. The demand during the voyage arrives as a...</summary></entry></feed>
