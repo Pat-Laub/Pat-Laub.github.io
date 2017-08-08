@@ -1,0 +1,95 @@
+---
+layout: default
+---
+
+<div id="main">
+
+{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+
+{% for post in site.posts %}
+
+  <article class="post">
+        <header>
+          <div class="title">
+            <h2>
+              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </h2>
+            <p>{{ post.subtitle }}</p>
+          </div>
+          <div class="meta">
+            <time class="published" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+            <a href="#" class="author"><span class="name">{{ post.author }}</span><img src="/images/avatar.jpg" alt="" /></a>
+          </div>
+        </header>
+
+        {% if post.banner %}
+        <a href="#" class="image featured"><img src="/images/{{ post.banner }}" alt="" /></a>
+        {% endif %}
+
+        {{ post.excerpt }}
+        <br><br>
+
+        <footer>
+          <ul class="actions">
+            <li><a href="{{ post.url | relative_url }}" class="button big">Continue Reading</a></li>
+          </ul>
+          <ul class="stats">
+            <li><a href="#">General</a></li>
+            <li><a href="#" class="icon fa-heart">28</a></li>
+            <li><a href="#" class="icon fa-comment">128</a></li>
+          </ul>
+        </footer>
+      </article>
+
+{% endfor %}
+
+<!-- Pagination -->
+<!-- <ul class="actions pagination">
+  <li><a href="" class="disabled button big previous">Previous Page</a></li>
+  <li><a href="#" class="button big next">Next Page</a></li>
+</ul>
+ -->
+
+</div>
+
+<!-- Sidebar -->
+          <section id="sidebar">
+
+            <!-- Intro -->
+              <section id="intro">
+                <a href="#" class="logo"><img src="/images/logo.jpg" alt="" /></a>
+                <header>
+                  <h2>{{site.title}}</h2>
+                  <p>Things I've been doing</p>
+                  <a href="#" class="image featured"><img src="/images/wanderer.jpg" alt="" /></a>
+                </header>
+              </section>
+
+              <section id="recent-books">
+              <h2>Recent reads</h2>
+              <div>
+
+              <div id="gr_updates_widget">
+                <iframe id="the_iframe" src="https://www.goodreads.com/widgets/user_update_widget?height=900&num_updates=8&user=46151843&width=360" width="352" height="900" frameborder="0"></iframe>
+                <div id="gr_footer">
+                  <a href="https://www.goodreads.com/"><img alt="Goodreads: Book reviews, recommendations, and discussion" rel="nofollow" src="https://www.goodreads.com/images/layout/goodreads_logo_140.png" /></a>
+                </div>
+              </div>
+
+
+              </div>
+              </section>
+
+            <!-- Footer -->
+              <section id="footer">
+                <!-- <ul class="icons">
+                  <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                  <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                  <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                  <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+                  <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                </ul> -->
+                <p class="copyright">&copy; {{ site.title }}. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a>. Images: <a href="http://unsplash.com" target="_blank">Unsplash</a>.</p>
+              </section>
+
+          </section>
