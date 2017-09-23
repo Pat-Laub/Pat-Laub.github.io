@@ -7,7 +7,6 @@ layout: default
 {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
 
 {% for post in site.posts %}
-
   <article class="post">
         <header>
           <div class="title">
@@ -23,7 +22,7 @@ layout: default
         </header>
 
         {% if post.banner %}
-        <a href="#" class="image featured"><img src="/images/{{ post.banner }}" alt="" /></a>
+        <a href="{{ post.url | relative_url }}" class="image featured"><img src="/images/{{ post.banner }}" title="{{ post.banner_alt }}" /></a>
         {% endif %}
 
         {{ post.excerpt }}
@@ -40,7 +39,6 @@ layout: default
           </ul>
         </footer>
       </article>
-
 {% endfor %}
 
 <!-- Pagination -->
@@ -57,12 +55,15 @@ layout: default
 
             <!-- Intro -->
               <section id="intro">
-                <a href="#" class="logo"><img src="/images/logo.jpg" alt="" /></a>
+                <a href="#" class="logo"><img src="/images/logo.jpg" alt="filtration logo" /></a>
                 <header>
                   <h2>{{site.title}}</h2>
                   <p>Things I've been doing</p>
-                  <a href="#" class="image featured"><img src="/images/wanderer.jpg" alt="" /></a>
                 </header>
+              </section>
+
+              <section id="wanderer-image">
+              <img src="/images/wanderer.jpg" class="image fit" title="Wanderer above the Sea of Fog by Caspar David Friedrich" />
               </section>
 
               <section id="recent-books">

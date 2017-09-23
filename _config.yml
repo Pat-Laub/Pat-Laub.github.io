@@ -10,11 +10,12 @@ google_analytics: UA-102813844-1
 disqus:
   shortname: pat-laub-github-io
 
-# Build settings
+# Build settings`
 markdown: kramdown
-theme: minima
-plugins_dir:
-  - jekyll-feed
+# theme: minima
+# plugins_dir: [jekyll-feed, jekyll-scholar]
+# plugins_dir:
+#   - jekyll-feed
 sass:
     style: compressed
 compress_html:
@@ -22,4 +23,7 @@ compress_html:
   comments:  ["<!-- ", " -->"]
   endings:   all
   blanklines: true
+
+scholar:
+  style: apa
 # permalink: /:categories/:title/

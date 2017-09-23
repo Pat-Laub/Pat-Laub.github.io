@@ -6,5 +6,8 @@ categories: travel
 tags: photos
 author: pjl
 banner: montreal.jpg
+banner_alt: Montreal skyline from Mont Royal
 ---
-There was a lot of jetlag...
+
+I travelled to the [International Conference on Monte Carlo Methods and Applications](http://www.crm.umontreal.ca/2017/MCM2017/index_e.php) in Montreal, and the [Foundations of Computational Mathematics conference](http://www.ub.edu/focm2017/) in Barcelona. Both were amazing, though a month of travelling was slightly exhausting. 
+Definitely check out the [photos I took](https://photos.app.goo.gl/88NBhKG8HoejXSLn2). A huge thanks to the UQ Graduate School for funding the trip through their Candidate Development Award, and to ACEMS for covering the conference fees!
