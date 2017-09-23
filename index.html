@@ -9,7 +9,7 @@
 <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 <link rel="stylesheet" href="/assets/css/syntax.css">
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="https://pat-laub.github.io/">
 <link rel="alternate" type="application/rss+xml" title="pjl" href="/feed.xml">
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -24,28 +24,25 @@
   <script type="text/javascript"
           src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> 
   </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-102813844-1', 'auto');
+  ga('send', 'pageview');
+</script>
  <body>
    <div id="wrapper">
 <header id="header">
- <h1><a href="http://localhost:4000">pjl</a></h1>
+ <h1><a href="https://pat-laub.github.io">pjl</a></h1>
  <nav class="links">
    <ul>
-     <li><a href="#">About</a>
-     <li><a href="#">Math</a>
-     <li><a href="#">Code</a>
-     <li><a href="#">Books</a>
-     <li><a href="#">Photos</a>
-   </ul>
- </nav>
- <nav class="main">
-   <ul>
-     <li class="search">
-        <a class="fa-search" href="#search">Search</a>
-        <form id="search" method="get" action="#">
-          <input type="text" name="query" placeholder="Search" />
-        </form>
-     <li class="menu">
-        <a class="fa-bars" href="#menu">Menu</a>
+     <li><a href="/about.html">About</a>
+     <li><a href="/math.html">Math</a>
+     <li><a href="/code.html">Code</a>
+     <li><a href="/books.html">Books</a>
+     <li><a href="/photos.html">Photos</a>
    </ul>
  </nav>
 </header>
@@ -99,8 +96,9 @@
             <a href="#" class="author"><span class="name">pjl</span><img src="/images/avatar.jpg" alt="" /></a>
          </div>
        </header>
-        <a href="#" class="image featured"><img src="/images/montreal.jpg" alt="" /></a>
-       <p>There was a lot of jetlag…
+        <a href="/travel/2017/08/01/around-the-world.html" class="image featured"><img src="/images/montreal.jpg" title="Montreal skyline from Mont Royal" /></a>
+       <p>I travelled to the <a href="http://www.crm.umontreal.ca/2017/MCM2017/index_e.php">International Conference on Monte Carlo Methods and Applications</a> in Montreal, and the <a href="http://www.ub.edu/focm2017/">Foundations of Computational Mathematics conference</a> in Barcelona. Both were amazing, though a month of travelling was slightly exhausting. 
+Definitely check out the <a href="https://photos.app.goo.gl/88NBhKG8HoejXSLn2">photos I took</a>. A huge thanks to the UQ Graduate School for funding the trip through their Candidate Development Award, and to ACEMS for covering the conference fees!
         <br><br>
        <footer>
          <ul class="actions">
@@ -126,8 +124,8 @@
             <a href="#" class="author"><span class="name">pjl</span><img src="/images/avatar.jpg" alt="" /></a>
          </div>
        </header>
-        <a href="#" class="image featured"><img src="/images/greenland.jpg" alt="" /></a>
-       <p>It was cold…
+        <a href="/travel/2016/08/01/greenland-hike.html" class="image featured"><img src="/images/greenland.jpg" title="" /></a>
+       <p>Ten mathematicians living off the land for a week in Greenland.. My friend was going to write a satirical/horror story based off this, since it seemed so improbable. The photos we got were amazing though; <a href="https://www.liverpool.ac.uk/mathematical-sciences/staff/leonardo-rojas-nandayapa/">Leonardo</a> did a great job of collating/editing them and <a href="https://www.flickr.com/photos/32911979@N00/collections/72157680705107283/">uploading them here</a>.
         <br><br>
        <footer>
          <ul class="actions">
@@ -154,7 +152,7 @@
          </div>
        </header>
         Consider minimising the test function – named Rastrigin’s function – defined by
-$$S({\boldsymbol{x}}) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).$$
+$$S(x) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).$$
 One cross-entropy approach could be as follows.
         <br><br>
        <footer>
@@ -255,12 +253,14 @@ so $\sigma^2_{CMC} = \mathrm{Var}[Z_1] / N$.
 </div>
          <section id="sidebar">
              <section id="intro">
-                <a href="#" class="logo"><img src="/images/logo.jpg" alt="" /></a>
+                <a href="#" class="logo"><img src="/images/logo.jpg" alt="filtration logo" /></a>
               <header>
                  <h2>pjl</h2>
                  <p>Things I've been doing
-                  <a href="#" class="image featured"><img src="/images/wanderer.jpg" alt="" /></a>
                </header>
+             </section>
+             <section id="wanderer-image">
+              <img src="/images/wanderer.jpg" class="image fit" title="Wanderer above the Sea of Fog by Caspar David Friedrich" />
              </section>
              <section id="recent-books">
              <h2>Recent reads</h2>

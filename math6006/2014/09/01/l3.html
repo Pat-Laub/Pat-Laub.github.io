@@ -5,11 +5,11 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>Cross-entropy example | pjl</title>
- <meta name="description" content="Consider minimising the test function – named Rastrigin’s function – defined by $$S({\boldsymbol{x}}) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x...">
+ <meta name="description" content="Consider minimising the test function – named Rastrigin’s function – defined by $$S(x) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).$$ One cros...">
 <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 <link rel="stylesheet" href="/assets/css/syntax.css">
-<link rel="canonical" href="http://localhost:4000/math6006/2014/09/01/l3.html">
+<link rel="canonical" href="https://pat-laub.github.io/math6006/2014/09/01/l3.html">
 <link rel="alternate" type="application/rss+xml" title="pjl" href="/feed.xml">
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -24,28 +24,25 @@
   <script type="text/javascript"
           src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> 
   </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-102813844-1', 'auto');
+  ga('send', 'pageview');
+</script>
  <body class="single">
    <div id="wrapper">
 <header id="header">
- <h1><a href="http://localhost:4000">pjl</a></h1>
+ <h1><a href="https://pat-laub.github.io">pjl</a></h1>
  <nav class="links">
    <ul>
-     <li><a href="#">About</a>
-     <li><a href="#">Math</a>
-     <li><a href="#">Code</a>
-     <li><a href="#">Books</a>
-     <li><a href="#">Photos</a>
-   </ul>
- </nav>
- <nav class="main">
-   <ul>
-     <li class="search">
-        <a class="fa-search" href="#search">Search</a>
-        <form id="search" method="get" action="#">
-          <input type="text" name="query" placeholder="Search" />
-        </form>
-     <li class="menu">
-        <a class="fa-bars" href="#menu">Menu</a>
+     <li><a href="/about.html">About</a>
+     <li><a href="/math.html">Math</a>
+     <li><a href="/code.html">Code</a>
+     <li><a href="/books.html">Books</a>
+     <li><a href="/photos.html">Photos</a>
    </ul>
  </nav>
 </header>
@@ -98,105 +95,55 @@
             Sep 1, 2014
           </time>
             • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">pjl</span></span>
-        <a href="#" class="author"><span class="name"></span><img src="http://localhost:4000/images/avatar.jpg" alt="" /></a>
+        <a href="#" class="author"><span class="name"></span><img src="https://pat-laub.github.io/images/avatar.jpg" alt="" /></a>
      </div>
    </header>
    <div class="post-content" itemprop="articleBody">
      <h1 id="problem">Problem</h1>
 <p>Consider minimising the test function – named Rastrigin’s function –
 defined by
-<script type="math/tex; mode=display">S({\boldsymbol{x}}) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).</script>
+<script type="math/tex; mode=display">S(x) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).</script>
 <p>This is how it looks:
-<img src="http://localhost:4000/images/math6006/rastrigin.png" alt="image" class="image featured" />
+<img src="https://pat-laub.github.io/images/math6006/rastrigin.png" alt="image" class="image featured" />
 <p>One cross-entropy approach could be as follows.
 <h1 id="formulation">Formulation</h1>
 <p>State that
-<script type="math/tex; mode=display">S({\boldsymbol{x}}^*) = \gamma^* = \max_{ {\boldsymbol{x}}\in {\mathbb{R}}^2} S({\boldsymbol{x}}).</script>
+<script type="math/tex; mode=display">S(x^*) = \gamma^* = \max_{ x\in {\mathbb{R}}^2} S(x).</script>
 <p>Consider a family of pdfs
-$\{ f(\cdot\,; {\boldsymbol{v}}) : v \in \mathcal{V} \}$ on
+$\{ f(\cdot\,; v) : v \in \mathcal{V} \}$ on
 ${\mathbb{R}}^2$. We will construct a sequence of pdfs
-<script type="math/tex; mode=display">(f(\cdot\,; {\boldsymbol{u}}), f(\cdot\,; {\boldsymbol{v}}_1), f(\cdot\,; {\boldsymbol{v}}_2), \dots, f(\cdot\,; {\boldsymbol{v}}_N))</script>
-<p>which start with parameter ${\boldsymbol{u}}={\boldsymbol{v}}_0$ and aim
+<script type="math/tex; mode=display">(f(\cdot\,; u), f(\cdot\,; v_1), f(\cdot\,; v_2), \dots, f(\cdot\,; v_N))</script>
+<p>which start with parameter $u=v_0$ and aim
 to converge on the zero-variance distribution whose mass is on the point
-${\boldsymbol{x}}^*$. In order to do this, we need to be able to solve
+$x^*$. In order to do this, we need to be able to solve
 the program:
-<script type="math/tex; mode=display">{\boldsymbol{v}}_t = \underset{ {\boldsymbol{v}}}{\arg\max} \, \frac{1}{N} \sum_{i=1}^N I_{\\{S({\boldsymbol{X}}_i) \geq \hat{\gamma}_t\\}} \ln f({\boldsymbol{X}}_i; {\boldsymbol{v}})</script>
-<p>where the
-${ {\boldsymbol{X}}<em>i } {\overset{iid}{\sim}}f(\cdot\,; {\boldsymbol{v}}</em>{t-1})$.
-Though this is simpler when ${\boldsymbol{v}}_t$ is viewed as the
-maximum likelihood estimates (MLEs) of $\{ {\boldsymbol{X}}_i \}$, which
-is known analytically for many distributions.\
+<script type="math/tex; mode=display">\boldsymbol{v}_t = \underset{ v}{\arg\max} \, \frac{1}{N} \sum_{i=1}^N I_{\\{S(X_i) \geq \hat{\gamma}_t\\}} \ln f(X_i; v)</script>
+<p>where the ${ X_i }  {\overset{\text{iid}}{\sim}} f(\cdot\,; v_{t-1})$.
+<p>Though this is simpler when $v_t$ is viewed as the
+maximum likelihood estimates (MLEs) of $\{ X_i \}$, which
+is known analytically for many distributions.
 In this case we’ve chosen $f$ to be of family of bivariate normal
 distributions, i.e.
-<script type="math/tex; mode=display">f({\boldsymbol{x}}; {\boldsymbol{v}}_i) = f({\boldsymbol{x}}; ({\boldsymbol{\mu}}_i, \Sigma_i)) = (2\pi)^{-1} \Sigma_i^{-1/2} \exp \left\\{-\frac{1}{2} ({\boldsymbol{x}}-{\boldsymbol{\mu}}_i)^t \Sigma_i^{-1} ({\boldsymbol{x}}-{\boldsymbol{\mu}}_i) \right\\}.</script>
-<p>The MLEs for ${\boldsymbol{\mu}}_i$ and $\Sigma_i$ given some data
-$\{ {\boldsymbol{X}}_i\}$ is simply the sample mean and the sample
+<script type="math/tex; mode=display">f(x; v_i) = f(x; (\mu_i, \Sigma_i)) = (2\pi)^{-1} \Sigma_i^{-1/2} \exp \left\{ -\frac{1}{2} (x-\mu_i)^t \Sigma_i^{-1} (x-\mu_i) \right\}.</script>
+<p>The MLEs for $\mu_i$ and $\Sigma_i$ given some data
+$\{ X_i\}$ is simply the sample mean and the sample
 covariance matrix respectively.
 <h1 id="implementation">Implementation</h1>
-<p><img src="http://localhost:4000/images/math6006/progress.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/logprogress.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast1.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens1.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast2.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens2.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast3.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens3.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast4.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens4.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast5.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens5.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast7.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens7.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast10.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens10.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast15.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens15.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast20.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens20.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast21.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens21.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast22.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens22.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rast26.jpg" alt="image" class="center-image" />
-<img src="http://localhost:4000/images/math6006/rastImpDens26.jpg" alt="image" class="center-image" />
-<p>Program output:
-<div class="highlighter-rouge"><pre class="highlight"><code>Minimum: 566.6  mu: (100,100)   sum(sigma): 1e+04
-Minimum: 105.6  mu: (38.19,23.61)   sum(sigma): 2947
-Minimum: 17.88  mu: (17.86,1.62)    sum(sigma): 628
-Minimum: 8.878  mu: (4.078,0.9193)  sum(sigma): 79.88
-Minimum: 3.927  mu: (1.031,0.1458)  sum(sigma): 5.894
-Minimum: 2.804  mu: (0.366,-0.07075)    sum(sigma): 2.539
-Minimum: 2.621  mu: (0.3736,-0.2191)    sum(sigma): 2.696
-Minimum: 3.371  mu: (0.4345,0.05753)    sum(sigma): 2.68
-Minimum: 2.248  mu: (-0.1047,-0.09262)  sum(sigma): 2.998
-Minimum: 1.492  mu: (-0.2859,0.1824)    sum(sigma): 1.594
-Minimum: 1.587  mu: (-0.3357,0.1226)    sum(sigma): 0.8068
-Minimum: 0.7777 mu: (-0.2582,0.1078)    sum(sigma): 0.8715
-Minimum: 0.2609 mu: (-0.3372,-0.1298)   sum(sigma): 0.6092
-Minimum: 0.4489 mu: (-0.3467,0.01045)   sum(sigma): 0.8966
-Minimum: 1.491  mu: (-0.1771,0.1859)    sum(sigma): 1.005
-Minimum: 0.469  mu: (-0.04962,0.3966)   sum(sigma): 1.375
-Minimum: 1.251  mu: (-0.05884,0.2697)   sum(sigma): 1.046
-Minimum: 1.53   mu: (-0.2133,0.006174)  sum(sigma): 1.104
-Minimum: 1.082  mu: (-0.1391,-0.1123)   sum(sigma): 0.99
-Minimum: 0.2011 mu: (-0.04912,-0.006557)    sum(sigma): 0.6049
-Minimum: 0.1566 mu: (-0.05435,0.002617) sum(sigma): 0.1822
-Minimum: 0.0002754  mu: (-0.02384,0.0008551)    sum(sigma): 0.004705
-Minimum: 0.002779   mu: (-0.005473,-0.003327)   sum(sigma): 0.0003641
-Minimum: 5.379e-05  mu: (0.0002474,5.669e-05)   sum(sigma): 7.661e-05
-Minimum: 9.127e-05  mu: (-0.0003505,-7.848e-05) sum(sigma): 1.049e-05
-Minimum: 1.624e-07  mu: (6.175e-05,0.0002736)   sum(sigma): 1.791e-06
-Minimum: 5.834e-08  mu: (-2.88e-05,0.0001088)   sum(sigma): 9.217e-08
-Converged after 27 iterations.
-</code></pre>
-</div>
+<p>These are the samples evolving over time.
+<img src="https://pat-laub.github.io/images/math6006/rast.gif" alt="image" class="image fit" />
+<p>For those samples, these are the multivariate normal distributions which are fitted to the elite samples.
+<img src="https://pat-laub.github.io/images/math6006/rastImpDens.gif" alt="image" class="image fit" />
+<p>The objective function drops across iterations.
+<img src="https://pat-laub.github.io/images/math6006/progress.jpg" alt="image" class="image fit" />
+<p>This is the same plot as above but on a log scale.
+<img src="https://pat-laub.github.io/images/math6006/progress2.jpg" alt="image" class="image fit" />
    </div>
  </article>
  <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'http://localhost:4000/math6006/2014/09/01/l3.html';
-      this.page.identifier = 'http://localhost:4000/math6006/2014/09/01/l3.html';
+      this.page.url = 'https://pat-laub.github.io/math6006/2014/09/01/l3.html';
+      this.page.identifier = 'https://pat-laub.github.io/math6006/2014/09/01/l3.html';
     };
     (function() {
       var d = document, s = d.createElement('script');
