@@ -33,9 +33,9 @@ layout: default
             <li><a href="{{ post.url | relative_url }}" class="button big">Continue Reading</a></li>
           </ul>
           <ul class="stats">
-            <li><a href="#">General</a></li>
-            <li><a href="#" class="icon fa-heart">28</a></li>
-            <li><a href="#" class="icon fa-comment">128</a></li>
+            <li>{{ post.tags | join: ", " }}</li>
+            <!--<li><a href="#" class="icon fa-heart">28</a></li>-->
+            <li><a href="{{ post.url | relative_url }}#disqus_thread" class="icon fa-comment"></a></li>
           </ul>
         </footer>
       </article>
