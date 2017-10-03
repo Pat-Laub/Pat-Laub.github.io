@@ -28,7 +28,7 @@
   });
   </script>
   <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> 
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -41,7 +41,7 @@
  <body class="single">
    <div id="wrapper">
 <header id="header">
- <h1><a href="https://pat-laub.github.io">pjl</a></h1>
+ <h1><a href="/">pjl</a></h1>
  <nav class="links">
    <ul>
      <li><a href="/about.html">About</a>
@@ -100,7 +100,7 @@
             Sep 1, 2014
           </time>
             • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">pjl</span></span>
-        <a href="#" class="author"><span class="name"></span><img src="https://pat-laub.github.io/images/avatar.jpg" alt="" /></a>
+        <a href="#" class="author"><span class="name"></span><img src="/images/avatar.jpg" alt="" /></a>
      </div>
    </header>
    <div class="post-content" itemprop="articleBody">
@@ -223,7 +223,7 @@ time mesh by <script type="math/tex">\dif X(t_i,\omega) \approx \Delta X(t_i,\om
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">);</span> <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'X(t)'</span><span class="p">);</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'Example GBM'</span><span class="p">);</span>
 </code></pre>
 </div>
-<p><img src="https://pat-laub.github.io/images/math6006/gbm.png" alt="image" class="image fit" />
+<p><img src="/images/math6006/gbm.png" alt="image" class="image fit" />
 <h2 id="simulating-multi-dimensional-itô-processes-by-the-euler-maruyama-scheme">Simulating multi-dimensional Itô processes by the Euler-Maruyama scheme</h2>
 <p>Equivalently the Euler-Maruyama method extends to multiple dimensions
 and works on general Itô processes. For example, for
@@ -231,7 +231,7 @@ $({\boldsymbol{X}}(t, \omega) \in {\mathbb{R}}^2 : t \geq 0, \omega \in \Omega)$
 then take
 <script type="math/tex; mode=display">\dif {\boldsymbol{X}}(t, \omega) = -{\boldsymbol{X}}(t, \omega) \dif t + (\sin(t), \cos(t))^T \dif {\boldsymbol{B}}(t).</script>
 <p>The algorithm to simulate this is given below.
-<p><img src="https://pat-laub.github.io/images/math6006/multi.png" alt="image" class="image fit" />
+<p><img src="/images/math6006/multi.png" alt="image" class="image fit" />
 <div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% Time step, and some useful functions to calculate dBt &amp; dXt</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">;</span>
 <span class="n">dBt</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
