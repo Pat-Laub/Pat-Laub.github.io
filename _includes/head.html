@@ -14,16 +14,22 @@
   
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "all" } },
+    extensions: ["[a11y]/accessibility-menu.js", "[a11y]/auto-collapse.js", "[a11y]/collapsible.js"],
+    TeX: { equationNumbers: { autoNumber: "AMS" } },
     tex2jax: {
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$', '$$'] ],
       processEscapes: true,
+    },
+    menuSettings: {
+      collapsible: true,
+      autocollapse: true,
+      explorer: true
     }
   });
   </script>
   <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> 
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
 
   {% if jekyll.environment == 'production' and site.google_analytics %}

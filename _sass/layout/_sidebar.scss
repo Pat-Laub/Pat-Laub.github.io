@@ -12,13 +12,11 @@
 		width: 22em;
 
 		> * {
-			border-top: solid 1px _palette(border);
 			margin: _size(section-spacing) 0 0 0;
 			padding: _size(section-spacing) 0 0 0;
 		}
 
 		> :first-child, #wanderer-image {
-			border-top: 0;
 			margin-top: 0;
 			padding-top: 0;
 		}
@@ -26,12 +24,11 @@
 		#wanderer-image,
 		#recent-books {
 			@include breakpoint(large) {
-				visibility: hidden;
+				display: none;
 			}
 		}
 
 		@include breakpoint(large) {
-			border-top: solid 1px _palette(border);
 			margin: _size(section-spacing) 0 0 0;
 			min-width: 0;
 			padding: _size(section-spacing) 0 0 0;

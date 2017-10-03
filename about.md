@@ -24,3 +24,5 @@ Presentations:
 Posters:
 - Brisbane 2017, [Sums of lognormal random variables: density estimation](/pdfs/sln_density_poster.pdf), for the UQ School of Mathematics and Physics poster day
 - Brisbane 2017, [Sums of lognormal random variables: Laplace transform estimation](/pdfs/sln_laplace_poster.pdf), for the UQ School of Mathematics and Physics poster day
+
+Peer-reviewer for Annals of Actuarial Science and Annals of Operations Research.

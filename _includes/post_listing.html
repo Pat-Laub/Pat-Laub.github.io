@@ -1,0 +1,52 @@
+<div id="main">
+
+{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+
+{% assign url_len = page.url | size %}
+{% assign filename = page.url | remove: "/" | split: '.' | first %}
+
+{% for post in site.posts %}
+{% if url_len == 1 or post.tags contains filename %}
+  <article class="post">
+        <header>
+          <div class="title">
+            <h2>
+              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </h2>
+            <p>{{ post.subtitle }}</p>
+          </div>
+          <div class="meta">
+            <time class="published" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+            <a href="#" class="author"><span class="name">{{ post.author }}</span><img src="/images/avatar.jpg" alt="" /></a>
+          </div>
+        </header>
+
+        {% if post.banner %}
+        <a href="{{ post.url | relative_url }}" class="image featured"><img src="/images/{{ post.banner }}" title="{{ post.banner_alt }}" /></a>
+        {% endif %}
+
+        {{ post.excerpt }}
+        <br><br>
+
+        <footer>
+          <ul class="actions">
+            <li><a href="{{ post.url | relative_url }}" class="button big">Continue Reading</a></li>
+          </ul>
+          <ul class="stats">
+            <li>{{ post.tags | join: ", " }}</li>
+            <!--<li><a href="#" class="icon fa-heart">28</a></li>-->
+            <li><a href="{{ post.url | relative_url }}#disqus_thread" class="icon fa-comment"></a></li>
+          </ul>
+        </footer>
+      </article>
+  {% endif %}
+{% endfor %}
+
+<!-- Pagination -->
+<!-- <ul class="actions pagination">
+  <li><a href="" class="disabled button big previous">Previous Page</a></li>
+  <li><a href="#" class="button big next">Next Page</a></li>
+</ul>
+ -->
+ 
+</div>

@@ -341,9 +341,9 @@ where $X_n \leq \theta$, so $g(X_n) < 0$ and by $\eqref{C}$:
 $$\begin{aligned}
  \label{ineq2}
   -g(X_n) & = |g(X_n)| \notag                           \\
-          & \leq c + d|X_n| \notag                      \\
-          & \leq c + d|\theta| + d|\theta - X_n| \notag \\
-          & \leq c + d|\theta| + d(X_m - X_n)
+      & \leq c + d|X_n| \notag                      \\
+      & \leq c + d|\theta| + d|\theta - X_n| \notag \\
+      & \leq c + d|\theta| + d(X_m - X_n)
  \end{aligned}$$
 
 So plugging $\eqref{ineq2}$ into $\eqref{ineq}$ gives
@@ -351,9 +351,9 @@ So plugging $\eqref{ineq2}$ into $\eqref{ineq}$ gives
 $$\begin{aligned}
  \label{anothercontr}
   X_m - X_n & \leq \frac{b-a}{3} + a_n(c + d|\theta| + d(X_m - X_n))                                                                                                   \\
-            & = \frac{b-a}{3} + a_n(c + d|\theta|) + a_n d(X_m - X_n)                                                                                                  \\
-            & \leq \frac{b-a}{3} + \left(\frac{b-a}{3(c+d|\theta|)}\right)(c + d|\theta|) + \left(\frac{1}{3d}\right) d(X_m - X_n) \qquad \text{ by $\eqref{an_bounds}$} \\
-            & \leq \frac{b-a}{3} + \frac{b-a}{3} + \frac{X_m - X_n}{3}
+        & = \frac{b-a}{3} + a_n(c + d|\theta|) + a_n d(X_m - X_n)                                                                                                  \\
+        & \leq \frac{b-a}{3} + \left(\frac{b-a}{3(c+d|\theta|)}\right)(c + d|\theta|) + \left(\frac{1}{3d}\right) d(X_m - X_n) \qquad \text{ by $\eqref{an_bounds}$} \\
+        & \leq \frac{b-a}{3} + \frac{b-a}{3} + \frac{X_m - X_n}{3}
  \end{aligned}$$
 
 Collecting $X_m - X_n$ terms together and multiplying
@@ -410,7 +410,7 @@ convergence speed of stochastic approximation algorithms.
 Algorithms
 ==========
 
-![image]({{ site.url }}/images/pseudocode_srf.png){: .image .fit}
+![image](/images/pseudocode_srf.png){: .image .post_image}
 
 The probabilistic bisection algorithm was sufficiently described in the
 text of the literature review.
@@ -419,160 +419,160 @@ MATLAB Implementation
 ---------------------
 
 ```matlab
-    function Xs = sa(G, x0, rm, N, a, alpha, n0, c, gamma, tol, maxIters)
-      % Cannot have empty G or x0 arguments
-      if isempty(G) || isempty(x0)
-        error('Must have a valid input G(x) function and x0 start pos.');
-      end
+function Xs = sa(G, x0, rm, N, a, alpha, n0, c, gamma, tol, maxIters)
+  % Cannot have empty G or x0 arguments
+  if isempty(G) || isempty(x0)
+    error('Must have a valid input G(x) function and x0 start pos.');
+  end
 
-      % Number of dimensions in the domain
-      q = numel(x0);
+  % Number of dimensions in the domain
+  q = numel(x0);
 
-      % Default to Robbins-Monro algorithm
-      if isempty(rm)
-        rm = true;
-      end
-      % Default value for N
-      if isempty(N)
-        N = 1;
-      end
-      % Default value for a
-      if isempty(a)
-        if rm
-          a = 0.3; % in [0.1, 0.5]
-        else
-          a = 1.5; % 1.5 or 2
-        end
-      end
-      % Default value for alpha
-      if isempty(alpha) && rm
-        alpha = 0.5; % 0.5 or 0.6
-      end
-      % Default value for n0
-      if isempty(n0)
-        if rm
-          n0 = 10; % 5-10% of total number of iterations
-        else
-          n0 = 1;
-        end
-      end
-      % Default value for c
-      if isempty(c) && ~rm
-        c = 0.5;
-      end
-      % Default value for gamma
-      if isempty(gamma) && ~rm
-        gamma = 0.25;
-      end
-      % Default value for tolerance
-      if isempty(tol)
-        tol = 1e-3;
-      end
-      % Default value for max iterations
-      if isempty(maxIters)
-        maxIters = 1e4;
-      end
+  % Default to Robbins-Monro algorithm
+  if isempty(rm)
+    rm = true;
+  end
+  % Default value for N
+  if isempty(N)
+    N = 1;
+  end
+  % Default value for a
+  if isempty(a)
+    if rm
+      a = 0.3; % in [0.1, 0.5]
+    else
+      a = 1.5; % 1.5 or 2
+    end
+  end
+  % Default value for alpha
+  if isempty(alpha) && rm
+    alpha = 0.5; % 0.5 or 0.6
+  end
+  % Default value for n0
+  if isempty(n0)
+    if rm
+      n0 = 10; % 5-10% of total number of iterations
+    else
+      n0 = 1;
+    end
+  end
+  % Default value for c
+  if isempty(c) && ~rm
+    c = 0.5;
+  end
+  % Default value for gamma
+  if isempty(gamma) && ~rm
+    gamma = 0.25;
+  end
+  % Default value for tolerance
+  if isempty(tol)
+    tol = 1e-3;
+  end
+  % Default value for max iterations
+  if isempty(maxIters)
+    maxIters = 1e4;
+  end
 
-      % Setup sample average function
-      GN = @(x) (1/N)*sum(G(repmat(x, N, 1)), 1);
+  % Setup sample average function
+  GN = @(x) (1/N)*sum(G(repmat(x, N, 1)), 1);
 
-      % Setup the history of the iterates
-      % (note: X is row vector, so X_i is in Xs(i,:))
-      Xs = zeros(maxIters,q);
-      Xs(1,:) = x0;
-      X = x0;
+  % Setup the history of the iterates
+  % (note: X is row vector, so X_i is in Xs(i,:))
+  Xs = zeros(maxIters,q);
+  Xs(1,:) = x0;
+  X = x0;
 
-      % Iterate until either give up or iterates converge
-      for n = 2:maxIters
-        % Setup the real-valued sequences
-        if rm
-           an = a/(n+n0)^alpha;
-        else
-           an = a/(n+n0);
-           cn = c/n^gamma;
+  % Iterate until either give up or iterates converge
+  for n = 2:maxIters
+    % Setup the real-valued sequences
+    if rm
+       an = a/(n+n0)^alpha;
+    else
+       an = a/(n+n0);
+       cn = c/n^gamma;
 
-           % Approximate the derivative using finite differences
-           J = zeros(1, q);
-           for i=1:q
-             e = zeros(1, q);
-             e(i) = 1;
-             J(i,:) = (GN(X+cn*e)-GN(X-cn*e))/(2*cn);
-           end
-        end
-
-        GX = GN(X);
-
-        if rm
-          X = X - an*GX;
-        else
-          X = X - (an*GX / J);
-        end
-
-        % Update history
-        Xs(n,:) = X;
-
-        % Check for convergence of iterates (to a specified tolerance)
-        if hypot(Xs(n-1,:), Xs(n,:)) < tol
-          display('Converged!');
-          Xs = Xs(1:n);
-          break;
-        end
-
-        % Check for convergence in function space
-        if abs(GX) < tol
-          display('Function close to zero!');
-          Xs = Xs(1:n);
-          break;
-        end
-      end
+       % Approximate the derivative using finite differences
+       J = zeros(1, q);
+       for i=1:q
+         e = zeros(1, q);
+         e(i) = 1;
+         J(i,:) = (GN(X+cn*e)-GN(X-cn*e))/(2*cn);
+       end
     end
 
-    function x = prob_bisection(N)
-        p = 0.6;
-        q = 1-p;
-        % start with g(x) = step function around 1/2
-        g = @(xn) 0.2532 .* (-1).^(xn >= 1/2);
+    GX = GN(X);
 
-        % noise Y is normal(0, 0.05^2)
-        Y = @(xn) g(xn) + 0.05*randn();
-
-        syms t clear;
-        syms t;
-
-        f = symfun(heaviside(t), t);
-        x = 1/2;
-
-        for iter=2:N
-            ezplot(f, [0, 1]);
-            title(sprintf('Posterior after %d steps', iter-1));
-            drawnow;
-
-            % Check the sign of this point
-            Z = (Y(x) > 0);
-
-            % Update posterior
-            if Z == 1
-               f = f - (1-2*q)*heaviside(t) + 2*(2*p-1)*heaviside(t-x);
-            else
-               f = f - (1-2*p)*heaviside(t) + 2*(2*q-1)*heaviside(t-x);
-            end
-
-            % Pick next point
-            Finv = finverse(int(f));
-            x = Finv(1/2);
-        end
+    if rm
+      X = X - an*GX;
+    else
+      X = X - (an*GX / J);
     end
+
+    % Update history
+    Xs(n,:) = X;
+
+    % Check for convergence of iterates (to a specified tolerance)
+    if hypot(Xs(n-1,:), Xs(n,:)) < tol
+      display('Converged!');
+      Xs = Xs(1:n);
+      break;
+    end
+
+    % Check for convergence in function space
+    if abs(GX) < tol
+      display('Function close to zero!');
+      Xs = Xs(1:n);
+      break;
+    end
+  end
+end
+
+function x = prob_bisection(N)
+    p = 0.6;
+    q = 1-p;
+    % start with g(x) = step function around 1/2
+    g = @(xn) 0.2532 .* (-1).^(xn >= 1/2);
+
+    % noise Y is normal(0, 0.05^2)
+    Y = @(xn) g(xn) + 0.05*randn();
+
+    syms t clear;
+    syms t;
+
+    f = symfun(heaviside(t), t);
+    x = 1/2;
+
+    for iter=2:N
+        ezplot(f, [0, 1]);
+        title(sprintf('Posterior after %d steps', iter-1));
+        drawnow;
+
+        % Check the sign of this point
+        Z = (Y(x) > 0);
+
+        % Update posterior
+        if Z == 1
+           f = f - (1-2*q)*heaviside(t) + 2*(2*p-1)*heaviside(t-x);
+        else
+           f = f - (1-2*p)*heaviside(t) + 2*(2*q-1)*heaviside(t-x);
+        end
+
+        % Pick next point
+        Finv = finverse(int(f));
+        x = Finv(1/2);
+    end
+end
 ```
 
 
 [^1]: Note: the question of convergence speed was omitted from this
-    report to reduce scope, and because it isn’t as interesting a topic
-    to cover.
+report to reduce scope, and because it isn’t as interesting a topic
+to cover.
 
 [^2]: Also could choose $-\infty < \epsilon_1 < \epsilon_2 < \theta$.
 
 [^3]: The error appears to be asymmetric whereas Rastrigin’s function is
-    a symmetric function. Perhaps caused by a bug or a result of the
-    function’s strangeness.
+a symmetric function. Perhaps caused by a bug or a result of the
+function’s strangeness.
 
 {% bibliography --cited %}
