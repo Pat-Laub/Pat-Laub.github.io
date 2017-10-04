@@ -5,7 +5,7 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>Variance reduction techniques | pjl</title>
- <meta name="description" content="A typical CMC estimator for $l = {\mathbb{E}}[Z]$ is to take $N$ iid replications $\\{Z_1, Z_2, \dots, Z_N\\}$ and use their sample average, i.e. $$ \hat{l}_...">
+ <meta name="description" content="Notes made for an informal lecture on the Monte Carlo tricks available for variance reduction. This was made for a reading course when we worked through Søre...">
 <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 <link rel="stylesheet" href="/assets/css/syntax.css">
@@ -13,23 +13,22 @@
 <link rel="alternate" type="application/rss+xml" title="pjl" href="/feed.xml">
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    extensions: ["[a11y]/accessibility-menu.js", "[a11y]/auto-collapse.js", "[a11y]/collapsible.js"],
     TeX: { equationNumbers: { autoNumber: "AMS" } },
     tex2jax: {
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$', '$$'] ],
       processEscapes: true,
     },
+  });
+  </script>
+  <!--
+ extensions: ["[a11y]/accessibility-menu.js", "[a11y]/auto-collapse.js", "[a11y]/collapsible.js"],
     menuSettings: {
       collapsible: true,
       autocollapse: true,
       explorer: true
     }
-  });
-  </script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
+   -->
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -210,6 +209,9 @@ Sons.
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
    </div>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/skel.min.js"></script>

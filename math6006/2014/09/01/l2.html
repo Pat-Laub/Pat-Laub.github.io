@@ -5,7 +5,7 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>Stochastic differential equations | pjl</title>
- <meta name="description" content="An Itô integral on $[0, T]$ is first defined for step processes. Say that the process $(X_n(t, \omega) : t \geq 0, \omega \in \Omega)$ is of the form $$X_n(t...">
+ <meta name="description" content="Notes for an informal lecture on simulating SDEs, considering basic diffusion processes with Matlab code.">
 <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 <link rel="stylesheet" href="/assets/css/syntax.css">
@@ -13,23 +13,22 @@
 <link rel="alternate" type="application/rss+xml" title="pjl" href="/feed.xml">
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    extensions: ["[a11y]/accessibility-menu.js", "[a11y]/auto-collapse.js", "[a11y]/collapsible.js"],
     TeX: { equationNumbers: { autoNumber: "AMS" } },
     tex2jax: {
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$', '$$'] ],
       processEscapes: true,
     },
+  });
+  </script>
+  <!--
+ extensions: ["[a11y]/accessibility-menu.js", "[a11y]/auto-collapse.js", "[a11y]/collapsible.js"],
     menuSettings: {
       collapsible: true,
       autocollapse: true,
       explorer: true
     }
-  });
-  </script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
+   -->
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -67,6 +66,7 @@
         <a href="#" class="author"><span class="name"></span><img src="/images/avatar.jpg" alt="" /></a>
      </div>
    </header>
+        <span class="image featured"><img src="/images/math6006/multi.png" title="A multidimensional SDE" /></span>
    <div class="post-content" itemprop="articleBody">
      <h2 id="background-brownian-motion">Background: Brownian Motion</h2>
 <p>$\newcommand{\dif}{\,\mathrm{d}} $
@@ -263,6 +263,9 @@ ${\mathbb{E}}[\int_0^\infty X(s)^s \dif s] &lt; \infty$&nbsp;<a href="#fnref:2" 
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
    </div>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/skel.min.js"></script>

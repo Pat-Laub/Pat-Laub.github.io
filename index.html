@@ -13,23 +13,22 @@
 <link rel="alternate" type="application/rss+xml" title="pjl" href="/feed.xml">
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    extensions: ["[a11y]/accessibility-menu.js", "[a11y]/auto-collapse.js", "[a11y]/collapsible.js"],
     TeX: { equationNumbers: { autoNumber: "AMS" } },
     tex2jax: {
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$', '$$'] ],
       processEscapes: true,
     },
+  });
+  </script>
+  <!--
+ extensions: ["[a11y]/accessibility-menu.js", "[a11y]/auto-collapse.js", "[a11y]/collapsible.js"],
     menuSettings: {
       collapsible: true,
       autocollapse: true,
       explorer: true
     }
-  });
-  </script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
+   -->
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -201,9 +200,8 @@ Definitely check out the <a href="https://photos.app.goo.gl/88NBhKG8HoejXSLn2">p
             <a href="#" class="author"><span class="name">pjl</span><img src="/images/avatar.jpg" alt="" /></a>
          </div>
        </header>
-        Consider minimising the test function – named Rastrigin’s function – defined by
-$$S(x) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).$$
-One cross-entropy approach could be as follows.
+        <a href="/math6006/2014/09/01/l3.html" class="image featured"><img src="/images/math6006/rast.gif" title="Rastrigin's function" /></a>
+        Cross-entropy, when used for optimization, is almost like a genetic algorithm.  It creates a sequence of distributions which describe the location and certainty of the unknown minimum.
         <br><br>
        <footer>
          <ul class="actions">
@@ -229,9 +227,8 @@ One cross-entropy approach could be as follows.
             <a href="#" class="author"><span class="name">pjl</span><img src="/images/avatar.jpg" alt="" /></a>
          </div>
        </header>
-        An Itô integral on $[0, T]$ is first defined for step processes. Say that the process $(X_n(t, \omega) : t \geq 0, \omega \in \Omega)$ is of the form
-$$X_n(t, \omega) = \sum_{i=1}^n A_i(\omega) {\boldsymbol{1}}_{(t_i, t_{i+1}]}(t)$$
-for $\omega \in \Omega$, $0 \leq t_1 \leq t_2 \leq {...}\leq t_n \leq T$ and ${\mathcal{F}}(t_i)$-measurable $A_i$...
+        <a href="/math6006/2014/09/01/l2.html" class="image featured"><img src="/images/math6006/multi.png" title="A multidimensional SDE" /></a>
+        Notes for an informal lecture on simulating SDEs, considering basic diffusion processes with Matlab code.
         <br><br>
        <footer>
          <ul class="actions">
@@ -257,11 +254,7 @@ for $\omega \in \Omega$, $0 \leq t_1 \leq t_2 \leq {...}\leq t_n \leq T$ and ${\
             <a href="#" class="author"><span class="name">pjl</span><img src="/images/avatar.jpg" alt="" /></a>
          </div>
        </header>
-        A typical CMC estimator for $l = {\mathbb{E}}[Z]$ is to take $N$ iid replications $\\{Z_1, Z_2, \dots, Z_N\\}$ and use their sample average, i.e.
-$$ \hat{l}_{CMC} = \frac{1}{N} \sum_{i=1}^N Z_i. $$
-This estimator will have variance
-$$ \sigma^2_{CMC} = \frac{1}{N^2} \mathrm{Var}\left[\sum_{i=1}^N Z_i\right] = \frac{N}{N^2} \mathrm{Var}[Z_1] $$
-so $\sigma^2_{CMC} = \mathrm{Var}[Z_1] / N$.
+        Notes made for an informal lecture on the Monte Carlo tricks available for variance reduction. This was made for a reading course when we worked through Søren's Monte Carlo book.
         <br><br>
        <footer>
          <ul class="actions">
@@ -314,7 +307,8 @@ so $\sigma^2_{CMC} = \mathrm{Var}[Z_1] / N$.
             <a href="#" class="author"><span class="name">pjl</span><img src="/images/avatar.jpg" alt="" /></a>
          </div>
        </header>
-        Consider the inventory stocking problem for a submarine mechanic. At the outset of any voyage the mechanic must ensure that their stock of spare parts is sufficient for the voyage yet the exact demand of each part is not known ahead of time. To be rigorous, let’s say there are $k$ different parts, and the inventory is originally stocked with $x \in {\mathbb{N}}^k$ parts. The demand during the voyage arrives as a...
+        <a href="/stat4403/2014/05/01/stochastic-root-finding.html" class="image featured"><img src="/images/srf_iterates.png" title="Rastrigin's function" /></a>
+        A review of algorithms for the SRF problem -- that is, when you want to find a root of a function, but you only have access to a random function whose mean is the true underlying function.
         <br><br>
        <footer>
          <ul class="actions">
