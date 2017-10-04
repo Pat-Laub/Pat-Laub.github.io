@@ -5,13 +5,12 @@ subtitle:
 category: stat4403
 tags: [math, monte carlo]
 author: pjl
+banner: srf_iterates.png
+banner_alt: Rastrigin's function
 excerpt: >
-    Consider the inventory stocking problem for a submarine mechanic. At the
-    outset of any voyage the mechanic must ensure that their stock of spare
-    parts is sufficient for the voyage yet the exact demand of each part is
-    not known ahead of time. To be rigorous, let’s say there are $k$
-    different parts, and the inventory is originally stocked with
-    $x \in {\mathbb{N}}^k$ parts. The demand during the voyage arrives as a...
+    A review of algorithms for the SRF problem -- that is, when you want to
+    find a root of a function, but you only have access to a random function
+    whose mean is the true underlying function.
 ---
 
 
