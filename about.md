@@ -2,7 +2,7 @@
 layout: about
 ---
 
-Hi, I'm Pat Laub. I'm a mathematician & software engineer currently finishing a PhD in applied probability theory. Other areas I'm interested in are Monte Carlo methods, finance, computational/experimental maths, machine learning, statistics, big data, economics, artificial intelligence, computer science, history, international relations, public health, genetics, books, real world problems. I have extensive experience in software roles including work at Google & NICTA, an exceptional academic record, and am a long-serving tutor at UQ. For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub).
+Hi, I'm Pat Laub. I'm a mathematician & software engineer currently finishing a PhD in applied probability theory. Other areas I'm interested in are Monte Carlo methods, finance, computational/experimental maths, machine learning, statistics, big data, economics, artificial intelligence, computer science, history, international relations, public health, genetics, books. I have extensive experience in software roles including work at Google & NICTA, and am a long-serving tutor at UQ. For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub).
 
 
 Papers:
