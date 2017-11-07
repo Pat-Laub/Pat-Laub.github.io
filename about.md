@@ -6,6 +6,7 @@ Hi, I'm Pat Laub. I'm a mathematician & software engineer currently finishing a 
 
 
 Papers:
+- Pierre-Olivier Goffard, Patrick J. Laub, _Two numerical methods to evaluate stop-loss premiums_, (submitted) available as [HAL Preprint](https://hal.archives-ouvertes.fr/hal-01626545/document)
 - Søren Asmussen, Enkelejd Hashorva, Patrick J. Laub, Thomas Taimre, _Tail asymptotics of light-tailed Weibull-like sums_, available as [Thiele Centre Preprint](https://data.math.au.dk/publications/thiele/2017/math-thiele-2017-04.pdf)
 - Lars Nørvang Andersen, Patrick J. Laub, Leonardo Rojas-Nandayapa, _Efficient simulation for dependent rare events with applications to extremes_, available on [arXiv](https://arxiv.org/abs/1609.09725)
 - Søren Asmussen, Pierre-Olivier Goffard, Patrick J. Laub, _Orthonormal polynomial expansions and lognormal sum densities_, available on [arXiv](https://arxiv.org/abs/1601.01763)
