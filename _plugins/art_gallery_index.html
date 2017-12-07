@@ -1,0 +1,36 @@
+---
+layout: default
+# This page is used for the main index of galleries
+---
+
+
+<div id="main">
+<article class="post">
+
+<header>
+  <div class="title">
+  <h2>Photo albums</h2>
+  <h3>Click on an album to explore...</h3>
+  </div>
+</header>
+
+<div class="mini-posts-grid">
+
+        {% for gallery in page.galleries %}
+        <article class="mini-post">
+        <header><h3><a href="{{ gallery['link'] }}">{{ gallery["title"] }}</a></h3>
+        </header>
+        <a href="{{ gallery['link'] }}" class="image">
+            <img class="gallery-best-image" src="{{ gallery['link'] }}/thumbs/front_{{ gallery['best_image'] }}">
+        </a>
+        
+        </article>
+        {% endfor %}
+    </ul>
+</div>
+
+</article>
+</div>
+
+
+{% include post_listing.html %}

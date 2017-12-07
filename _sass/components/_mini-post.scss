@@ -85,3 +85,31 @@
 			}
 		}
 	}
+
+
+	.mini-posts-grid {
+		@include vendor('display', 'flex');
+		@include vendor('flex-wrap', 'wrap');
+		width: calc(100% + #{_size(element-margin)});
+
+
+		> * {
+			margin: _size(element-margin) _size(element-margin) 0 0;
+			width: calc(50% - #{_size(element-margin)});
+		}
+
+		> :nth-child(-n + 2) {
+			margin-top: 0;
+		}
+		
+
+		@include breakpoint(xsmall) {
+			display: block;
+			width: 100%;
+
+			> * {
+				margin: 0 0 _size(element-margin) 0;
+				width: 100%;
+			}
+		}
+	}

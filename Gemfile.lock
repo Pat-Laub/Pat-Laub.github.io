@@ -57,6 +57,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ref (2.0.0)
+    rmagick (2.16.0)
     rouge (1.11.1)
     safe_yaml (1.0.4)
     sass (3.5.1)
@@ -77,8 +78,9 @@ DEPENDENCIES
   jekyll (= 3.5.0)
   jekyll-feed (~> 0.6)
   jekyll-scholar
+  rmagick
   therubyracer
   tzinfo-data
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
