@@ -33,7 +33,7 @@ size_limit: 100000 # maximum size, px in either dimention, to limit the images t
 galleries:
   
   fav:
-    title: A decade of travel
+    title: Decade
     description: Some of my favourite photos
     woodford: Woodford Folk Festival
 
