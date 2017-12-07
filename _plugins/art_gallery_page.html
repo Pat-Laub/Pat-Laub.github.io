@@ -17,17 +17,22 @@ header:
 </header>
 
 
-<div class="mini-posts">
+<div class="mini-posts-grid">
 
         {% for image in page.images %}
-
+        {% if page.captions[image] == nil %}
+          {% assign caption_words = image | split: "." | first | replace: "_", " " |  replace: "-", " " | split: " "%}
+          {% capture titlecase %}{% for word in caption_words %}{{ word | capitalize }} {% endfor %}{% endcapture %}
+          {% assign caption = titlecase %}
+        {% else %}
+          {% assign caption = page.captions[image] %}
+        {% endif %}
         <article class="mini-post">
             <header><h3><a href="{{ image }}">
-                {% if page.captions[image] == nil %} {{ image | split: "." | first | replace: "_", " " |  replace: "-", " "  }} {% else %} {{ page.captions[image] }} {% endif %}
+            {{ caption }}
             </a></h3></header>
-
-            <a href="{{ image }}" class="image fit">
-                <img data-caption="{{ page.captions[image] }}.  <a class='clearing-link' href='/contact/'>Ask me about this work</a>" src="thumbs/{{ image }}" alt="{{ page.captions[image] }}" title="{{ page.captions[image] }}">
+            <a data-fancybox="gallery" href="{{ image }}" data-caption="{{ caption }}"  class="image fit">
+                <img src="thumbs/{{ image }}" alt="{{ caption }}" title="{{ caption }}">
             </a>
         </article>
 
@@ -36,5 +41,8 @@ header:
 </div>
 
 </article>
+
+  {% include disqus_comments.html %}
+  
 </div>
 

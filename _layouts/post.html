@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+
+{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+
 <div id="main">
 
   <!-- Post -->
@@ -12,19 +15,9 @@ layout: default
       </div>
 
       <div class="meta">
-        <p class="post-meta">
-          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-            {{ page.date | date: date_format }}
-          </time>
-          {% if page.author %}
-            • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-          {% endif %}</p>
-
-        <!-- <time class="published" datetime="2015-11-01">November 1, 2015</time> -->
-        <a href="#" class="author"><span class="name">{{ post.author }}</span><img src="/images/avatar.jpg" alt="" /></a>
-      </div>
-      
+        <time class="published" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+        <a href="#" class="author"><span class="name">{{ page.author }}</span><img src="/images/avatar.jpg" alt="" /></a>
+      </div>      
     </header>
 
     {% if page.banner %}

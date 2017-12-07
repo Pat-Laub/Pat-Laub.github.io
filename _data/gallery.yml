@@ -14,14 +14,14 @@ title: Photos
 sort_field: "title" # sorting of the galleries on the gallery index page
 #sort_reverse: true
 thumbnail_size:
-  x: 960
-  y: 720
+  x: 500
+  y: 375
 front_thumb_size:     # best image thumb size for the gallery super-index page
-  x: 960
-  y: 720
+  x: 500
+  y: 375
 header_thumb_size:    # best image thumb for the header of a gallery index page
-  x: 960
-  y: 720
+  x: 500
+  y: 375
 
 scale_method: crop # default for all galleries. could be fit or crop, crop_bottom, crop_right, crop_left, crop_top ('crop' crops around, others crop out the side indicated as a parameter
 strip_exif: true

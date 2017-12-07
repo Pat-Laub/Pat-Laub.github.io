@@ -166,7 +166,7 @@ module Jekyll
         end
           # cleanup, watermark and copy the files
           # Strip out the non-ascii character and downcase the final file name
-          dest_image=image.gsub(/[^0-9A-Za-z.\-]/, '_').downcase
+          dest_image=image.gsub(/[^0-9A-Za-z.,\-]/, '_').downcase
           dest_image_abs_path = site.in_dest_dir(File.join(@dir, dest_image))
         if File.file?(dest_image_abs_path) == false or File.mtime(image_path) > File.mtime(dest_image_abs_path)
           if config["strip_exif"] or config["watermark"] or config["size_limit"] # can't simply copy or symlink, need to pre-process the image
@@ -256,7 +256,7 @@ module Jekyll
       self.data["images"] = @images
 
       best_image = gallery_config["best_image"] || @images[0]
-      best_image.gsub!(/[^0-9A-Za-z.\-]/, '_') # renormalize the name - important in case the best image name is specified via config
+      best_image.gsub!(/[^0-9A-Za-z.,\-]/, '_') # renormalize the name - important in case the best image name is specified via config
       best_image.downcase! # two step because mutating gsub returns nil that's unusable in a compound call
       #best_image = File.join(@dir, best_image)
       self.data["best_image"] = best_image
