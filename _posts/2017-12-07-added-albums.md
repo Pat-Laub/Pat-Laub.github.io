@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My favourite photos
+title: A decade of photos
 subtitle: Added albums to this site
 categories: webdev
 tags: code photos webdev
@@ -9,4 +9,4 @@ banner: emptiness.jpg
 banner_alt: Emptiness, over Greenland
 ---
 
-Check out [here for some of my favourite photos!](/photos/fav/) It is based on [alexivkin's plugin](https://github.com/alexivkin/Jekyll-Art-Gallery-Plugin) which is great stuff.
+Click [__here to see some of my favourite photos!__](/photos/decade/)  The code I used is based on [alexivkin's plugin](https://github.com/alexivkin/Jekyll-Art-Gallery-Plugin) and [fancyBox3](http://fancyapps.com/fancybox/3/), both of which I found great and easy to setup.

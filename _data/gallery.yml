@@ -32,14 +32,6 @@ size_limit: 100000 # maximum size, px in either dimention, to limit the images t
 
 galleries:
   
-  fav:
+  decade:
     title: Decade
     description: Some of my favourite photos
-    woodford: Woodford Folk Festival
-
-  google_autoenhance:
-    title: Google enhanced photos
-    description: Living in the future..
-    barcelona-dinner.jpg: From the conference dinner of FOCM, Barcelona
-    gold-coast.jpg: Taking a trip to the Gold Coast
-    melbourne-markets.jpg: Huge markets in Melbourne 
