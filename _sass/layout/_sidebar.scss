@@ -12,17 +12,16 @@
 		width: 22em;
 
 		> * {
-			margin: _size(section-spacing) 0 0 0;
-			padding: _size(section-spacing) 0 0 0;
+			margin: _size(section-spacing)/2 0 0 0;
+			padding: _size(section-spacing)/2 0 0 0;
 		}
 
-		> :first-child, #wanderer-image {
+		> :first-child, :nth-child(2) {
 			margin-top: 0;
 			padding-top: 0;
 		}
 
-		#wanderer-image,
-		#recent-books {
+		.onlyOnFullScreen {
 			@include breakpoint(large) {
 				display: none;
 			}
