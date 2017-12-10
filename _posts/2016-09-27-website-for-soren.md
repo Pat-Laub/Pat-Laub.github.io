@@ -2,7 +2,7 @@
 layout: post
 title: Made a new epic homepage for Søren
 subtitle: 
-categories: web-dev
+categories: webdev
 tags: code
 author: pjl
 banner: sorens-website.jpg
