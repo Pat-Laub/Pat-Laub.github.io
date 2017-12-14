@@ -6,6 +6,14 @@
 
 /* Post */
 
+	#nobody {
+		padding-bottom: 0;
+
+		> header {
+			margin-bottom: 0;
+		}
+	}
+
 	.post {
 		@include padding(_size(section-spacing), _size(section-spacing));
 		background: _palette(bg);

@@ -1,3 +1,4 @@
 ---
 layout: code
+title: Code
 ---

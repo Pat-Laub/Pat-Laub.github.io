@@ -1,13 +1,14 @@
 ---
 layout: about
+title: About
 ---
 
 Hi, I'm Pat Laub. I'm a mathematician & software engineer currently finishing a PhD in applied probability theory. Other areas I'm interested in are Monte Carlo methods, finance, computational/experimental maths, machine learning, statistics, big data, economics, artificial intelligence, computer science, history, international relations, public health, genetics, books. I have extensive experience in software roles including work at Google & NICTA, and am a long-serving tutor at UQ. For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub).
 
 ### Papers:
 - [Robert Salomone](https://robsalomone.wordpress.com/), Patrick J. Laub, [Zdravko I. Botev](http://web.maths.unsw.edu.au/~zdravkobotev/) (2017), _Monte Carlo Estimation of the Density of the Sum of Dependent Random Variables_ [[__pdf__](https://arxiv.org/abs/1711.11218)], Submitted
-- [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2017), _Two numerical methods to evaluate stop-loss premiums_ [[__pdf__](https://hal.archives-ouvertes.fr/hal-01626545/document)], Submitted
-- [Søren Asmussen](http://home.math.au.dk/asmus/), [Enkelejd Hashorva](http://hec.unil.ch/hec/recherche/fiche?pnom=ehashorva&dyn_lang=en), Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299) (2017), _Tail asymptotics of light-tailed Weibull-like sums_ [[__pdf__](https://data.math.au.dk/publications/thiele/2017/math-thiele-2017-04.pdf)], Polish Mathematical Society Annals
+- [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2017), _Two numerical methods to evaluate stop-loss premiums_ [[__pdf__](https://arxiv.org/abs/1712.03468)], Submitted
+- [Søren Asmussen](http://home.math.au.dk/asmus/), [Enkelejd Hashorva](http://hec.unil.ch/hec/recherche/fiche?pnom=ehashorva&dyn_lang=en), Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299) (2017), _Tail asymptotics of light-tailed Weibull-like sums_ [[__pdf__](https://arxiv.org/abs/1712.04070)], Polish Mathematical Society Annals
 - [Lars Nørvang Andersen](http://pure.au.dk/portal/en/persons/id(182d59cb-4a31-4e18-b0a9-b8b7ef507fa4).html), Patrick J. Laub, [Leonardo Rojas-Nandayapa](https://www.liverpool.ac.uk/mathematical-sciences/staff/leonardo-rojas-nandayapa/) (2016), _Efficient simulation for dependent rare events with applications to extremes_ [[__pdf__](https://arxiv.org/abs/1609.09725)], Methodology and Computing in Applied Probability
 - [Søren Asmussen](http://home.math.au.dk/asmus/), [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2015), _Orthonormal polynomial expansions and lognormal sum densities_ [[__pdf__](https://arxiv.org/abs/1601.01763)], Risk and Stochastics - Festschrift for Ragnar Norberg
 - Patrick J. Laub, [Søren Asmussen](http://home.math.au.dk/asmus/), [Jens Ledet Jensen](http://home.math.au.dk/jlj/), [Leonardo Rojas-Nandayapa](https://www.liverpool.ac.uk/mathematical-sciences/staff/leonardo-rojas-nandayapa/) (2015), _Approximating the Laplace transform of the sum of dependent lognormals_ [[__pdf__](https://arxiv.org/abs/1507.03750)], Advances in Applied Probability, 
