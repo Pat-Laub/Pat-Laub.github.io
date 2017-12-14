@@ -2,8 +2,7 @@
 layout: post
 title: Around-the-world conference trip
 subtitle: Montreal, Barcelona
-categories: travel
-tags: photos
+tags: photos travel
 author: pjl
 banner: montreal.jpg
 banner_alt: Montreal skyline from Mont Royal

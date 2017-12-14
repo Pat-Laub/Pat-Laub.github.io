@@ -2,7 +2,6 @@
 layout: post
 title: Here comes the sun
 subtitle: Communicating with a panel which tracks the sun
-categories: code
 tags: code
 author: pjl
 banner: solar_tracker.jpg

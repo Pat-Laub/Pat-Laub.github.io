@@ -4,7 +4,7 @@ description: >
   Maths and programming etc.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://pat-laub.github.io
-twitter_username: MileyCyrus
+twitter_username: PatrickLaub
 github_username: Pat-Laub
 google_analytics: UA-102813844-1
 disqus:
@@ -12,10 +12,13 @@ disqus:
 
 # Build settings`
 markdown: kramdown
+# highlighter: pygments
 # theme: minima
 # plugins_dir: [jekyll-feed, jekyll-scholar]
 # plugins_dir:
 #   - jekyll-feed
+plugins:
+  - jekyll-gist
 sass:
     style: compressed
 compress_html:

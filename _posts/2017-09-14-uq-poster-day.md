@@ -2,7 +2,6 @@
 layout: post
 title: UQ School of Maths & Physics Poster Day
 subtitle: Spreading the Good News of the lognormal sum distribution
-categories: math
 tags: math
 author: pjl
 banner: poster-day.jpg

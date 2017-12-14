@@ -2,7 +2,6 @@
 layout: post
 title: A decade of photos
 subtitle: Added albums to this site
-categories: webdev
 tags: code photos webdev
 author: pjl
 banner: emptiness.jpg

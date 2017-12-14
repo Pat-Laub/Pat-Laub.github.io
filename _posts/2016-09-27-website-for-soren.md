@@ -2,8 +2,7 @@
 layout: post
 title: Made a new epic homepage for Søren
 subtitle: 
-categories: webdev
-tags: code
+tags: code webdev
 author: pjl
 banner: sorens-website.jpg
 banner_alt: The beginning of the new site
