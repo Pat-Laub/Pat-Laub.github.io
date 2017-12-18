@@ -6,6 +6,10 @@
 
 /* Type */
 
+	details {
+		margin: 0 0 2em 0;
+	}
+
 	body, input, select, textarea {
 		color: _palette(fg);
 		font-family: _font(family);
@@ -117,6 +121,10 @@
 		font-size: 0.8em;
 		position: relative;
 		top: -0.5em;
+
+		a {
+			border-bottom: dotted 1px _palette(border-alt);
+		}
 	}
 
 	blockquote {

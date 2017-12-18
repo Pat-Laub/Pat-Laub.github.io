@@ -2,7 +2,7 @@
 layout: post
 title: The Pleasures of Life
 subtitle: Resurrecting a 19th century self-help book
-tags: code photos
+tags: code photos books
 author: pjl
 banner: sir_lubbock.jpg
 banner_alt: The Right Honourable Sir John Lubbock
