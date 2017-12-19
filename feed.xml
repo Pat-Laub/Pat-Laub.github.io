@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2017-12-18T23:03:24+10:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2017-12-19T10:23:33+10:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
 </subtitle><entry><title type="html">Who is it?</title><link href="https://pat-laub.github.io/2017/12/14/voice-classification.html" rel="alternate" type="text/html" title="Who is it?" /><published>2017-12-14T00:00:00+10:00</published><updated>2017-12-14T00:00:00+10:00</updated><id>https://pat-laub.github.io/2017/12/14/voice-classification</id><content type="html" xml:base="https://pat-laub.github.io/2017/12/14/voice-classification.html">&lt;h1 id=&quot;problem&quot;&gt;Problem&lt;/h1&gt;
 
-&lt;p&gt;Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it’s a task that humans often fail at… that is, unless their phone conversations all begin as distinctively as this:&lt;/p&gt;
+&lt;p&gt;Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it’s a task that humans (without the benefit of caller-id) often fail at… that is, unless their phone conversations all begin as distinctively as this:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wazzap.jpg&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
 
@@ -42,7 +42,7 @@
 
 &lt;h1 id=&quot;data-wrangling-converting-to-spectral-density-estimates&quot;&gt;Data wrangling: converting to spectral density estimates&lt;/h1&gt;
 
-&lt;p&gt;And more importantly I transformed the input from the 3 second audio slices to their &lt;a href=&quot;https://en.wikipedia.org/wiki/Spectral_density_estimation&quot;&gt;spectral density estimates&lt;/a&gt;. Since I wanted to separate voices, I didn’t care really &lt;strong&gt;what&lt;/strong&gt; each person was saying, but just &lt;strong&gt;how&lt;/strong&gt; they were saying it, and the spectral density gives this information — it tells us which frequencies a person’s voice favours (e.g. do they have squeaky-high voice, or a deep rumble). Without this transformation, none of the algorithms had an accuracy greater than 11-12% (with 13 voices, simply guessing at random would given an accuracy of 7.69%).&lt;/p&gt;
+&lt;p&gt;More importantly, I transformed the input from the 3 second audio slices to their &lt;a href=&quot;https://en.wikipedia.org/wiki/Spectral_density_estimation&quot;&gt;spectral density estimates&lt;/a&gt;. Since I wanted to separate voices, I didn’t care really &lt;strong&gt;what&lt;/strong&gt; each person was saying, but just &lt;strong&gt;how&lt;/strong&gt; they were saying it, and the spectral density gives this information — it tells us which frequencies a person’s voice favours (e.g. do they have squeaky-high voice, or a deep rumble). Without this transformation, none of the algorithms had an accuracy greater than 11-12% (with 13 voices, simply guessing at random would given an accuracy of 7.69%).&lt;/p&gt;
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide: how to read a spectral density graph&lt;/summary&gt;
@@ -81,7 +81,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;p&gt;&lt;img src=&quot;/images/smooth_eloquence_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) — then I realised there was useful information in the different ways the speakers paused that should not be thrown away.&lt;/p&gt;
+&lt;p&gt;Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) — then I realised there was useful information in the different ways the speakers paused (e.g. between sentences) that should not be thrown away.&lt;/p&gt;
 
 &lt;h1 id=&quot;preparing-for-a-machine-learning-test&quot;&gt;Preparing for a machine learning test&lt;/h1&gt;
 
@@ -103,13 +103,13 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 &lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
-&lt;p&gt;This creates a classifier in 1.92 secs which has an accuracy of 94.54%.&lt;/p&gt;
+&lt;p&gt;This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/builtin_classifier_info.png&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/builtin_confusion.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;At first I thought: i) this could just be a lucky split of the date, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.&lt;/p&gt;
+&lt;p&gt;At first I thought: i) this could just be a lucky split of the data, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.&lt;/p&gt;
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
@@ -117,7 +117,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 &lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
-&lt;p&gt;Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyperparameters). The following boxplot shows the accuracies over the different test runs for each method:&lt;/p&gt;
+&lt;p&gt;Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyper-parameters). The following box plots show the accuracies over the different test runs for each method:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/different_methods.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
 
@@ -133,9 +133,9 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 &lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
-&lt;p&gt;The resulting .csv file is &lt;a href=&quot;/data/audioData.csv&quot;&gt;available here&lt;/a&gt; if you’d like to have a play with this.&lt;/p&gt;
+&lt;p&gt;The resulting CSV file is &lt;a href=&quot;/data/audioData.csv&quot;&gt;available here&lt;/a&gt; if you’d like to have a play with this.&lt;/p&gt;
 
-&lt;p&gt;The Python to recreate these results is much simpler — &lt;a href=&quot;http://scikit-learn.org/&quot;&gt;scikit-learn&lt;/a&gt; has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:&lt;/p&gt;
+&lt;p&gt;The Python code to recreate these results is much simpler — &lt;a href=&quot;http://scikit-learn.org/&quot;&gt;scikit-learn&lt;/a&gt; has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:&lt;/p&gt;
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
@@ -147,7 +147,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
 
-&lt;p&gt;While this exercise didn’t delve into great details of the available methods (we did quite well with just default hyperparameters!), I did learn a few things in the process.&lt;/p&gt;
+&lt;p&gt;While this exercise didn’t delve into great details of the available methods (we did quite well with just default hyper-parameters!), I did learn a few things in the process.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;The quality of the input data is crucial to success.&lt;/li&gt;

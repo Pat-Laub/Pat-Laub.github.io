@@ -61,7 +61,7 @@
         <span class="image featured"><img src="/images/spectra.png" title="Spectra for a voice actor" /></span>
    <div class="post-content" itemprop="articleBody">
      <h1 id="problem">Problem</h1>
-<p>Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it’s a task that humans often fail at… that is, unless their phone conversations all begin as distinctively as this:
+<p>Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it’s a task that humans (without the benefit of caller-id) often fail at… that is, unless their phone conversations all begin as distinctively as this:
 <p><img src="/images/wazzap.jpg" alt="image" class="image fit" />
 <h1 id="input-data">Input data</h1>
 <p>Since I am addicted to <a href="http://www.audible.com">audiobooks</a>, it seemed natural to use the first few minutes of different audiobooks for this experiment; specifically, I took:
@@ -90,7 +90,7 @@
 <p>Now the first 3 second chunk of each voice looks like:
 <p><img src="/images/start_of_each.gif" alt="image" class="image fit" />
 <h1 id="data-wrangling-converting-to-spectral-density-estimates">Data wrangling: converting to spectral density estimates</h1>
-<p>And more importantly I transformed the input from the 3 second audio slices to their <a href="https://en.wikipedia.org/wiki/Spectral_density_estimation">spectral density estimates</a>. Since I wanted to separate voices, I didn’t care really <strong>what</strong> each person was saying, but just <strong>how</strong> they were saying it, and the spectral density gives this information — it tells us which frequencies a person’s voice favours (e.g. do they have squeaky-high voice, or a deep rumble). Without this transformation, none of the algorithms had an accuracy greater than 11-12% (with 13 voices, simply guessing at random would given an accuracy of 7.69%).
+<p>More importantly, I transformed the input from the 3 second audio slices to their <a href="https://en.wikipedia.org/wiki/Spectral_density_estimation">spectral density estimates</a>. Since I wanted to separate voices, I didn’t care really <strong>what</strong> each person was saying, but just <strong>how</strong> they were saying it, and the spectral density gives this information — it tells us which frequencies a person’s voice favours (e.g. do they have squeaky-high voice, or a deep rumble). Without this transformation, none of the algorithms had an accuracy greater than 11-12% (with 13 voices, simply guessing at random would given an accuracy of 7.69%).
 <details>
 <summary>Show/hide: how to read a spectral density graph</summary>
 When we speak, we generate a lot of frequencies at once, and we tend to use some unique range of frequencies more than others. This is why we can say the same words as each other but sound different, it's our "voice fingerprint" if you like. A spectral density graph shows how much power (i.e. how loud) we give to all the available frequencies. 
@@ -114,7 +114,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 </details>
 <p>To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our <a href="https://arxiv.org/abs/1711.11218">great new paper</a> on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for <em>The Elements of Eloquence</em> but found it didn’t perform as well as the above plots:
 <p><img src="/images/smooth_eloquence_spectra.gif" alt="image" class="image fit" />
-<p>Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) — then I realised there was useful information in the different ways the speakers paused that should not be thrown away.
+<p>Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) — then I realised there was useful information in the different ways the speakers paused (e.g. between sentences) that should not be thrown away.
 <h1 id="preparing-for-a-machine-learning-test">Preparing for a machine learning test</h1>
 <p>Next, I needed to split the data into a training and test set. This proved to be quite cumbersome — and I’m a bit surprised Mathematica has nothing for this built-in.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I split the 75% of the data into the training set, and the last 25% to the test set, with the split done randomly but also stratified across each different voice.
 <details>
@@ -129,16 +129,16 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 <noscript><pre>400: Invalid request
 </pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb"> </script>
 </details>
-<p>This creates a classifier in 1.92 secs which has an accuracy of 94.54%.
+<p>This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:
 <p><img src="/images/builtin_classifier_info.png" alt="image" class="image fit" />
 <p><img src="/images/builtin_confusion.gif" alt="image" class="image fit" />
-<p>At first I thought: i) this could just be a lucky split of the date, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.
+<p>At first I thought: i) this could just be a lucky split of the data, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.
 <details>
 <summary>Show/hide code</summary>
 <noscript><pre>400: Invalid request
 </pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb"> </script>
 </details>
-<p>Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyperparameters). The following boxplot shows the accuracies over the different test runs for each method:
+<p>Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyper-parameters). The following box plots show the accuracies over the different test runs for each method:
 <p><img src="/images/different_methods.gif" alt="image" class="image fit" />
 <p>In summary, logistic regression is the best options with an average of 95.76% accuracy, followed by a neural network (94.54%) and a random forest (91.88%).
 <h1 id="in-python">In Python</h1>
@@ -148,8 +148,8 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 <noscript><pre>400: Invalid request
 </pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb"> </script>
 </details>
-<p>The resulting .csv file is <a href="/data/audioData.csv">available here</a> if you’d like to have a play with this.
-<p>The Python to recreate these results is much simpler — <a href="http://scikit-learn.org/">scikit-learn</a> has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:
+<p>The resulting CSV file is <a href="/data/audioData.csv">available here</a> if you’d like to have a play with this.
+<p>The Python code to recreate these results is much simpler — <a href="http://scikit-learn.org/">scikit-learn</a> has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:
 <details>
 <summary>Show/hide code</summary>
 <noscript><pre>400: Invalid request
@@ -157,7 +157,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 </details>
 <p>This code reports an average accuracy of 97.21%, a slight improvement over the Mathematica.
 <h1 id="conclusion">Conclusion</h1>
-<p>While this exercise didn’t delve into great details of the available methods (we did quite well with just default hyperparameters!), I did learn a few things in the process.
+<p>While this exercise didn’t delve into great details of the available methods (we did quite well with just default hyper-parameters!), I did learn a few things in the process.
 <ol>
  <li>The quality of the input data is crucial to success.
  <li>Mathematica has very nice support for audio editing, and Python’s support for routine ML operations is impressive.
