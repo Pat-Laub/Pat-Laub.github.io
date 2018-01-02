@@ -22,7 +22,7 @@
         </header>
 
         {% if post.banner %}
-        <a href="{{ post.url | relative_url }}" class="image featured"><img src="/images/{{ post.banner }}" title="{{ post.banner_alt }}" /></a>
+        <a href="{{ post.url | relative_url }}"><img src="/images/{{ post.banner }}" title="{{ post.banner_alt }}" class="image featured"/></a>
         {% endif %}
 
         {{ post.excerpt }}
@@ -48,5 +48,5 @@
   <li><a href="#" class="button big next">Next Page</a></li>
 </ul>
  -->
- 
+
 </div>

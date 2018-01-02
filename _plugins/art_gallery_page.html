@@ -31,7 +31,7 @@ header:
             <header><h3><a href="{{ image }}">
             {{ caption }}
             </a></h3></header>
-            <a data-fancybox="gallery" href="{{ image }}" data-caption="{{ caption }}"  class="image fit">
+            <a data-fancybox="gallery" href="{{ image }}" data-caption="{{ caption }}"  class="image">
                 <img src="thumbs/{{ image }}" alt="{{ caption }}" title="{{ caption }}">
             </a>
         </article>
@@ -43,6 +43,6 @@ header:
 </article>
 
   {% include disqus_comments.html %}
-  
+
 </div>
 

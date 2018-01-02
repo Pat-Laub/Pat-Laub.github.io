@@ -23,9 +23,8 @@
 
 		> header {
 			@include vendor('display', 'flex');
-			border-bottom: solid 1px _palette(border);
 			left: (_size(section-spacing) * -1);
-			margin: (_size(section-spacing) * -1) 0 _size(section-spacing) 0;
+			margin: (_size(section-spacing) * -1) 0 0 0;
 			position: relative;
 			width: calc(100% + #{_size(section-spacing) * 2});
 
@@ -46,7 +45,6 @@
 
 			.meta {
 				@include padding(_size(section-spacing) * 1.25, _size(section-spacing));
-				border-left: solid 1px _palette(border);
 				min-width: 17em;
 				text-align: right;
 				width: 17em;
@@ -73,9 +71,6 @@
 			}
 		}
 
-		> a.image.featured {
-			overflow: hidden;
-		}
 
 		> footer {
 			@include vendor('display', 'flex');
@@ -191,7 +186,7 @@
 			> header {
 				@include padding(_size(section-spacing-small) * 2, _size(section-spacing-small), (0, 0, -0.5em, 0));
 				left: (_size(section-spacing-small) * -1);
-				margin: (_size(section-spacing-small) * -1) 0 _size(section-spacing-small) 0;
+				margin: (_size(section-spacing-small) * -1) 0 0 0;
 				width: calc(100% + #{_size(section-spacing-small) * 2});
 
 				.title {
@@ -222,11 +217,6 @@
 				}
 			}
 
-			> .image.featured {
-				margin-left: _size(section-spacing-small) * -1;
-				margin-top: calc(#{_size(section-spacing-small) * -1} - 1px);
-				width: calc(100% + #{_size(section-spacing-small) * 2});
-			}
 
 			> footer {
 				@include vendor('align-items', 'stretch');

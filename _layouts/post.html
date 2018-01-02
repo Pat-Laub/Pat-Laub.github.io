@@ -17,13 +17,13 @@ layout: default
       <div class="meta">
         <time class="published" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
         <a href="#" class="author"><span class="name">{{ page.author }}</span><img src="/images/avatar.jpg" alt="" /></a>
-      </div>      
+      </div>
     </header>
 
     {% if page.banner %}
-        <span class="image featured"><img src="/images/{{ page.banner }}" title="{{ page.banner_alt }}" /></span>
+        <img src="/images/{{ page.banner }}" title="{{ page.banner_alt }}" class="image featured" />
     {% endif %}
-    
+
     <div class="post-content" itemprop="articleBody">
       {{ content }}
     </div>

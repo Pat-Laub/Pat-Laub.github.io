@@ -12,9 +12,12 @@ excerpt: >
 
 # Problem
 
-Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it's a task that humans often fail at... that is, unless their phone conversations all begin as distinctively as this:
+Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it's a task that humans (without the benefit of caller-id) often fail at... that is, unless their phone conversations all begin as distinctively as this:
 
-![image]({% link /images/wazzap.jpg %}){: .image .fit}
+
+<p>
+<iframe width="560" height="315" class="image" src="https://www.youtube.com/embed/W16qzZ7J5YQ" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+</p>
 
 # Input data
 
@@ -46,20 +49,20 @@ After recording, I found it took 607 MB of space to store, so I downgraded the q
 
 Now the first 3 second chunk of each voice looks like:
 
-![image]({% link /images/start_of_each.gif %}){: .image .fit}
+![image]({% link /images/start_of_each.gif %}){: .image .post_image}
 
 # Data wrangling: converting to spectral density estimates
 
-And more importantly I transformed the input from the 3 second audio slices to their [spectral density estimates](https://en.wikipedia.org/wiki/Spectral_density_estimation). Since I wanted to separate voices, I didn't care really __what__ each person was saying, but just __how__ they were saying it, and the spectral density gives this information --- it tells us which frequencies a person's voice favours (e.g. do they have squeaky-high voice, or a deep rumble). Without this transformation, none of the algorithms had an accuracy greater than 11-12% (with 13 voices, simply guessing at random would given an accuracy of 7.69%).
+More importantly, I transformed the input from the 3 second audio slices to their [spectral density estimates](https://en.wikipedia.org/wiki/Spectral_density_estimation). Since I wanted to separate voices, I didn't care really __what__ each person was saying, but just __how__ they were saying it, and the spectral density gives this information --- it tells us which frequencies a person's voice favours (e.g. do they have squeaky-high voice, or a deep rumble). Without this transformation, none of the algorithms had an accuracy greater than 11-12% (with 13 voices, simply guessing at random would given an accuracy of 7.69%).
 
 <details>
 <summary>Show/hide: how to read a spectral density graph</summary>
-When we speak, we generate a lot of frequencies at once, and we tend to use some unique range of frequencies more than others. This is why we can say the same words as each other but sound different, it's our "voice fingerprint" if you like. A spectral density graph shows how much power (i.e. how loud) we give to all the available frequencies. 
+When we speak, we generate a lot of frequencies at once, and we tend to use some unique range of frequencies more than others. This is why we can say the same words as each other but sound different, it's our "voice fingerprint" if you like. A spectral density graph shows how much power (i.e. how loud) we give to all the available frequencies.
 
 Imagine hearing two extreme voices: a loud and deep voice (e.g. Darth Vader), or a quiet and high-pitched voice (e.g. a squeaky librarian). If you recorded their voice, and looked at their spectral densities, you'd see something like:
 
 <div markdown="1">
-   ![image]({% link /images/cartoon_spectrum.jpg %}){: .image .fit}
+   ![image]({% link /images/cartoon_spectrum.jpg %}){: .image .post_image}
 </div>
 
 Which one is the red and which is the blue? Vader uses deeper tones, which means lower frequencies, so his spectral curve will have a peak on the left side. As he bellows louder than a librarian, we'd expect his spectral curve to be higher as a general fact. So, Vader would generate the red curve.
@@ -67,15 +70,15 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 One 3 second chunk's spectral density looks like:
 
-![image]({% link /images/individual_spectrum.gif %}){: .image .fit}
+![image]({% link /images/individual_spectrum.gif %}){: .image .post_image}
 
 All of the spectra for each 3 second chunk of Don Hagen's _The Elements of Eloquence_ plotted together looks like:
 
-![image]({% link /images/eloquence_spectra.gif %}){: .image .fit}
+![image]({% link /images/eloquence_spectra.gif %}){: .image .post_image}
 
 Similarly, the spectra of Paul Noble's _Learn German_ together looks like:
 
-![image]({% link /images/german_spectra.gif %}){: .image .fit}
+![image]({% link /images/german_spectra.gif %}){: .image .post_image}
 
 My hypothesis was that a machine learning algorithm could tell the difference between the 13 plots like this.
 
@@ -86,9 +89,9 @@ My hypothesis was that a machine learning algorithm could tell the difference be
 
 To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation --- see our [great new paper](https://arxiv.org/abs/1711.11218) on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for _The Elements of Eloquence_ but found it didn't perform as well as the above plots:
 
-![image]({% link /images/smooth_eloquence_spectra.gif %}){: .image .fit}
+![image]({% link /images/smooth_eloquence_spectra.gif %}){: .image .post_image}
 
-Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) --- then I realised there was useful information in the different ways the speakers paused that should not be thrown away.
+Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) --- then I realised there was useful information in the different ways the speakers paused (e.g. between sentences) that should not be thrown away.
 
 # Preparing for a machine learning test
 
@@ -108,22 +111,22 @@ If we just run the most hands-free classification (the level of simplicity of th
 {% gist 41d7d5380a9693c37991e845ae15f3b9 simple_classifer.nb %}
 </details>
 
-This creates a classifier in 1.92 secs which has an accuracy of 94.54%.
+This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:
 
-![image]({% link /images/builtin_classifier_info.png %}){: .image .fit}
+![image]({% link /images/builtin_classifier_info.png %}){: .image .post_image}
 
-![image]({% link /images/builtin_confusion.gif %}){: .image .fit}
+![image]({% link /images/builtin_confusion.gif %}){: .image .post_image}
 
-At first I thought: i) this could just be a lucky split of the date, and ii) "logistic regression is nothing fancy.."; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data. 
+At first I thought: i) this could just be a lucky split of the data, and ii) "logistic regression is nothing fancy.."; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.
 
 <details>
 <summary>Show/hide code</summary>
 {% gist 41d7d5380a9693c37991e845ae15f3b9 multiple_classifiers.nb %}
 </details>
 
-Remarkably, logistic regression turns out to be best option (without playing with any of the method's hyperparameters). The following boxplot shows the accuracies over the different test runs for each method:
+Remarkably, logistic regression turns out to be best option (without playing with any of the method's hyper-parameters). The following box plots show the accuracies over the different test runs for each method:
 
-![image]({% link /images/different_methods.gif %}){: .image .fit}
+![image]({% link /images/different_methods.gif %}){: .image .post_image}
 
 In summary, logistic regression is the best options with an average of 95.76% accuracy, followed by a neural network (94.54%) and a random forest (91.88%).
 
@@ -136,9 +139,9 @@ I tried to pry into the classifiers which Mathematica had created for me, but fo
 {% gist 41d7d5380a9693c37991e845ae15f3b9 export_data.nb %}
 </details>
 
-The resulting .csv file is [available here]({% link /data/audioData.csv %}) if you'd like to have a play with this.
+The resulting CSV file is [available here]({% link /data/audioData.csv %}) if you'd like to have a play with this.
 
-The Python to recreate these results is much simpler --- [scikit-learn](http://scikit-learn.org/) has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:
+The Python code to recreate these results is much simpler --- [scikit-learn](http://scikit-learn.org/) has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:
 
 <details>
 <summary>Show/hide code</summary>
@@ -149,7 +152,7 @@ This code reports an average accuracy of 97.21%, a slight improvement over the M
 
 # Conclusion
 
-While this exercise didn't delve into great details of the available methods (we did quite well with just default hyperparameters!), I did learn a few things in the process.
+While this exercise didn't delve into great details of the available methods (we did quite well with just default hyper-parameters!), I did learn a few things in the process.
 
 1. The quality of the input data is crucial to success.
 2. Mathematica has very nice support for audio editing, and Python's support for routine ML operations is impressive.
