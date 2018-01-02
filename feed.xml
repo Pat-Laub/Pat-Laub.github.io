@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2017-12-19T10:23:33+10:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2018-01-02T14:31:00+10:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
 </subtitle><entry><title type="html">Who is it?</title><link href="https://pat-laub.github.io/2017/12/14/voice-classification.html" rel="alternate" type="text/html" title="Who is it?" /><published>2017-12-14T00:00:00+10:00</published><updated>2017-12-14T00:00:00+10:00</updated><id>https://pat-laub.github.io/2017/12/14/voice-classification</id><content type="html" xml:base="https://pat-laub.github.io/2017/12/14/voice-classification.html">&lt;h1 id=&quot;problem&quot;&gt;Problem&lt;/h1&gt;
 
 &lt;p&gt;Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it’s a task that humans (without the benefit of caller-id) often fail at… that is, unless their phone conversations all begin as distinctively as this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/wazzap.jpg&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; class=&quot;image&quot; src=&quot;https://www.youtube.com/embed/W16qzZ7J5YQ&quot; frameborder=&quot;0&quot; gesture=&quot;media&quot; allow=&quot;encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/p&gt;
 
 &lt;h1 id=&quot;input-data&quot;&gt;Input data&lt;/h1&gt;
 
@@ -32,13 +34,12 @@
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb&quot;&gt; &lt;/script&gt;
+true&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;Now the first 3 second chunk of each voice looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/start_of_each.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/start_of_each.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;data-wrangling-converting-to-spectral-density-estimates&quot;&gt;Data wrangling: converting to spectral density estimates&lt;/h1&gt;
 
@@ -46,12 +47,12 @@
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide: how to read a spectral density graph&lt;/summary&gt;
-When we speak, we generate a lot of frequencies at once, and we tend to use some unique range of frequencies more than others. This is why we can say the same words as each other but sound different, it's our &quot;voice fingerprint&quot; if you like. A spectral density graph shows how much power (i.e. how loud) we give to all the available frequencies. 
+When we speak, we generate a lot of frequencies at once, and we tend to use some unique range of frequencies more than others. This is why we can say the same words as each other but sound different, it's our &quot;voice fingerprint&quot; if you like. A spectral density graph shows how much power (i.e. how loud) we give to all the available frequencies.
 
 Imagine hearing two extreme voices: a loud and deep voice (e.g. Darth Vader), or a quiet and high-pitched voice (e.g. a squeaky librarian). If you recorded their voice, and looked at their spectral densities, you'd see something like:
 
 &lt;div&gt;
-    &lt;p&gt;&lt;img src=&quot;/images/cartoon_spectrum.jpg&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/images/cartoon_spectrum.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
   &lt;/div&gt;
 
 Which one is the red and which is the blue? Vader uses deeper tones, which means lower frequencies, so his spectral curve will have a peak on the left side. As he bellows louder than a librarian, we'd expect his spectral curve to be higher as a general fact. So, Vader would generate the red curve.
@@ -59,27 +60,26 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;p&gt;One 3 second chunk’s spectral density looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/individual_spectrum.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/individual_spectrum.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;All of the spectra for each 3 second chunk of Don Hagen’s &lt;em&gt;The Elements of Eloquence&lt;/em&gt; plotted together looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/eloquence_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/eloquence_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Similarly, the spectra of Paul Noble’s &lt;em&gt;Learn German&lt;/em&gt; together looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/german_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/german_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;My hypothesis was that a machine learning algorithm could tell the difference between the 13 plots like this.&lt;/p&gt;
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb&quot;&gt; &lt;/script&gt;
+true&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our &lt;a href=&quot;https://arxiv.org/abs/1711.11218&quot;&gt;great new paper&lt;/a&gt; on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for &lt;em&gt;The Elements of Eloquence&lt;/em&gt; but found it didn’t perform as well as the above plots:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/smooth_eloquence_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/smooth_eloquence_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) — then I realised there was useful information in the different ways the speakers paused (e.g. between sentences) that should not be thrown away.&lt;/p&gt;
 
@@ -105,9 +105,9 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;p&gt;This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/builtin_classifier_info.png&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/builtin_classifier_info.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/builtin_confusion.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/builtin_confusion.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;At first I thought: i) this could just be a lucky split of the data, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.&lt;/p&gt;
 
@@ -119,7 +119,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;p&gt;Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyper-parameters). The following box plots show the accuracies over the different test runs for each method:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/different_methods.gif&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/different_methods.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In summary, logistic regression is the best options with an average of 95.76% accuracy, followed by a neural network (94.54%) and a random forest (91.88%).&lt;/p&gt;
 
@@ -485,8 +485,8 @@ time mesh by &lt;script type=&quot;math/tex&quot;&gt;\dif X(t_i,\omega) \approx 
 &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Starting value (could be random)&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;% Output vector for realisation&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; 
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;% Helper functions&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;deltaB&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
@@ -522,7 +522,7 @@ time mesh by &lt;script type=&quot;math/tex&quot;&gt;\dif X(t_i,\omega) \approx 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/math6006/gbm.png&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/math6006/gbm.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;simulating-multi-dimensional-itô-processes-by-the-euler-maruyama-scheme&quot;&gt;Simulating multi-dimensional Itô processes by the Euler-Maruyama scheme&lt;/h2&gt;
 
@@ -535,7 +535,7 @@ then take&lt;/p&gt;
 
 &lt;p&gt;The algorithm to simulate this is given below.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/math6006/multi.png&quot; alt=&quot;image&quot; class=&quot;image fit&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/math6006/multi.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;% Time step, and some useful functions to calculate dBt &amp;amp; dXt&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;

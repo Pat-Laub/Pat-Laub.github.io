@@ -56,16 +56,16 @@
      <div class="meta">
         <time class="published" datetime="2014-09-01T00:00:00+10:00">Sep 1, 2014</time>
         <a href="#" class="author"><span class="name">pjl</span><img src="/images/avatar.jpg" alt="" /></a>
-     </div>     
+     </div>
    </header>
-        <span class="image featured"><img src="/images/math6006/rast.gif" title="Rastrigin's function" /></span>
+        <img src="/images/math6006/rast.gif" title="Rastrigin's function" class="image featured" />
    <div class="post-content" itemprop="articleBody">
      <h1 id="problem">Problem</h1>
 <p>Consider minimising the test function – named Rastrigin’s function –
 defined by
 <script type="math/tex; mode=display">S(x) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).</script>
 <p>This is how it looks:
-<img src="/images/math6006/rastrigin.png" alt="image" class="image featured" />
+<img src="/images/math6006/rastrigin.png" alt="image" class="image post_image" />
 <p>One cross-entropy approach could be as follows.
 <h1 id="formulation">Formulation</h1>
 <p>State that
@@ -91,13 +91,13 @@ $\{ X_i\}$ is simply the sample mean and the sample
 covariance matrix respectively.
 <h1 id="implementation">Implementation</h1>
 <p>These are the samples evolving over time.
-<img src="/images/math6006/rast.gif" alt="image" class="image fit" />
+<img src="/images/math6006/rast.gif" alt="image" class="image post_image" />
 <p>For those samples, these are the multivariate normal distributions which are fitted to the elite samples.
-<img src="/images/math6006/rastImpDens.gif" alt="image" class="image fit" />
+<img src="/images/math6006/rastImpDens.gif" alt="image" class="image post_image" />
 <p>The objective function drops across iterations.
-<img src="/images/math6006/progress.jpg" alt="image" class="image fit" />
+<img src="/images/math6006/progress.jpg" alt="image" class="image post_image" />
 <p>This is the same plot as above but on a log scale.
-<img src="/images/math6006/progress2.jpg" alt="image" class="image fit" />
+<img src="/images/math6006/progress2.jpg" alt="image" class="image post_image" />
    </div>
  </article>
  <div id="disqus_thread"></div>

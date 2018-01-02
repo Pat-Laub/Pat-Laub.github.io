@@ -56,9 +56,9 @@
      <div class="meta">
         <time class="published" datetime="2014-09-01T00:00:00+10:00">Sep 1, 2014</time>
         <a href="#" class="author"><span class="name">pjl</span><img src="/images/avatar.jpg" alt="" /></a>
-     </div>     
+     </div>
    </header>
-        <span class="image featured"><img src="/images/math6006/multi.png" title="A multidimensional SDE" /></span>
+        <img src="/images/math6006/multi.png" title="A multidimensional SDE" class="image featured" />
    <div class="post-content" itemprop="articleBody">
      <h2 id="background-brownian-motion">Background: Brownian Motion</h2>
 <p>$\newcommand{\dif}{\,\mathrm{d}} $
@@ -147,8 +147,8 @@ time mesh by <script type="math/tex">\dif X(t_i,\omega) \approx \Delta X(t_i,\om
 <span class="n">X_0</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">% Starting value (could be random)</span>
 
 <span class="c1">% Output vector for realisation</span>
-<span class="n">X</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">));</span> 
-<span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">X_0</span><span class="p">;</span> 
+<span class="n">X</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+<span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">X_0</span><span class="p">;</span>
 
 <span class="c1">% Helper functions</span>
 <span class="n">deltaB</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">deltaT</span><span class="p">)</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">deltaT</span><span class="p">));</span>
@@ -179,7 +179,7 @@ time mesh by <script type="math/tex">\dif X(t_i,\omega) \approx \Delta X(t_i,\om
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">);</span> <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'X(t)'</span><span class="p">);</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'Example GBM'</span><span class="p">);</span>
 </code></pre>
 </div>
-<p><img src="/images/math6006/gbm.png" alt="image" class="image fit" />
+<p><img src="/images/math6006/gbm.png" alt="image" class="image post_image" />
 <h2 id="simulating-multi-dimensional-itô-processes-by-the-euler-maruyama-scheme">Simulating multi-dimensional Itô processes by the Euler-Maruyama scheme</h2>
 <p>Equivalently the Euler-Maruyama method extends to multiple dimensions
 and works on general Itô processes. For example, for
@@ -187,7 +187,7 @@ $({\boldsymbol{X}}(t, \omega) \in {\mathbb{R}}^2 : t \geq 0, \omega \in \Omega)$
 then take
 <script type="math/tex; mode=display">\dif {\boldsymbol{X}}(t, \omega) = -{\boldsymbol{X}}(t, \omega) \dif t + (\sin(t), \cos(t))^T \dif {\boldsymbol{B}}(t).</script>
 <p>The algorithm to simulate this is given below.
-<p><img src="/images/math6006/multi.png" alt="image" class="image fit" />
+<p><img src="/images/math6006/multi.png" alt="image" class="image post_image" />
 <div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% Time step, and some useful functions to calculate dBt &amp; dXt</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">;</span>
 <span class="n">dBt</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
