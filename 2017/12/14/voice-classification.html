@@ -85,7 +85,8 @@
 <p>After recording, I found it took 607 MB of space to store, so I downgraded the quality of the audio to match the quality of a telephone call (8 kHz) and converted everything from stereo to mono — this reduced the space footprint to 54.2 MB. The following Mathematica code does this quality downgrading:
 <details>
 <summary>Show/hide code</summary>
-true<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb"> </script>
+<noscript><pre>400: Invalid request
+</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb"> </script>
 </details>
 <p>Now the first 3 second chunk of each voice looks like:
 <p><img src="/images/start_of_each.gif" alt="image" class="image post_image" />
@@ -109,7 +110,8 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 <p>My hypothesis was that a machine learning algorithm could tell the difference between the 13 plots like this.
 <details>
 <summary>Show/hide code</summary>
-true<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb"> </script>
+<noscript><pre>400: Invalid request
+</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb"> </script>
 </details>
 <p>To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our <a href="https://arxiv.org/abs/1711.11218">great new paper</a> on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for <em>The Elements of Eloquence</em> but found it didn’t perform as well as the above plots:
 <p><img src="/images/smooth_eloquence_spectra.gif" alt="image" class="image post_image" />

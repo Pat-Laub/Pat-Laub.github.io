@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2018-01-02T14:31:00+10:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
-</subtitle><entry><title type="html">Who is it?</title><link href="https://pat-laub.github.io/2017/12/14/voice-classification.html" rel="alternate" type="text/html" title="Who is it?" /><published>2017-12-14T00:00:00+10:00</published><updated>2017-12-14T00:00:00+10:00</updated><id>https://pat-laub.github.io/2017/12/14/voice-classification</id><content type="html" xml:base="https://pat-laub.github.io/2017/12/14/voice-classification.html">&lt;h1 id=&quot;problem&quot;&gt;Problem&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2018-01-07T12:19:07+10:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
+</subtitle><entry><title type="html">Neural style transfer</title><link href="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html" rel="alternate" type="text/html" title="Neural style transfer" /><published>2018-01-07T00:00:00+10:00</published><updated>2018-01-07T00:00:00+10:00</updated><id>https://pat-laub.github.io/2018/01/07/neural-style-transfer</id><content type="html" xml:base="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html">&lt;p&gt;This is a Neural Style Transfer I recently made with Tensorflow, where the content is this photo of myself hiking in Greenland in 2016:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/content.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;with the style of my favourite painting Wanderer above the Sea of Fog by Caspar David Friedrich (1818):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/style.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;</content><author><name>pjl</name></author><category term="code" /><summary type="html">This is a Neural Style Transfer I recently made with Tensorflow, where the content is a photo of myself hiking in Greenland in 2016, with the style of my favourite painting Wanderer above the Sea of Fog by Caspar David Friedrich (1818).</summary></entry><entry><title type="html">Who is it?</title><link href="https://pat-laub.github.io/2017/12/14/voice-classification.html" rel="alternate" type="text/html" title="Who is it?" /><published>2017-12-14T00:00:00+10:00</published><updated>2017-12-14T00:00:00+10:00</updated><id>https://pat-laub.github.io/2017/12/14/voice-classification</id><content type="html" xml:base="https://pat-laub.github.io/2017/12/14/voice-classification.html">&lt;h1 id=&quot;problem&quot;&gt;Problem&lt;/h1&gt;
 
 &lt;p&gt;Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it’s a task that humans (without the benefit of caller-id) often fail at… that is, unless their phone conversations all begin as distinctively as this:&lt;/p&gt;
 
@@ -34,7 +40,8 @@
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-true&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb&quot;&gt; &lt;/script&gt;
+&lt;noscript&gt;&lt;pre&gt;400: Invalid request
+&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;Now the first 3 second chunk of each voice looks like:&lt;/p&gt;
@@ -74,7 +81,8 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-true&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb&quot;&gt; &lt;/script&gt;
+&lt;noscript&gt;&lt;pre&gt;400: Invalid request
+&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our &lt;a href=&quot;https://arxiv.org/abs/1711.11218&quot;&gt;great new paper&lt;/a&gt; on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for &lt;em&gt;The Elements of Eloquence&lt;/em&gt; but found it didn’t perform as well as the above plots:&lt;/p&gt;
@@ -354,249 +362,4 @@ in statistics/survey theory.&lt;/p&gt;
   &lt;li&gt;Cochran, W. G. (2007). Sampling techniques. John Wiley &amp;amp; Sons.&lt;/li&gt;
   &lt;li&gt;Ripley, B. D. (2009). Stochastic simulation (Vol. 316). John Wiley &amp;amp;
 Sons.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>pjl</name></author><category term="math" /><category term="monte carlo" /><summary type="html">Notes made for an informal lecture on the Monte Carlo tricks available for variance reduction. This was made for a reading course when we worked through Søren's Monte Carlo book.</summary></entry><entry><title type="html">Stochastic differential equations</title><link href="https://pat-laub.github.io/2014/09/01/sdes.html" rel="alternate" type="text/html" title="Stochastic differential equations" /><published>2014-09-01T00:00:00+10:00</published><updated>2014-09-01T00:00:00+10:00</updated><id>https://pat-laub.github.io/2014/09/01/sdes</id><content type="html" xml:base="https://pat-laub.github.io/2014/09/01/sdes.html">&lt;h2 id=&quot;background-brownian-motion&quot;&gt;Background: Brownian Motion&lt;/h2&gt;
-&lt;p&gt;$\newcommand{\dif}{\,\mathrm{d}} $
-A process $(B(t, \omega) : t \geq 0, \omega \in \Omega)$ is a standard
-Brownian Motion iff&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;$B(0) = 0$,&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Independent increments, i.e
-$\forall~0 \leq t_1 \leq t_2 \leq t_3 \leq t_4$ then&lt;/p&gt;
-
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\left( B(t_4)-B(t_3)~|~B(t_2)-B(t_1) \right) \sim B(t_4)-B(t_3),&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;$\forall~t,h\geq0 : B(t+h)-B(t) \sim \mathrm{N}(0,h)$,&lt;/li&gt;
-  &lt;li&gt;$B(t)$ is almost-surely continuous w.r.t $t$.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;itô-integral&quot;&gt;Itô Integral&lt;/h2&gt;
-
-&lt;p&gt;An Itô integral on $[0, T]$ is first defined for step processes. Say
-that the process $(X_n(t, \omega) : t \geq 0, \omega \in \Omega)$ is of
-the form&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;X_n(t, \omega) = \sum_{i=1}^n A_i(\omega) {\boldsymbol{1}}_{(t_i, t_{i+1}]}(t)&lt;/script&gt;
-
-&lt;p&gt;for $\omega \in \Omega$, $0 \leq t_1 \leq t_2 \leq {…}\leq t_n \leq T$
-and ${\mathcal{F}}(t_i)$-measurable $A_i$. Then define the Itô integral
-to be&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^T X(s, \omega) \dif B(s) = \sum_{i=1}^n A_i(\omega)(B(t_{i+1})-B(t_i)).&lt;/script&gt;
-
-&lt;p&gt;Next consider an $(X(t, \omega) : t \geq 0, \omega \in \Omega)$
-process&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. We will approximate the process by a sequence of step
-processes
-${ X_n(t, \omega) : n \in {\mathbb{N}}, \omega \in \Omega }$. For all
-such $X(t, \omega)$ there exists an approximating sequence that, for all
-$t \geq 0$, satisfies&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lim_{n \rightarrow \infty} {\mathbb{E}}\left[ (X_n(t,\omega) - X(t,\omega))^2 \right] = 0.&lt;/script&gt;
-
-&lt;p&gt;So define the general Itô integral to be the limit of integrals of step
-processes, i.e.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^T X(s, \omega) \dif B(s) = \lim_{n\rightarrow\infty} \int_0^T X_n(s, \omega) \dif B(s).&lt;/script&gt;
-
-&lt;h2 id=&quot;itô-processes&quot;&gt;Itô Processes&lt;/h2&gt;
-
-&lt;p&gt;For measurable processes $(a(t, \omega) : t \geq 0, \omega \in \Omega)$
-and $(b(t, \omega) : t \geq 0, \omega \in \Omega)$ then an Itô process
-$(X(t, \omega) : t \geq 0, \omega \in \Omega)$ is written as&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\dif X(t, \omega) = a(t, \omega) \dif t + b(t, \omega) \dif B(t, \omega)&lt;/script&gt;
-
-&lt;p&gt;which is shorthand for&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;X(t, \omega) = \int_0^t a(s, \omega) \dif s + \int_0^t b(s, \omega) \dif B(s, \omega).&lt;/script&gt;
-
-&lt;h2 id=&quot;diffusion-processes-subset-itô-processes&quot;&gt;Diffusion Processes $\subset$ Itô Processes&lt;/h2&gt;
-
-&lt;p&gt;A pair of deterministic functions $a(t, x)$ and $b(t, x)$ define a
-diffusion process $(X(t, \omega) : t \geq 0, \omega \in \Omega)$ by&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\dif X(t, \omega) = a(t, X(t, \omega)) \dif t + b(t, X(t,\omega)) \dif B(t, \omega)&lt;/script&gt;
-
-&lt;p&gt;which is shorthand for&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;X(t, \omega) = \int_0^t a(s, X(s,\omega)) \dif s + \int_0^t b(s, X(s, \omega)) \dif B(s, \omega).&lt;/script&gt;
-
-&lt;h2 id=&quot;simulating-brownian-motion&quot;&gt;Simulating Brownian Motion&lt;/h2&gt;
-
-&lt;h3 id=&quot;at-some-fixed-time-t&quot;&gt;At some fixed time $T$&lt;/h3&gt;
-
-&lt;p&gt;As $B(T) \sim N(0, T)$ then simply generate (noting that MATLAB uses
-standard deviation instead of variance for many functions)&lt;/p&gt;
-
-&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Time to sample the Brownian motion&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;B_T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Generate sample&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;on-some-finite-mesh&quot;&gt;On some finite mesh&lt;/h3&gt;
-
-&lt;p&gt;Say for a mesh ${ t_1, {…}, t_n }$ then we know that
-$B(t_{i+1})-B_(t_i) \sim \mathrm{N}(0, t_{i+1}-t_i)$ so&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;B(t_k,\omega) = B(t_1,\omega) + \sum_{i=1}^k B(t_i,\omega)-B(t_{i-1},\omega).&lt;/script&gt;
-
-&lt;p&gt;Then to simulate&lt;/p&gt;
-
-&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Setup time mesh (need not be an evenly spaced grid)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;timeDiffs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Calculate the time increments&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;incs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timeDiffs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Generate the BM increments&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cumsum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;incs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Add them all up&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;or in one line&lt;/p&gt;
-
-&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cumsum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;simulating-diffusion-processes-by-the-euler-maruyama-scheme&quot;&gt;Simulating diffusion processes by the Euler-Maruyama scheme&lt;/h2&gt;
-
-&lt;p&gt;Consider some time mesh ${ t_1, {…}, t_n }$. Approximate
-$\dif t_i, \dif B(t_i)$ by&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta t_i := t_i-t_{i-1}, \quad \Delta B(t_i) := B(t_i)-B(t_{i-1})&lt;/script&gt;
-
-&lt;p&gt;respectively and say&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta X(t_i,\omega) := a(t_i, X(t_{i-1},\omega)) \Delta t_i + b(t_i, X(t_{i-1},\omega)) \Delta B(t_i).&lt;/script&gt;
-
-&lt;p&gt;The Euler-Maruyama scheme approximates a diffusion process on a given
-time mesh by &lt;script type=&quot;math/tex&quot;&gt;\dif X(t_i,\omega) \approx \Delta X(t_i,\omega)&lt;/script&gt; so&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;X(t_n,\omega) \approx X(0,\omega) + \sum_{i=1}^n \Delta X(t_i,\omega).&lt;/script&gt;
-
-&lt;p&gt;Say for example geometric Brownian motion is being simulated, i.e.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\dif X(t,\omega) = \mu X(t,\omega) \dif t + \sigma X(t,\omega) \dif B(t)&lt;/script&gt;
-
-&lt;p&gt;for $\mu, \sigma \in {\mathbb{R}}$.&lt;/p&gt;
-
-&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;% Constants&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Time grid&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Drift&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Diffusion&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;% Starting value (could be random)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;% Output vector for realisation&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;% Helper functions&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;deltaB&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;deltaX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deltaX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deltaT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'X(t)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Example GBM'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Or simply use MATLAB’s builtin SDE toolbox, the ‘gbm’ function&lt;/p&gt;
-
-&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nPeriods&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gbm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'StartState'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;simulate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nPeriods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'DeltaTime'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'X(t)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Example GBM'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;or more generally just using the ‘sde’ function&lt;/p&gt;
-
-&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nPeriods&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sde&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'StartState'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;simulate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nPeriods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'DeltaTime'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'X(t)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Example GBM'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/math6006/gbm.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;simulating-multi-dimensional-itô-processes-by-the-euler-maruyama-scheme&quot;&gt;Simulating multi-dimensional Itô processes by the Euler-Maruyama scheme&lt;/h2&gt;
-
-&lt;p&gt;Equivalently the Euler-Maruyama method extends to multiple dimensions
-and works on general Itô processes. For example, for
-$({\boldsymbol{X}}(t, \omega) \in {\mathbb{R}}^2 : t \geq 0, \omega \in \Omega)$
-then take&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\dif {\boldsymbol{X}}(t, \omega) = -{\boldsymbol{X}}(t, \omega) \dif t + (\sin(t), \cos(t))^T \dif {\boldsymbol{B}}(t).&lt;/script&gt;
-
-&lt;p&gt;The algorithm to simulate this is given below.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/math6006/multi.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;% Time step, and some useful functions to calculate dBt &amp;amp; dXt&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;dBt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normrnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;dX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dBt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;% Time horizon to plot over&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;% Xt simulated values&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;% Perform Euler-Maruyama simulation&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;numel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(:,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(:,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(:,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;% Plot the results&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;milsteins-method&quot;&gt;Milstein’s Method&lt;/h2&gt;
-
-&lt;p&gt;Remember Taylor’s expansion about $(x_0, y_0)$ of a bivariate function&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-f(x,y) \approx &amp;f(x_0,y_0)~+ \\
-               &amp;f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)~+ \\
-               &amp;\frac{1}{2}f_{xx}(x_0,y_0)(x-x_0)^2 + \frac{1}{2}f_{yy}(x_0,y_0)(y-y_0)^2 + f_{xy}(x_0,y_0)(x-x_0)(y-y_0)\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;so therefore if $(x,y)$ is close to $(x_0,y_0)$ then an approximation
-for the derivative is&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-f(x,y)-f(x_0,y_0) \approx &amp;f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)~+ \\
-       &amp;\frac{1}{2}f_{xx}(x_0,y_0)(x-x_0)^2 + \frac{1}{2}f_{yy}(x_0,y_0)(y-y_0)^2 + f_{xy}(x_0,y_0)(x-x_0)(y-y_0)\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;If we apply this to our SDE then&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-\Delta X(t_i) \approx &amp;a(t_{i-1}, X(t_{i-1}))\Delta t_i + b(t_{i-1}, X(t_{i-1})) \Delta B(t_i)~+ \\
-        &amp; + \frac{1}{2}  \frac{\dif b(t_{i-1}, X(t_{i-1}))}{\dif X(t_{i-1})} \Delta t_i \end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;as&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta t_i \approx 0, \quad \Delta t_i \Delta B(t_i) \approx 0, \quad \left(\Delta B(t_i)\right)^2 \approx \Delta t_i.&lt;/script&gt;
-
-&lt;p&gt;References: Higham, D. J. (2001). An algorithmic introduction to
-numerical simulation of stochastic differential equations. SIAM review,
-43(3), 525-546.
-Available at: http://www.caam.rice.edu/~cox/stoch/dhigham.pdf&lt;/p&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt; writing $B(t)$ for $B(t,\omega)$ &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt; which is progressively measurable and has
-${\mathbb{E}}[\int_0^\infty X(s)^s \dif s] &amp;lt; \infty$ &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>pjl</name></author><category term="math" /><category term="monte carlo" /><summary type="html">Notes for an informal lecture on simulating SDEs, considering basic diffusion processes with Matlab code.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>pjl</name></author><category term="math" /><category term="monte carlo" /><summary type="html">Notes made for an informal lecture on the Monte Carlo tricks available for variance reduction. This was made for a reading course when we worked through Søren's Monte Carlo book.</summary></entry></feed>
