@@ -10,6 +10,7 @@ excerpt: >
     Neural Style Transfer is a technique for transforming an image (like this photo of the seascape in Qingdao) into the style of another image, typically a painting (here the style is of Hokusai's 'Great Wave off Kanagawa').
 ---
 
+
 I've been playing around with _Neural Style Transfer_ (NST) for a while, and after sharing some creations with friends I got two questions: "how did you make this?" and "can you explain a bit about what is happening here?". So, this post will do both.
 
 After explaining the [basic premise of NST](#what-is-neural-style-transfer), I'll give [some relevant background](#some-background) on neural networks, describe [the NST algorithm](#the-nst-algorithm), and outline [the specific steps for generating these](#what-specific-steps-did-i-take-to-make-the-images).
@@ -35,6 +36,10 @@ where the content is this photo of myself (looking a bit like a ninja) hiking in
 with the style of my favourite painting Wanderer above the Sea of Fog by Caspar David Friedrich (1818):
 
 ![image]({% link /images/wanderer.jpg %}){: .image .post_image}
+
+This is the algorithm in progress:
+
+![image]({% link /images/ninja.gif %}){: .image .post_image}
 
 # Some background
 

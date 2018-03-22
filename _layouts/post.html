@@ -30,7 +30,9 @@ layout: default
 
   </article>
 
-  {% include disqus_comments.html %}
+  {% if jekyll.environment == 'production' %}
+    {% include disqus_comments.html %}
+  {% endif %}
 
 </div>
 
