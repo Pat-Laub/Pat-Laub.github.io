@@ -8,6 +8,7 @@ excerpt: >
     Notes made for an informal lecture on the Monte Carlo tricks available
     for variance reduction. This was made for a reading course when we
     worked through Søren's Monte Carlo book.
+mathjax: true
 ---
 
 
@@ -33,18 +34,18 @@ $$
 
 Another approach is to not sample $N$ random variables independently,
 but $N/2$ pairs of variables which have negative correlation. I.e.
-sample 
+sample
 
 $$\{ (Z_1, Z^*_1), (Z_2, Z^*_2), \dots, (Z_{N/2}, Z^*_{N/2}) \}$$
 
 where they are all of the same distribution and independent except for
-$Z_i$ with $Z^*_i$. The estimator is then 
+$Z_i$ with $Z^*_i$. The estimator is then
 
 $$\begin{align}
     \hat{l}_{AS} &= \frac{1}{N/2} \sum_{i=1}^{N/2} \frac{Z_i+Z^*_i}{2} \\
-        &= \frac{1}{N} \sum_{i=1}^{N/2} Z_i+Z^*_i.\end{align}$$ 
+        &= \frac{1}{N} \sum_{i=1}^{N/2} Z_i+Z^*_i.\end{align}$$
 
-This has variance 
+This has variance
 
 $$\begin{align}
 \sigma^2_{AS} &= \frac{1}{N^2} {\mathrm{Var}}\left[\sum_{i=1}^{N/2} Z_i+Z^*_i \right] \\
@@ -52,7 +53,7 @@ $$\begin{align}
     &= \frac{1}{2N} \left[{\mathrm{Var}}[Z_1]+{\mathrm{Var}}[Z^*_1] + 2{\mathrm{Cov}}[Z_1, Z^*_1] \right]  \\
     &= \frac{1}{2N} \left[2{\mathrm{Var}}[Z_1] + 2{\mathrm{Cov}}[Z_1, Z^*_1] \right]  \\
     &= \frac{\mathrm{Var}[Z_1] + {\mathrm{Cov}}[Z_1, Z^*_1]}{N} \\
-\Rightarrow \sigma^2_{AS} &= \sigma^2_{CMC} + \frac{\mathrm{Cov}[Z_1, Z^*_1]}{N}\end{align}$$ 
+\Rightarrow \sigma^2_{AS} &= \sigma^2_{CMC} + \frac{\mathrm{Cov}[Z_1, Z^*_1]}{N}\end{align}$$
 
 Therefore
 
@@ -76,7 +77,7 @@ The $\tilde{Y}$ is called a control variable for $Y$. Use the estimator
 
 $$\hat{l}_{CV}  = \frac{1}{N} \sum_{k=1}^N \left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right].$$
 
-This will have variance 
+This will have variance
 
 $$\begin{align}
  \sigma^2_{CV} &= \frac{1}{N^2} {\mathrm{Var}}\left[ \sum_{k=1}^N \left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right] \right] \\
@@ -86,7 +87,7 @@ $$\begin{align}
   &= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + (-\alpha)^2 {\mathrm{Var}}[\tilde{Y_1}] + 2{\mathrm{Cov}}[Y_1, -\alpha (\tilde{Y_1} - \tilde{l})] \right] \\
  \end{align}$$
 
-Note that: 
+Note that:
 
 $$\begin{align}
     {\mathrm{Cov}}[Y_1, -\alpha(\tilde{Y}_1 - \tilde{l})] &= {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(-\alpha(\tilde{Y}_1 - \tilde{l}) - {\mathbb{E}}[-\alpha(\tilde{Y}_1 - \tilde{l})])] \\
@@ -100,7 +101,7 @@ So therefore
 $$\sigma^2_{CV} = \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \alpha^2 {\mathrm{Var}}[\tilde{Y_1}] - 2\alpha {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right]$$
 
 To find the $\alpha$ which minimises the variance then look for
-stationary points 
+stationary points
 
 $$\begin{align}
  \frac{\mathrm{d} \sigma^2_{CV}}{\mathrm{d} \alpha} = 0 &= \frac{1}{N} \left[ 2\alpha {\mathrm{Var}}[\tilde{Y_1}] - 2{\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\

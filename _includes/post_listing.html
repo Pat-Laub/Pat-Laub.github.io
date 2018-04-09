@@ -5,8 +5,8 @@
 {% assign url_len = page.url | size %}
 {% assign filename = page.url | remove: "/" | split: '.' | first %}
 
-{% for post in site.posts %}
-{% if url_len == 1 or post.tags contains filename %}
+
+{% for post in paginator.posts %}
   <article class="post">
         <header>
           <div class="title">
@@ -39,14 +39,24 @@
           </ul>
         </footer>
       </article>
-  {% endif %}
 {% endfor %}
 
 <!-- Pagination -->
-<!-- <ul class="actions pagination">
-  <li><a href="" class="disabled button big previous">Previous Page</a></li>
-  <li><a href="#" class="button big next">Next Page</a></li>
+<ul class="actions pagination">
+  <li>
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="button big previous">Previous Page</a>
+    {% else %}
+    <a href="" class="disabled button big previous">Previous Page</a>
+    {% endif %}
+  </li>
+  <li>
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="button big next">Next Page</a>
+    {% else %}
+    <a href="" class="disabled button big next">Next Page</a>
+    {% endif %}
+  </li>
 </ul>
- -->
 
 </div>

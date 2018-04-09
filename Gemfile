@@ -33,3 +33,6 @@ gem 'jekyll-scholar'
 gem 'rmagick'
 
 # gem 'pygments.rb'
+
+gem 'jekyll-paginate-v2'
+gem 'unicode_utils'

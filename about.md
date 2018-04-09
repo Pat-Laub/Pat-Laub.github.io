@@ -1,6 +1,6 @@
 ---
 layout: about
-title: About
+title: About | pjl
 ---
 
 Hi! I'm Pat Laub, a mathematician & software engineer currently finishing a PhD in applied probability (with a focus on computational methods).

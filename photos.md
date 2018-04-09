@@ -1,8 +1,8 @@
 ---
 layout: category_home
-title: Code | pjl
-permalink: /code/
+title: Photos | pjl
+permalink: /photos/
 pagination:
   enabled: true
-  tag: code
+  tag: photos
 ---

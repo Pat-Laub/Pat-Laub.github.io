@@ -10,6 +10,7 @@ excerpt: >
     A review of algorithms for the SRF problem -- that is, when you want to
     find a root of a function, but you only have access to a random function
     whose mean is the true underlying function.
+mathjax: true
 ---
 
 

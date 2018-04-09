@@ -8,8 +8,8 @@
 #gems:
 #  - jekyll-art-gallery-generator
 
-source_dir: _photos  # original images, that will be cropped according to the size_limit, thumbnailed and posted
-title: Photos
+source_dir: _portfolios  # original images, that will be cropped according to the size_limit, thumbnailed and posted
+title: Portfolio
 #sort_field: "timestamp"
 sort_field: "title" # sorting of the galleries on the gallery index page
 #sort_reverse: true
@@ -31,7 +31,6 @@ size_limit: 100000 # maximum size, px in either dimention, to limit the images t
 #watermark: Watermark2_200x200.png
 
 galleries:
-  
   decade:
     title: Decade
     description: Some of my favourite photos

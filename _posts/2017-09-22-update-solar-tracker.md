@@ -8,11 +8,11 @@ banner: solar_tracker.jpg
 banner_alt: The solar tracker in its natural environment
 ---
 
-A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app. 
+A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app.
 
 ![image](/images/solar_tracker_login.jpg){: .image .post_image}
 
-These parameters were hidden in some big incomprehensible XML file, which one needs to access via FTP. My app was built in C#/.NET using the WPF (Windows Presentation Foundation) framework. It connects with Google Maps to easily set the lat./long. by using their magic search. 
+These parameters were hidden in some big incomprehensible XML file, which one needs to access via FTP. My app was built in C#/.NET using the WPF (Windows Presentation Foundation) framework. It connects with Google Maps to easily set the lat./long. by using their magic search.
 
 ![image](/images/solar_tracker_map.jpg){: .image .post_image}
 

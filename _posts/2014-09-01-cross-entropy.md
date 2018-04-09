@@ -10,6 +10,7 @@ excerpt: >
     Cross-entropy, when used for optimization, is almost like a genetic algorithm.
     It creates a sequence of distributions which describe the location and certainty of
     the unknown minimum.
+mathjax: true
 ---
 Problem
 =======
