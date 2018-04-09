@@ -4,7 +4,7 @@
  <meta charset="utf-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Who is it? | pjl</title>
+ <title>Who is it?</title>
  <meta name="description" content="Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practi...">
 <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
@@ -52,10 +52,10 @@
  <nav class="links">
    <ul>
      <li><a href="/about.html">About</a>
-     <li><a href="/math.html">Math</a>
-     <li><a href="/code.html">Code</a>
+     <li><a href="/math/">Math</a>
+     <li><a href="/code/">Code</a>
      <li><a href="/photos/">Photos</a>
-     <li><a href="/books.html">Books</a>
+     <li><a href="/books/">Books</a>
    </ul>
  </nav>
 </header>
@@ -98,8 +98,7 @@
 <p>After recording, I found it took 607 MB of space to store, so I downgraded the quality of the audio to match the quality of a telephone call (8 kHz) and converted everything from stereo to mono — this reduced the space footprint to 54.2 MB. The following Mathematica code does this quality downgrading:
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>400: Invalid request
-</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb"> </script>
+<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb"> </script>
 </details>
 <p>Now the first 3 second chunk of each voice looks like:
 <p><img src="/images/start_of_each.gif" alt="image" class="image post_image" />
@@ -123,8 +122,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 <p>My hypothesis was that a machine learning algorithm could tell the difference between the 13 plots like this.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>400: Invalid request
-</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb"> </script>
+<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb"> </script>
 </details>
 <p>To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our <a href="https://arxiv.org/abs/1711.11218">great new paper</a> on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for <em>The Elements of Eloquence</em> but found it didn’t perform as well as the above plots:
 <p><img src="/images/smooth_eloquence_spectra.gif" alt="image" class="image post_image" />
@@ -133,15 +131,13 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 <p>Next, I needed to split the data into a training and test set. This proved to be quite cumbersome — and I’m a bit surprised Mathematica has nothing for this built-in.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I split the 75% of the data into the training set, and the last 25% to the test set, with the split done randomly but also stratified across each different voice.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>400: Invalid request
-</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=train_test_stratified_split.nb"> </script>
+<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=train_test_stratified_split.nb"> </script>
 </details>
 <h1 id="classifying">Classifying</h1>
 <p>If we just run the most hands-free classification (the level of simplicity of this is very impressive) we do the following.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>400: Invalid request
-</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb"> </script>
+<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb"> </script>
 </details>
 <p>This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:
 <p><img src="/images/builtin_classifier_info.png" alt="image" class="image post_image" />
@@ -149,8 +145,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 <p>At first I thought: i) this could just be a lucky split of the data, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>400: Invalid request
-</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb"> </script>
+<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb"> </script>
 </details>
 <p>Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyper-parameters). The following box plots show the accuracies over the different test runs for each method:
 <p><img src="/images/different_methods.gif" alt="image" class="image post_image" />
@@ -159,15 +154,13 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 <p>I tried to pry into the classifiers which Mathematica had created for me, but found it to be almost impossible. So, I exported the data so that I could compare with Python’s ML options.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>400: Invalid request
-</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb"> </script>
+<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb"> </script>
 </details>
 <p>The resulting CSV file is <a href="/data/audioData.csv">available here</a> if you’d like to have a play with this.
 <p>The Python code to recreate these results is much simpler — <a href="http://scikit-learn.org/">scikit-learn</a> has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>400: Invalid request
-</pre></noscript><script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=voices.py"> </script>
+<script src="https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=voices.py"> </script>
 </details>
 <p>This code reports an average accuracy of 97.21%, a slight improvement over the Mathematica.
 <h1 id="conclusion">Conclusion</h1>
@@ -201,9 +194,6 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
    </div>
     <script src="/assets/js/skel.min.js"></script>
     <script src="/assets/js/util.js"></script>

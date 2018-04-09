@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2018-04-09T16:05:58+08:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2018-04-09T23:34:04+08:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
 </subtitle><entry><title type="html">On neural style transfer</title><link href="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html" rel="alternate" type="text/html" title="On neural style transfer" /><published>2018-01-07T00:00:00+08:00</published><updated>2018-01-07T00:00:00+08:00</updated><id>https://pat-laub.github.io/2018/01/07/neural-style-transfer</id><content type="html" xml:base="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html">&lt;p&gt;I’ve been playing around with &lt;em&gt;Neural Style Transfer&lt;/em&gt; (NST) for a while, and after sharing some creations with friends I got two questions: “how did you make this?” and “can you explain a bit about what is happening here?”. So, this post will do both.&lt;/p&gt;
 
 &lt;p&gt;After explaining the &lt;a href=&quot;#what-is-neural-style-transfer&quot;&gt;basic premise of NST&lt;/a&gt;, I’ll give &lt;a href=&quot;#some-background&quot;&gt;some relevant background&lt;/a&gt; on neural networks, describe &lt;a href=&quot;#the-nst-algorithm&quot;&gt;the NST algorithm&lt;/a&gt;, and outline &lt;a href=&quot;#what-specific-steps-did-i-take-to-make-the-images&quot;&gt;the specific steps for generating these&lt;/a&gt;.&lt;/p&gt;
@@ -181,8 +181,7 @@ It starts with an image where the pixels are set randomly (this looks like the �
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;Now the first 3 second chunk of each voice looks like:&lt;/p&gt;
@@ -222,8 +221,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our &lt;a href=&quot;https://arxiv.org/abs/1711.11218&quot;&gt;great new paper&lt;/a&gt; on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for &lt;em&gt;The Elements of Eloquence&lt;/em&gt; but found it didn’t perform as well as the above plots:&lt;/p&gt;
@@ -238,8 +236,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=train_test_stratified_split.nb&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=train_test_stratified_split.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;h1 id=&quot;classifying&quot;&gt;Classifying&lt;/h1&gt;
@@ -248,8 +245,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:&lt;/p&gt;
@@ -262,8 +258,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyper-parameters). The following box plots show the accuracies over the different test runs for each method:&lt;/p&gt;
@@ -278,8 +273,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;The resulting CSV file is &lt;a href=&quot;/data/audioData.csv&quot;&gt;available here&lt;/a&gt; if you’d like to have a play with this.&lt;/p&gt;
@@ -288,8 +282,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request
-&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=voices.py&quot;&gt; &lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/41d7d5380a9693c37991e845ae15f3b9.js?file=voices.py&quot;&gt; &lt;/script&gt;
 &lt;/details&gt;
 
 &lt;p&gt;This code reports an average accuracy of 97.21%, a slight improvement over the Mathematica.&lt;/p&gt;
@@ -312,7 +305,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
       &lt;p&gt;Please get in touch if you know a better way to do this! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>pjl</name></author><category term="code" /><category term="math" /><category term="ml" /><summary type="html">Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell from a few seconds of speech who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python).</summary></entry><entry><title type="html">A decade of photos</title><link href="https://pat-laub.github.io/2017/12/07/added-albums.html" rel="alternate" type="text/html" title="A decade of photos" /><published>2017-12-07T00:00:00+08:00</published><updated>2017-12-07T00:00:00+08:00</updated><id>https://pat-laub.github.io/2017/12/07/added-albums</id><content type="html" xml:base="https://pat-laub.github.io/2017/12/07/added-albums.html">&lt;p&gt;Click &lt;a href=&quot;/photos/decade/&quot;&gt;&lt;strong&gt;here to see some of my favourite photos&lt;/strong&gt;&lt;/a&gt; which I took (excluding, of course, the &lt;a href=&quot;/photos/decade/two_hikers,_greenland.jpg&quot;&gt;one which I’m one&lt;/a&gt;) over the last decade.  The code I used is based on &lt;a href=&quot;https://github.com/alexivkin/Jekyll-Art-Gallery-Plugin&quot;&gt;alexivkin’s plugin&lt;/a&gt; and &lt;a href=&quot;http://fancyapps.com/fancybox/3/&quot;&gt;fancyBox3&lt;/a&gt;, both of which I found great and easy to setup.&lt;/p&gt;</content><author><name>pjl</name></author><category term="code" /><category term="photos" /><category term="webdev" /><summary type="html">Click here to see some of my favourite photos which I took (excluding, of course, the one which I’m one) over the last decade. The code I used is based on alexivkin’s plugin and fancyBox3, both of which I found great and easy to setup.</summary></entry><entry><title type="html">Here comes the sun</title><link href="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html" rel="alternate" type="text/html" title="Here comes the sun" /><published>2017-09-22T00:00:00+08:00</published><updated>2017-09-22T00:00:00+08:00</updated><id>https://pat-laub.github.io/2017/09/22/update-solar-tracker</id><content type="html" xml:base="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html">&lt;p&gt;A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app.&lt;/p&gt;
+&lt;/div&gt;</content><author><name>pjl</name></author><category term="code" /><category term="math" /><category term="ml" /><summary type="html">Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell from a few seconds of speech who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python).</summary></entry><entry><title type="html">A decade of photos</title><link href="https://pat-laub.github.io/2017/12/07/added-albums.html" rel="alternate" type="text/html" title="A decade of photos" /><published>2017-12-07T00:00:00+08:00</published><updated>2017-12-07T00:00:00+08:00</updated><id>https://pat-laub.github.io/2017/12/07/added-albums</id><content type="html" xml:base="https://pat-laub.github.io/2017/12/07/added-albums.html">&lt;p&gt;Click &lt;a href=&quot;/portfolios/decade/&quot;&gt;&lt;strong&gt;here to see some of my favourite photos&lt;/strong&gt;&lt;/a&gt; which I took (excluding, of course, the &lt;a href=&quot;/portfolios/decade/two_hikers,_greenland.jpg&quot;&gt;one which I’m one&lt;/a&gt;) over the last decade.  The code I used is based on &lt;a href=&quot;https://github.com/alexivkin/Jekyll-Art-Gallery-Plugin&quot;&gt;alexivkin’s plugin&lt;/a&gt; and &lt;a href=&quot;http://fancyapps.com/fancybox/3/&quot;&gt;fancyBox3&lt;/a&gt;, both of which I found great and easy to setup.&lt;/p&gt;</content><author><name>pjl</name></author><category term="code" /><category term="photos" /><category term="webdev" /><summary type="html">Click here to see some of my favourite photos which I took (excluding, of course, the one which I’m one) over the last decade. The code I used is based on alexivkin’s plugin and fancyBox3, both of which I found great and easy to setup.</summary></entry><entry><title type="html">Here comes the sun</title><link href="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html" rel="alternate" type="text/html" title="Here comes the sun" /><published>2017-09-22T00:00:00+08:00</published><updated>2017-09-22T00:00:00+08:00</updated><id>https://pat-laub.github.io/2017/09/22/update-solar-tracker</id><content type="html" xml:base="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html">&lt;p&gt;A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/solar_tracker_login.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
