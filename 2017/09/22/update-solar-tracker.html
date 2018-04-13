@@ -101,4 +101,16 @@
     <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="/assets/js/main.js"></script>
     <script id="dsq-count-scr" src="//pat-laub-github-io.disqus.com/count.js" async></script>
+      <script>
+      var trackOutboundLink = function(url) {
+         ga('send', 'event', 'outbound', 'click', url, {
+           'transport': 'beacon',
+           'hitCallback': function(){document.location = url;}
+         });
+      };
+      var elements = document.getElementsByTagName('a');
+      for(var i = 0, len = elements.length; i < len; i++) {
+          elements[i].onclick = function() { trackOutboundLink(elements[i].href); };
+      };
+      </script>
   
