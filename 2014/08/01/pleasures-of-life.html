@@ -120,7 +120,7 @@ use to others also.”
       };
       var elements = document.getElementsByTagName('a');
       for(var i = 0, len = elements.length; i < len; i++) {
-          elements[i].onclick = function() { trackOutboundLink(elements[i].href); };
+          elements[i].onclick = function() { trackOutboundLink(this.href); };
       };
       </script>
   
