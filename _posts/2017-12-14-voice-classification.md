@@ -4,7 +4,7 @@ title: Who is it?
 subtitle: Playing with machine learning to classify voices
 tags: code math ml
 author: pjl
-banner: spectra.png
+banner: spectra.jpg
 banner_alt: Spectra for a voice actor
 excerpt: >
        Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell from a few seconds of speech who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python).

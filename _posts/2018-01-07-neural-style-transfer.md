@@ -5,7 +5,7 @@ subtitle:
 tags: code
 author: pjl
 banner: qwave.jpg
-banner_alt: Myself in the style of Caspar David Friedrich
+banner_alt: The seascape in Qingdao in the style of Hokusai's Great Wave off Kanagawa
 excerpt: >
     Neural Style Transfer is a technique for transforming an image (like this photo of the seascape in Qingdao) into the style of another image, typically a painting (here the style is of Hokusai's 'Great Wave off Kanagawa').
 ---
