@@ -11,16 +11,6 @@
 <link rel="stylesheet" href="/assets/css/syntax.css">
 <link rel="canonical" href="https://pat-laub.github.io/2014/05/01/stochastic-root-finding.html">
 <link rel="alternate" type="application/rss+xml" title="pjl" href="/feed.xml">
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "AMS" } },
-    tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      displayMath: [ ['$$', '$$'] ],
-      processEscapes: true,
-    },
-  });
-  </script>
   <script src="/assets/js/jquery-3.2.1.min.js"></script>
 <link  href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
   <script src="/assets/js/jquery.fancybox.min.js"></script>
@@ -591,9 +581,19 @@ function’s strangeness.
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } },
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$', '$$'] ],
+      processEscapes: true,
+    },
+  });
+  </script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
    </div>
     <script src="/assets/js/skel.min.js"></script>
     <script src="/assets/js/util.js"></script>
@@ -609,7 +609,7 @@ function’s strangeness.
       };
       var elements = document.getElementsByTagName('a');
       for(var i = 0, len = elements.length; i < len; i++) {
-          elements[i].onclick = function() { trackOutboundLink(this.href); return false; };
+          elements[i].onclick = function(event) { trackOutboundLink(this.href); event.preventDefault ? event.preventDefault() : event.returnValue = false; };
       };
       </script>
   

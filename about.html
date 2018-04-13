@@ -11,16 +11,6 @@
 <link rel="stylesheet" href="/assets/css/syntax.css">
 <link rel="canonical" href="https://pat-laub.github.io/about.html">
 <link rel="alternate" type="application/rss+xml" title="pjl" href="/feed.xml">
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "AMS" } },
-    tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      displayMath: [ ['$$', '$$'] ],
-      processEscapes: true,
-    },
-  });
-  </script>
   <script src="/assets/js/jquery-3.2.1.min.js"></script>
 <link  href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
   <script src="/assets/js/jquery.fancybox.min.js"></script>
@@ -76,7 +66,7 @@ I have worked in software roles, at <a href="https://careers.google.com/location
 For more background you can check out my <a href="https://www.linkedin.com/in/plaub">LinkedIn profile</a> or my publications below.
 <h1 id="papers">Papers:</h1>
 <ul>
- <li><a href="https://robsalomone.wordpress.com/">Robert Salomone</a>, Patrick J. Laub, <a href="http6://web.maths.unsw.edu.au/~zdravkobotev/">Zdravko I. Botev</a> (2017), <em>Monte Carlo Estimation of the Density of the Sum of Dependent Random Variables</em> [<a href="https://arxiv.org/abs/1711.11218"><strong>arxiv</strong></a>, <a href="https://github.com/Pat-Laub/PushoutDensityEstimation"><strong>code</strong></a>], Submitted
+ <li><a href="https://robsalomone.wordpress.com/">Robert Salomone</a>, Patrick J. Laub, <a href="http://web.maths.unsw.edu.au/~zdravkobotev/">Zdravko I. Botev</a> (2017), <em>Monte Carlo Estimation of the Density of the Sum of Dependent Random Variables</em> [<a href="https://arxiv.org/abs/1711.11218"><strong>arxiv</strong></a>, <a href="https://github.com/Pat-Laub/PushoutDensityEstimation"><strong>code</strong></a>], Submitted
  <li><a href="http://pierre-olivier.goffard.me/">Pierre-Olivier Goffard</a>, Patrick J. Laub (2017), <em>Two numerical methods to evaluate stop-loss premiums</em> [<a href="https://arxiv.org/abs/1712.03468"><strong>arxiv</strong></a>, <a href="https://github.com/Pat-Laub/ActuarialOrthogonalPolynomials"><strong>code</strong></a>], Submitted
  <li><a href="http://home.math.au.dk/asmus/">Søren Asmussen</a>, <a href="http://hec.unil.ch/hec/recherche/fiche?pnom=ehashorva&amp;dyn_lang=en">Enkelejd Hashorva</a>, Patrick J. Laub, <a href="http://researchers.uq.edu.au/researcher/1299">Thomas Taimre</a> (2017), <em>Tail asymptotics of light-tailed Weibull-like sums</em> [<a href="http://www.math.uni.wroc.pl/~pms/files/37.2/Article/37.2.3.pdf"><strong>pdf</strong></a>, <a href="https://arxiv.org/abs/1712.04070"><strong>arxiv</strong></a>], Probability and Mathematical Statistics
  <li><a href="http://pure.au.dk/portal/en/persons/id(182d59cb-4a31-4e18-b0a9-b8b7ef507fa4).html">Lars Nørvang Andersen</a>, Patrick J. Laub, <a href="https://www.liverpool.ac.uk/mathematical-sciences/staff/leonardo-rojas-nandayapa/">Leonardo Rojas-Nandayapa</a> (2016), <em>Efficient simulation for dependent rare events with applications to extremes</em> [<a href="https://link.springer.com/content/pdf/10.1007%2Fs11009-017-9557-4.pdf"><strong>pdf</strong></a>, <a href="https://arxiv.org/abs/1609.09725"><strong>arxiv</strong></a>, <a href="https://github.com/Pat-Laub/RareMaxima"><strong>code</strong></a>], Methodology and Computing in Applied Probability
@@ -128,7 +118,7 @@ For more background you can check out my <a href="https://www.linkedin.com/in/pl
       };
       var elements = document.getElementsByTagName('a');
       for(var i = 0, len = elements.length; i < len; i++) {
-          elements[i].onclick = function() { trackOutboundLink(this.href); return false; };
+          elements[i].onclick = function(event) { trackOutboundLink(this.href); event.preventDefault ? event.preventDefault() : event.returnValue = false; };
       };
       </script>
   
