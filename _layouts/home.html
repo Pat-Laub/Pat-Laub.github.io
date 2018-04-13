@@ -3,67 +3,14 @@ layout: compress
 ---
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-
   {% include head.html %}
-
   <body>
     <div id="wrapper">
       {% include header.html %}
-
       {% include post_listing.html %}
-
-      <!-- Sidebar -->
-      <section id="sidebar">
-
-        <!-- Intro -->
-          <section id="intro">
-            <a href="#" class="logo"><img src="/images/logo.jpg" alt="filtration logo" /></a>
-            <header>
-              <h2>{{site.title}}</h2>
-              <p>Some summary statistics of a semi-statistician</p>
-            </header>
-          </section>
-
-          <section id="spotify-playlist" class="onlyOnFullScreen">
-            <h1>Some beautiful music</h1>
-            <iframe src="https://open.spotify.com/embed?uri=spotify:user:97xjo9mffd8ml0sum7k49val8:playlist:48fyvRyIfhOJPlrzoThGMJ&theme=white" width="352" height="410" frameborder="0" allowtransparency="true"></iframe>
-          </section>
-
-          <section id="recent-books" class="onlyOnFullScreen">
-          <h1>Recent reads</h1>
-          <div id="gr_updates_widget">
-            <iframe id="the_iframe" src="https://www.goodreads.com/widgets/user_update_widget?height=410&num_updates=4&user=46151843&width=360" width="352" height="410" frameborder="0"></iframe>
-          </div>
-          </section>
-
-          <section id="twitter-stream" class="onlyOnFullScreen">
-            <h1>Pearls of wisdom</h1>
-            <a class="twitter-timeline" data-width="352" data-height="410" data-theme="light" href="https://twitter.com/PatrickLaub?ref_src=twsrc%5Etfw">Tweets by PatrickLaub</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </section>
-
-        <!-- Footer -->
-          <section id="footer">
-            <!-- <ul class="icons">
-              <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-              <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-              <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-              <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-              <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
-            </ul> -->
-            <p class="copyright">&copy; {{ site.title }}. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a>.</p>
-          </section>
-
-      </section>
-
-      {% include footer.html %}
+      {% include sidebar.html %}
     </div>
 
-    <!-- Scripts -->
-    <!-- <script src="/assets/js/jquery.min.js"></script> -->
-    <script src="/assets/js/skel.min.js"></script>
-    <script src="/assets/js/util.js"></script>
-    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="/assets/js/main.js"></script>
-    <script id="dsq-count-scr" src="//{{ site.disqus.shortname }}.disqus.com/count.js" async></script>
+    {% include footer.html %}
   </body>
 </html>

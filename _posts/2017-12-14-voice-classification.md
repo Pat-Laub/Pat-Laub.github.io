@@ -44,7 +44,7 @@ After recording, I found it took 607 MB of space to store, so I downgraded the q
 
 <details>
 <summary>Show/hide code</summary>
-{% gist 41d7d5380a9693c37991e845ae15f3b9 down_sample.nb %}
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 down_sample.nb %}
 </details>
 
 Now the first 3 second chunk of each voice looks like:
@@ -84,7 +84,7 @@ My hypothesis was that a machine learning algorithm could tell the difference be
 
 <details>
 <summary>Show/hide code</summary>
-{% gist 41d7d5380a9693c37991e845ae15f3b9 split_and_spectral_estimate.nb %}
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 split_and_spectral_estimate.nb %}
 </details>
 
 To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation --- see our [great new paper](https://arxiv.org/abs/1711.11218) on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for _The Elements of Eloquence_ but found it didn't perform as well as the above plots:
@@ -99,7 +99,7 @@ Next, I needed to split the data into a training and test set. This proved to be
 
 <details>
 <summary>Show/hide code</summary>
-{% gist 41d7d5380a9693c37991e845ae15f3b9 train_test_stratified_split.nb %}
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 train_test_stratified_split.nb %}
 </details>
 
 # Classifying
@@ -108,7 +108,7 @@ If we just run the most hands-free classification (the level of simplicity of th
 
 <details>
 <summary>Show/hide code</summary>
-{% gist 41d7d5380a9693c37991e845ae15f3b9 simple_classifer.nb %}
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 simple_classifer.nb %}
 </details>
 
 This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:
@@ -121,7 +121,7 @@ At first I thought: i) this could just be a lucky split of the data, and ii) "lo
 
 <details>
 <summary>Show/hide code</summary>
-{% gist 41d7d5380a9693c37991e845ae15f3b9 multiple_classifiers.nb %}
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 multiple_classifiers.nb %}
 </details>
 
 Remarkably, logistic regression turns out to be best option (without playing with any of the method's hyper-parameters). The following box plots show the accuracies over the different test runs for each method:
@@ -136,7 +136,7 @@ I tried to pry into the classifiers which Mathematica had created for me, but fo
 
 <details>
 <summary>Show/hide code</summary>
-{% gist 41d7d5380a9693c37991e845ae15f3b9 export_data.nb %}
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 export_data.nb %}
 </details>
 
 The resulting CSV file is [available here]({% link /data/audioData.csv %}) if you'd like to have a play with this.
@@ -145,7 +145,7 @@ The Python code to recreate these results is much simpler --- [scikit-learn](htt
 
 <details>
 <summary>Show/hide code</summary>
-{% gist 41d7d5380a9693c37991e845ae15f3b9 voices.py %}
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 voices.py %}
 </details>
 
 This code reports an average accuracy of 97.21%, a slight improvement over the Mathematica.

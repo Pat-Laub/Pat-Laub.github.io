@@ -4,14 +4,14 @@ title: About | pjl
 ---
 
 Hi! I'm Pat Laub, a mathematician & software engineer currently finishing a PhD in applied probability (with a focus on computational methods).
-My PhD jointly between Aarhus University and University of Queensland, and I'm lucky to have as supervisors [Søren Asmussen](http://home.math.au.dk/asmus/) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/).
-I'm interested complex systems, and the intersection of maths/stats and computing, for example: computational and experimental maths, machine learning, statistics (MCMC), economics, artificial intelligence.
+My PhD is jointly conducted between Aarhus University and University of Queensland, and I'm lucky to have as supervisors [Søren Asmussen](http://home.math.au.dk/asmus/) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/).
+I'm interested in complex systems, and the intersection of maths/stats and computing, for example: computational and experimental maths, machine learning, statistics (MCMC), economics, artificial intelligence.
 I like to read about biology (mainly genetics), history, and international relations.
-I have worked in software roles, at Google & Data61 (then called NICTA), and have taught programming and probability at my universities over 8 years.
-For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub).
+I have worked in software roles, at [Google (Sydney)](https://careers.google.com/locations/sydney/) & [Data61](https://www.data61.csiro.au/) (then called National ICT Australia), and have taught programming and probability at universities for 8 years.
+For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub) or my publications below.
 
 # Papers:
-- [Robert Salomone](https://robsalomone.wordpress.com/), Patrick J. Laub, [Zdravko I. Botev](http6://web.maths.unsw.edu.au/~zdravkobotev/) (2017), _Monte Carlo Estimation of the Density of the Sum of Dependent Random Variables_ [[__arxiv__](https://arxiv.org/abs/1711.11218), [__code__](https://github.com/Pat-Laub/PushoutDensityEstimation)], Submitted
+- [Robert Salomone](https://robsalomone.wordpress.com/), Patrick J. Laub, [Zdravko I. Botev](http://web.maths.unsw.edu.au/~zdravkobotev/) (2017), _Monte Carlo Estimation of the Density of the Sum of Dependent Random Variables_ [[__arxiv__](https://arxiv.org/abs/1711.11218), [__code__](https://github.com/Pat-Laub/PushoutDensityEstimation)], Submitted
 - [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2017), _Two numerical methods to evaluate stop-loss premiums_ [[__arxiv__](https://arxiv.org/abs/1712.03468), [__code__](https://github.com/Pat-Laub/ActuarialOrthogonalPolynomials)], Submitted
 - [Søren Asmussen](http://home.math.au.dk/asmus/), [Enkelejd Hashorva](http://hec.unil.ch/hec/recherche/fiche?pnom=ehashorva&dyn_lang=en), Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299) (2017), _Tail asymptotics of light-tailed Weibull-like sums_ [[__pdf__](http://www.math.uni.wroc.pl/~pms/files/37.2/Article/37.2.3.pdf), [__arxiv__](https://arxiv.org/abs/1712.04070)], Probability and Mathematical Statistics
 - [Lars Nørvang Andersen](http://pure.au.dk/portal/en/persons/id(182d59cb-4a31-4e18-b0a9-b8b7ef507fa4).html), Patrick J. Laub, [Leonardo Rojas-Nandayapa](https://www.liverpool.ac.uk/mathematical-sciences/staff/leonardo-rojas-nandayapa/) (2016), _Efficient simulation for dependent rare events with applications to extremes_ [[__pdf__](https://link.springer.com/content/pdf/10.1007%2Fs11009-017-9557-4.pdf), [__arxiv__](https://arxiv.org/abs/1609.09725), [__code__](https://github.com/Pat-Laub/RareMaxima)], Methodology and Computing in Applied Probability

@@ -1,0 +1,23 @@
+    <!-- Scripts -->
+    <!-- <script src="/assets/js/jquery.min.js"></script> -->
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/assets/js/main.js"></script>
+    <script id="dsq-count-scr" src="//{{ site.disqus.shortname }}.disqus.com/count.js" async></script>
+
+    {% if jekyll.environment == 'production' and site.google_analytics  %}
+      <script>
+      var trackOutboundLink = function(url) {
+         ga('send', 'event', 'outbound', 'click', url, {
+           'transport': 'beacon',
+           'hitCallback': function(){document.location = url;}
+         });
+      };
+
+      var elements = document.getElementsByTagName('a');
+      for(var i = 0, len = elements.length; i < len; i++) {
+          elements[i].onclick = function(event) { trackOutboundLink(this.href); event.preventDefault ? event.preventDefault() : event.returnValue = false; };
+      };
+      </script>
+    {% endif %}

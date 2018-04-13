@@ -33,7 +33,7 @@ scholar:
 # permalink: /:categories/:title/
 
 gist:
-  noscript: false
+  noscript: true
 
 pagination:
   enabled: true

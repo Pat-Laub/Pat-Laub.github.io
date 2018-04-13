@@ -3,24 +3,12 @@ layout: compress
 ---
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-
   {% include head.html %}
-
   <body class="single">
     <div id="wrapper">
       {% include header.html %}
-
       {% include post_listing.html %}
-
-      {% include footer.html %}
     </div>
-
-    <!-- Scripts -->
-    <!-- <script src="/assets/js/jquery.min.js"></script> -->
-    <script src="/assets/js/skel.min.js"></script>
-    <script src="/assets/js/util.js"></script>
-    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="/assets/js/main.js"></script>
-    <script id="dsq-count-scr" src="//{{ site.disqus.shortname }}.disqus.com/count.js" async></script>
+    {% include footer.html %}
   </body>
 </html>
