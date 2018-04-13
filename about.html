@@ -128,7 +128,7 @@ For more background you can check out my <a href="https://www.linkedin.com/in/pl
       };
       var elements = document.getElementsByTagName('a');
       for(var i = 0, len = elements.length; i < len; i++) {
-          elements[i].onclick = function() { trackOutboundLink(this.href); };
+          elements[i].onclick = function() { trackOutboundLink(this.href); return false; };
       };
       </script>
   

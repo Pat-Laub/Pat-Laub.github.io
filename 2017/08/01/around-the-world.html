@@ -107,7 +107,7 @@ Definitely <a href="https://photos.app.goo.gl/88NBhKG8HoejXSLn2"><strong>check o
       };
       var elements = document.getElementsByTagName('a');
       for(var i = 0, len = elements.length; i < len; i++) {
-          elements[i].onclick = function() { trackOutboundLink(this.href); };
+          elements[i].onclick = function() { trackOutboundLink(this.href); return false; };
       };
       </script>
   

@@ -184,7 +184,7 @@ It starts with an image where the pixels are set randomly (this looks like the â
       };
       var elements = document.getElementsByTagName('a');
       for(var i = 0, len = elements.length; i < len; i++) {
-          elements[i].onclick = function() { trackOutboundLink(this.href); };
+          elements[i].onclick = function() { trackOutboundLink(this.href); return false; };
       };
       </script>
   

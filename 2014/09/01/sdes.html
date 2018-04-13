@@ -286,7 +286,7 @@ ${\mathbb{E}}[\int_0^\infty X(s)^s \dif s] &lt; \infty$ <a href="#fnref:2" clas
       };
       var elements = document.getElementsByTagName('a');
       for(var i = 0, len = elements.length; i < len; i++) {
-          elements[i].onclick = function() { trackOutboundLink(this.href); };
+          elements[i].onclick = function() { trackOutboundLink(this.href); return false; };
       };
       </script>
   
