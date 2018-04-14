@@ -1,5 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2018-04-13T21:41:21+08:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
-</subtitle><entry><title type="html">On neural style transfer</title><link href="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html" rel="alternate" type="text/html" title="On neural style transfer" /><published>2018-01-07T00:00:00+08:00</published><updated>2018-01-07T00:00:00+08:00</updated><id>https://pat-laub.github.io/2018/01/07/neural-style-transfer</id><content type="html" xml:base="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html">&lt;p&gt;I’ve been playing around with &lt;em&gt;Neural Style Transfer&lt;/em&gt; (NST) for a while, and after sharing some creations with friends I got two questions: “how did you make this?” and “can you explain a bit about what is happening here?”. So, this post will do both.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2018-04-14T09:57:31+08:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
+</subtitle><entry><title type="html">Getting towards 100%</title><link href="https://pat-laub.github.io/2018/04/09/voice-classification-ii.html" rel="alternate" type="text/html" title="Getting towards 100%" /><published>2018-04-09T00:00:00+08:00</published><updated>2018-04-09T00:00:00+08:00</updated><id>https://pat-laub.github.io/2018/04/09/voice-classification-ii</id><content type="html" xml:base="https://pat-laub.github.io/2018/04/09/voice-classification-ii.html">&lt;p&gt;&lt;em&gt;If you haven’t read my original post on this machine learning problem, quickly &lt;a href=&quot;/2017/12/14/voice-classification.html&quot;&gt;&lt;strong&gt;check it out first&lt;/strong&gt;&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The biggest difficulty, in my opinion, with machine learning problems is after you’ve got a working solution. You’re staring at some accuracy figure, say 95%, and wondering ‘how high can this go?’ There are a huge number of options for that next step. For this specific voice classification problem, I could:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Make the problem simpler: increase the duration of the input utterances, increase the quality of the inputs (increase the sampling frequency, make the recordings cleaner), increase the fraction of samples which go to the training set rather than the test set&lt;/li&gt;
+  &lt;li&gt;Change algorithms: swap out logistic regression for more sophisticated forms of neural networks (deep fully-connected perceptron, or a unidirectional or bidirectional sequence model)&lt;/li&gt;
+  &lt;li&gt;Perform error analysis: look at the failed cases and try to spot some patterns there, try to replicate the classification manually (&lt;em&gt;in vivo&lt;/em&gt; rather than &lt;em&gt;in silico&lt;/em&gt;) to get an estimate of human-level error (an approximation of Bayes’ error)&lt;/li&gt;
+  &lt;li&gt;Play with the optimiser: try out the latest fancy new momentum-based algorithms&lt;/li&gt;
+  &lt;li&gt;Massage the data a bit more: pull out more advanced features from the recordings to feed into the classifier, perform a different kind of spectral analysis&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I had felt that conducting an error analysis was the most sensible next step, but I hesitated as it seemed like a rather tedious chore (and this project was done mainly for the fun of it). Also, I had thought an error analysis would be unfair to the classifier.&lt;/p&gt;
+
+&lt;p&gt;The classifier just views the utterances as a soup of different audio frequencies, whereas I could discern the meaning of the recorded words. Since each voice is talking on a distinct topic, I could probably identify many utterances based on &lt;em&gt;what the voices were saying&lt;/em&gt; rather than on &lt;em&gt;how they said it&lt;/em&gt; (for example, any utterance where I heard “Dolores” was probably from the voice actor for &lt;em&gt;Lolita&lt;/em&gt; whereas “Zhou Enlai” would be from the voice for &lt;em&gt;On China&lt;/em&gt;). I’d thought that I could make the recordings play backwards to compensate for this, but then I had a better idea. Why not use some machine learning to try to understand the speech of each utterance?&lt;/p&gt;
+
+&lt;p&gt;For this, I converted the utterances into text, then the text into a quantitative form of ‘meaning’ using &lt;em&gt;word embeddings&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-are-word-embeddings&quot;&gt;What are word embeddings?&lt;/h1&gt;
+
+&lt;p&gt;A word embedding is a list of numbers which tries to capture the meaning of a word, and link it to related words.&lt;/p&gt;
+
+&lt;p&gt;As a toy example, let’s invent a simple word embedding which gives two numbers to each word: a “big-ness” number (representing the size of the word), and a “human-ness” number (representing how human-like the word is).&lt;/p&gt;
+
+&lt;p&gt;The numbers won’t correspond to any real ‘units’ or measurements, they just need to be large numbers or small numbers &lt;em&gt;relative to other word embeddings&lt;/em&gt; in a sensible way. A monster-truck is bigger than a scooter, so its “big-ness” number (80) is much larger than the scooter’s (1). Both of these are not humans, so their “human-ness” numbers are small (5 and 0), whereas the adjectives slim and fat often refer to humans so their numbers are larger (95 and 85).&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;word&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;“big-ness”&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;“human-ness”&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;scooter&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;monster-truck&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;slim&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;95&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;fat&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;One can download a huge table like the one above, which covers millions of words (rows) and constructs word embeddings which have 300 numbers in them (columns). There are algorithms, like the GloVe algorithm, which construct these embeddings just by reading over huge amounts of text (like the entirety of Wikipedia) and the columns which are generated don’t have any easily understandable meaning like “big-ness”. It’s the irony of this technique that we try to understand the &lt;em&gt;meaning&lt;/em&gt; of a word by turning it into a list of &lt;em&gt;meaningless&lt;/em&gt; (for a human) numbers.&lt;/p&gt;
+
+&lt;h1 id=&quot;results-using-mozillas-deepspeech-and-facebook-researchs-word-embeddings&quot;&gt;Results using Mozilla’s deepspeech and Facebook Research’s word embeddings&lt;/h1&gt;
+
+&lt;p&gt;For my example, I took each short utterance and fed it into a &lt;a href=&quot;https://github.com/mozilla/DeepSpeech/&quot;&gt;Mozilla’s speech-to-text neural network&lt;/a&gt; (an implementation of &lt;a href=&quot;https://arxiv.org/abs/1412.5567&quot;&gt;Baidu’s Deep Speech paper&lt;/a&gt;), then collected the word embedding for each word that was spoken (excluding boring words like “the”, “a”, “it”, so-called stop words), and just took an average of word embeddings. This created a vector of length 300 which roughly corresponds to the &lt;em&gt;meaning&lt;/em&gt; of the utterance, whether those few seconds of speech were talking about morality or genetics or poetry, etc.&lt;/p&gt;
+
+&lt;p&gt;I thought that, if I were to use these averaged embeddings as 300 input features for the original classification problem, then it would be superior to the original approach based on spectral densities. The results, as it turned out, were disappointing. When this process was complete the test accuracy was 40%, much better than the 7.7% (1 in 13) accuracy that purely guessing would give us, but far lower than the spectral approach’s 95% accuracy.&lt;/p&gt;
+
+&lt;p&gt;Without much hope of success, I tried to fit a logistic regression to the original spectral features concatenated to the word embedding averages, and found that adding the embeddings did not appear to improve accuracy. I guess that a combined classifier is what is needed, where the word embedding classifier only used to classify the inputs which the spectral density classifier isn’t confident about.&lt;/p&gt;
+
+&lt;h1 id=&quot;debugging-the-beautiful-but-failed-approach&quot;&gt;Debugging the beautiful but failed approach&lt;/h1&gt;
+
+&lt;p&gt;The overall error in this approach in two parts: i) in the process of generating the transcripts from the audio, and ii) in the prediction of the speaker from the transcripts (via word embeddings).&lt;/p&gt;
+
+&lt;p&gt;which are needed to calculate the word embeddings. The DeepSpeech algorithm provided &lt;em&gt;character-by-character&lt;/em&gt; output not &lt;em&gt;word-by-word&lt;/em&gt; output. As such, it would often misspell words, or put two words together. Since the utterances often began or ended during a spoken word, the first and last “words” in the transcripts were usually gibberish. Here are a randomly chosen transcript from each of the speakers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ikwerjuggout translated and adaptedfre&lt;/li&gt;
+  &lt;li&gt;so dont worry about it just let it go&lt;/li&gt;
+  &lt;li&gt;seeking to prolong their lives a little and somewhat&lt;/li&gt;
+  &lt;li&gt;an american puritan might say brother&lt;/li&gt;
+  &lt;li&gt;chase copyeditefthe manuscript with care&lt;/li&gt;
+  &lt;li&gt;i can come up a ton dress&lt;/li&gt;
+  &lt;li&gt;fact bring it about that the spirit would not so easily&lt;/li&gt;
+  &lt;li&gt;disease wolf desodded to invest&lt;/li&gt;
+  &lt;li&gt;and particularly andegety brand of this that is&lt;/li&gt;
+  &lt;li&gt;produce therefore free will itself is&lt;/li&gt;
+  &lt;li&gt;scription of an audience and a shakespeare pla&lt;/li&gt;
+  &lt;li&gt;lending and trading that connect people in us&lt;/li&gt;
+  &lt;li&gt;bocaseensisolishthopiolsolde&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(This last transcript was from Vivian speaking Mandarin, and the DeepSpeech network was trained on English so from the beginning I obviously didn’t expect her audio test cases to work at all.)&lt;/p&gt;
+
+&lt;p&gt;To check the accuracy of Deep Speech, I fed it the entire (roughly 4-5 minute) audio recording for the start of &lt;em&gt;The Elements of Eloquence&lt;/em&gt; audiobook and compared the generated transcript with one I corrected by hand. The following is the &lt;a href=&quot;https://www.systutorials.com/docs/linux/man/1-wdiff/&quot;&gt;wdiff&lt;/a&gt; output for about the first quarter of the full transcript:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;these formulas &lt;span style=&quot;color:red&quot;&gt;[-wehtoughtu-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+were thought up+}&lt;/span&gt; by the ancient greeks and then added to by the romans as shakespeare &lt;span style=&quot;color:red&quot;&gt;[-said-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+set+}&lt;/span&gt; to work england was busy having the &lt;span style=&quot;color:red&quot;&gt;[-renasance-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+renaissance+}&lt;/span&gt; everybody else had had the &lt;span style=&quot;color:red&quot;&gt;[-renesincea-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+renaissance a+}&lt;/span&gt; century or so before and we were running late so the classical works on &lt;span style=&quot;color:red&quot;&gt;[-redericwerejug-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+rhetoric were dug+}&lt;/span&gt; out translated and adapted for use in english but it wasnt the &lt;span style=&quot;color:red&quot;&gt;[-end theiansuerthe-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+enthymemes or the+}&lt;/span&gt; topics or even the &lt;span style=&quot;color:red&quot;&gt;[-bacilonsthat-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+baculums that+}&lt;/span&gt; the english &lt;span style=&quot;color:red&quot;&gt;[-light-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+liked+}&lt;/span&gt; we loved the figures the flowers of &lt;span style=&quot;color:red&quot;&gt;[-bretoricas-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+rhetoric as+}&lt;/span&gt; they were &lt;span style=&quot;color:red&quot;&gt;[-call-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+called+}&lt;/span&gt; hence the garden of eloquence because as a nation we were at the time rather obsessed with poetry so shakespeare learned and learned and got better and better and his lines became more and more striking and more and more memorable but most of his great and famous lines are simply examples of the ancient formulas i can smile and murder while i smile was not handed to shakespeare by god its just an example of &lt;span style=&quot;color:red&quot;&gt;[-diacapy-]&lt;/span&gt; &lt;span style=&quot;color:blue&quot;&gt;{+diacope+}&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Looking at the whole transcript, it has a &lt;a href=&quot;https://martin-thoma.com/word-error-rate-calculation/&quot;&gt;word error rate&lt;/a&gt; of 12.13% which isn’t too bad. If I concatenate all the transcripts for each utterance and do the same comparison the result is a 17.50% word error rate, so the fact that we separate the utterances in the middle of a word being spoken adds a small but noticeable error.&lt;/p&gt;
+
+&lt;p&gt;The second main reason this approach failed is that a few seconds of transcript really doesn’t contain enough information to tell the speakers apart. Perhaps changing which word embeddings I used would produce a tiny increased in accuracy, but I doubt this is worth the effort. I used the embeddings generated by &lt;a href=&quot;https://github.com/facebookresearch/fastText&quot;&gt;Facebook Research’s fastText algorithm&lt;/a&gt; on the Wikipedia corpus, obtained by this &lt;a href=&quot;https://github.com/chakki-works/chakin&quot;&gt;Python library&lt;/a&gt;,&lt;/p&gt;
+
+&lt;h1 id=&quot;finally-doing-the-error-analysis-for-the-original-spectral-analysis-approach&quot;&gt;Finally doing the error analysis for the original spectral analysis approach&lt;/h1&gt;
+
+&lt;p&gt;As it turned out, the error analysis was pretty painless and I found some obvious flaws. When I originally recorded the audiobooks, I hadn’t always cropped the silence before the speakers began and after they finished properly. Simply removing the first and last utterances of each speaker from the training and test sets improved test accuracy by 1-2%.&lt;/p&gt;
+
+&lt;p&gt;The other simple adjustment was to handle long pauses that the voice actors put in between paragraphs. As some utterances were almost entirely silence, then the task of classifying which speaker they were generated by became nearly impossible. When writing the first post on this problem, I had tried to preprocess the audio recordings to remove stretches of silence, but found this didn’t help with the accuracy (I also had thought the length of each pause may itself be predictive). It’s tragic to think how close I was to the right solution! After some experimenting, it turned out that if I truncated every long pause over 0.75 secs long into a pause which was exactly 0.75 secs long, then test accuracy was again boosted slightly.&lt;/p&gt;
+
+&lt;h1 id=&quot;ideas-for-further-improvements&quot;&gt;Ideas for further improvements&lt;/h1&gt;
+
+&lt;p&gt;While doing the error analysis I realised that when I rerecorded the audio I had almost certainly had the volume too high and clipped the sound waves.&lt;/p&gt;</content><author><name>pjl</name></author><category term="code" /><category term="math" /><category term="ml" /><summary type="html">The biggest difficulty, in my opinion, with machine learning problems is after you've got a working solution. You're staring at some accuracy figure, say 95%, and wondering 'how high can this go?' There are a huge number of options for that next step.</summary></entry><entry><title type="html">On neural style transfer</title><link href="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html" rel="alternate" type="text/html" title="On neural style transfer" /><published>2018-01-07T00:00:00+08:00</published><updated>2018-01-07T00:00:00+08:00</updated><id>https://pat-laub.github.io/2018/01/07/neural-style-transfer</id><content type="html" xml:base="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html">&lt;p&gt;I’ve been playing around with &lt;em&gt;Neural Style Transfer&lt;/em&gt; (NST) for a while, and after sharing some creations with friends I got two questions: “how did you make this?” and “can you explain a bit about what is happening here?”. So, this post will do both.&lt;/p&gt;
 
 &lt;p&gt;After explaining the &lt;a href=&quot;#what-is-neural-style-transfer&quot;&gt;basic premise of NST&lt;/a&gt;, I’ll give &lt;a href=&quot;#some-background&quot;&gt;some relevant background&lt;/a&gt; on neural networks, describe &lt;a href=&quot;#the-nst-algorithm&quot;&gt;the NST algorithm&lt;/a&gt;, and outline &lt;a href=&quot;#what-specific-steps-did-i-take-to-make-the-images&quot;&gt;the specific steps for generating these&lt;/a&gt;.&lt;/p&gt;
 
@@ -448,172 +557,4 @@ Definitely &lt;a href=&quot;https://photos.app.goo.gl/88NBhKG8HoejXSLn2&quot;&gt
 
 &lt;p&gt;The book explores the history of science from a new and deliberately wider focus, including the fact that these inventors were real people with tumultuous love lives, medical crises, and powerful personalities. It highlights that a scientist needs to be much more than a Spock-like analytical reasoning engine, that he/she requires diplomacy, creativity, art, the ability to articulate findings to the public, and, not-least, funding.&lt;/p&gt;
 
-&lt;p&gt;To conclude, this is my favourite non-fiction book to date. I would recommend it to readers from any background; its target audience is not some narrow spectrum of scientists and technologists (it seems the author typically writes biographies of Romantic poets). As a quasi-scientist (a mathematician), reading The Age of Wonder has lifted my spirits during the cyclical malaise caused by a life of research. It reminds one of the sublime, the wonder, the beauty of understanding some of the world’s many mysteries.&lt;/p&gt;</content><author><name>pjl</name></author><category term="books" /><summary type="html">The book explores the history of science from a new and deliberately wider focus, including the fact that these inventors were real people with tumultuous love lives, medical crises, and powerful personalities. It highlights that a scientist needs to be much more than a Spock-like analytical reasoning engine, that he/she requires diplomacy, creativity, art, the ability to articulate findings to the public, and, not-least, funding.</summary></entry><entry><title type="html">Variance reduction techniques</title><link href="https://pat-laub.github.io/2014/09/01/variance-reduction.html" rel="alternate" type="text/html" title="Variance reduction techniques" /><published>2014-09-01T00:00:00+08:00</published><updated>2014-09-01T00:00:00+08:00</updated><id>https://pat-laub.github.io/2014/09/01/variance-reduction</id><content type="html" xml:base="https://pat-laub.github.io/2014/09/01/variance-reduction.html">&lt;h1 id=&quot;antithetic-sampling&quot;&gt;Antithetic Sampling&lt;/h1&gt;
-
-&lt;p&gt;A typical CMC estimator for $l = {\mathbb{E}}[Z]$ is to take $N$ iid
-replications $\{Z_1, Z_2, \dots, Z_N\}$ and use their sample average,
-i.e.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{l}_{CMC} = \frac{1}{N} \sum_{i=1}^N Z_i.&lt;/script&gt;
-
-&lt;p&gt;This estimator will have variance&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\sigma^2_{CMC} &amp;= \frac{1}{N^2} \mathrm{Var}\left[\sum_{i=1}^N Z_i\right] \\
-&amp;= \frac{N}{N^2} \mathrm{Var}[Z_1] \\
-\Rightarrow \sigma^2_{CMC} &amp;= \frac{\mathrm{Var}[Z_1]}{N}
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Another approach is to not sample $N$ random variables independently,
-but $N/2$ pairs of variables which have negative correlation. I.e.
-sample&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\{ (Z_1, Z^*_1), (Z_2, Z^*_2), \dots, (Z_{N/2}, Z^*_{N/2}) \}&lt;/script&gt;
-
-&lt;p&gt;where they are all of the same distribution and independent except for
-$Z_i$ with $Z^*_i$. The estimator is then&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \hat{l}_{AS} &amp;= \frac{1}{N/2} \sum_{i=1}^{N/2} \frac{Z_i+Z^*_i}{2} \\
-        &amp;= \frac{1}{N} \sum_{i=1}^{N/2} Z_i+Z^*_i.\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;This has variance&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\sigma^2_{AS} &amp;= \frac{1}{N^2} {\mathrm{Var}}\left[\sum_{i=1}^{N/2} Z_i+Z^*_i \right] \\
-    &amp;= \frac{N/2}{N^2} {\mathrm{Var}}\left[Z_1+Z^*_1] \right]  \\
-    &amp;= \frac{1}{2N} \left[{\mathrm{Var}}[Z_1]+{\mathrm{Var}}[Z^*_1] + 2{\mathrm{Cov}}[Z_1, Z^*_1] \right]  \\
-    &amp;= \frac{1}{2N} \left[2{\mathrm{Var}}[Z_1] + 2{\mathrm{Cov}}[Z_1, Z^*_1] \right]  \\
-    &amp;= \frac{\mathrm{Var}[Z_1] + {\mathrm{Cov}}[Z_1, Z^*_1]}{N} \\
-\Rightarrow \sigma^2_{AS} &amp;= \sigma^2_{CMC} + \frac{\mathrm{Cov}[Z_1, Z^*_1]}{N}\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Therefore&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-{\mathrm{Cov}}[Z_i, Z^*_i] &lt; 0 \Rightarrow \sigma^2_{AS} &lt; \sigma^2_{CMC}. %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Say that random variables $X$ and $Y$ have the same marginal
-distributions ($F_X(z) = F_Y(z) = F(z)$) but are generated using
-$U_i {\overset{iid}{\sim}}U(0,1)$ by $X_i = F^{-1}(U_i)$ and
-$Y_i = F^{-1}(1-U_i)$ then ${\mathrm{Cov}}(X,Y)$ is minimal (see Theorem
-5.3 in Ripley 2009, p. 130).\
-Introduce dependence (specifically negative correlation) in your
-iterates to reduce variance.\&lt;/p&gt;
-
-&lt;h1 id=&quot;control-variates&quot;&gt;Control Variates&lt;/h1&gt;
-
-&lt;p&gt;Say a simulation produces an output $Y$, and the same simulation also
-outputs another random variable $\tilde{Y}$ which is correlated with $Y$
-and whose expectation $\tilde{l} = {\mathbb{E}}[\tilde{Y}]$ is known.
-The $\tilde{Y}$ is called a control variable for $Y$. Use the estimator&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{l}_{CV}  = \frac{1}{N} \sum_{k=1}^N \left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right].&lt;/script&gt;
-
-&lt;p&gt;This will have variance&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
- \sigma^2_{CV} &amp;= \frac{1}{N^2} {\mathrm{Var}}\left[ \sum_{k=1}^N \left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right] \right] \\
- &amp;= \frac{1}{N^2} \left[ \sum_{k=1}^N {\mathrm{Var}}\left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right] \right] \\
-  &amp;= \frac{N}{N^2} \left[ {\mathrm{Var}}\left[ Y_1 - \alpha (\tilde{Y_1} - \tilde{l}) \right] \right] \\
-  &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + {\mathrm{Var}}[-\alpha (\tilde{Y_1} - \tilde{l})] + 2{\mathrm{Cov}}[Y_1, -\alpha (\tilde{Y_1} - \tilde{l})] \right] \\
-  &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + (-\alpha)^2 {\mathrm{Var}}[\tilde{Y_1}] + 2{\mathrm{Cov}}[Y_1, -\alpha (\tilde{Y_1} - \tilde{l})] \right] \\
- \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Note that:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    {\mathrm{Cov}}[Y_1, -\alpha(\tilde{Y}_1 - \tilde{l})] &amp;= {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(-\alpha(\tilde{Y}_1 - \tilde{l}) - {\mathbb{E}}[-\alpha(\tilde{Y}_1 - \tilde{l})])] \\
-    &amp;= {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(-\alpha)(\tilde{Y}_1 - \tilde{l})] \\
-    &amp;= -\alpha {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(\tilde{Y}_1 - \tilde{l})] \\
-    &amp;= -\alpha {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(\tilde{Y}_1 - {\mathbb{E}}[\tilde{Y}_1])] \\
-    &amp;= -\alpha {\mathrm{Cov}}[Y_1, \tilde{Y}_1] \\\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;So therefore&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma^2_{CV} = \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \alpha^2 {\mathrm{Var}}[\tilde{Y_1}] - 2\alpha {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right]&lt;/script&gt;
-
-&lt;p&gt;To find the $\alpha$ which minimises the variance then look for
-stationary points&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
- \frac{\mathrm{d} \sigma^2_{CV}}{\mathrm{d} \alpha} = 0 &amp;= \frac{1}{N} \left[ 2\alpha {\mathrm{Var}}[\tilde{Y_1}] - 2{\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
- \Rightarrow 0 &amp;= \left[ \alpha {\mathrm{Var}}[\tilde{Y_1}] - {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
- \Rightarrow \alpha {\mathrm{Var}}[\tilde{Y_1}] &amp;= {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \\
- \Rightarrow \alpha  &amp;= \frac{\mathrm{Cov}[Y_1, \tilde{Y_1}]}{\mathrm{Var}[\tilde{Y_1}]} \\
- \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;So the minimum variance achieved by using control variates is&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \hat{\sigma}^2_{CV} &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \left(\frac{\mathrm{Cov}[Y_1, \tilde{Y_1}]}{\mathrm{Var}[\tilde{Y_1}]}\right)^2 {\mathrm{Var}}[\tilde{Y_1}] - 2\left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
-    &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) - 2\left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) \right] \\
-    &amp;= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] - \left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) \right] \\
-    &amp;= \frac{ {\mathrm{Var}}[Y_1]}{N} - \frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{N{\mathrm{Var}}[\tilde{Y_1}]} \\\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow \hat{\sigma}^2_{CV} = \sigma^2_{CMC} - \frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{N{\mathrm{Var}}[\tilde{Y_1}]}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\Rightarrow \hat{\sigma}^2_{CV} &lt; \sigma^2_{CMC} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;For each simulation find another variable – the control variable – that
-is highly correlated (positively or negatively) with the variable of
-interest which has known expectation (and preferably small variance).&lt;/p&gt;
-
-&lt;h1 id=&quot;stratification&quot;&gt;Stratification&lt;/h1&gt;
-
-&lt;p&gt;Stratified sampling uses the form $l = {\mathbb{E}}[{\mathbb{E}}[Y|Z]]$
-and calculates the ${\mathbb{E}}[Y|Z]$ by partitioning the state space
-$\Omega$ into ${Z=i}, i=1, \dots, m$, the sections called &lt;em&gt;strata&lt;/em&gt;.
-The general equation utilised is the law of total expectation, i.e.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\mathbb{E}}[Y|Z] = \sum_{i=1}^m {\mathbb{E}}[Y|Z=i] {\mathbb{P}}(Z=i).&lt;/script&gt;
-
-&lt;p&gt;Say that ${\mathbb{P}}(Z=i)=p_i$ are known constants, then for each
-strata choose $N_i$ (where $\sum_i N_i = N$) as the number to sample
-from that strata, and use the estimator:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;l_{S} = \sum_{i=1}^m p_i \frac{1}{N_i} \sum_{j=1}^{N_i} Y_{j|Z=i}&lt;/script&gt;
-
-&lt;p&gt;Note that we are sampling from the conditional distributions of $Y$
-given $Z=i$. The variance of this estimator is&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \sigma^2_{S} &amp;= {\mathrm{Var}}\left[\sum_{i=1}^m p_i \frac{1}{N_i} \sum_{j=1}^{N_i} Y_{j|Z=i}\right] \\
-    &amp;= \sum_{i=1}^m \frac{p_i^2}{N_i^2} {\mathrm{Var}}\left[\sum_{j=1}^{N_i} Y_{j|Z=i}\right]\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;So say ${\mathrm{Var}}[Y_{j \mid Z=i}] = \sigma^2_i$ then&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma^2_{S} = \sum_{i=1}^m \frac{p_i^2\sigma^2_i}{N_i^2}&lt;/script&gt;
-
-&lt;p&gt;In order to minimise the variance then select the $N_i$ by the rule&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;N_i = N \frac{p_i \sigma_i}{\sum_{k=1}^m p_k \sigma_k} , \qquad i=1,\dots,m.&lt;/script&gt;
-
-&lt;p&gt;However it is rare that the variance of each strata is known so a pilot
-run can be used to estimate $\sigma_i$ using the sample variance.
-If using $N_i$ selected optimally as above, then the best variance of
-the estimator is then&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{\sigma}^2_{S} = \frac{1}{N} \left( \sum_{i=1}^m p_i \sigma_i \right)^2&lt;/script&gt;
-
-&lt;p&gt;Look for different “classes” in your state space (i.e strata) that
-partition the space, and have small variance, so that you can sample
-more effectively the noisy parts of the state space and infrequently
-sample the less noisy parts.
-See Ripley (2009, Chapter 5) for a detailed look at stratified sampling
-in statistics/survey theory.&lt;/p&gt;
-
-&lt;p&gt;References:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Cochran, W. G. (2007). Sampling techniques. John Wiley &amp;amp; Sons.&lt;/li&gt;
-  &lt;li&gt;Ripley, B. D. (2009). Stochastic simulation (Vol. 316). John Wiley &amp;amp;
-Sons.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>pjl</name></author><category term="math" /><category term="monte carlo" /><summary type="html">Notes made for an informal lecture on the Monte Carlo tricks available for variance reduction. This was made for a reading course when we worked through Søren's Monte Carlo book.</summary></entry></feed>
+&lt;p&gt;To conclude, this is my favourite non-fiction book to date. I would recommend it to readers from any background; its target audience is not some narrow spectrum of scientists and technologists (it seems the author typically writes biographies of Romantic poets). As a quasi-scientist (a mathematician), reading The Age of Wonder has lifted my spirits during the cyclical malaise caused by a life of research. It reminds one of the sublime, the wonder, the beauty of understanding some of the world’s many mysteries.&lt;/p&gt;</content><author><name>pjl</name></author><category term="books" /><summary type="html">The book explores the history of science from a new and deliberately wider focus, including the fact that these inventors were real people with tumultuous love lives, medical crises, and powerful personalities. It highlights that a scientist needs to be much more than a Spock-like analytical reasoning engine, that he/she requires diplomacy, creativity, art, the ability to articulate findings to the public, and, not-least, funding.</summary></entry></feed>
