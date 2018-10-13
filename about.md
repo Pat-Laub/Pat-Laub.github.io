@@ -1,6 +1,6 @@
 ---
 layout: about
-title: About | pjl
+title: Patrick Laub
 ---
 
 Hi! I'm Pat Laub, a mathematician & software engineer. I have a post-doctoral position working with [Christian Robert](https://isfa.univ-lyon1.fr/recherche/membres-du-laboratoire/christian-robert-817202.kjsp) at the [Chair for Data Analytics & Models for Insurance](http://chaire-dami.fr/en/) (Chaire-DAMI), which is associated with the [Institute de Science Financière et d'Assurances](https://isfa.univ-lyon1.fr/) (ISFA) at the [Université Claude Bernard Lyon 1](https://www.univ-lyon1.fr/en/) in Lyon, France. My PhD was in applied probability (with a focus on computational methods), and it was jointly conducted between Aarhus University and University of Queensland. I was lucky to have as supervisors [Søren Asmussen](http://home.math.au.dk/asmus/) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/). I'm interested in the intersection of maths/stats and computing, for example: machine learning, computational and experimental maths, statistics (MCMC), economics, artificial intelligence.
