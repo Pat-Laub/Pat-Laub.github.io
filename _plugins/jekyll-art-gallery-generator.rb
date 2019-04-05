@@ -55,6 +55,7 @@ module Jekyll
 
       begin
         sort_field = config["sort_field"] || "name"
+        #sort_field = "timestamp"
         galleries.sort! {|a,b| a.data[sort_field] <=> b.data[sort_field]}
       rescue Exception => e
         puts "Error sorting galleries: #{e}"
@@ -112,6 +113,7 @@ module Jekyll
       gallery_config = galleries[gallery_name] || {}
       #puts "Generating #{gallery_name}: #{gallery_config}"
       sort_field = config["sort_field"] || "name"
+      sort_field = "timestamp"
 
       self.process(@name)
       gallery_page = File.join(base, "_layouts", "art_gallery_page.html")
@@ -142,6 +144,7 @@ module Jekyll
         # process and copy images
       self.data["captions"] = {}
       date_times = {}
+	prev_image = nil
       Dir.foreach(dir) do |image|
         next if image.chars.first == "."
         next unless image.downcase().end_with?(*$image_extensions)
@@ -153,17 +156,37 @@ module Jekyll
         if sort_field == "timestamp"
           begin
             #date_times[image] = EXIFR::JPEG.new(image_path).date_time.to_i
-            date_times[image]=0
+            #date_times[image]=0
             #  ["DateTime"], ["DateTimeDigitized"], ["DateTimeOriginal"]
-            date_array = ImageList.new(image_path).get_exif_by_entry("DateTime")
+            date_array = ImageList.new(image_path).get_exif_by_entry("DateTimeOriginal")
+		if image.include? "DJI" or image.include? "dji"
+		    puts image
+        	    puts date_array
+		end
+	    #puts DateTime.strptime(date_array[0][1], "%Y:%m:%d %H:%M:%S").to_time.to_i
+
+	    if date_array == nil
+		puts "Tried to get the timestamp of #{image} but failed, so sort by name."
+		sort_field = "name"
+	    end
             if date_array != nil && date_array.length > 0 and date_array[0].length > 1
-              date_times[image]=DateTime.strptime(date_array[0][1],"%Y:%m:%d %H:%M:%S").to_time.to_i
+              #date_times[image]=DateTime.strptime(date_array[0][1],"%Y:%m:%d %H:%M:%S").to_time.to_i
+	      date_times[image.downcase()] = date_array
             end
+	    #if prev_image != nil
+	    #	puts date_times[image] <=> date_times[image]
+	    #	puts date_array <=> prev_date_array
+	    #end
             # puts "gtot #{date_array} date" + date_times[image].to_s
           rescue Exception => e
-            puts "Error getting date_time "+date_times[image]+" for #{image}: #{e}"
+            #puts "Error getting date_time "+date_times[image]+" for #{image}: #{e}"
+            puts "Error getting date_time for #{image}: #{e}"
+            print date_times[image]
           end
         end
+	#prev_image = image
+	#prev_date_array = date_array
+
           # cleanup, watermark and copy the files
           # Strip out the non-ascii character and downcase the final file name
           dest_image=image.gsub(/[^0-9A-Za-z.,\-]/, '_').downcase
@@ -234,12 +257,25 @@ module Jekyll
       # sort pictures inside the gallery
       begin
         if sort_field == "timestamp"
+	puts "CRASHING HERE?"
           @images.sort! {|a,b|
-            if date_times[a] == date_times[b]
-              a <=> b # do the name if the timestamps match
-            else
-              date_times[a] <=> date_times[b]
-            end
+            #if date_times[a] == date_times[b]
+            #  a <=> b # do the name if the timestamps match
+            #else
+            #  date_times[a] <=> date_times[b]
+            #end
+	    if a == nil
+		puts a
+	    end
+	    if b == nil
+		puts b
+	    end
+	    puts a
+	    puts b
+            puts date_times[a]
+            puts date_times[b]
+	    puts date_times[a] <=> date_times[b]
+	    date_times[a] <=> date_times[b]
           }
         else
           @images.sort!
