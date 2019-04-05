@@ -1,10 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pat-laub.github.io/" rel="alternate" type="text/html" /><updated>2018-10-13T13:58:54+02:00</updated><id>https://pat-laub.github.io/</id><title type="html">pjl</title><subtitle>Maths and programming etc.
-</subtitle><entry><title type="html">I have moved to Lyon</title><link href="https://pat-laub.github.io/2018/09/10/moved-to-lyon.html" rel="alternate" type="text/html" title="I have moved to Lyon" /><published>2018-09-10T00:00:00+02:00</published><updated>2018-09-10T00:00:00+02:00</updated><id>https://pat-laub.github.io/2018/09/10/moved-to-lyon</id><content type="html" xml:base="https://pat-laub.github.io/2018/09/10/moved-to-lyon.html">&lt;p&gt;I have started a post-doctoral position working with &lt;a href=&quot;https://isfa.univ-lyon1.fr/recherche/membres-du-laboratoire/christian-robert-817202.kjsp&quot;&gt;&lt;strong&gt;Christian Robert&lt;/strong&gt;&lt;/a&gt; at the &lt;a href=&quot;http://chaire-dami.fr/en/&quot;&gt;&lt;strong&gt;Chair for Data Analytics &amp;amp; Models for Insurance&lt;/strong&gt;&lt;/a&gt; (Chaire-DAMI), which is associated with the &lt;a href=&quot;https://isfa.univ-lyon1.fr/&quot;&gt;&lt;strong&gt;Institute de Science Financière et d’Assurances&lt;/strong&gt;&lt;/a&gt; (ISFA) at the &lt;a href=&quot;https://www.univ-lyon1.fr/en/&quot;&gt;&lt;strong&gt;Université Claude Bernard Lyon 1&lt;/strong&gt;&lt;/a&gt; in Lyon, France.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<generator uri="http://jekyllrb.com" version="3.5.0">Jekyll</generator>
+<link href="https://pat-laub.github.io/feed.xml" rel="self" type="application/atom+xml" />
+<link href="https://pat-laub.github.io/" rel="alternate" type="text/html" />
+<updated>2019-04-05T15:25:50+02:00</updated>
+<id>https://pat-laub.github.io/</id>
+<subtitle>Maths and programming etc.
+</subtitle>
+<entry>
+<title>Rare event estimation</title>
+<link href="https://pat-laub.github.io/2019/03/22/rare-events.html" rel="alternate" type="text/html" title="Rare event estimation" />
+<published>2019-03-22T00:00:00+01:00</published>
+<updated>2019-03-22T00:00:00+01:00</updated>
+<id>https://pat-laub.github.io/2019/03/22/rare-events</id>
+<content type="html" xml:base="https://pat-laub.github.io/2019/03/22/rare-events.html">&lt;p&gt;The materials and lecture recordings for the course are on the &lt;a href=&quot;https://pat-laub.github.io/rare-events/&quot;&gt;&lt;strong&gt;course website&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="math" />
+<summary>The materials and lecture recordings for the course are on the course website.</summary>
+</entry>
+<entry>
+<title>Photos from 2018</title>
+<link href="https://pat-laub.github.io/2019/01/01/photos-from-2018.html" rel="alternate" type="text/html" title="Photos from 2018" />
+<published>2019-01-01T00:00:00+01:00</published>
+<updated>2019-01-01T00:00:00+01:00</updated>
+<id>https://pat-laub.github.io/2019/01/01/photos-from-2018</id>
+<content type="html" xml:base="https://pat-laub.github.io/2019/01/01/photos-from-2018.html">&lt;p&gt;Click &lt;a href=&quot;/portfolios/2018/&quot;&gt;&lt;strong&gt;here to see some of my favourite photos&lt;/strong&gt;&lt;/a&gt; which I took over the last crazy year.&lt;/p&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="photos" />
+<summary>Click here to see some of my favourite photos which I took over the last crazy year.</summary>
+</entry>
+<entry>
+<title>ISFA Seminar</title>
+<link href="https://pat-laub.github.io/2018/11/16/isfa-seminar.html" rel="alternate" type="text/html" title="ISFA Seminar" />
+<published>2018-11-16T00:00:00+01:00</published>
+<updated>2018-11-16T00:00:00+01:00</updated>
+<id>https://pat-laub.github.io/2018/11/16/isfa-seminar</id>
+<content type="html" xml:base="https://pat-laub.github.io/2018/11/16/isfa-seminar.html">&lt;p&gt;I gave a short talk on our recently accepted &lt;a href=&quot;https://www.mdpi.com/2227-9091/7/1/17&quot;&gt;&lt;strong&gt;paper&lt;/strong&gt;&lt;/a&gt;, titled “Phase-Type Models in Life Insurance: Fitting and Valuation of Equity-Linked Benefits.” A recording of it is on &lt;a href=&quot;https://youtu.be/8Ih2NxrLrmg&quot;&gt;&lt;strong&gt;Youtube&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="math" />
+<summary>I gave a short talk on our recently accepted paper, titled “Phase-Type Models in Life Insurance: Fitting and Valuation of Equity-Linked Benefits.” A recording of it is on Youtube.</summary>
+</entry>
+<entry>
+<title>I have moved to Lyon</title>
+<link href="https://pat-laub.github.io/2018/09/10/moved-to-lyon.html" rel="alternate" type="text/html" title="I have moved to Lyon" />
+<published>2018-09-10T00:00:00+02:00</published>
+<updated>2018-09-10T00:00:00+02:00</updated>
+<id>https://pat-laub.github.io/2018/09/10/moved-to-lyon</id>
+<content type="html" xml:base="https://pat-laub.github.io/2018/09/10/moved-to-lyon.html">&lt;p&gt;I have started a post-doctoral position working with &lt;a href=&quot;https://isfa.univ-lyon1.fr/recherche/membres-du-laboratoire/christian-robert-817202.kjsp&quot;&gt;&lt;strong&gt;Christian Robert&lt;/strong&gt;&lt;/a&gt; at the &lt;a href=&quot;http://chaire-dami.fr/en/&quot;&gt;&lt;strong&gt;Chair for Data Analytics &amp;amp; Models for Insurance&lt;/strong&gt;&lt;/a&gt; (Chaire-DAMI), which is associated with the &lt;a href=&quot;https://isfa.univ-lyon1.fr/&quot;&gt;&lt;strong&gt;Institut de Science Financière et d’Assurances&lt;/strong&gt;&lt;/a&gt; (ISFA) at the &lt;a href=&quot;https://www.univ-lyon1.fr/en/&quot;&gt;&lt;strong&gt;Université Claude Bernard Lyon 1&lt;/strong&gt;&lt;/a&gt; in Lyon, France.&lt;/p&gt;
 
 &lt;p&gt;My job is to research
 advanced analytics and machine learning algorithms for actuarial sciences and insurance, in particular, for improving risk-based pricing, and for developing predictive analytics.&lt;/p&gt;
 
-&lt;p&gt;I’m looking forward to spending two years in this beautiful city!&lt;/p&gt;</content><author><name>pjl</name></author><category term="photos" /><summary type="html">I have started a post-doctoral position working with Christian Robert at the Chair for Data Analytics &amp;amp; Models for Insurance (Chaire-DAMI), which is associated with the Institute de Science Financière et d’Assurances (ISFA) at the Université Claude Bernard Lyon 1 in Lyon, France.</summary></entry><entry><title type="html">Getting towards 100%</title><link href="https://pat-laub.github.io/2018/04/09/voice-classification-ii.html" rel="alternate" type="text/html" title="Getting towards 100%" /><published>2018-04-09T00:00:00+02:00</published><updated>2018-04-09T00:00:00+02:00</updated><id>https://pat-laub.github.io/2018/04/09/voice-classification-ii</id><content type="html" xml:base="https://pat-laub.github.io/2018/04/09/voice-classification-ii.html">&lt;p&gt;&lt;em&gt;If you haven’t read my original post on this machine learning problem, quickly &lt;a href=&quot;/2017/12/14/voice-classification.html&quot;&gt;&lt;strong&gt;check it out first&lt;/strong&gt;&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I’m looking forward to spending two years in this beautiful city!&lt;/p&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="photos" />
+<summary>I have started a post-doctoral position working with Christian Robert at the Chair for Data Analytics &amp;amp; Models for Insurance (Chaire-DAMI), which is associated with the Institut de Science Financière et d’Assurances (ISFA) at the Université Claude Bernard Lyon 1 in Lyon, France.</summary>
+</entry>
+<entry>
+<title>Getting towards 100%</title>
+<link href="https://pat-laub.github.io/2018/04/09/voice-classification-ii.html" rel="alternate" type="text/html" title="Getting towards 100%" />
+<published>2018-04-09T00:00:00+02:00</published>
+<updated>2018-04-09T00:00:00+02:00</updated>
+<id>https://pat-laub.github.io/2018/04/09/voice-classification-ii</id>
+<content type="html" xml:base="https://pat-laub.github.io/2018/04/09/voice-classification-ii.html">&lt;p&gt;&lt;em&gt;If you haven’t read my original post on this machine learning problem, quickly &lt;a href=&quot;{{ site.baseurl }}{% post_url 2017-12-14-voice-classification %}&quot;&gt;&lt;strong&gt;check it out first&lt;/strong&gt;&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;The biggest difficulty, in my opinion, with machine learning problems is after you’ve got a working solution. You’re staring at some accuracy figure, say 95%, and wondering ‘how high can this go?’ There are a huge number of options for that next step. For this specific voice classification problem, I could:&lt;/p&gt;
 &lt;ul&gt;
@@ -113,7 +183,23 @@ advanced analytics and machine learning algorithms for actuarial sciences and in
 
 &lt;h1 id=&quot;ideas-for-further-improvements&quot;&gt;Ideas for further improvements&lt;/h1&gt;
 
-&lt;p&gt;While doing the error analysis I realised that when I rerecorded the audio I had almost certainly had the volume too high and clipped the sound waves.&lt;/p&gt;</content><author><name>pjl</name></author><category term="code" /><category term="math" /><category term="ml" /><summary type="html">The biggest difficulty, in my opinion, with machine learning problems is after you've got a working solution. You're staring at some accuracy figure, say 95%, and wondering 'how high can this go?' There are a huge number of options for that next step.</summary></entry><entry><title type="html">On neural style transfer</title><link href="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html" rel="alternate" type="text/html" title="On neural style transfer" /><published>2018-01-07T00:00:00+01:00</published><updated>2018-01-07T00:00:00+01:00</updated><id>https://pat-laub.github.io/2018/01/07/neural-style-transfer</id><content type="html" xml:base="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html">&lt;p&gt;I’ve been playing around with &lt;em&gt;Neural Style Transfer&lt;/em&gt; (NST) for a while, and after sharing some creations with friends I got two questions: “how did you make this?” and “can you explain a bit about what is happening here?”. So, this post will do both.&lt;/p&gt;
+&lt;p&gt;While doing the error analysis I realised that when I rerecorded the audio I had almost certainly had the volume too high and clipped the sound waves.&lt;/p&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="code" />
+<category term="math" />
+<category term="ml" />
+<summary>The biggest difficulty, in my opinion, with machine learning problems is after you’ve got a working solution. You’re staring at some accuracy figure, say 95%, and wondering ‘how high can this go?’ There are a huge number of options for that next step.</summary>
+</entry>
+<entry>
+<title>On neural style transfer</title>
+<link href="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html" rel="alternate" type="text/html" title="On neural style transfer" />
+<published>2018-01-07T00:00:00+01:00</published>
+<updated>2018-01-07T00:00:00+01:00</updated>
+<id>https://pat-laub.github.io/2018/01/07/neural-style-transfer</id>
+<content type="html" xml:base="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html">&lt;p&gt;I’ve been playing around with &lt;em&gt;Neural Style Transfer&lt;/em&gt; (NST) for a while, and after sharing some creations with friends I got two questions: “how did you make this?” and “can you explain a bit about what is happening here?”. So, this post will do both.&lt;/p&gt;
 
 &lt;p&gt;After explaining the &lt;a href=&quot;#what-is-neural-style-transfer&quot;&gt;basic premise of NST&lt;/a&gt;, I’ll give &lt;a href=&quot;#some-background&quot;&gt;some relevant background&lt;/a&gt; on neural networks, describe &lt;a href=&quot;#the-nst-algorithm&quot;&gt;the NST algorithm&lt;/a&gt;, and outline &lt;a href=&quot;#what-specific-steps-did-i-take-to-make-the-images&quot;&gt;the specific steps for generating these&lt;/a&gt;.&lt;/p&gt;
 
@@ -121,27 +207,27 @@ advanced analytics and machine learning algorithms for actuarial sciences and in
 
 &lt;p&gt;Neural Style Transfer is a technique for transforming an image called the &lt;em&gt;content image&lt;/em&gt; into the style of another image, typically a painting, called the &lt;em&gt;style image&lt;/em&gt;. The banner above shows an example where the content image, a photo of the seascape in Qingdao, is&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/qingdao.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/qingdao.jpg %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;and the style image is Hokusai’s &lt;em&gt;The Great Wave off Kanagawa&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/wave.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/wave.jpg %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Another example is&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/ninja-wanderer.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/ninja-wanderer.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;where the content is this photo of myself (looking a bit like a ninja) hiking in Greenland in 2016&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/ninja.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/ninja.jpg %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;with the style of my favourite painting Wanderer above the Sea of Fog by Caspar David Friedrich (1818):&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/wanderer.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/wanderer.jpg %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This is the algorithm in progress:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/ninja.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/ninja.gif %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;some-background&quot;&gt;Some background&lt;/h1&gt;
 
@@ -155,7 +241,7 @@ advanced analytics and machine learning algorithms for actuarial sciences and in
 
 &lt;p&gt;All neural networks involve taking some input, like an image, and smacking it with gigabytes of uninterpretable number crunching and hoping the output is something sensible, like a label saying what is the content of the image. The computations are done in layers, like in the following figure:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/fully_connected_nn.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/fully_connected_nn.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;
 Image credit: &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;p&gt;Here, we read from left-to-right, that some input numbers get turned into different numbers in the “hidden layer 1”, which get turned into another collection of number in “hidden layer 2”, etc. The numbers are called “activations”, since the original inventors of this technique stole the main idea and the terminology from neurobiologists (the neurons in our brains consider inputs, from our senses or other neurons, and “activate” sending an electric signal to other brain regions).&lt;/p&gt;
@@ -170,29 +256,29 @@ Image credit: &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; cla
 
 &lt;p&gt;The following images have been generated to excite neurons in level named “conv2d0”:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/edges.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/edges.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So, it looks like the neurons here are recognising if the input image has edges or lines in different angles. In the layer named “mixed3a” the stimulating images are:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/textures.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/textures.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now they’re getting interesting! The neurons here look like they’re finding whether the image has different textures in it. The images for the layer “mixed4a” are:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/patterns.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/patterns.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This layer is deciding whether the image has elements of these psychedelic patterns.&lt;/p&gt;
 
 &lt;p&gt;Eventually, wee see that neurons in layers “mixed4d” and “mixed4e” get stimulated by recognisable objects. This neuron appears to quantify the level of ‘building-yness’ in the image.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/object_building.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/object_building.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The next looks like it’s recognising ants or bugs.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/object_ant.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/object_ant.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And finally, the anticipated dog-iness neuron:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/object_dog.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/object_dog.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&quot;https://distill.pub/2017/feature-visualization/appendix/&quot;&gt;appendix&lt;/a&gt; to that Distill article has more of these really funky generated images.&lt;/p&gt;
 
@@ -231,15 +317,15 @@ It starts with an image where the pixels are set randomly (this looks like the �
 
 &lt;p&gt;For example, when using a small resolution content image I get&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/qwave_small.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/qwave_small.jpg %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;but with a larger resolution&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/qwave.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/qwave.jpg %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;and with an even larger resolution&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/qwave_large.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/qwave_large.jpg %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;But anyway, I hope this was interesting for you! Let me know if you had a different experience in the comment section below.&lt;/p&gt;
 
@@ -260,7 +346,21 @@ It starts with an image where the pixels are set randomly (this looks like the �
       &lt;p&gt;For first-time users, you get &lt;span&gt;$&lt;/span&gt;400 worth of credit for free, so I haven’t need to pay for this so far. One thing the guide skipped was that you need to email Google to request the GPU for your VM, then load your account with about &lt;span&gt;$&lt;/span&gt;40 of credit to prove you’re serious about the request, and wait 1-2 days for a human to approve the request. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>pjl</name></author><category term="code" /><summary type="html">Neural Style Transfer is a technique for transforming an image (like this photo of the seascape in Qingdao) into the style of another image, typically a painting (here the style is of Hokusai's 'Great Wave off Kanagawa').</summary></entry><entry><title type="html">Who is it?</title><link href="https://pat-laub.github.io/2017/12/14/voice-classification.html" rel="alternate" type="text/html" title="Who is it?" /><published>2017-12-14T00:00:00+01:00</published><updated>2017-12-14T00:00:00+01:00</updated><id>https://pat-laub.github.io/2017/12/14/voice-classification</id><content type="html" xml:base="https://pat-laub.github.io/2017/12/14/voice-classification.html">&lt;h1 id=&quot;problem&quot;&gt;Problem&lt;/h1&gt;
+&lt;/div&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="code" />
+<summary>Neural Style Transfer is a technique for transforming an image (like this photo of the seascape in Qingdao) into the style of another image, typically a painting (here the style is of Hokusai’s ‘Great Wave off Kanagawa’).</summary>
+</entry>
+<entry>
+<title>Who is it?</title>
+<link href="https://pat-laub.github.io/2017/12/14/voice-classification.html" rel="alternate" type="text/html" title="Who is it?" />
+<published>2017-12-14T00:00:00+01:00</published>
+<updated>2017-12-14T00:00:00+01:00</updated>
+<id>https://pat-laub.github.io/2017/12/14/voice-classification</id>
+<content type="html" xml:base="https://pat-laub.github.io/2017/12/14/voice-classification.html">&lt;h1 id=&quot;problem&quot;&gt;Problem&lt;/h1&gt;
 
 &lt;p&gt;Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it’s a task that humans (without the benefit of caller-id) often fail at… that is, unless their phone conversations all begin as distinctively as this:&lt;/p&gt;
 
@@ -295,15 +395,12 @@ It starts with an image where the pixels are set randomly (this looks like the �
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;PrepareAudio[audioName_] := AudioResample[AudioChannelSeparate[Audio[audioName], 1], &amp;quot;Telephone&amp;quot;];
-Do[
-  Export[StringDelete[filename, &amp;quot;_full&amp;quot;], PrepareAudio[filename]],
-  {filename, FileNames[&amp;quot;*_full.wav&amp;quot;]}];&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb&quot;&gt; &lt;/script&gt;
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 down_sample.nb %}
 &lt;/details&gt;
 
 &lt;p&gt;Now the first 3 second chunk of each voice looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/start_of_each.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/start_of_each.gif %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;data-wrangling-converting-to-spectral-density-estimates&quot;&gt;Data wrangling: converting to spectral density estimates&lt;/h1&gt;
 
@@ -316,7 +413,7 @@ When we speak, we generate a lot of frequencies at once, and we tend to use some
 Imagine hearing two extreme voices: a loud and deep voice (e.g. Darth Vader), or a quiet and high-pitched voice (e.g. a squeaky librarian). If you recorded their voice, and looked at their spectral densities, you'd see something like:
 
 &lt;div&gt;
-    &lt;p&gt;&lt;img src=&quot;/images/cartoon_spectrum.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;{% link /images/cartoon_spectrum.jpg %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
   &lt;/div&gt;
 
 Which one is the red and which is the blue? Vader uses deeper tones, which means lower frequencies, so his spectral curve will have a peak on the left side. As he bellows louder than a librarian, we'd expect his spectral curve to be higher as a general fact. So, Vader would generate the red curve.
@@ -324,38 +421,26 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 
 &lt;p&gt;One 3 second chunk’s spectral density looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/individual_spectrum.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/individual_spectrum.gif %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;All of the spectra for each 3 second chunk of Don Hagen’s &lt;em&gt;The Elements of Eloquence&lt;/em&gt; plotted together looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/eloquence_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/eloquence_spectra.gif %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Similarly, the spectra of Paul Noble’s &lt;em&gt;Learn German&lt;/em&gt; together looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/german_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/german_spectra.gif %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;My hypothesis was that a machine learning algorithm could tell the difference between the 13 plots like this.&lt;/p&gt;
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;Halve[list_] := list[[1 ;; Ceiling[Length[list]/2]]];
-GetSpectrum[audio_] := Log@Halve@PeriodogramArray[audio, 1024];
-
-(* Partition the input into segments of length SplitLength seconds. *)
-SplitLength = 3;
-
-(* Get the filenames for the subsampled audio files. *)
-filenames = Select[FileNames[&amp;quot;*.wav&amp;quot;], ! StringContainsQ[#, &amp;quot;_full&amp;quot;] &amp;amp;];
-
-(* Import each file and partition it into blocks of length SplitLength, then apply the discrete Fourier transform. *)
-inputs = Table[GetSpectrum /@ AudioPartition[Audio[filename], SplitLength], {filename, filenames}];
-
-Print[&amp;quot;Data is of size n=&amp;quot;, Total[Length /@ inputs], &amp;quot;, p=&amp;quot; , Length[inputs[[1, 1]]]];&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb&quot;&gt; &lt;/script&gt;
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 split_and_spectral_estimate.nb %}
 &lt;/details&gt;
 
 &lt;p&gt;To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our &lt;a href=&quot;https://arxiv.org/abs/1711.11218&quot;&gt;great new paper&lt;/a&gt; on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for &lt;em&gt;The Elements of Eloquence&lt;/em&gt; but found it didn’t perform as well as the above plots:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/smooth_eloquence_spectra.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/smooth_eloquence_spectra.gif %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) — then I realised there was useful information in the different ways the speakers paused (e.g. between sentences) that should not be thrown away.&lt;/p&gt;
 
@@ -365,36 +450,7 @@ Print[&amp;quot;Data is of size n=&amp;quot;, Total[Length /@ inputs], &amp;quot
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;(* Get the set of indices for a given list. *)
-Indices[list_] := Range[Length[list]];
-
-(* Shuffle a list randomly. *)
-Shuffle[list_] := Part[list, RandomSample[Indices[list]]]
-
-(* Take list l and return the pair {l1, l2} where l1 is a random subset of l with Length[l1]=frac*Length[l], 
- and where l2 contains the remaining elements. *)
-RandomSplitFraction[list_, frac_] := TakeDrop[Shuffle[list], Ceiling[frac*Length[list]]];
-
-(* The fraction we want of the data in the training set (the remainder forms the test set). *)
-trainSplit = 0.75;
-
-(* For each voice, randomly split the samples into training or test sets. *)
-SeedRandom[1];
-splitted = Map[RandomSplitFraction[#, trainSplit] &amp;amp;, inputs];
-trainSamples = Table[splitted[[i, 1]], {i, Length[inputs]}];
-testSamples = Table[splitted[[i, 2]], {i, Length[inputs]}];
-
-(* Store which class each sample came from. *)
-trainClasses = Flatten@Table[ConstantArray[i, Length[trainSamples[[i]]]], {i, Length[inputs]}];
-testClasses = Flatten@Table[ConstantArray[i, Length[testSamples[[i]]]], {i, Length[inputs]}];
-
-(* Flatten the training to remove. *)
-trainSamples = Flatten[trainSamples, 1]; 
-testSamples = Flatten[testSamples, 1];
-
-(* Construct input for the classifier. *)
-cTrainInput = Table[trainSamples[[i]] -&amp;gt; trainClasses[[i]], {i, Length[trainSamples]}];
-cTestInput = Table[testSamples[[i]] -&amp;gt; testClasses[[i]], {i, Length[testSamples]}];&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=train_test_stratified_split.nb&quot;&gt; &lt;/script&gt;
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 train_test_stratified_split.nb %}
 &lt;/details&gt;
 
 &lt;h1 id=&quot;classifying&quot;&gt;Classifying&lt;/h1&gt;
@@ -403,64 +459,25 @@ cTestInput = Table[testSamples[[i]] -&amp;gt; testClasses[[i]], {i, Length[testS
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;classifier = Classify[cTrainInput];
-Print[&amp;quot;Classification time: &amp;quot;, 
-  ClassifierInformation[classifier, &amp;quot;TrainingTime&amp;quot;]];
-Print[ClassifierInformation[classifier]];
-testPerformance = ClassifierMeasurements[classifier, cTestInput];
-Print[&amp;quot;Accuracy: &amp;quot;, testPerformance[&amp;quot;Accuracy&amp;quot;]]
-Print[testPerformance[&amp;quot;ConfusionMatrixPlot&amp;quot;]]&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb&quot;&gt; &lt;/script&gt;
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 simple_classifer.nb %}
 &lt;/details&gt;
 
 &lt;p&gt;This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/builtin_classifier_info.png&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/builtin_classifier_info.png %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/builtin_confusion.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/builtin_confusion.gif %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;At first I thought: i) this could just be a lucky split of the data, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.&lt;/p&gt;
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;methods = {&amp;quot;LogisticRegression&amp;quot;, &amp;quot;NaiveBayes&amp;quot;, &amp;quot;NearestNeighbors&amp;quot;, &amp;quot;NeuralNetwork&amp;quot;, &amp;quot;RandomForest&amp;quot;, &amp;quot;SupportVectorMachine&amp;quot;};
-
-allAccuracies = Table[
-   (* For each voice, randomly split the samples into training or test sets. *)
-   splitted = Map[RandomSplitFraction[#, trainSplit] &amp;amp;, inputs];
-   trainSamples = Table[splitted[[i, 1]], {i, Length[inputs]}];
-   testSamples = Table[splitted[[i, 2]], {i, Length[inputs]}];
-   
-   (* Store which class each sample came from. *)
-   trainClasses = Flatten@Table[ConstantArray[i, Length[trainSamples[[i]]]], {i, Length[inputs]}];
-   testClasses = Flatten@Table[ConstantArray[i, Length[testSamples[[i]]]], {i, Length[inputs]}];
-   
-   (* Flatten the training to remove. *)
-   trainSamples = Flatten[trainSamples, 1]; 
-   testSamples = Flatten[testSamples, 1];
-   
-   (* Construct input for the classifier. *)
-   SubInds = Range[1, Length[trainSamples[[1]]]];
-   
-   cTrainInput = Table[{Total[Exp[trainSamples[[i]]]], trainSamples[[i, SubInds]]} -&amp;gt; trainClasses[[i]], {i, Length[trainSamples]}];
-   cTestInput = Table[{Total[Exp[testSamples[[i]]]], testSamples[[i, SubInds]]} -&amp;gt; testClasses[[i]], {i, Length[testSamples]}];
-   
-   cTrainInput = Table[trainSamples[[i, SubInds]] -&amp;gt; trainClasses[[i]], {i, Length[trainSamples]}];
-   cTestInput = Table[testSamples[[i, SubInds]] -&amp;gt; testClasses[[i]], {i, Length[testSamples]}];
-   
-   accuracies = Table[
-     classifier = Classify[cTrainInput, Method -&amp;gt; method];
-     ClassifierMeasurements[classifier, cTestInput][&amp;quot;Accuracy&amp;quot;]
-     , {method, methods}]
-   , {r, 10}];
-
-table = Prepend[{Mean[allAccuracies]}, methods];
-Print[Grid[table, Frame -&amp;gt; All]]
-Print[BoxWhiskerChart[{Transpose@allAccuracies}, ChartLegends -&amp;gt; methods]]&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb&quot;&gt; &lt;/script&gt;
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 multiple_classifiers.nb %}
 &lt;/details&gt;
 
 &lt;p&gt;Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyper-parameters). The following box plots show the accuracies over the different test runs for each method:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/different_methods.gif&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;{% link /images/different_methods.gif %}&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In summary, logistic regression is the best options with an average of 95.76% accuracy, followed by a neural network (94.54%) and a random forest (91.88%).&lt;/p&gt;
 
@@ -470,53 +487,16 @@ Print[BoxWhiskerChart[{Transpose@allAccuracies}, ChartLegends -&amp;gt; methods]
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;X = Flatten[inputs, 1];
-y = Flatten@Table[ConstantArray[i, Length[inputs[[i]]]], {i, Length[inputs]}];
-Xy = Transpose@Append[Transpose[X], y];
-Export[&amp;quot;audioData.csv&amp;quot;, Xy];&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb&quot;&gt; &lt;/script&gt;
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 export_data.nb %}
 &lt;/details&gt;
 
-&lt;p&gt;The resulting CSV file is &lt;a href=&quot;/data/audioData.csv&quot;&gt;available here&lt;/a&gt; if you’d like to have a play with this.&lt;/p&gt;
+&lt;p&gt;The resulting CSV file is &lt;a href=&quot;{% link /data/audioData.csv %}&quot;&gt;available here&lt;/a&gt; if you’d like to have a play with this.&lt;/p&gt;
 
 &lt;p&gt;The Python code to recreate these results is much simpler — &lt;a href=&quot;http://scikit-learn.org/&quot;&gt;scikit-learn&lt;/a&gt; has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:&lt;/p&gt;
 
 &lt;details&gt;
 &lt;summary&gt;Show/hide code&lt;/summary&gt;
-&lt;noscript&gt;&lt;pre&gt;import numpy as np
-import pandas as pd
-from sklearn import preprocessing
-from sklearn import linear_model
-from sklearn.model_selection import StratifiedShuffleSplit
-
-# Import the data
-FILENAME = r&amp;quot;audioData.csv&amp;quot;
-AUDIO = pd.read_csv(FILENAME, header=None)
-
-(N, P) = AUDIO.shape
-X = AUDIO.iloc[:, 0:P-1]
-Y = AUDIO.iloc[:, P-1]
-
-# Use a randomized stratified train-test split
-SPLIT = StratifiedShuffleSplit(n_splits=10, test_size=0.25, random_state=0)
-scores = []
-
-for i, indices in enumerate(SPLIT.split(X, Y)):
-    (train_index, test_index) = indices
-
-    X_train, X_test = X.loc[train_index], X.loc[test_index]
-    y_train, y_test = Y[train_index], Y[test_index]
-
-    scaler = preprocessing.StandardScaler().fit(X_train)
-    X_train_transformed = scaler.transform(X_train)
-
-    FIT = linear_model.LogisticRegression().fit(X_train_transformed, y_train)
-
-    X_test_transformed = scaler.transform(X_test)
-    scores.append(FIT.score(X_test_transformed, y_test))
-
-print(&amp;quot;Scores: &amp;quot;, scores)
-print(&amp;quot;Mean score: &amp;quot;, round(100*np.mean(scores), 2), &amp;quot;%&amp;quot;)
-print(&amp;quot;C.f. guessing would give &amp;quot;, round(100/len(set(Y)), 2), &amp;quot;%&amp;quot;)&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=voices.py&quot;&gt; &lt;/script&gt;
+{% gist Pat-Laub/41d7d5380a9693c37991e845ae15f3b9 voices.py %}
 &lt;/details&gt;
 
 &lt;p&gt;This code reports an average accuracy of 97.21%, a slight improvement over the Mathematica.&lt;/p&gt;
@@ -539,7 +519,39 @@ print(&amp;quot;C.f. guessing would give &amp;quot;, round(100/len(set(Y)), 2), 
       &lt;p&gt;Please get in touch if you know a better way to do this! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>pjl</name></author><category term="code" /><category term="math" /><category term="ml" /><summary type="html">Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell from a few seconds of speech who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python).</summary></entry><entry><title type="html">A decade of photos</title><link href="https://pat-laub.github.io/2017/12/07/added-albums.html" rel="alternate" type="text/html" title="A decade of photos" /><published>2017-12-07T00:00:00+01:00</published><updated>2017-12-07T00:00:00+01:00</updated><id>https://pat-laub.github.io/2017/12/07/added-albums</id><content type="html" xml:base="https://pat-laub.github.io/2017/12/07/added-albums.html">&lt;p&gt;Click &lt;a href=&quot;/portfolios/decade/&quot;&gt;&lt;strong&gt;here to see some of my favourite photos&lt;/strong&gt;&lt;/a&gt; which I took over the last decade.  The code I used is based on &lt;a href=&quot;https://github.com/alexivkin/Jekyll-Art-Gallery-Plugin&quot;&gt;alexivkin’s plugin&lt;/a&gt; and &lt;a href=&quot;http://fancyapps.com/fancybox/3/&quot;&gt;fancyBox3&lt;/a&gt;, both of which I found great and easy to setup.&lt;/p&gt;</content><author><name>pjl</name></author><category term="code" /><category term="photos" /><category term="webdev" /><summary type="html">Click here to see some of my favourite photos which I took over the last decade. The code I used is based on alexivkin’s plugin and fancyBox3, both of which I found great and easy to setup.</summary></entry><entry><title type="html">Here comes the sun</title><link href="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html" rel="alternate" type="text/html" title="Here comes the sun" /><published>2017-09-22T00:00:00+02:00</published><updated>2017-09-22T00:00:00+02:00</updated><id>https://pat-laub.github.io/2017/09/22/update-solar-tracker</id><content type="html" xml:base="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html">&lt;p&gt;A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="code" />
+<category term="math" />
+<category term="ml" />
+<summary>Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell from a few seconds of speech who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python).</summary>
+</entry>
+<entry>
+<title>A decade of photos</title>
+<link href="https://pat-laub.github.io/2017/12/07/added-albums.html" rel="alternate" type="text/html" title="A decade of photos" />
+<published>2017-12-07T00:00:00+01:00</published>
+<updated>2017-12-07T00:00:00+01:00</updated>
+<id>https://pat-laub.github.io/2017/12/07/added-albums</id>
+<content type="html" xml:base="https://pat-laub.github.io/2017/12/07/added-albums.html">&lt;p&gt;Click &lt;a href=&quot;/portfolios/decade/&quot;&gt;&lt;strong&gt;here to see some of my favourite photos&lt;/strong&gt;&lt;/a&gt; which I took over the last decade.  The code I used is based on &lt;a href=&quot;https://github.com/alexivkin/Jekyll-Art-Gallery-Plugin&quot;&gt;alexivkin’s plugin&lt;/a&gt; and &lt;a href=&quot;http://fancyapps.com/fancybox/3/&quot;&gt;fancyBox3&lt;/a&gt;, both of which I found great and easy to setup.&lt;/p&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="code" />
+<category term="photos" />
+<category term="webdev" />
+<summary>Click here to see some of my favourite photos which I took over the last decade.  The code I used is based on alexivkin’s plugin and fancyBox3, both of which I found great and easy to setup.</summary>
+</entry>
+<entry>
+<title>Here comes the sun</title>
+<link href="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html" rel="alternate" type="text/html" title="Here comes the sun" />
+<published>2017-09-22T00:00:00+02:00</published>
+<updated>2017-09-22T00:00:00+02:00</updated>
+<id>https://pat-laub.github.io/2017/09/22/update-solar-tracker</id>
+<content type="html" xml:base="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html">&lt;p&gt;A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/solar_tracker_login.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
@@ -547,9 +559,26 @@ print(&amp;quot;C.f. guessing would give &amp;quot;, round(100/len(set(Y)), 2), 
 
 &lt;p&gt;&lt;img src=&quot;/images/solar_tracker_map.jpg&quot; alt=&quot;image&quot; class=&quot;image post_image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;I’m quite impressed how the entire system has been running for nearly 5 years now (the app only came to mind recently as the Google Maps API I used was being deprecated, so I just fixed this); these panels which track the sun are significantly more effective than the fixed panel design.&lt;/p&gt;</content><author><name>pjl</name></author><category term="code" /><summary type="html">A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app.</summary></entry><entry><title type="html">UQ School of Maths &amp;amp; Physics Poster Day</title><link href="https://pat-laub.github.io/2017/09/14/uq-poster-day.html" rel="alternate" type="text/html" title="UQ School of Maths &amp; Physics Poster Day" /><published>2017-09-14T00:00:00+02:00</published><updated>2017-09-14T00:00:00+02:00</updated><id>https://pat-laub.github.io/2017/09/14/uq-poster-day</id><content type="html" xml:base="https://pat-laub.github.io/2017/09/14/uq-poster-day.html">&lt;p&gt;The UQ maths &amp;amp; physics poster day was fun! I showed some nice work that &lt;a href=&quot;http://pierre-olivier.goffard.me/&quot;&gt;Pierre-Olivier&lt;/a&gt;, &lt;a href=&quot;http://home.math.au.dk/asmus/&quot;&gt;Søren&lt;/a&gt; &amp;amp; I did which is on &lt;a href=&quot;https://arxiv.org/abs/1601.01763&quot;&gt;arXiv&lt;/a&gt;; I tried to make &lt;a href=&quot;/pdfs/sln_density_poster.pdf&quot;&gt;&lt;strong&gt;my poster&lt;/strong&gt;&lt;/a&gt; as accessible as possible.&lt;/p&gt;</content><author><name>pjl</name></author><category term="math" /><summary type="html">The UQ maths &amp;amp; physics poster day was fun! I showed some nice work that Pierre-Olivier, Søren &amp;amp; I did which is on arXiv; I tried to make my poster as accessible as possible.</summary></entry><entry><title type="html">Around-the-world conference trip</title><link href="https://pat-laub.github.io/2017/08/01/around-the-world.html" rel="alternate" type="text/html" title="Around-the-world conference trip" /><published>2017-08-01T00:00:00+02:00</published><updated>2017-08-01T00:00:00+02:00</updated><id>https://pat-laub.github.io/2017/08/01/around-the-world</id><content type="html" xml:base="https://pat-laub.github.io/2017/08/01/around-the-world.html">&lt;p&gt;I travelled to the &lt;a href=&quot;http://www.crm.umontreal.ca/2017/MCM2017/index_e.php&quot;&gt;International Conference on Monte Carlo Methods and Applications&lt;/a&gt; in Montreal, and the &lt;a href=&quot;http://www.ub.edu/focm2017/&quot;&gt;Foundations of Computational Mathematics conference&lt;/a&gt; in Barcelona. Both were amazing, though a month of travelling was slightly exhausting. 
-Definitely &lt;a href=&quot;https://photos.app.goo.gl/88NBhKG8HoejXSLn2&quot;&gt;&lt;strong&gt;check out the photos I took&lt;/strong&gt;&lt;/a&gt;. A huge thanks to the UQ Graduate School for funding the trip through their Candidate Development Award, and to ACEMS for covering the conference fees!&lt;/p&gt;</content><author><name>pjl</name></author><category term="photos" /><category term="travel" /><summary type="html">I travelled to the International Conference on Monte Carlo Methods and Applications in Montreal, and the Foundations of Computational Mathematics conference in Barcelona. Both were amazing, though a month of travelling was slightly exhausting. Definitely check out the photos I took. A huge thanks to the UQ Graduate School for funding the trip through their Candidate Development Award, and to ACEMS for covering the conference fees!</summary></entry><entry><title type="html">Made a new epic homepage for Søren</title><link href="https://pat-laub.github.io/2016/09/27/website-for-soren.html" rel="alternate" type="text/html" title="Made a new epic homepage for Søren" /><published>2016-09-27T00:00:00+02:00</published><updated>2016-09-27T00:00:00+02:00</updated><id>https://pat-laub.github.io/2016/09/27/website-for-soren</id><content type="html" xml:base="https://pat-laub.github.io/2016/09/27/website-for-soren.html">&lt;p&gt;Some days in the PhD you really look for anything to do that isn’t research.. I spent one of them making an updated homepage for my supervisor Søren Asmussen. The content is the same as the &lt;a href=&quot;http://home.math.au.dk/asmus/&quot;&gt;original site&lt;/a&gt;, but I just added some of his old photos to &lt;a href=&quot;/soren/index.html&quot;&gt;&lt;strong&gt;my new version&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;</content><author><name>pjl</name></author><category term="code" /><category term="webdev" /><summary type="html">Some days in the PhD you really look for anything to do that isn’t research.. I spent one of them making an updated homepage for my supervisor Søren Asmussen. The content is the same as the original site, but I just added some of his old photos to my new version.</summary></entry><entry><title type="html">Greenland conference and hike</title><link href="https://pat-laub.github.io/2016/08/01/greenland-hike.html" rel="alternate" type="text/html" title="Greenland conference and hike" /><published>2016-08-01T00:00:00+02:00</published><updated>2016-08-01T00:00:00+02:00</updated><id>https://pat-laub.github.io/2016/08/01/greenland-hike</id><content type="html" xml:base="https://pat-laub.github.io/2016/08/01/greenland-hike.html">&lt;p&gt;Ten mathematicians living off the land for a week in Greenland.. The &lt;a href=&quot;https://www.flickr.com/photos/32911979@N00/collections/72157680705107283/&quot;&gt;&lt;strong&gt;photos we got were amazing&lt;/strong&gt;&lt;/a&gt;; &lt;a href=&quot;https://www.liverpool.ac.uk/mathematical-sciences/staff/leonardo-rojas-nandayapa/&quot;&gt;Leonardo&lt;/a&gt; did a great job of collating and editing them.&lt;/p&gt;
-
-&lt;p&gt;My mate Elliot was going to write a satirical/horror story based off this since it seemed so improbable (he assured me that, no matter which approach he took, the character version of me would get killed off for sure).&lt;/p&gt;
-
-&lt;p&gt;The reason we were all in Greenland was to attend the &lt;a href=&quot;http://thiele.au.dk/events/conferences/2016/ilulissat/&quot;&gt;Applied Probability Symposium&lt;/a&gt; at &lt;a href=&quot;https://www.flickr.com/photos/32911979@N00/sets/72157671794657990&quot;&gt;Ilulissat&lt;/a&gt; which was a celebration for Søren Asmussen’s 70th birthday. I presented &lt;a href=&quot;/pdfs/greenland.pdf&quot;&gt;a talk&lt;/a&gt; at the conference — &lt;a href=&quot;https://www.flickr.com/photos/32911979@N00/sets/72157672172055201&quot;&gt;here are all the speakers in action&lt;/a&gt;.&lt;/p&gt;</content><author><name>pjl</name></author><category term="photos" /><summary type="html">Ten mathematicians living off the land for a week in Greenland.. The photos we got were amazing; Leonardo did a great job of collating and editing them.</summary></entry></feed>
+&lt;p&gt;I’m quite impressed how the entire system has been running for nearly 5 years now (the app only came to mind recently as the Google Maps API I used was being deprecated, so I just fixed this); these panels which track the sun are significantly more effective than the fixed panel design.&lt;/p&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="code" />
+<summary>A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app.</summary>
+</entry>
+<entry>
+<title>UQ School of Maths &amp;amp; Physics Poster Day</title>
+<link href="https://pat-laub.github.io/2017/09/14/uq-poster-day.html" rel="alternate" type="text/html" title="UQ School of Maths &amp; Physics Poster Day" />
+<published>2017-09-14T00:00:00+02:00</published>
+<updated>2017-09-14T00:00:00+02:00</updated>
+<id>https://pat-laub.github.io/2017/09/14/uq-poster-day</id>
+<content type="html" xml:base="https://pat-laub.github.io/2017/09/14/uq-poster-day.html">&lt;p&gt;The UQ maths &amp;amp; physics poster day was fun! I showed some nice work that &lt;a href=&quot;http://pierre-olivier.goffard.me/&quot;&gt;Pierre-Olivier&lt;/a&gt;, &lt;a href=&quot;http://home.math.au.dk/asmus/&quot;&gt;Søren&lt;/a&gt; &amp;amp; I did which is on &lt;a href=&quot;https://arxiv.org/abs/1601.01763&quot;&gt;arXiv&lt;/a&gt;; I tried to make &lt;a href=&quot;/pdfs/sln_density_poster.pdf&quot;&gt;&lt;strong&gt;my poster&lt;/strong&gt;&lt;/a&gt; as accessible as possible.&lt;/p&gt;
+</content>
+<author>
+<name>pjl</name>
+</author>
+<category term="math" />
+<summary>The UQ maths &amp;amp; physics poster day was fun! I showed some nice work that Pierre-Olivier, Søren &amp;amp; I did which is on arXiv; I tried to make my poster as accessible as possible.</summary>
+</entry>
+</feed>

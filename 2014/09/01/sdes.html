@@ -112,25 +112,22 @@ diffusion process $(X(t, \omega) : t \geq 0, \omega \in \Omega)$ by
 <h3 id="at-some-fixed-time-t">At some fixed time $T$</h3>
 <p>As $B(T) \sim N(0, T)$ then simply generate (noting that MATLAB uses
 standard deviation instead of variance for many functions)
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">T</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">% Time to sample the Brownian motion</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">T</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">% Time to sample the Brownian motion</span>
 <span class="n">B_T</span> <span class="o">=</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">));</span> <span class="c1">% Generate sample</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <h3 id="on-some-finite-mesh">On some finite mesh</h3>
 <p>Say for a mesh ${ t_1, {…}, t_n }$ then we know that
 $B(t_{i+1})-B_(t_i) \sim \mathrm{N}(0, t_{i+1}-t_i)$ so
 <script type="math/tex; mode=display">B(t_k,\omega) = B(t_1,\omega) + \sum_{i=1}^k B(t_i,\omega)-B(t_{i-1},\omega).</script>
 <p>Then to simulate
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span> <span class="c1">% Setup time mesh (need not be an evenly spaced grid)</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span> <span class="c1">% Setup time mesh (need not be an evenly spaced grid)</span>
 <span class="n">timeDiffs</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)];</span> <span class="c1">% Calculate the time increments</span>
 <span class="n">incs</span> <span class="o">=</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">timeDiffs</span><span class="p">);</span> <span class="c1">% Generate the BM increments</span>
 <span class="n">B</span> <span class="o">=</span> <span class="nb">cumsum</span><span class="p">(</span><span class="n">incs</span><span class="p">);</span> <span class="c1">% Add them all up</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>or in one line
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">B</span> <span class="o">=</span> <span class="nb">cumsum</span><span class="p">(</span><span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)]));</span>
-</code></pre>
-</div>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">B</span> <span class="o">=</span> <span class="nb">cumsum</span><span class="p">(</span><span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)]));</span>
+</code></pre></div></div>
 <h2 id="simulating-diffusion-processes-by-the-euler-maruyama-scheme">Simulating diffusion processes by the Euler-Maruyama scheme</h2>
 <p>Consider some time mesh ${ t_1, {…}, t_n }$. Approximate
 $\dif t_i, \dif B(t_i)$ by
@@ -143,7 +140,7 @@ time mesh by <script type="math/tex">\dif X(t_i,\omega) \approx \Delta X(t_i,\om
 <p>Say for example geometric Brownian motion is being simulated, i.e.
 <script type="math/tex; mode=display">\dif X(t,\omega) = \mu X(t,\omega) \dif t + \sigma X(t,\omega) \dif B(t)</script>
 <p>for $\mu, \sigma \in {\mathbb{R}}$.
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% Constants</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Constants</span>
 <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span> <span class="c1">% Time grid</span>
 <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="c1">% Drift</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span> <span class="c1">% Diffusion</span>
@@ -163,25 +160,22 @@ time mesh by <script type="math/tex">\dif X(t_i,\omega) \approx \Delta X(t_i,\om
 <span class="k">end</span>
 
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">);</span> <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'X(t)'</span><span class="p">);</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'Example GBM'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Or simply use MATLAB’s builtin SDE toolbox, the ‘gbm’ function
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">nPeriods</span> <span class="o">=</span> <span class="nb">numel</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">T</span><span class="p">);</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">nPeriods</span> <span class="o">=</span> <span class="nb">numel</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">T</span><span class="p">);</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">gbm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="s1">'StartState'</span><span class="p">,</span> <span class="n">X_0</span><span class="p">);</span>
 <span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span><span class="o">=</span>  <span class="n">g</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">nPeriods</span><span class="p">,</span> <span class="s1">'DeltaTime'</span><span class="p">,</span> <span class="n">dt</span><span class="p">);</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">);</span> <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'X(t)'</span><span class="p">);</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'Example GBM'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>or more generally just using the ‘sde’ function
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">nPeriods</span> <span class="o">=</span> <span class="nb">numel</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">T</span><span class="p">);</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">nPeriods</span> <span class="o">=</span> <span class="nb">numel</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">T</span><span class="p">);</span>
 <span class="n">a</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="n">mu</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="n">sigma</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
 
 <span class="n">d</span> <span class="o">=</span> <span class="n">sde</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">'StartState'</span><span class="p">,</span> <span class="n">X_0</span><span class="p">);</span>
 <span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span><span class="o">=</span>  <span class="n">d</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">nPeriods</span><span class="p">,</span> <span class="s1">'DeltaTime'</span><span class="p">,</span> <span class="n">dt</span><span class="p">);</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">);</span> <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'X(t)'</span><span class="p">);</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'Example GBM'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p><img src="/images/math6006/gbm.png" alt="image" class="image post_image" />
 <h2 id="simulating-multi-dimensional-itô-processes-by-the-euler-maruyama-scheme">Simulating multi-dimensional Itô processes by the Euler-Maruyama scheme</h2>
 <p>Equivalently the Euler-Maruyama method extends to multiple dimensions
@@ -191,7 +185,7 @@ then take
 <script type="math/tex; mode=display">\dif {\boldsymbol{X}}(t, \omega) = -{\boldsymbol{X}}(t, \omega) \dif t + (\sin(t), \cos(t))^T \dif {\boldsymbol{B}}(t).</script>
 <p>The algorithm to simulate this is given below.
 <p><img src="/images/math6006/multi.png" alt="image" class="image post_image" />
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% Time step, and some useful functions to calculate dBt &amp; dXt</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Time step, and some useful functions to calculate dBt &amp; dXt</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">;</span>
 <span class="n">dBt</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="n">dX</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">-</span><span class="n">X</span> <span class="o">.*</span> <span class="n">dt</span> <span class="o">+</span> <span class="p">[</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="nb">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span> <span class="o">.*</span> <span class="n">dBt</span><span class="p">();</span>
@@ -206,8 +200,7 @@ then take
 <span class="c1">% Plot the results</span>
 <span class="nb">figure</span><span class="p">;</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">,:),</span> <span class="n">X</span><span class="p">(</span><span class="mi">2</span><span class="p">,:));</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <h2 id="milsteins-method">Milstein’s Method</h2>
 <p>Remember Taylor’s expansion about $(x_0, y_0)$ of a bivariate function
 <script type="math/tex; mode=display">% <![CDATA[

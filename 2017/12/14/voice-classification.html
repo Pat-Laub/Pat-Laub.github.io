@@ -88,10 +88,7 @@
 <p>After recording, I found it took 607 MB of space to store, so I downgraded the quality of the audio to match the quality of a telephone call (8 kHz) and converted everything from stereo to mono — this reduced the space footprint to 54.2 MB. The following Mathematica code does this quality downgrading:
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>PrepareAudio[audioName_] := AudioResample[AudioChannelSeparate[Audio[audioName], 1], &quot;Telephone&quot;];
-Do[
-  Export[StringDelete[filename, &quot;_full&quot;], PrepareAudio[filename]],
-  {filename, FileNames[&quot;*_full.wav&quot;]}];</pre></noscript><script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb"> </script>
+<script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb"> </script>
 </details>
 <p>Now the first 3 second chunk of each voice looks like:
 <p><img src="/images/start_of_each.gif" alt="image" class="image post_image" />
@@ -115,19 +112,7 @@ Which one is the red and which is the blue? Vader uses deeper tones, which means
 <p>My hypothesis was that a machine learning algorithm could tell the difference between the 13 plots like this.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>Halve[list_] := list[[1 ;; Ceiling[Length[list]/2]]];
-GetSpectrum[audio_] := Log@Halve@PeriodogramArray[audio, 1024];
-
-(* Partition the input into segments of length SplitLength seconds. *)
-SplitLength = 3;
-
-(* Get the filenames for the subsampled audio files. *)
-filenames = Select[FileNames[&quot;*.wav&quot;], ! StringContainsQ[#, &quot;_full&quot;] &amp;];
-
-(* Import each file and partition it into blocks of length SplitLength, then apply the discrete Fourier transform. *)
-inputs = Table[GetSpectrum /@ AudioPartition[Audio[filename], SplitLength], {filename, filenames}];
-
-Print[&quot;Data is of size n=&quot;, Total[Length /@ inputs], &quot;, p=&quot; , Length[inputs[[1, 1]]]];</pre></noscript><script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb"> </script>
+<script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb"> </script>
 </details>
 <p>To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our <a href="https://arxiv.org/abs/1711.11218">great new paper</a> on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for <em>The Elements of Eloquence</em> but found it didn’t perform as well as the above plots:
 <p><img src="/images/smooth_eloquence_spectra.gif" alt="image" class="image post_image" />
@@ -136,48 +121,13 @@ Print[&quot;Data is of size n=&quot;, Total[Length /@ inputs], &quot;, p=&quot; 
 <p>Next, I needed to split the data into a training and test set. This proved to be quite cumbersome — and I’m a bit surprised Mathematica has nothing for this built-in.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I split the 75% of the data into the training set, and the last 25% to the test set, with the split done randomly but also stratified across each different voice.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>(* Get the set of indices for a given list. *)
-Indices[list_] := Range[Length[list]];
-
-(* Shuffle a list randomly. *)
-Shuffle[list_] := Part[list, RandomSample[Indices[list]]]
-
-(* Take list l and return the pair {l1, l2} where l1 is a random subset of l with Length[l1]=frac*Length[l], 
- and where l2 contains the remaining elements. *)
-RandomSplitFraction[list_, frac_] := TakeDrop[Shuffle[list], Ceiling[frac*Length[list]]];
-
-(* The fraction we want of the data in the training set (the remainder forms the test set). *)
-trainSplit = 0.75;
-
-(* For each voice, randomly split the samples into training or test sets. *)
-SeedRandom[1];
-splitted = Map[RandomSplitFraction[#, trainSplit] &amp;, inputs];
-trainSamples = Table[splitted[[i, 1]], {i, Length[inputs]}];
-testSamples = Table[splitted[[i, 2]], {i, Length[inputs]}];
-
-(* Store which class each sample came from. *)
-trainClasses = Flatten@Table[ConstantArray[i, Length[trainSamples[[i]]]], {i, Length[inputs]}];
-testClasses = Flatten@Table[ConstantArray[i, Length[testSamples[[i]]]], {i, Length[inputs]}];
-
-(* Flatten the training to remove. *)
-trainSamples = Flatten[trainSamples, 1]; 
-testSamples = Flatten[testSamples, 1];
-
-(* Construct input for the classifier. *)
-cTrainInput = Table[trainSamples[[i]] -&gt; trainClasses[[i]], {i, Length[trainSamples]}];
-cTestInput = Table[testSamples[[i]] -&gt; testClasses[[i]], {i, Length[testSamples]}];</pre></noscript><script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=train_test_stratified_split.nb"> </script>
+<script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=train_test_stratified_split.nb"> </script>
 </details>
 <h1 id="classifying">Classifying</h1>
 <p>If we just run the most hands-free classification (the level of simplicity of this is very impressive) we do the following.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>classifier = Classify[cTrainInput];
-Print[&quot;Classification time: &quot;, 
-  ClassifierInformation[classifier, &quot;TrainingTime&quot;]];
-Print[ClassifierInformation[classifier]];
-testPerformance = ClassifierMeasurements[classifier, cTestInput];
-Print[&quot;Accuracy: &quot;, testPerformance[&quot;Accuracy&quot;]]
-Print[testPerformance[&quot;ConfusionMatrixPlot&quot;]]</pre></noscript><script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb"> </script>
+<script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb"> </script>
 </details>
 <p>This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:
 <p><img src="/images/builtin_classifier_info.png" alt="image" class="image post_image" />
@@ -185,40 +135,7 @@ Print[testPerformance[&quot;ConfusionMatrixPlot&quot;]]</pre></noscript><script 
 <p>At first I thought: i) this could just be a lucky split of the data, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>methods = {&quot;LogisticRegression&quot;, &quot;NaiveBayes&quot;, &quot;NearestNeighbors&quot;, &quot;NeuralNetwork&quot;, &quot;RandomForest&quot;, &quot;SupportVectorMachine&quot;};
-
-allAccuracies = Table[
-   (* For each voice, randomly split the samples into training or test sets. *)
-   splitted = Map[RandomSplitFraction[#, trainSplit] &amp;, inputs];
-   trainSamples = Table[splitted[[i, 1]], {i, Length[inputs]}];
-   testSamples = Table[splitted[[i, 2]], {i, Length[inputs]}];
-   
-   (* Store which class each sample came from. *)
-   trainClasses = Flatten@Table[ConstantArray[i, Length[trainSamples[[i]]]], {i, Length[inputs]}];
-   testClasses = Flatten@Table[ConstantArray[i, Length[testSamples[[i]]]], {i, Length[inputs]}];
-   
-   (* Flatten the training to remove. *)
-   trainSamples = Flatten[trainSamples, 1]; 
-   testSamples = Flatten[testSamples, 1];
-   
-   (* Construct input for the classifier. *)
-   SubInds = Range[1, Length[trainSamples[[1]]]];
-   
-   cTrainInput = Table[{Total[Exp[trainSamples[[i]]]], trainSamples[[i, SubInds]]} -&gt; trainClasses[[i]], {i, Length[trainSamples]}];
-   cTestInput = Table[{Total[Exp[testSamples[[i]]]], testSamples[[i, SubInds]]} -&gt; testClasses[[i]], {i, Length[testSamples]}];
-   
-   cTrainInput = Table[trainSamples[[i, SubInds]] -&gt; trainClasses[[i]], {i, Length[trainSamples]}];
-   cTestInput = Table[testSamples[[i, SubInds]] -&gt; testClasses[[i]], {i, Length[testSamples]}];
-   
-   accuracies = Table[
-     classifier = Classify[cTrainInput, Method -&gt; method];
-     ClassifierMeasurements[classifier, cTestInput][&quot;Accuracy&quot;]
-     , {method, methods}]
-   , {r, 10}];
-
-table = Prepend[{Mean[allAccuracies]}, methods];
-Print[Grid[table, Frame -&gt; All]]
-Print[BoxWhiskerChart[{Transpose@allAccuracies}, ChartLegends -&gt; methods]]</pre></noscript><script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb"> </script>
+<script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb"> </script>
 </details>
 <p>Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyper-parameters). The following box plots show the accuracies over the different test runs for each method:
 <p><img src="/images/different_methods.gif" alt="image" class="image post_image" />
@@ -227,50 +144,13 @@ Print[BoxWhiskerChart[{Transpose@allAccuracies}, ChartLegends -&gt; methods]]</p
 <p>I tried to pry into the classifiers which Mathematica had created for me, but found it to be almost impossible. So, I exported the data so that I could compare with Python’s ML options.
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>X = Flatten[inputs, 1];
-y = Flatten@Table[ConstantArray[i, Length[inputs[[i]]]], {i, Length[inputs]}];
-Xy = Transpose@Append[Transpose[X], y];
-Export[&quot;audioData.csv&quot;, Xy];</pre></noscript><script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb"> </script>
+<script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb"> </script>
 </details>
 <p>The resulting CSV file is <a href="/data/audioData.csv">available here</a> if you’d like to have a play with this.
 <p>The Python code to recreate these results is much simpler — <a href="http://scikit-learn.org/">scikit-learn</a> has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:
 <details>
 <summary>Show/hide code</summary>
-<noscript><pre>import numpy as np
-import pandas as pd
-from sklearn import preprocessing
-from sklearn import linear_model
-from sklearn.model_selection import StratifiedShuffleSplit
-
-# Import the data
-FILENAME = r&quot;audioData.csv&quot;
-AUDIO = pd.read_csv(FILENAME, header=None)
-
-(N, P) = AUDIO.shape
-X = AUDIO.iloc[:, 0:P-1]
-Y = AUDIO.iloc[:, P-1]
-
-# Use a randomized stratified train-test split
-SPLIT = StratifiedShuffleSplit(n_splits=10, test_size=0.25, random_state=0)
-scores = []
-
-for i, indices in enumerate(SPLIT.split(X, Y)):
-    (train_index, test_index) = indices
-
-    X_train, X_test = X.loc[train_index], X.loc[test_index]
-    y_train, y_test = Y[train_index], Y[test_index]
-
-    scaler = preprocessing.StandardScaler().fit(X_train)
-    X_train_transformed = scaler.transform(X_train)
-
-    FIT = linear_model.LogisticRegression().fit(X_train_transformed, y_train)
-
-    X_test_transformed = scaler.transform(X_test)
-    scores.append(FIT.score(X_test_transformed, y_test))
-
-print(&quot;Scores: &quot;, scores)
-print(&quot;Mean score: &quot;, round(100*np.mean(scores), 2), &quot;%&quot;)
-print(&quot;C.f. guessing would give &quot;, round(100/len(set(Y)), 2), &quot;%&quot;)</pre></noscript><script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=voices.py"> </script>
+<script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=voices.py"> </script>
 </details>
 <p>This code reports an average accuracy of 97.21%, a slight improvement over the Mathematica.
 <h1 id="conclusion">Conclusion</h1>
