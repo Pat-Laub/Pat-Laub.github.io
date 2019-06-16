@@ -4,11 +4,11 @@ layout: compress
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
   {% include head.html %}
-  <body>
+  <body class="single">
     <div id="wrapper">
       {% include header.html %}
+      {% include intro.html %}
       {% include post_listing.html %}
-      {% include sidebar.html %}
     </div>
 
     {% include footer.html %}
