@@ -40,7 +40,7 @@ pagination:
 
   # Set to 'true' to enable pagination debugging. This can be enabled in the site config or only for individual pagination pages
   debug: false
-  per_page: 4
+  per_page: 3
   permalink: '/page/:num/' # Pages are index.html inside this folder (default)
 
   # Optional the title format for the paginated pages (supports :title for original page title, :num for pagination page number, :max for total number of pages)
