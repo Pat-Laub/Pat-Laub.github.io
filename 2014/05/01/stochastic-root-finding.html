@@ -57,7 +57,7 @@ intractable then analysis must rely on simulated estimates of this
 distribution. How does one select $x$ so that after a voyage of length
 $h$ time units then ${\mathbb{P}}(D_h \leq x) \geq 1 - \alpha$ for some
 level of $\alpha \in (0, 1]$? This problem, adapted from
-<a href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>, is an example of a stochastic root-finding problem.
+<a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>, is an example of a stochastic root-finding problem.
 <p>A general stochastic root-finding problem (SRFP) starts with two main
 elements: a function which is unknown to the user $g(x)$ which maps
 $\Omega \subset {\mathbb{R}}^q \rightarrow {\mathbb{R}}^q$ and an
@@ -91,7 +91,7 @@ achieve
 <p>With this background, the
 class of SRFPs algorithms called ‘Stochastic Approximation’ can be
 described.
-<p>In [-@robbins1951], <a href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> introduced the iterative algorithm
+<p>In [-@robbins1951], <a class="citation" href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> introduced the iterative algorithm
 now described as Robbins-Monro Stochastic Approximation (RM-SA). For $g$
 which is one-dimensional, non-decreasing, has a single simple root at
 $x^*$, then the authors proved convergence of the iterates of random
@@ -102,29 +102,29 @@ positive-valued sequence of ${a_n}$. They listed some regularity
 conditions on $g$, $G$ and on ${a_n}$ to prove that
 $X_n \rightarrow x^*$ in probability.
 <p>Robbins and Monro’s original paper created a surge of research into the
-field. The following year <a href="#Wolfowitz1952">(Wolfowitz, 1952)</a> answered two questions
-proposed by the original paper, and then <a href="#Kiefer1952">(Kiefer &amp; Wolfowitz, 1952)</a> proposed an
+field. The following year <a class="citation" href="#Wolfowitz1952">(Wolfowitz, 1952)</a> answered two questions
+proposed by the original paper, and then <a class="citation" href="#Kiefer1952">(Kiefer &amp; Wolfowitz, 1952)</a> proposed an
 extension to RM-SA which incorporated finite-differences to estimate
 $g’(x)$. In the following years @kiefer1952’s algorithm received less
-attention than the original RM-SA <a href="#Ruppert1991">(Ruppert, 1991)</a>. Now, any stochastic
+attention than the original RM-SA <a class="citation" href="#Ruppert1991">(Ruppert, 1991)</a>. Now, any stochastic
 approximation algorithm using a finite-differences derivative estimate
 is classed as a Kiefer-Wolfowitz stochastic approximation (KW-SA).
 <p>Significant work has since gone into relaxing the conditions in the
-algorithms of <a href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> and <a href="#Kiefer1952">(Kiefer &amp; Wolfowitz, 1952)</a>, and into generalising
+algorithms of <a class="citation" href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> and <a class="citation" href="#Kiefer1952">(Kiefer &amp; Wolfowitz, 1952)</a>, and into generalising
 their results (both only considered problems in one dimension).
-<a href="#Blum1954">(Blum, 1954)</a> proved that RM-SA convergence occurred with probability one,
+<a class="citation" href="#Blum1954">(Blum, 1954)</a> proved that RM-SA convergence occurred with probability one,
 and was the first to prove the same result for the multidimensional
 extension in (missing reference).
 <p>Unfortunately KW-SA did not extend to high-dimensions gracefully.
 Traditionally finite differences approximation of ${\nabla}f(x)$ in $q$
-dimensions requires $q+1$ evaluations of the $f$ function. <a href="#Spall1987">(Spall, 1987)</a>
+dimensions requires $q+1$ evaluations of the $f$ function. <a class="citation" href="#Spall1987">(Spall, 1987)</a>
 introduced a method for approximating the derivative using only two
 function evaluations, called Simultaneous Perturbation Stochastic
 Approximation (SPSA). The name is (perhaps obviously) derived from the
 fact that the method perturbs every direction at the same time, trading
 off accuracy for a significantly faster compute time (for large $q$).
-See <a href="#Spall1998">(Spall, 1998)</a> for a well-written introduction to the field, and
-<a href="#Spall2000">(Spall, 2000)</a> for a more developed form of SPSA.
+See <a class="citation" href="#Spall1998">(Spall, 1998)</a> for a well-written introduction to the field, and
+<a class="citation" href="#Spall2000">(Spall, 2000)</a> for a more developed form of SPSA.
 <p>One large implementation problem when using these algorithms is to
 choose which sequence/s should be supplied to the algorithm. In RM-SA
 the user must specify a step-size sequence $a_n$ such that
@@ -132,19 +132,19 @@ the user must specify a step-size sequence $a_n$ such that
 \sum_{i=0}^\infty a_i = \infty, \quad \sum_{i=0}^\infty a_i^2 < \infty. %]]></script>
 <p>Though the asymptotic results for rate of convergence hold for any
 $a_n$, it has been seen that the finite-time performance is hugely
-impacted by this selection. <a href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> originally suggested the form
+impacted by this selection. <a class="citation" href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> originally suggested the form
 $a_n = 1/n$ which is very similar to the best current rule-of-thumb 62
-years later <a href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>.
-<p><a href="#Polyak1992">(Polyak &amp; Juditsky, 1992)</a> and <a href="#Ruppert1988">(Ruppert, 1988)</a> independently arrived at a method to
+years later <a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>.
+<p><a class="citation" href="#Polyak1992">(Polyak &amp; Juditsky, 1992)</a> and <a class="citation" href="#Ruppert1988">(Ruppert, 1988)</a> independently arrived at a method to
 diminish the impact of a poor selection of $a_n$. They suggested larger
 step sizes than the typical $a_n = 1/n$ and using
 $\bar{X}<em>n = \sum</em>{i=0}^n X_i$ - the sample mean of the iterates - as
 the estimator of the root. This is shown to have the same optimal
 asymptotic rate of convergence as standard RM-SA yet with better
 finite-time characteristics (missing reference), and is now very commonly
-used in practice <a href="#Asmussen2007">(Asmussen &amp; Glynn, 2007)</a>. An in-depth look at all stochastic
-approximation techniques and results can be found in <a href="#Kushner2003">(Kushner &amp; Yin, 2003)</a>,
-<a href="#Chen2002">(Chen, 2002)</a>, and <a href="#Spall2005">(Spall, 2005)</a>.
+used in practice <a class="citation" href="#Asmussen2007">(Asmussen &amp; Glynn, 2007)</a>. An in-depth look at all stochastic
+approximation techniques and results can be found in <a class="citation" href="#Kushner2003">(Kushner &amp; Yin, 2003)</a>,
+<a class="citation" href="#Chen2002">(Chen, 2002)</a>, and <a class="citation" href="#Spall2005">(Spall, 2005)</a>.
 <p>Discussions of averaging lead to the major rival of stochastic
 approximation algorithms, which is known as the stochastic counterpart
 method (SC) or sample average approximation, or the sample-path method).
@@ -156,37 +156,37 @@ $G(x)$ after $N$ samples, i.e.
 sufficiently large (relative to ${\mathrm{Var}}[G(x)]$) then the root of
 the surrogate problem $\hat{g}(x)$ is a DRFP that can be solved using
 the vast array of algorithms in that field (many can be found in
-<a href="#Wright1999">(Wright &amp; Nocedal, 1999)</a>). There are some major advantages to SC over SA.
-<a href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a> states that SC, when compared to SA, is very
+<a class="citation" href="#Wright1999">(Wright &amp; Nocedal, 1999)</a>). There are some major advantages to SC over SA.
+<a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a> states that SC, when compared to SA, is very
 conceptually simple and that it is powerful as the tools developed for
 DRFPs can be utilised. In modern times SC is likely to be preferred over
 SA as it is easily parallelisable. Also SC allows examination of
-non-differentiable functions which would confuse SA methods <a href="#Wang2008">(Wang &amp; Schmeiser, 2008)</a>.
+non-differentiable functions which would confuse SA methods <a class="citation" href="#Wang2008">(Wang &amp; Schmeiser, 2008)</a>.
 <p>Initial work on the stochastic counterpart method arose from
-<a href="#Healy1991">(Healy &amp; Schruben, 1991)</a> looking at a related concept which is retrospective
+<a class="citation" href="#Healy1991">(Healy &amp; Schruben, 1991)</a> looking at a related concept which is retrospective
 optimization methodology. This work discussed the notion of optimizing
 the performance of a stochastic system – the context given was resource
 allocation and queuing problems – over a selection of available
-decisions. <a href="#Chen1994">(Chen &amp; Schmeiser, 1994)</a> then formally applied the methodology to
+decisions. <a class="citation" href="#Chen1994">(Chen &amp; Schmeiser, 1994)</a> then formally applied the methodology to
 stochastic root finding, and Schmeiser’s PhD student Pasupathy
-generalised the results to multiple dimensions <a href="#Pasupathy2005">(Pasupathy, 2005)</a>. Initial
-results on convergence were already proved by <a href="#Shapiro1991">(Shapiro, 1991)</a> in the
+generalised the results to multiple dimensions <a class="citation" href="#Pasupathy2005">(Pasupathy, 2005)</a>. Initial
+results on convergence were already proved by <a class="citation" href="#Shapiro1991">(Shapiro, 1991)</a> in the
 context of stochastic optimization. The topic is well-explained by many
-books, including: <a href="#Rubinstein1993">(Rubinstein &amp; Shapiro, 1993)</a>, <a href="#Spall2005">(Spall, 2005)</a>, and (missing reference).
-<p><a href="#Rubinstein1997">(Rubinstein, 1997)</a> built on the original work on the stochastic
+books, including: <a class="citation" href="#Rubinstein1993">(Rubinstein &amp; Shapiro, 1993)</a>, <a class="citation" href="#Spall2005">(Spall, 2005)</a>, and (missing reference).
+<p><a class="citation" href="#Rubinstein1997">(Rubinstein, 1997)</a> built on the original work on the stochastic
 counterpart method and produced a landmark application of the method for
 rare-event simulations. A simplified explanation can be found in
 (missing reference), which describes how stochastic counterpart is a vital
 component of the cross-entropy method.
 <p>Modern work on stochastic approximation techniques seeks to automate the
-task of parameter selection. <a href="#Spall2000">(Spall, 2000)</a> outlines an adaptive extension
-to SPSA. Very recently <a href="#Broadie2014">(Broadie, Cicek, &amp; Zeevi, 2014)</a> outlined a fully adaptive
+task of parameter selection. <a class="citation" href="#Spall2000">(Spall, 2000)</a> outlines an adaptive extension
+to SPSA. Very recently <a class="citation" href="#Broadie2014">(Broadie, Cicek, &amp; Zeevi, 2014)</a> outlined a fully adaptive
 extension to both RMSA and KWSA which works well in practice, yet has
 little founding in rigorous proofs. Another recent application of
 stochastic approximation is in evaluating portfolio risk, cf
-<a href="#Dunkel2010">(Dunkel &amp; Weber, 2010)</a>.
+<a class="citation" href="#Dunkel2010">(Dunkel &amp; Weber, 2010)</a>.
 <p>To conclude, a completely different approach to solving SRFPs called the
-probabilistic bisection method by <a href="#Waeber2011">(Waeber, Frazier, &amp; Henderson, 2011)</a> will be described.
+probabilistic bisection method by <a class="citation" href="#Waeber2011">(Waeber, Frazier, &amp; Henderson, 2011)</a> will be described.
 Instead of iterating a single point $X_n$ towards $x^*$ in some form of
 descent method (which is basically all that SA and SC achieve), this
 approach iterates a sequences of probability distribution functions
@@ -227,7 +227,7 @@ Bayesian approach incorporates all previous queries of $G$ into
 $f_n$.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
 <h1 id="main-theorems">Main Theorems</h1>
 <p><em>Proof of Robbins-Monro convergence almost surely:</em>
-<p>Results listed below are adapted from the original proof by <a href="#Blum1954">(Blum, 1954)</a>.
+<p>Results listed below are adapted from the original proof by <a class="citation" href="#Blum1954">(Blum, 1954)</a>.
 <p>Say $g(x)$ is a Lebesgue measurable function and our available estimator
 $G(x)$ is unbiased (i.e. ${\mathbb{E}}[G(x)] = g(x)$) and that
 ${a_n : n \in {\mathbb{N}}}$ is the user-supplied step sequence. The
@@ -247,12 +247,12 @@ of the step sequence, $\eqref{C}$ ensures the function isn’t too steep
 for root-finding, $\eqref{D}$ ensures the noise in our measurements is
 finite, $\eqref{E}$ states that there is at most one root and
 $\eqref{F}$ “ensures that the iterates do not accumulate at any finite
-point” <a href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>.
+point” <a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>.
 <p><strong>Lemma 1</strong> If $\eqref{B}$ and $\eqref{D}$ hold then the sequence
 ${ X_{n+1} + \sum_{j=1}^n a_j g(X_j) }$ converges to a random variable
 with probability one.
-<p><a href="#Blum1954">(Blum, 1954)</a> cites Lemma 1 as a minor extension of Lemma 5.2
-in <a href="#Loeve1951">(Loève &amp; others, 1951)</a>.
+<p><a class="citation" href="#Blum1954">(Blum, 1954)</a> cites Lemma 1 as a minor extension of Lemma 5.2
+in <a class="citation" href="#Loeve1951">(Loève &amp; others, 1951)</a>.
 <p><strong>Lemma 2</strong> If $\eqref{B}$, $\eqref{C}$, $\eqref{D}$ and $\eqref{E}$
 hold then $X_n$ converges w.p.1.
 <p>First want to show
@@ -352,7 +352,7 @@ consider applying $\eqref{F}$ so that
 <p>eventually and as
 $\eqref{A}$ states the $a_n$ also diverge so overall this sum would
 diverge almost surely. This is contradiction!
-<p>See <a href="#Kushner2003">(Kushner &amp; Yin, 2003)</a> for many more proofs on convergence guarantees and
+<p>See <a class="citation" href="#Kushner2003">(Kushner &amp; Yin, 2003)</a> for many more proofs on convergence guarantees and
 convergence speed of stochastic approximation algorithms.
 <h1 id="algorithms">Algorithms</h1>
 <p><img src="/images/pseudocode_srf.png" alt="image" class="image post_image" />
