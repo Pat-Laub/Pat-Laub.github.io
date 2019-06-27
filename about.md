@@ -1,6 +1,7 @@
 ---
 layout: about
 permalink: /about/
+redirect_from: /about.html
 title: Patrick Laub
 ---
 
