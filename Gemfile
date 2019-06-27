@@ -8,10 +8,7 @@ source 'https://rubygems.org'
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem 'jekyll', '3.5.0'
-
-# This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem 'future_imperfect_jekyll_theme'
+gem "jekyll", "~> 3.8"
 
 gem 'therubyracer'
 
@@ -36,3 +33,6 @@ gem 'rmagick'
 
 gem 'jekyll-paginate-v2'
 gem 'unicode_utils'
+
+gem 'jekyll-redirect-from'
+gem 'ffi', '1.9.23'

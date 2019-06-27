@@ -20,6 +20,7 @@ markdown: kramdown
 plugins:
   - jekyll-gist
   - jekyll-paginate-v2
+  - jekyll-redirect-from
 sass:
     style: compressed
 compress_html:
