@@ -42,9 +42,9 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 - Brisbane 2017, _Sums of lognormal random variables: Laplace transform estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_laplace_poster.pdf %})]
 
 # Theses:
-- Doctor of Philosophy (Applied Probability) 2018, _Computational methods for sums of random variables_ [[__thesis__](https://espace.library.uq.edu.au/view/UQ:45e624a)]
-- Bachelor of Science (Mathematics, Hons. I) 2014, _Hawkes Processes: Simulation, Estimation, and Validation_ [[__thesis__]({% link /pdfs/honours_thesis.pdf %})]
-- Bachelor of Engineering (Software, Hons. I)/Science (Mathematics) 2013, _Tradeoffs In Geophysical Inversion_  [[__thesis__]({% link /pdfs/software_thesis.pdf %})]
+- Doctor of Philosophy (Applied Probability) 2018, _Computational methods for sums of random variables_ [[__pdf__](https://espace.library.uq.edu.au/view/UQ:45e624a), [__tex__](https://github.com/Pat-Laub/phd-thesis)]
+- Bachelor of Science (Mathematics, Hons. I) 2014, _Hawkes Processes: Simulation, Estimation, and Validation_ [[__pdf__]({% link /pdfs/honours_thesis.pdf %})]
+- Bachelor of Engineering (Software, Hons. I)/Science (Mathematics) 2013, _Tradeoffs In Geophysical Inversion_  [[__pdf__]({% link /pdfs/software_thesis.pdf %})]
 
 # Reviewer:
 
