@@ -20,7 +20,7 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 # In progress:
 
-- [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), Patrick J. Laub (2019), _Rare tail approximation using asymptotics and L1 polar coordinates_, Statistics and Computing [[__arxiv__](https://arxiv.org/abs/1809.06594), [__code__](https://github.com/Pat-Laub/PolarRareTailApproximation)]
+- [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), Patrick J. Laub (2019), _Rare tail approximation using asymptotics and L1 polar coordinates_ [[__arxiv__](https://arxiv.org/abs/1809.06594), [__code__](https://github.com/Pat-Laub/PolarRareTailApproximation)]
 
 # Book Chapters:
 - [Søren Asmussen](http://home.math.au.dk/asmus/), [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2015), _Orthonormal polynomial expansions and lognormal sum densities_, Risk and Stochastics: Ragnar Norberg at 70 (Mathematical Finance Economics), World Scientific [[__amazon__](https://www.amazon.co.uk/Risk-Stochastics-Norberg-Mathematical-Economics/dp/1786341948), [__arxiv__](https://arxiv.org/abs/1601.01763), [__code__](https://github.com/Pat-Laub/SLNOrthogonalPolynomials)]
