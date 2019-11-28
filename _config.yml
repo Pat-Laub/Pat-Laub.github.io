@@ -34,7 +34,7 @@ scholar:
 # permalink: /:categories/:title/
 
 gist:
-  noscript: true
+  noscript: false
 
 pagination:
   enabled: true
