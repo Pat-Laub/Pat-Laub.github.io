@@ -35,7 +35,7 @@ Creator of [__EMpht.jl__](https://github.com/Pat-Laub/EMpht.jl). Minor contribut
 
 # Reviewer:
 
-Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, The Journal of Computational and Graphical Statistics, and Methodology and Computing in Applied Probability.
+Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Journal of Computational and Graphical Statistics, and Methodology and Computing in Applied Probability.
 
 # Presentations:
 - Munich 2019, _Phase-Type Models in Life Insurance_, Insurance: Mathematics and Economics (IME 2019) [[__actuview__](https://www.actuview.com/phase-type-models-in-life-insurance-fitting-and-valuation-of-equity-linked-benefits_80ba6000c.html)]
