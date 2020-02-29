@@ -44,7 +44,7 @@ pagination:
   per_page: 3
   permalink: '/page/:num/' # Pages are index.html inside this folder (default)
 
-  # Optional the title format for the paginated pages (supports :title for original page title, :num for pagination page number, :max for total number of pages)
+  # Optional the title format for the paginated pages (supports :title for original page titl e, :num for pagination page number, :max for total number of pages)
   title: ':title'
 
   # Limit how many pagenated pages to create (default: 0, means all)

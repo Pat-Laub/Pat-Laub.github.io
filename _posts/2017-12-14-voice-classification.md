@@ -12,12 +12,7 @@ excerpt: >
 
 # Problem
 
-Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it's a task that humans (without the benefit of caller-id) often fail at... that is, unless their phone conversations all begin as distinctively as this:
-
-
-<p>
-<iframe width="560" height="315" class="image" src="https://www.youtube.com/embed/W16qzZ7J5YQ" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-</p>
+Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it's a task that humans (without the benefit of caller-id) often fail at.
 
 # Input data
 

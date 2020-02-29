@@ -1,16 +1,15 @@
 ---
-layout: compress
+layout: default
 ---
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
-  {% include head.html %}
-  <body class="single">
-    <div id="wrapper">
-      {% include header.html %}
-      {% include intro.html %}
-      {% include post_listing.html %}
-    </div>
 
-    {% include footer.html %}
-  </body>
-</html>
+<div id="main">
+<article class="post">
+
+
+{% include intro.html %}
+
+<img src="/images/me_in_paris.jpg" title="Me in some café in Paris" class="image front_image"/>
+{{ content }}
+
+</article>
+</div>
