@@ -73,7 +73,7 @@ With this background, the
 class of SRFPs algorithms called ‘Stochastic Approximation’ can be
 described.
 
-In [-@robbins1951], {% cite Robbins1951 %} introduced the iterative algorithm
+In {% cite Robbins1951 %}, Robbins & Monro introduced the iterative algorithm
 now described as Robbins-Monro Stochastic Approximation (RM-SA). For $g$
 which is one-dimensional, non-decreasing, has a single simple root at
 $x^\*$, then the authors proved convergence of the iterates of random
@@ -90,7 +90,7 @@ Robbins and Monro’s original paper created a surge of research into the
 field. The following year {% cite Wolfowitz1952 %} answered two questions
 proposed by the original paper, and then {% cite Kiefer1952 %} proposed an
 extension to RM-SA which incorporated finite-differences to estimate
-$g'(x)$. In the following years @kiefer1952’s algorithm received less
+$g'(x)$. In the following years Kiefer & Wolfowitz’s algorithm received less
 attention than the original RM-SA {% cite Ruppert1991 %}. Now, any stochastic
 approximation algorithm using a finite-differences derivative estimate
 is classed as a Kiefer-Wolfowitz stochastic approximation (KW-SA).
@@ -272,7 +272,9 @@ hold then $X_n$ converges w.p.1.
 
 First want to show
 
-$${\mathbb{P}}\left(\lim_{n\rightarrow \infty} X_n = \pm \infty\right) = 0.\label{conv:fin}$$
+\begin{equation} \label{conv:fin}
+{\mathbb{P}}\left(\lim_{n\rightarrow \infty} X_n = \pm \infty\right) = 0.
+\end{equation}
 
 Suppose $\{X_n \}$ is a sample sequence which diverges to $+\infty$ (a
 similar argument holds for $-\infty$). This means $X_n \leq \theta$ for
@@ -289,13 +291,15 @@ Assume the statement of the lemma is false and it will be proved by
 contradiction. Lemma 1 and $\eqref{conv:fin}$ imply that
 there exist sample sequences with positive probability such that
 
-$$\label{contr1}
-  X_{n+1} + \sum_{j=1}^n a_jg(X_j) \text{ converges to a finite number.}$$
+\begin{equation} \label{contr1}
+  X_{n+1} + \sum_{j=1}^n a_jg(X_j) \text{ converges to a finite number.}
+\end{equation}
 
 and the assumption of the lemma being false implies
 
-$$\label{contr2}
-  \lim \inf X_n < \lim \sup X_n.$$
+\begin{equation} \label{contr2}
+  \lim \inf X_n < \lim \sup X_n.
+\end{equation}
 
 Select such a sequence of $X_n$ and
 w.l.o.g assume $\lim \sup X_n > \theta$. We can select numbers $a$ and
@@ -306,27 +310,31 @@ $$a > \theta, \quad \lim \inf X_n < a < b < \lim \sup X_n$$
 Now for $N$
 large enough then $N \leq n < m$ means
 
-$$\label{an_bounds}
-  a_n \leq \min \left\{ \frac{1}{3d}, \frac{b-a}{3(c + d|\theta|)} \right\}$$
+\begin{equation} \label{anbounds}
+  a_n \leq \min \left\\{ \frac{1}{3d}, \frac{b-a}{3(c + d|\theta|)} \right\\}
+\end{equation}
 
 which is fine since $\eqref{B}$ implies $a_n \rightarrow 0$, and also
 
-$$\label{bound}
-  \left| X_m - X_n + \sum_{j=n}^{m-1} a_j g(X_j) \right| \leq \frac{b-a}{3}$$
+\begin{equation} \label{bound}
+  \left| X_m - X_n + \sum_{j=n}^{m-1} a_j g(X_j) \right| \leq \frac{b-a}{3}
+\end{equation}
 
 which is justified by $\eqref{contr1}$. Fix values for $m$ and $n$ so
 that
 
-$$\label{summands}
-  N \leq n < m, \quad X_n < a, \quad X_m > b, \quad n < j < m \Rightarrow a \leq X_j \leq b.$$
+\begin{equation} \label{summands}
+  N \leq n < m, \quad X_n < a, \quad X_m > b, \quad n < j < m \Rightarrow a \leq X_j \leq b.
+\end{equation}
 
 In particular note that for $n<j<m$ then $\eqref{summands}$ &
 $\eqref{E}$ means that $a_jg(X_j) > 0$. By rearranging $\eqref{bound}$
 and applying this note we can see that
 
-$$\label{ineq}
+\begin{equation} \label{ineq}
   X_m - X_n \leq \frac{b-a}{3} - \sum_{j=n}^{m-1} a_jg(X_j)
-  \leq \frac{b-a}{3} - a_ng(X_n)$$
+  \leq \frac{b-a}{3} - a_ng(X_n)
+\end{equation}
 
 To finish the proof we take cases. If
 $\theta < X_n$ then $g(X_n) > 0$ so $\eqref{ineq}$ states that
@@ -337,23 +345,22 @@ but $\eqref{summands}$ implies that
 $X_m - X_n > b-a$, so a contradiction! This leaves considering the case
 where $X_n \leq \theta$, so $g(X_n) < 0$ and by $\eqref{C}$:
 
-$$\begin{aligned}
- \label{ineq2}
-  -g(X_n) & = |g(X_n)| \notag                           \\
-      & \leq c + d|X_n| \notag                      \\
-      & \leq c + d|\theta| + d|\theta - X_n| \notag \\
-      & \leq c + d|\theta| + d(X_m - X_n)
- \end{aligned}$$
+$$\begin{align}
+  -g(X_n) & = |g(X_n)| \notag \\
+      & \leq c + d|X_n| \notag \\
+      & \leq c + d|\theta| + d|\theta - X_n| \notag  \\
+      & \leq c + d|\theta| + d(X_m - X_n)  \label{ineq2}
+\end{align} $$
 
 So plugging $\eqref{ineq2}$ into $\eqref{ineq}$ gives
 
-$$\begin{aligned}
+$$ \begin{aligned}
  \label{anothercontr}
   X_m - X_n & \leq \frac{b-a}{3} + a_n(c + d|\theta| + d(X_m - X_n))                                                                                                   \\
         & = \frac{b-a}{3} + a_n(c + d|\theta|) + a_n d(X_m - X_n)                                                                                                  \\
-        & \leq \frac{b-a}{3} + \left(\frac{b-a}{3(c+d|\theta|)}\right)(c + d|\theta|) + \left(\frac{1}{3d}\right) d(X_m - X_n) \qquad \text{ by $\eqref{an_bounds}$} \\
+        & \leq \frac{b-a}{3} + \left(\frac{b-a}{3(c+d|\theta|)}\right)(c + d|\theta|) + \left(\frac{1}{3d}\right) d(X_m - X_n) \qquad \text{ by $\eqref{anbounds}$} \\
         & \leq \frac{b-a}{3} + \frac{b-a}{3} + \frac{X_m - X_n}{3}
- \end{aligned}$$
+\end{aligned} $$
 
 Collecting $X_m - X_n$ terms together and multiplying
 by $\frac{3}{2}$ gives
@@ -380,8 +387,9 @@ Choose some
 $\epsilon_1, \epsilon_2$ s.t.
 $\theta < \epsilon_1 < \epsilon_2 < \infty$[^2] and
 
-$$\label{epsilon}
-  {\mathbb{P}}(\epsilon_1 < X < \epsilon_2) > 0$$
+\begin{equation} \label{epsilon}
+  {\mathbb{P}}(\epsilon_1 < X < \epsilon_2) > 0
+\end{equation}
 
 Consider all the
 sequences $X_n$ that, for a chosen $(\epsilon_1, \epsilon_2)$, satisfy

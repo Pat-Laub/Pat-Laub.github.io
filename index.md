@@ -29,7 +29,7 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 # Teaching:
 
-Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://pat-laub.github.io/rare-events/), [__lecture recordings__](https://www.youtube.com/playlist?list=PLKsJFg6SO0Ujr6tZHSImQ50vuNPoZ3NOl)]
+Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://pat-laub.github.io/rare-events/2019/), [__lecture recordings__](https://www.youtube.com/playlist?list=PLKsJFg6SO0Ujr6tZHSImQ50vuNPoZ3NOl)]
 
 # Open source software:
 
