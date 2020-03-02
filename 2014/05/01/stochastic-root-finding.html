@@ -90,7 +90,7 @@ achieve
 <p>With this background, the
 class of SRFPs algorithms called ‘Stochastic Approximation’ can be
 described.
-<p>In [-@robbins1951], <a class="citation" href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> introduced the iterative algorithm
+<p>In <a class="citation" href="#Robbins1951">(Robbins &amp; Monro, 1951)</a>, Robbins &amp; Monro introduced the iterative algorithm
 now described as Robbins-Monro Stochastic Approximation (RM-SA). For $g$
 which is one-dimensional, non-decreasing, has a single simple root at
 $x^*$, then the authors proved convergence of the iterates of random
@@ -104,7 +104,7 @@ $X_n \rightarrow x^*$ in probability.
 field. The following year <a class="citation" href="#Wolfowitz1952">(Wolfowitz, 1952)</a> answered two questions
 proposed by the original paper, and then <a class="citation" href="#Kiefer1952">(Kiefer &amp; Wolfowitz, 1952)</a> proposed an
 extension to RM-SA which incorporated finite-differences to estimate
-$g’(x)$. In the following years @kiefer1952’s algorithm received less
+$g’(x)$. In the following years Kiefer &amp; Wolfowitz’s algorithm received less
 attention than the original RM-SA <a class="citation" href="#Ruppert1991">(Ruppert, 1991)</a>. Now, any stochastic
 approximation algorithm using a finite-differences derivative estimate
 is classed as a Kiefer-Wolfowitz stochastic approximation (KW-SA).
@@ -179,13 +179,13 @@ rare-event simulations. A simplified explanation can be found in
 component of the cross-entropy method.
 <p>Modern work on stochastic approximation techniques seeks to automate the
 task of parameter selection. <a class="citation" href="#Spall2000">(Spall, 2000)</a> outlines an adaptive extension
-to SPSA. Very recently <a class="citation" href="#Broadie2014">(Broadie, Cicek, &amp; Zeevi, 2014)</a> outlined a fully adaptive
+to SPSA. Very recently <a class="citation" href="#Broadie2014">(Broadie et al., 2014)</a> outlined a fully adaptive
 extension to both RMSA and KWSA which works well in practice, yet has
 little founding in rigorous proofs. Another recent application of
 stochastic approximation is in evaluating portfolio risk, cf
 <a class="citation" href="#Dunkel2010">(Dunkel &amp; Weber, 2010)</a>.
 <p>To conclude, a completely different approach to solving SRFPs called the
-probabilistic bisection method by <a class="citation" href="#Waeber2011">(Waeber, Frazier, &amp; Henderson, 2011)</a> will be described.
+probabilistic bisection method by <a class="citation" href="#Waeber2011">(Waeber et al., 2011)</a> will be described.
 Instead of iterating a single point $X_n$ towards $x^*$ in some form of
 descent method (which is basically all that SA and SC achieve), this
 approach iterates a sequences of probability distribution functions
@@ -255,7 +255,9 @@ in <a class="citation" href="#Loeve1951">(Loève &amp; others, 1951)</a>.
 <p><strong>Lemma 2</strong> If $\eqref{B}$, $\eqref{C}$, $\eqref{D}$ and $\eqref{E}$
 hold then $X_n$ converges w.p.1.
 <p>First want to show
-<script type="math/tex; mode=display">{\mathbb{P}}\left(\lim_{n\rightarrow \infty} X_n = \pm \infty\right) = 0.\label{conv:fin}</script>
+<p>\begin{equation} \label{conv:fin}
+{\mathbb{P}}\left(\lim_{n\rightarrow \infty} X_n = \pm \infty\right) = 0.
+\end{equation}
 <p>Suppose ${X_n }$ is a sample sequence which diverges to $+\infty$ (a
 similar argument holds for $-\infty$). This means $X_n \leq \theta$ for
 only finitely many $n$, so $\eqref{E}$ $\Rightarrow a_ng(X_n) &gt; 0$ for
@@ -267,12 +269,13 @@ shown $\eqref{conv:fin}$ to be true.
 <p>Assume the statement of the lemma is false and it will be proved by
 contradiction. Lemma 1 and $\eqref{conv:fin}$ imply that
 there exist sample sequences with positive probability such that
-<script type="math/tex; mode=display">\label{contr1}
-  X_{n+1} + \sum_{j=1}^n a_jg(X_j) \text{ converges to a finite number.}</script>
+<p>\begin{equation} \label{contr1}
+  X_{n+1} + \sum_{j=1}^n a_jg(X_j) \text{ converges to a finite number.}
+\end{equation}
 <p>and the assumption of the lemma being false implies
-<script type="math/tex; mode=display">% <![CDATA[
-\label{contr2}
-  \lim \inf X_n < \lim \sup X_n. %]]></script>
+<p>\begin{equation} \label{contr2}
+  \lim \inf X_n &lt; \lim \sup X_n.
+\end{equation}
 <p>Select such a sequence of $X_n$ and
 w.l.o.g assume $\lim \sup X_n &gt; \theta$. We can select numbers $a$ and
 $b$ such that
@@ -280,22 +283,25 @@ $b$ such that
 a > \theta, \quad \lim \inf X_n < a < b < \lim \sup X_n %]]></script>
 <p>Now for $N$
 large enough then $N \leq n &lt; m$ means
-<script type="math/tex; mode=display">\label{an_bounds}
-  a_n \leq \min \left\{ \frac{1}{3d}, \frac{b-a}{3(c + d|\theta|)} \right\}</script>
+<p>\begin{equation} \label{anbounds}
+  a_n \leq \min \left\{ \frac{1}{3d}, \frac{b-a}{3(c + d|\theta|)} \right\}
+\end{equation}
 <p>which is fine since $\eqref{B}$ implies $a_n \rightarrow 0$, and also
-<script type="math/tex; mode=display">\label{bound}
-  \left| X_m - X_n + \sum_{j=n}^{m-1} a_j g(X_j) \right| \leq \frac{b-a}{3}</script>
+<p>\begin{equation} \label{bound}
+  \left| X_m - X_n + \sum_{j=n}^{m-1} a_j g(X_j) \right| \leq \frac{b-a}{3}
+\end{equation}
 <p>which is justified by $\eqref{contr1}$. Fix values for $m$ and $n$ so
 that
-<script type="math/tex; mode=display">% <![CDATA[
-\label{summands}
-  N \leq n < m, \quad X_n < a, \quad X_m > b, \quad n < j < m \Rightarrow a \leq X_j \leq b. %]]></script>
+<p>\begin{equation} \label{summands}
+  N \leq n &lt; m, \quad X_n &lt; a, \quad X_m &gt; b, \quad n &lt; j &lt; m \Rightarrow a \leq X_j \leq b.
+\end{equation}
 <p>In particular note that for $n&lt;j&lt;m$ then $\eqref{summands}$ &amp;
 $\eqref{E}$ means that $a_jg(X_j) &gt; 0$. By rearranging $\eqref{bound}$
 and applying this note we can see that
-<script type="math/tex; mode=display">\label{ineq}
+<p>\begin{equation} \label{ineq}
   X_m - X_n \leq \frac{b-a}{3} - \sum_{j=n}^{m-1} a_jg(X_j)
-  \leq \frac{b-a}{3} - a_ng(X_n)</script>
+  \leq \frac{b-a}{3} - a_ng(X_n)
+\end{equation}
 <p>To finish the proof we take cases. If
 $\theta &lt; X_n$ then $g(X_n) &gt; 0$ so $\eqref{ineq}$ states that
 <script type="math/tex; mode=display">X_m - X_n \leq \frac{b-a}{3}</script>
@@ -303,22 +309,21 @@ $\theta &lt; X_n$ then $g(X_n) &gt; 0$ so $\eqref{ineq}$ states that
 $X_m - X_n &gt; b-a$, so a contradiction! This leaves considering the case
 where $X_n \leq \theta$, so $g(X_n) &lt; 0$ and by $\eqref{C}$:
 <script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned}
- \label{ineq2}
-  -g(X_n) & = |g(X_n)| \notag                           \\
-      & \leq c + d|X_n| \notag                      \\
-      & \leq c + d|\theta| + d|\theta - X_n| \notag \\
-      & \leq c + d|\theta| + d(X_m - X_n)
- \end{aligned} %]]></script>
+\begin{align}
+  -g(X_n) & = |g(X_n)| \notag \\
+      & \leq c + d|X_n| \notag \\
+      & \leq c + d|\theta| + d|\theta - X_n| \notag  \\
+      & \leq c + d|\theta| + d(X_m - X_n)  \label{ineq2}
+\end{align} %]]></script>
 <p>So plugging $\eqref{ineq2}$ into $\eqref{ineq}$ gives
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
  \label{anothercontr}
   X_m - X_n & \leq \frac{b-a}{3} + a_n(c + d|\theta| + d(X_m - X_n))                                                                                                   \\
         & = \frac{b-a}{3} + a_n(c + d|\theta|) + a_n d(X_m - X_n)                                                                                                  \\
-        & \leq \frac{b-a}{3} + \left(\frac{b-a}{3(c+d|\theta|)}\right)(c + d|\theta|) + \left(\frac{1}{3d}\right) d(X_m - X_n) \qquad \text{ by $\eqref{an_bounds}$} \\
+        & \leq \frac{b-a}{3} + \left(\frac{b-a}{3(c+d|\theta|)}\right)(c + d|\theta|) + \left(\frac{1}{3d}\right) d(X_m - X_n) \qquad \text{ by $\eqref{anbounds}$} \\
         & \leq \frac{b-a}{3} + \frac{b-a}{3} + \frac{X_m - X_n}{3}
- \end{aligned} %]]></script>
+\end{aligned} %]]></script>
 <p>Collecting $X_m - X_n$ terms together and multiplying
 by $\frac{3}{2}$ gives
 <script type="math/tex; mode=display">(X_m-X_n) \leq b-a</script>
@@ -335,9 +340,9 @@ some $X$. Again seek a contradiction by assuming that
 <p>Choose some
 $\epsilon_1, \epsilon_2$ s.t.
 $\theta &lt; \epsilon_1 &lt; \epsilon_2 &lt; \infty$<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and
-<script type="math/tex; mode=display">% <![CDATA[
-\label{epsilon}
-  {\mathbb{P}}(\epsilon_1 < X < \epsilon_2) > 0 %]]></script>
+<p>\begin{equation} \label{epsilon}
+  {\mathbb{P}}(\epsilon_1 &lt; X &lt; \epsilon_2) &gt; 0
+\end{equation}
 <p>Consider all the
 sequences $X_n$ that, for a chosen $(\epsilon_1, \epsilon_2)$, satisfy
 $\eqref{epsilon}$. For $n$ large enough then
@@ -432,10 +437,10 @@ text of the literature review.
 
        <span class="c1">% Approximate the derivative using finite differences</span>
        <span class="n">J</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
-       <span class="k">for</span> <span class="nb">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">q</span>
+       <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">q</span>
          <span class="n">e</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
-         <span class="n">e</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-         <span class="n">J</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">(</span><span class="n">GN</span><span class="p">(</span><span class="n">X</span><span class="o">+</span><span class="n">cn</span><span class="o">*</span><span class="n">e</span><span class="p">)</span><span class="o">-</span><span class="n">GN</span><span class="p">(</span><span class="n">X</span><span class="o">-</span><span class="n">cn</span><span class="o">*</span><span class="n">e</span><span class="p">))/(</span><span class="mi">2</span><span class="o">*</span><span class="n">cn</span><span class="p">);</span>
+         <span class="n">e</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="n">J</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">(</span><span class="n">GN</span><span class="p">(</span><span class="n">X</span><span class="o">+</span><span class="n">cn</span><span class="o">*</span><span class="n">e</span><span class="p">)</span><span class="o">-</span><span class="n">GN</span><span class="p">(</span><span class="n">X</span><span class="o">-</span><span class="n">cn</span><span class="o">*</span><span class="n">e</span><span class="p">))/(</span><span class="mi">2</span><span class="o">*</span><span class="n">cn</span><span class="p">);</span>
        <span class="k">end</span>
     <span class="k">end</span>
 
@@ -482,7 +487,7 @@ text of the literature review.
     <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">/</span><span class="mi">2</span><span class="p">;</span>
 
     <span class="k">for</span> <span class="n">iter</span><span class="o">=</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span>
-        <span class="n">ezplot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+        <span class="nb">ezplot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
         <span class="nb">title</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">'Posterior after %d steps'</span><span class="p">,</span> <span class="n">iter</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
         <span class="nb">drawnow</span><span class="p">;</span>
 
@@ -512,27 +517,27 @@ function’s strangeness.
 <li><span id="Kiefer1952">Kiefer, J., &amp; Wolfowitz, J. (1952). Stochastic estimation of the maximum of a regression function. <i>The Annals of Mathematical Statistics</i>, <i>23</i>(3), 462–466.</span>
 <li><span id="Ruppert1991">Ruppert, D. (1991). Stochastic Approximation. <i>Handbook of Sequential Analysis</i>, 503–529.</span>
 <li><span id="Blum1954">Blum, J. R. (1954). Approximation methods which converge with probability one. <i>The Annals of Mathematical Statistics</i>, 382–386.</span>
-<li><span id="Spall1987">Spall, J. C. (1987). A stochastic approximation technique for generating maximum likelihood parameter estimates. In <i>American Control Conference, 1987</i> (pp. 1161–1167). IEEE.</span>
+<li><span id="Spall1987">Spall, J. C. (1987). A stochastic approximation technique for generating maximum likelihood parameter estimates. <i>American Control Conference, 1987</i>, 1161–1167.</span>
 <li><span id="Spall1998">Spall, J. C. (1998). An overview of the simultaneous perturbation method for efficient optimization. <i>Johns Hopkins APL Technical Digest</i>, <i>19</i>(4), 482–492.</span>
 <li><span id="Spall2000">Spall, J. C. (2000). Adaptive stochastic approximation by the simultaneous perturbation method. <i>Automatic Control, IEEE Transactions On</i>, <i>45</i>(10), 1839–1853.</span>
 <li><span id="Polyak1992">Polyak, B. T., &amp; Juditsky, A. B. (1992). Acceleration of stochastic approximation by averaging. <i>SIAM Journal on Control and Optimization</i>, <i>30</i>(4), 838–855.</span>
 <li><span id="Ruppert1988">Ruppert, D. (1988). <i>Efficient estimations from a slowly convergent Robbins-Monro process</i>. Cornell University Operations Research and Industrial Engineering.</span>
 <li><span id="Asmussen2007">Asmussen, S., &amp; Glynn, P. W. (2007). <i>Stochastic Simulation: Algorithms and Analysis: Algorithms and Analysis</i> (Vol. 57). Springer.</span>
 <li><span id="Kushner2003">Kushner, H. J., &amp; Yin, G. G. (2003). <i>Stochastic approximation and recursive algorithms and applications</i>. Springer.</span>
-<li><span id="Chen2002">Chen, H.-F. (2002). Stochastic approximation and its applications, volume 64 of Nonconvex Optimization and its Applications. Kluwer Academic Publishers, Dordrecht.</span>
+<li><span id="Chen2002">Chen, H.-F. (2002). <i>Stochastic approximation and its applications, volume 64 of Nonconvex Optimization and its Applications</i>. Kluwer Academic Publishers, Dordrecht.</span>
 <li><span id="Spall2005">Spall, J. C. (2005). <i>Introduction to stochastic search and optimization: estimation, simulation, and control</i> (Vol. 65). John Wiley &amp; Sons.</span>
 <li><span id="Wright1999">Wright, S. J., &amp; Nocedal, J. (1999). <i>Numerical optimization</i> (Vol. 2). Springer New York.</span>
-<li><span id="Wang2008">Wang, H., &amp; Schmeiser, B. W. (2008). Discrete stochastic optimization using linear interpolation. In <i>Simulation Conference, 2008. WSC 2008. Winter</i> (pp. 502–508).</span>
-<li><span id="Healy1991">Healy, K., &amp; Schruben, L. W. (1991). Retrospective Simulation Response Optimization. In <i>Proceedings of the 23rd Conference on Winter Simulation</i> (pp. 901–906). IEEE Computer Society.</span>
-<li><span id="Chen1994">Chen, H., &amp; Schmeiser, B. W. (1994). Retrospective Approximation Algorithms for Stochastic Root Finding. In <i>Proceedings of the 26th Conference on Winter Simulation</i> (pp. 255–261). San Diego, CA, USA: Society for Computer Simulation International. Retrieved from http://dl.acm.org/citation.cfm?id=193201.194031</span>
-<li><span id="Pasupathy2005">Pasupathy, R. K. (2005). <i>Retrospective-approximation Algorithms for the Multidimensional Stochastic Root-finding Problem</i> (PhD thesis). Purdue University.</span>
+<li><span id="Wang2008">Wang, H., &amp; Schmeiser, B. W. (2008). Discrete stochastic optimization using linear interpolation. <i>Simulation Conference, 2008. WSC 2008. Winter</i>, 502–508.</span>
+<li><span id="Healy1991">Healy, K., &amp; Schruben, L. W. (1991). Retrospective Simulation Response Optimization. <i>Proceedings of the 23rd Conference on Winter Simulation</i>, 901–906.</span>
+<li><span id="Chen1994">Chen, H., &amp; Schmeiser, B. W. (1994). Retrospective Approximation Algorithms for Stochastic Root Finding. <i>Proceedings of the 26th Conference on Winter Simulation</i>, 255–261. http://dl.acm.org/citation.cfm?id=193201.194031</span>
+<li><span id="Pasupathy2005">Pasupathy, R. K. (2005). <i>Retrospective-approximation Algorithms for the Multidimensional Stochastic Root-finding Problem</i> [PhD thesis]. Purdue University.</span>
 <li><span id="Shapiro1991">Shapiro, A. (1991). Asymptotic analysis of stochastic programs. <i>Annals of Operations Research</i>, <i>30</i>(1), 169–186.</span>
 <li><span id="Rubinstein1993">Rubinstein, R. Y., &amp; Shapiro, A. (1993). <i>Discrete event systems: Sensitivity analysis and stochastic optimization by the score function method</i> (Vol. 346). Wiley New York.</span>
 <li><span id="Rubinstein1997">Rubinstein, R. Y. (1997). Optimization of computer simulation models with rare events. <i>European Journal of Operational Research</i>, <i>99</i>(1), 89–112.</span>
 <li><span id="Broadie2014">Broadie, M., Cicek, D. M., &amp; Zeevi, A. (2014). Multidimensional stochastic approximation: Adaptive algorithms and applications. <i>ACM Transactions on Modeling and Computer Simulation (TOMACS)</i>, <i>24</i>(1), 6.</span>
 <li><span id="Dunkel2010">Dunkel, J., &amp; Weber, S. (2010). Stochastic root finding and efficient estimation of convex risk measures. <i>Operations Research</i>, <i>58</i>(5), 1505–1521.</span>
-<li><span id="Waeber2011">Waeber, R., Frazier, P. I., &amp; Henderson, S. G. (2011). A Bayesian approach to stochastic root finding. In <i>Simulation Conference (WSC), Proceedings of the 2011 Winter</i> (pp. 4033–4045). IEEE.</span>
-<li><span id="Loeve1951">Loève, M., &amp; others. (1951). On almost sure convergence. In <i>Proceedings of the Second Berkeley Symposium on Mathematical Statistics and Probability</i>. The Regents of the University of California.</span></ol>
+<li><span id="Waeber2011">Waeber, R., Frazier, P. I., &amp; Henderson, S. G. (2011). A Bayesian approach to stochastic root finding. <i>Simulation Conference (WSC), Proceedings of the 2011 Winter</i>, 4033–4045.</span>
+<li><span id="Loeve1951">Loève, M., &amp; others. (1951). On almost sure convergence. <i>Proceedings of the Second Berkeley Symposium on Mathematical Statistics and Probability</i>.</span></ol>
 <div class="footnotes">
  <ol>
    <li id="fn:1">
