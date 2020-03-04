@@ -1,0 +1,44 @@
+
+<div id="network">
+    <div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+        <canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+        </canvas>
+        <div class="vis-manipulation" style="display: none;"></div><div class="vis-edit-mode" style="display: block;">
+            <div class="vis-button vis-edit vis-edit-mode" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                <div class="vis-label">Edit</div>
+            </div>
+        </div>
+        <div class="vis-close" style="display: none;"></div>
+    </div>
+</div>
+
+<div>
+    <br>
+	<p>Select which new research group/s to draw:</p>
+	<select id="newResearchGroup" onchange="draw()">
+		<option value="None" selected>None</option>
+		<option value="All">All</option>
+		</select>
+
+    <p>Researcher's fields of interest:</p>
+    <ul class="legend">
+        <li><span class="Economics"></span> Economics</li>
+        <li><span class="Management"></span> Management Sciences</li>
+        <li><span class="Applied"></span> Applied Mathematics</li>
+        <li><span class="Computer"></span> Computer Science</li>
+    </ul>
+
+    <br>
+
+    <br>
+
+    <p>Current research groups:</p>
+    <ul class="legend">
+        <li><span class="Actuariat"></span> Actuariat Durable</li>
+        <li><span class="Chaire"></span> Chaire DAMI</li>
+        <li><span class="Lolita"></span> Lolita</li>
+        <li><span class="Prevent"></span> Prevent'Horizon</li>
+        <li><span class="Reference"></span> Reference Value</li>
+    </ul>
+
+    <br><br>

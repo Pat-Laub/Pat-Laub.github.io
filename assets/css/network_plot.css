@@ -1,0 +1,36 @@
+#network {
+    height: 30em;
+    border: 1px solid lightgray;
+}
+
+.input-color {
+    position: relative;
+}
+.input-color input {
+    padding-left: 20px;
+}
+.input-color .color-box {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #ccc;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+/* basic positioning */
+.legend { list-style: none; }
+.legend li { float: left; margin-right: 10px; }
+.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+/* your colors */
+.legend .Economics { background-color: rgb(163, 122, 76); }
+.legend .Management { background-color: rgb(183, 135, 177); }
+.legend .Applied { background-color: rgb(250, 167, 71); }
+.legend .Computer { background-color: rgb(246, 143, 85); }
+
+.legend .Actuariat { background-color: rgb(81, 157, 209); }
+.legend .Chaire { background-color: rgb(2, 144, 94); }
+.legend .Lolita { background-color: rgb(253, 106, 107); }
+.legend .Prevent { background-color: rgb(28, 66, 111); }
+.legend .Reference { background-color: rgb(113, 113, 185); }
