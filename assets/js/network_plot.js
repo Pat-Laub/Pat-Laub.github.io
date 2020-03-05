@@ -1,35 +1,4 @@
-
 var network;
-// var container;
-// var exportArea;
-// var importButton;
-// var exportButton;
-
-window.onload = function init() {
-
-    network = new vis.Network( document.getElementById('network'), {}, {interaction:{hover:true}});
-
-
-    // Add options to the dropdown selector
-    var sel = document.getElementById("newResearchGroup");
-    for (const groupName in newResearchGroups) {
-        // create new option element
-        var opt = document.createElement("option");
-
-        // create text node to add to option element (opt)
-        opt.appendChild( document.createTextNode(groupName) );
-
-        // set value property of opt
-        opt.value = groupName;
-
-        // add opt to end of select box (sel)
-        sel.appendChild(opt);
-    }
-
-
-    draw();
-}
-
 
 var members = {
 	"Caroline BAYART": { "x": 421, "y": -163, "id": 1, "FoR": "Management Sciences" },
@@ -63,15 +32,6 @@ var members = {
 	"Catherine VIOT": { "x": -100, "y": 400, "id": 29, "FoR": "Management Sciences" },
 	"Denys POMMERET": { "x": 400, "y": 300, "id": 30, "FoR": "Applied Mathematics" }
 };
-
-// var moveUp = [2, 21, 13, 9, 27, 20, 10, 19, 26, 18];
-// for (var name in members) {
-//          	if (moveUp.includes(members[name].id)) {
-//          		members[name].y -= 50;
-//          		console.log(name + ": ", members[name].y)
-//          	}
-//          }
-
 
 // Field of research colours
 var FORColours = {
@@ -122,19 +82,13 @@ var numberPapers = [1, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 5, 1, 
 
 // ---- Forecasted projects ----
 
-
 var newResearchGroups = {
-	// These were in 1st email from Stéphane
 	"CNP DiALog": ["Anne EYRAUD-LOISEL", "Pierre-Olivier GOFFARD", "Xavier MILHAUD", "Denys POMMERET"],
 	"MAIF": ["Caroline BAYART", "Denis CLOT", "Nathalie HAVET", "Charlotte LÉCUYER", "Denys POMMERET", "Jean-Louis RULLIÈRE", "Melchior SALGADO"],
 	"ALFA (Fraude)": ["Caroline BAYART", "Diana DOROBANTU", "Anne EYRAUD-LOISEL", "Charlotte LÉCUYER", "Jean-Louis RULLIÈRE", "Catherine VIOT"],
 	"Critères ESG et finance verte": ["Jean-François BOULIER", "Caroline CHAMPAGNE", "Aurélien COULOUMY", "Charlotte LÉCUYER", "Christian ROBERT", "Séverine SALEILLES", "Pierre-E. THÉROND"],
-
-	// These were in 2nd email from Stéphane
 	"Actuariat et santé": ["Valérie BUTHION", "Xavier MILHAUD", "Yahia SALHI", "Pierre-Olivier GOFFARD", "Nathalie HAVET", "Jean-Louis RULLIÈRE", "Denys POMMERET", "Stéphane LOISEL", "Frédéric PLANCHET", "Alexis BIENVENÜE"],
 	"Blockchain et crypto-assets": ["Nicolas LEBOISNE", "Pierre-Olivier GOFFARD", "Anne EYRAUD-LOISEL", "Stéphane LOISEL"],
-
-	// These were "future projects" specified earlier, possible duplicates with above
 	"APRIL": ["Caroline BAYART", "Denis CLOT", "Charlotte LÉCUYER"],
 	"ISR": ["Jean-François BOULIER", "Caroline CHAMPAGNE", "Aurélien COULOUMY", "Charlotte LÉCUYER"],
 	"MDS": ["Pierre-Olivier GOFFARD", "Christian ROBERT", "Nathalie HAVET"]
@@ -152,7 +106,6 @@ var newResearchGroupColours = {
         "ISR": "0000ff",
         "MDS": "0000ff"
 };
-
 
 
 for (var name in members) {
@@ -183,8 +136,6 @@ for (var name in members) {
 		console.log(name + " not in any new research groups");
 	}
 }
-
-
 
 
 function draw() {
@@ -292,52 +243,26 @@ function draw() {
 
 }
 
-function getNodeData(data) {
-    var networkNodes = [];
+window.onload = function init() {
 
-    data.forEach(function(elem, index, array) {
-        networkNodes.push({id: elem.id, label: elem.id, x: elem.x, y: elem.y});
-    });
-
-    return new vis.DataSet(networkNodes);
-}
-
-function getNodeById(data, id) {
-    for (var n = 0; n < data.length; n++) {
-        if (data[n].id == id) {  // double equals since id can be numeric or string
-          return data[n];
-        }
-    };
-
-    throw 'Can not find id \'' + id + '\' in data';
-}
-
-function getEdgeData(data) {
-    var networkEdges = [];
-
-    data.forEach(function(node) {
-        // add the connection
-        node.connections.forEach(function(connId, cIndex, conns) {
-            networkEdges.push({from: node.id, to: connId});
-            let cNode = getNodeById(data, connId);
-
-            var elementConnections = cNode.connections;
-
-            // remove the connection from the other node to prevent duplicate connections
-            var duplicateIndex = elementConnections.findIndex(function(connection) {
-              return connection == node.id; // double equals since id can be numeric or string
-            });
+    network = new vis.Network( document.getElementById('network'), {}, {interaction:{hover:true}});
 
 
-            if (duplicateIndex != -1) {
-              elementConnections.splice(duplicateIndex, 1);
-            };
-      });
-    });
+    // Add options to the dropdown selector
+    var sel = document.getElementById("newResearchGroup");
+    for (const groupName in newResearchGroups) {
+        // create new option element
+        var opt = document.createElement("option");
 
-    return new vis.DataSet(networkEdges);
-}
+        // create text node to add to option element (opt)
+        opt.appendChild( document.createTextNode(groupName) );
 
-function resizeExportArea() {
-    exportArea.style.height = (1 + exportArea.scrollHeight) + "px";
+        // set value property of opt
+        opt.value = groupName;
+
+        // add opt to end of select box (sel)
+        sel.appendChild(opt);
+    }
+
+    draw();
 }

@@ -5,7 +5,7 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>Research network plot</title>
- <meta name="description" content="Recently I pulled together a plot to show the collaborations of the researchers in our lab here in Lyon. The plot shows each researcher as a node in the netw...">
+ <meta name="description" content="Recently I made a visualization in Javascript to show the collaborations of the researchers in our lab here in Lyon. The plot shows each researcher as a node...">
 <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 <link rel="stylesheet" href="/assets/css/syntax.css">
@@ -45,10 +45,8 @@
    </header>
         <img src="/images/network_plot.png" title="Visualisation of the collaborations between research staff at Labo'SAF." class="image featured" />
    <div class="post-content" itemprop="articleBody">
-     <p>Recently I pulled together a plot to show the collaborations of the researchers in our lab here in Lyon. The plot shows each researcher as a node in the network, and edges are added to signify joint research papers between the (permanent) staff of the lab.
-<p>It was quite gratifying to see it used in a real-world scenario (an external evaluation of the lab).
-<p><img src="/images/network-plot-in-meeting.jpg" alt="image" class="image post_image" />
-<p>The interactive version of the plot is below. Try dragging someone’s circle around (click and hold the inner circle) and watch the physics animation redraw the positions of the entire network. Hover over a person see their name, or hover over an edge to see the number of joint papers.
+     <p>Recently I made a visualization in Javascript to show the collaborations of the researchers in our lab here in Lyon. The plot shows each researcher as a node in the network, and edges are added to signify joint research papers between the (permanent) staff of the lab. The inner circles are coloured acccording to the field of research each person specialises in, and the outer circles show their membership in the many different research groups between our lab and external parties. New research groups which are about to start can be selected by the drop-down box.
+<p>The <strong>interactive version</strong> is below. <strong>Try dragging a circle around</strong> (click and hold the <em>inner circle</em>) and watch the physics animation redraw the positions of the entire network (this is much easier with a real mouse than on a phone). Hover over a person see their name, or hover over an edge to see the number of joint papers.
 <div id="network">
    <div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
         <canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
@@ -86,9 +84,10 @@
        <li><span class="Reference"></span> Reference Value
    </ul>
     <br /><br />
-<br /><br />
-This drawing is done with the vis.js Javascript library.
 </div>
+<p>It was quite gratifying to see it used in a real-world scenario (an external evaluation of the lab).
+<p><img src="/images/network-plot-in-meeting.jpg" alt="image" class="image post_image" />
+<p>The <a href="https://visjs.org/">vis.js</a> Javascript library is the main backbone of the code; <a href="/assets/js/network_plot.js">this is the javascript</a> I wrote to use the vis.js library.
    </div>
  </article>
 </div>
