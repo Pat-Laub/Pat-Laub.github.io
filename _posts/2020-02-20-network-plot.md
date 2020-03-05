@@ -4,7 +4,7 @@ title: Research network plot
 subtitle: Visualising research collaborations
 tags: code
 author: pjl
-banner: network_plot.png
+banner: network_plot.gif
 banner_alt: Visualisation of the collaborations between research staff at Labo'SAF.
 custom-javascript-list:
 - "/assets/js/vis.js"
@@ -25,6 +25,6 @@ The __interactive version__ is below. __Try dragging a circle around__ (click an
 
 It was quite gratifying to see it used in a real-world scenario (an external evaluation of the lab).
 
-![image]({% link  /images/network-plot-in-meeting.jpg %}){: .image .post_image}
+![image]({% link  /images/network_plot_in_meeting.jpg %}){: .image .post_image}
 
 The [vis.js](https://visjs.org/) Javascript library is the main backbone of the code; [this is the javascript]({% link /assets/js/network_plot.js %}) I wrote to use the vis.js library.
