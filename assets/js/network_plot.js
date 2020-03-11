@@ -1,36 +1,36 @@
 var network;
 
 var members = {
-	"Caroline BAYART": { "x": 421, "y": -163, "id": 1, "FoR": "Management Sciences" },
-	"Alexis BIENVENÜE": { "x": -176, "y": -217, "id": 2, "FoR": "Applied Mathematics" },
-	"Jean-François BOULIER": { "x": -444, "y": 224, "id": 3, "FoR": "Management Sciences" },
-	"Valérie BUTHION": { "x": -370, "y": -419, "id": 4, "FoR": "Management Sciences" },
-	"Caroline CHAMPAGNE": { "x": 155, "y": -495, "id": 5, "FoR": "Management Sciences" },
-	"Denis CLOT": { "x": -161, "y": -355, "id": 6, "FoR": "Computer Science" },
-	"Aurélien COULOUMY": { "x": -140, "y": -503, "id": 7, "FoR": "Management Sciences" },
-	"Christian DE PERETTI": { "x": -358, "y": -240, "id": 8, "FoR": "Economics" },
-	"Diana DOROBANTU": { "x": -174, "y": 12, "id": 9, "FoR": "Applied Mathematics" },
-	"Anne EYRAUD-LOISEL": { "x": 245, "y": -11, "id": 10, "FoR": "Applied Mathematics" },
-	"Pierre-Olivier GOFFARD": { "x": 117, "y": 307, "id": 11, "FoR": "Applied Mathematics" },
-	"Nathalie HAVET": { "x": 336, "y": -260, "id": 12, "FoR": "Economics" },
-	"Ying JIAO": { "x": -10, "y": -282, "id": 13, "FoR": "Applied Mathematics" },
-	"Nabil KAZI-TANI": { "x": -560, "y": 6, "id": 14, "FoR": "Applied Mathematics" },
-	"Agnès LANCINI": { "x": 500, "y": -383, "id": 15, "FoR": "Management Sciences" },
-	"Nicolas LEBOISNE": { "x": 229, "y": 158, "id": 16, "FoR": "Management Sciences" },
-	"Charlotte LÉCUYER": { "x": 146, "y": -206, "id": 17, "FoR": "Management Sciences" },
-	"Stéphane LOISEL": { "x": 73, "y": 115, "id": 18, "FoR": "Applied Mathematics" },
-	"Xavier MILHAUD": { "x": -211, "y": 107, "id": 19, "FoR": "Applied Mathematics" },
-	"Frédéric PLANCHET": { "x": 105, "y": -28, "id": 20, "FoR": "Management Sciences" },
-	"Christian ROBERT": { "x": -54, "y": -159, "id": 21, "FoR": "Applied Mathematics" },
-	"Didier RULLIÈRE": { "x": -533, "y": -117, "id": 22, "FoR": "Management Sciences" },
-	"Jean-Louis RULLIÈRE": { "x": 256, "y": -362, "id": 23, "FoR": "Economics" },
-	"Séverine SALEILLES": { "x": -370, "y": 16, "id": 24, "FoR": "Management Sciences" },
-	"Melchior SALGADO": { "x": -304, "y": 350, "id": 25, "FoR": "Management Sciences" },
-	"Yahia SALHI": { "x": -88, "y": 133, "id": 26, "FoR": "Applied Mathematics" },
-	"Pierre-E. THÉROND": { "x": -47, "y": -3, "id": 27, "FoR": "Management Sciences" },
-	"Linh TRAN DIEU": { "x": 35, "y": -420, "id": 28, "FoR": "Management Sciences" },
-	"Catherine VIOT": { "x": -100, "y": 400, "id": 29, "FoR": "Management Sciences" },
-	"Denys POMMERET": { "x": 400, "y": 300, "id": 30, "FoR": "Applied Mathematics" }
+    "Caroline BAYART": { "x": 421, "y": -163, "id": 1, "FoR": "Management Sciences" },
+    "Alexis BIENVENÜE": { "x": -176, "y": -217, "id": 2, "FoR": "Applied Mathematics" },
+    "Jean-François BOULIER": { "x": -444, "y": 224, "id": 3, "FoR": "Management Sciences" },
+    "Valérie BUTHION": { "x": -370, "y": -419, "id": 4, "FoR": "Management Sciences" },
+    "Caroline CHAMPAGNE": { "x": 155, "y": -495, "id": 5, "FoR": "Management Sciences" },
+    "Denis CLOT": { "x": -161, "y": -355, "id": 6, "FoR": "Computer Science" },
+    "Aurélien COULOUMY": { "x": -140, "y": -503, "id": 7, "FoR": "Management Sciences" },
+    "Christian DE PERETTI": { "x": -358, "y": -240, "id": 8, "FoR": "Economics" },
+    "Diana DOROBANTU": { "x": -174, "y": 12, "id": 9, "FoR": "Applied Mathematics" },
+    "Anne EYRAUD-LOISEL": { "x": 245, "y": -11, "id": 10, "FoR": "Applied Mathematics" },
+    "Pierre-Olivier GOFFARD": { "x": 117, "y": 307, "id": 11, "FoR": "Applied Mathematics" },
+    "Nathalie HAVET": { "x": 336, "y": -260, "id": 12, "FoR": "Economics" },
+    "Ying JIAO": { "x": -10, "y": -282, "id": 13, "FoR": "Applied Mathematics" },
+    "Nabil KAZI-TANI": { "x": -560, "y": 6, "id": 14, "FoR": "Applied Mathematics" },
+    "Agnès LANCINI": { "x": 500, "y": -383, "id": 15, "FoR": "Management Sciences" },
+    "Nicolas LEBOISNE": { "x": 229, "y": 158, "id": 16, "FoR": "Management Sciences" },
+    "Charlotte LÉCUYER": { "x": 146, "y": -206, "id": 17, "FoR": "Management Sciences" },
+    "Stéphane LOISEL": { "x": 73, "y": 115, "id": 18, "FoR": "Applied Mathematics" },
+    "Xavier MILHAUD": { "x": -211, "y": 107, "id": 19, "FoR": "Applied Mathematics" },
+    "Frédéric PLANCHET": { "x": 105, "y": -28, "id": 20, "FoR": "Management Sciences" },
+    "Christian ROBERT": { "x": -54, "y": -159, "id": 21, "FoR": "Applied Mathematics" },
+    "Didier RULLIÈRE": { "x": -533, "y": -117, "id": 22, "FoR": "Management Sciences" },
+    "Jean-Louis RULLIÈRE": { "x": 256, "y": -362, "id": 23, "FoR": "Economics" },
+    "Séverine SALEILLES": { "x": -370, "y": 16, "id": 24, "FoR": "Management Sciences" },
+    "Melchior SALGADO": { "x": -304, "y": 350, "id": 25, "FoR": "Management Sciences" },
+    "Yahia SALHI": { "x": -88, "y": 133, "id": 26, "FoR": "Applied Mathematics" },
+    "Pierre-E. THÉROND": { "x": -47, "y": -3, "id": 27, "FoR": "Management Sciences" },
+    "Linh TRAN DIEU": { "x": 35, "y": -420, "id": 28, "FoR": "Management Sciences" },
+    "Catherine VIOT": { "x": -100, "y": 400, "id": 29, "FoR": "Management Sciences" },
+    "Denys POMMERET": { "x": 400, "y": 300, "id": 30, "FoR": "Applied Mathematics" }
 };
 
 // Field of research colours
@@ -52,26 +52,26 @@ var researchGroupColours = {
 };
 
 var researchGroups = {
-	"Actuariat Durable": ["Anne EYRAUD-LOISEL", "Stéphane LOISEL", "Christian ROBERT"],
-	"Chaire DAMI": ["Alexis BIENVENÜE", "Aurélien COULOUMY", "Nabil KAZI-TANI", "Stéphane LOISEL", "Xavier MILHAUD", "Frédéric PLANCHET", "Christian ROBERT", "Didier RULLIÈRE", "Yahia SALHI", "Pierre-E. THÉROND"],
-	"Lolita": ["Alexis BIENVENÜE", "Diana DOROBANTU", "Anne EYRAUD-LOISEL", "Stéphane LOISEL", "Xavier MILHAUD", "Frédéric PLANCHET", "Christian ROBERT", "Didier RULLIÈRE", "Yahia SALHI"],
-	"Prevent'Horizon": ["Nathalie HAVET", "Nabil KAZI-TANI", "Jean-Louis RULLIÈRE"],
-	"Reference Value": ["Caroline BAYART", "Christian ROBERT", "Melchior SALGADO"]
+    "Actuariat Durable": ["Anne EYRAUD-LOISEL", "Stéphane LOISEL", "Christian ROBERT"],
+    "Chaire DAMI": ["Alexis BIENVENÜE", "Aurélien COULOUMY", "Nabil KAZI-TANI", "Stéphane LOISEL", "Xavier MILHAUD", "Frédéric PLANCHET", "Christian ROBERT", "Didier RULLIÈRE", "Yahia SALHI", "Pierre-E. THÉROND"],
+    "Lolita": ["Alexis BIENVENÜE", "Diana DOROBANTU", "Anne EYRAUD-LOISEL", "Stéphane LOISEL", "Xavier MILHAUD", "Frédéric PLANCHET", "Christian ROBERT", "Didier RULLIÈRE", "Yahia SALHI"],
+    "Prevent'Horizon": ["Nathalie HAVET", "Nabil KAZI-TANI", "Jean-Louis RULLIÈRE"],
+    "Reference Value": ["Caroline BAYART", "Christian ROBERT", "Melchior SALGADO"]
 };
 
 for (var name in members) {
-	members[name].researchGroups = [];
+    members[name].researchGroups = [];
 }
 
 for (var groupName in researchGroups) {
     for (const name of researchGroups[groupName]) {
-    	if (members.hasOwnProperty(name)) {
-    		members[name].researchGroups.push(groupName);
-    	} else {
-    		console.log("Name '" + name + "' in research group '" + groupName + "' isn't of an ISFA member")
-    	}
+        if (members.hasOwnProperty(name)) {
+            members[name].researchGroups.push(groupName);
+        } else {
+            console.log("Name '" + name + "' in research group '" + groupName + "' isn't of an ISFA member")
+        }
 
-	}
+    }
 }
 
 // Co-authorship information
@@ -83,15 +83,15 @@ var numberPapers = [1, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 5, 1, 
 // ---- Forecasted projects ----
 
 var newResearchGroups = {
-	"CNP DiALog": ["Anne EYRAUD-LOISEL", "Pierre-Olivier GOFFARD", "Xavier MILHAUD", "Denys POMMERET"],
-	"MAIF": ["Caroline BAYART", "Denis CLOT", "Nathalie HAVET", "Charlotte LÉCUYER", "Denys POMMERET", "Jean-Louis RULLIÈRE", "Melchior SALGADO"],
-	"ALFA (Fraude)": ["Caroline BAYART", "Diana DOROBANTU", "Anne EYRAUD-LOISEL", "Charlotte LÉCUYER", "Jean-Louis RULLIÈRE", "Catherine VIOT"],
-	"Critères ESG et finance verte": ["Jean-François BOULIER", "Caroline CHAMPAGNE", "Aurélien COULOUMY", "Charlotte LÉCUYER", "Christian ROBERT", "Séverine SALEILLES", "Pierre-E. THÉROND"],
-	"Actuariat et santé": ["Valérie BUTHION", "Xavier MILHAUD", "Yahia SALHI", "Pierre-Olivier GOFFARD", "Nathalie HAVET", "Jean-Louis RULLIÈRE", "Denys POMMERET", "Stéphane LOISEL", "Frédéric PLANCHET", "Alexis BIENVENÜE"],
-	"Blockchain et crypto-assets": ["Nicolas LEBOISNE", "Pierre-Olivier GOFFARD", "Anne EYRAUD-LOISEL", "Stéphane LOISEL"],
-	"APRIL": ["Caroline BAYART", "Denis CLOT", "Charlotte LÉCUYER"],
-	"ISR": ["Jean-François BOULIER", "Caroline CHAMPAGNE", "Aurélien COULOUMY", "Charlotte LÉCUYER"],
-	"MDS": ["Pierre-Olivier GOFFARD", "Christian ROBERT", "Nathalie HAVET"]
+    "CNP DiALog": ["Anne EYRAUD-LOISEL", "Pierre-Olivier GOFFARD", "Xavier MILHAUD", "Denys POMMERET"],
+    "MAIF": ["Caroline BAYART", "Denis CLOT", "Nathalie HAVET", "Charlotte LÉCUYER", "Denys POMMERET", "Jean-Louis RULLIÈRE", "Melchior SALGADO"],
+    "ALFA (Fraude)": ["Caroline BAYART", "Diana DOROBANTU", "Anne EYRAUD-LOISEL", "Charlotte LÉCUYER", "Jean-Louis RULLIÈRE", "Catherine VIOT"],
+    "Critères ESG et finance verte": ["Jean-François BOULIER", "Caroline CHAMPAGNE", "Aurélien COULOUMY", "Charlotte LÉCUYER", "Christian ROBERT", "Séverine SALEILLES", "Pierre-E. THÉROND"],
+    "Actuariat et santé": ["Valérie BUTHION", "Xavier MILHAUD", "Yahia SALHI", "Pierre-Olivier GOFFARD", "Nathalie HAVET", "Jean-Louis RULLIÈRE", "Denys POMMERET", "Stéphane LOISEL", "Frédéric PLANCHET", "Alexis BIENVENÜE"],
+    "Blockchain et crypto-assets": ["Nicolas LEBOISNE", "Pierre-Olivier GOFFARD", "Anne EYRAUD-LOISEL", "Stéphane LOISEL"],
+    "APRIL": ["Caroline BAYART", "Denis CLOT", "Charlotte LÉCUYER"],
+    "ISR": ["Jean-François BOULIER", "Caroline CHAMPAGNE", "Aurélien COULOUMY", "Charlotte LÉCUYER"],
+    "MDS": ["Pierre-Olivier GOFFARD", "Christian ROBERT", "Nathalie HAVET"]
 };
 
 
@@ -109,32 +109,32 @@ var newResearchGroupColours = {
 
 
 for (var name in members) {
-	members[name].newResearchGroups = [];
+    members[name].newResearchGroups = [];
 }
 
 for (var groupName in newResearchGroups) {
     for (const name of newResearchGroups[groupName]) {
-    	if (members.hasOwnProperty(name)) {
-    		members[name].newResearchGroups.push(groupName);
-    	} else {
-    		console.log("Name '" + name + "' in research group '" + groupName + "' isn't of an ISFA member")
-    	}
-	}
+        if (members.hasOwnProperty(name)) {
+            members[name].newResearchGroups.push(groupName);
+        } else {
+            console.log("Name '" + name + "' in research group '" + groupName + "' isn't of an ISFA member")
+        }
+    }
 }
 
 // Print out all the research group memberships
 for (var name in members) {
-	if (members[name].researchGroups.length > 0) {
-		console.log(name + " has memberships in " + String(members[name].researchGroups));
-	} else {
-		console.log(name + " not in any research groups");
-	}
+    if (members[name].researchGroups.length > 0) {
+        console.log(name + " has memberships in " + String(members[name].researchGroups));
+    } else {
+        console.log(name + " not in any research groups");
+    }
 
-	if (members[name].newResearchGroups.length > 0) {
-		console.log(name + " has new memberships in " + String(members[name].newResearchGroups));
-	} else {
-		console.log(name + " not in any new research groups");
-	}
+    if (members[name].newResearchGroups.length > 0) {
+        console.log(name + " has new memberships in " + String(members[name].newResearchGroups));
+    } else {
+        console.log(name + " not in any new research groups");
+    }
 }
 
 
@@ -144,7 +144,7 @@ function draw() {
     var edges = [];
 
     for (var name in members) {
-    	var member = members[name];
+        var member = members[name];
 
         var node = {
               id: member.id,
@@ -171,12 +171,12 @@ function draw() {
 
 
     for (var j = 0; j < fromEnds.length; j++) {
-    	var title = "";
-    	if (numberPapers[j] > 1) {
-    		title = String(numberPapers[j]) + ' papers together';
-    	} else {
-    		title = String(numberPapers[j]) + ' paper together';
-    	}
+        var title = "";
+        if (numberPapers[j] > 1) {
+            title = String(numberPapers[j]) + ' papers together';
+        } else {
+            title = String(numberPapers[j]) + ' paper together';
+        }
 
         edges.push({
             from: fromEnds[j],
@@ -190,26 +190,26 @@ function draw() {
     console.log("Selected to draw new research group: " + groupToLinkName);
 
     if (groupToLinkName != "None") {
-    	for (const groupName in newResearchGroups) {
-    		if (groupToLinkName == "All" || groupName == groupToLinkName) {
+        for (const groupName in newResearchGroups) {
+            if (groupToLinkName == "All" || groupName == groupToLinkName) {
 
-    			groupToLink = newResearchGroups[groupName];
+                groupToLink = newResearchGroups[groupName];
 
-    			for (var i = 0; i < groupToLink.length-1; i++) {
-                	for (var j = i+1; j < groupToLink.length; j++) {
-                		if (members.hasOwnProperty(groupToLink[i]) && members.hasOwnProperty(groupToLink[j])) {
-		                    edges.push({
-		                        from: members[groupToLink[i]].id,
-		                        to: members[groupToLink[j]].id,
-		                        value: 1.5,
-		                        dashes: true,
-		                        color:{color: newResearchGroupColours[groupName], opacity: 0.75}
-		                    });
-	                    }
-                	}
+                for (var i = 0; i < groupToLink.length-1; i++) {
+                    for (var j = i+1; j < groupToLink.length; j++) {
+                        if (members.hasOwnProperty(groupToLink[i]) && members.hasOwnProperty(groupToLink[j])) {
+                            edges.push({
+                                from: members[groupToLink[i]].id,
+                                to: members[groupToLink[j]].id,
+                                value: 1.5,
+                                dashes: true,
+                                color:{color: newResearchGroupColours[groupName], opacity: 0.75}
+                            });
+                        }
+                    }
                 }
-    		}
-    	}
+            }
+        }
     }
 
 
@@ -222,17 +222,17 @@ function draw() {
         var smallRadius = bigRadius / 2;
 
         for (var name in members) {
-        	var member = members[name]
+            var member = members[name]
 
-        	var nodePosition = network.getPositions([member.id]);
-        	var x = nodePosition[member.id].x;
-        	var y = nodePosition[member.id].y;
+            var nodePosition = network.getPositions([member.id]);
+            var x = nodePosition[member.id].x;
+            var y = nodePosition[member.id].y;
 
             var numGroups = members[name].researchGroups.length;
-        	var angle = 0;
-        	var angleSplit = 2 * Math.PI / numGroups;
+            var angle = 0;
+            var angleSplit = 2 * Math.PI / numGroups;
 
-        	for (const researchGroup of members[name].researchGroups) {
+            for (const researchGroup of members[name].researchGroups) {
                 ctx.fillStyle = researchGroupColours[researchGroup];
                 ctx.beginPath();
                 ctx.arc(x, y, bigRadius+1, angle, angle+angleSplit);
@@ -240,7 +240,7 @@ function draw() {
                 ctx.fill();
                 angle += angleSplit;
 
-        	}
+            }
         }
     });
 
