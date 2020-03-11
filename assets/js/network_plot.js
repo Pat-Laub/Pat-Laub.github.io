@@ -144,9 +144,9 @@ function draw() {
     var edges = [];
 
     for (var name in members) {
-    	var member = members[name]
+    	var member = members[name];
 
-    	nodes.push({
+        var node = {
               id: member.id,
               title: name,
               color: FORColours[member.FoR],
@@ -154,7 +154,19 @@ function draw() {
               y: member.y,
               fixed: false,
               physics: true
-        });
+        };
+
+        // Need to make the size bigger if person has a research
+        // group affiliation.
+        var numGroups = members[name].researchGroups.length;
+
+        if (numGroups > 0) {
+            node.size = 40;
+        } else {
+            node.size = 25;
+        }
+        nodes.push(node);
+
     }
 
 
@@ -205,12 +217,9 @@ function draw() {
 
     network.setData(data)
 
-     network.on("beforeDrawing", function (ctx) {
-     	var numResearchGroups = Object.keys(researchGroups).length;
-
-        var bigRadius = (numResearchGroups+1) * 10 + 5;
-        bigRadius = 40;
-
+     network.on("afterDrawing", function (ctx) {
+        var bigRadius = 40;
+        var smallRadius = bigRadius / 2;
 
         for (var name in members) {
         	var member = members[name]
@@ -219,19 +228,19 @@ function draw() {
         	var x = nodePosition[member.id].x;
         	var y = nodePosition[member.id].y;
 
+            var numGroups = members[name].researchGroups.length;
         	var angle = 0;
-        	var angleSplit = 2 * Math.PI / members[name].researchGroups.length;
+        	var angleSplit = 2 * Math.PI / numGroups;
 
         	for (const researchGroup of members[name].researchGroups) {
                 ctx.fillStyle = researchGroupColours[researchGroup];
                 ctx.beginPath();
-                ctx.arc(x, y, bigRadius, angle, angle+angleSplit);
-                ctx.lineTo(x, y);
+                ctx.arc(x, y, bigRadius+1, angle, angle+angleSplit);
+                ctx.arc(x, y, smallRadius, angle+angleSplit, angle, true);
                 ctx.fill();
                 angle += angleSplit;
 
         	}
-
         }
     });
 
@@ -245,7 +254,12 @@ function draw() {
 
 window.onload = function init() {
 
-    network = new vis.Network( document.getElementById('network'), {}, {interaction:{hover:true}});
+    network = new vis.Network( document.getElementById('network'),
+        {},
+        {
+            interaction: {hover: true},
+            nodes: {shape: 'dot'}
+        });
 
 
     // Add options to the dropdown selector
