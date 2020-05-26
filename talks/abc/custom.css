@@ -70,3 +70,7 @@ div.output_subarea {
   max-width: 100%;
   max-height: 100%;
 }
+
+div.output_area .rendered_html img {
+	margin: 0;
+}
