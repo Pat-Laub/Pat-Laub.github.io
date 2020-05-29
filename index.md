@@ -40,6 +40,7 @@ Creator of [__EMpht.jl__](https://github.com/Pat-Laub/EMpht.jl). Minor contribut
 Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Journal of Computational and Graphical Statistics, and Methodology and Computing in Applied Probability.
 
 # Presentations:
+- Paris (via Webex) 2020, _Approximate Bayesian Computation and Insurance_, Chaire DAMI Technical Seminar [[__YouTube__](https://youtu.be/pwVgIh1495A), [__slides__](/talks/abc)]
 - Munich 2019, _Phase-Type Models in Life Insurance_, Insurance: Mathematics and Economics (IME 2019) [[__actuview__](https://www.actuview.com/phase-type-models-in-life-insurance-fitting-and-valuation-of-equity-linked-benefits_80ba6000c.html)]
 - Lyon 2018, _Phase-Type Models in Life Insurance_, Institut de Science Financière et d'Assurances Séminaire Labo [[__YouTube__](https://youtu.be/8Ih2NxrLrmg)]
 - Brisbane 2017, _Rare-event asymptotics and estimation for dependent random sums_, a talk at the UQ [SMORS](https://www.smp.uq.edu.au/smor-seminars) Seminar series [[__slides__](http://slides.com/plaub/rare-event-asymptotics-and-estimation-for-dependent-random-sums-an-exit-talk-with-applications-to-finance-and-insurance/)]
