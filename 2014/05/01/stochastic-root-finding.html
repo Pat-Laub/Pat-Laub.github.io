@@ -32,7 +32,7 @@
   <header>
      <div class="title">
      <h2>Stochastic root-finding review</h2>
-     <p>
+     <p></p>
      </div>
      <div class="meta">
         <time class="published" datetime="2014-05-01T00:00:00+10:00">May 1, 2014</time>
@@ -56,7 +56,7 @@ intractable then analysis must rely on simulated estimates of this
 distribution. How does one select $x$ so that after a voyage of length
 $h$ time units then ${\mathbb{P}}(D_h \leq x) \geq 1 - \alpha$ for some
 level of $\alpha \in (0, 1]$? This problem, adapted from
-<a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>, is an example of a stochastic root-finding problem.
+<a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>, is an example of a stochastic root-finding problem.</p>
 <p>A general stochastic root-finding problem (SRFP) starts with two main
 elements: a function which is unknown to the user $g(x)$ which maps
 $\Omega \subset {\mathbb{R}}^q \rightarrow {\mathbb{R}}^q$ and an
@@ -68,7 +68,7 @@ some or all of the roots, and what is an approximation for a single
 root? Some of these questions have been touched on by the literature,
 but the bulk of research has gone into answering the final question.
 That is to say, a SRFP typically searches for an estimate for the true
-root $x^*$ of $g$ only using $G(x)$.
+root $x^*$ of $g$ only using $G(x)$.</p>
 <p>SRFPs appear in an overwhelming number of fields including physics,
 economics, engineering, statistics and many others. Consider that the
 deterministic root-finding problem (DRFP), which is a special case of
@@ -76,30 +76,30 @@ above where ${\mathrm{Var}}[G(x)] = 0$, can be interpreted as solving a
 nonlinear system of equations. The importance and applications of DRFPs
 also motivate the study of SRFPs. Many current applications of DRFPs are
 actually SRFPs where the randomness has been ignores; e.g. economic
-modeling based on some guess of future interest rates.
+modeling based on some guess of future interest rates.</p>
 <p>It is not just the importance of DRFPs that carries over to SRFPs, but
 also the deterministic algorithms. The “gold standard” in numerical
 deterministic root-finding is Newton’s method (aka the Newton-Raphson
 method). This method starts with an initial guess $x_0$ and produces a
-sequence of iterates ${x_1, x_2, \dots}$ by the recurrence
+sequence of iterates ${x_1, x_2, \dots}$ by the recurrence</p>
 <script type="math/tex; mode=display">x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.</script>
 <p>For the multidimensional
 case, replace the derivative with the Jacobian $J(x) = {\nabla}f(x)$ to
-achieve
+achieve</p>
 <script type="math/tex; mode=display">x_{n+1} = x_n - J(x_n)^{-1}f(x_n).</script>
 <p>With this background, the
 class of SRFPs algorithms called ‘Stochastic Approximation’ can be
-described.
+described.</p>
 <p>In <a class="citation" href="#Robbins1951">(Robbins &amp; Monro, 1951)</a>, Robbins &amp; Monro introduced the iterative algorithm
 now described as Robbins-Monro Stochastic Approximation (RM-SA). For $g$
 which is one-dimensional, non-decreasing, has a single simple root at
 $x^*$, then the authors proved convergence of the iterates of random
-iterates
+iterates</p>
 <script type="math/tex; mode=display">X_{n+1} = X_n - a_n G(X_n).</script>
 <p>for a predetermined
 positive-valued sequence of ${a_n}$. They listed some regularity
 conditions on $g$, $G$ and on ${a_n}$ to prove that
-$X_n \rightarrow x^*$ in probability.
+$X_n \rightarrow x^*$ in probability.</p>
 <p>Robbins and Monro’s original paper created a surge of research into the
 field. The following year <a class="citation" href="#Wolfowitz1952">(Wolfowitz, 1952)</a> answered two questions
 proposed by the original paper, and then <a class="citation" href="#Kiefer1952">(Kiefer &amp; Wolfowitz, 1952)</a> proposed an
@@ -107,13 +107,13 @@ extension to RM-SA which incorporated finite-differences to estimate
 $g’(x)$. In the following years Kiefer &amp; Wolfowitz’s algorithm received less
 attention than the original RM-SA <a class="citation" href="#Ruppert1991">(Ruppert, 1991)</a>. Now, any stochastic
 approximation algorithm using a finite-differences derivative estimate
-is classed as a Kiefer-Wolfowitz stochastic approximation (KW-SA).
+is classed as a Kiefer-Wolfowitz stochastic approximation (KW-SA).</p>
 <p>Significant work has since gone into relaxing the conditions in the
 algorithms of <a class="citation" href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> and <a class="citation" href="#Kiefer1952">(Kiefer &amp; Wolfowitz, 1952)</a>, and into generalising
 their results (both only considered problems in one dimension).
 <a class="citation" href="#Blum1954">(Blum, 1954)</a> proved that RM-SA convergence occurred with probability one,
 and was the first to prove the same result for the multidimensional
-extension in (missing reference).
+extension in (missing reference).</p>
 <p>Unfortunately KW-SA did not extend to high-dimensions gracefully.
 Traditionally finite differences approximation of ${\nabla}f(x)$ in $q$
 dimensions requires $q+1$ evaluations of the $f$ function. <a class="citation" href="#Spall1987">(Spall, 1987)</a>
@@ -123,17 +123,17 @@ Approximation (SPSA). The name is (perhaps obviously) derived from the
 fact that the method perturbs every direction at the same time, trading
 off accuracy for a significantly faster compute time (for large $q$).
 See <a class="citation" href="#Spall1998">(Spall, 1998)</a> for a well-written introduction to the field, and
-<a class="citation" href="#Spall2000">(Spall, 2000)</a> for a more developed form of SPSA.
+<a class="citation" href="#Spall2000">(Spall, 2000)</a> for a more developed form of SPSA.</p>
 <p>One large implementation problem when using these algorithms is to
 choose which sequence/s should be supplied to the algorithm. In RM-SA
-the user must specify a step-size sequence $a_n$ such that
+the user must specify a step-size sequence $a_n$ such that</p>
 <script type="math/tex; mode=display">% <![CDATA[
 \sum_{i=0}^\infty a_i = \infty, \quad \sum_{i=0}^\infty a_i^2 < \infty. %]]></script>
 <p>Though the asymptotic results for rate of convergence hold for any
 $a_n$, it has been seen that the finite-time performance is hugely
 impacted by this selection. <a class="citation" href="#Robbins1951">(Robbins &amp; Monro, 1951)</a> originally suggested the form
 $a_n = 1/n$ which is very similar to the best current rule-of-thumb 62
-years later <a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>.
+years later <a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>.</p>
 <p><a class="citation" href="#Polyak1992">(Polyak &amp; Juditsky, 1992)</a> and <a class="citation" href="#Ruppert1988">(Ruppert, 1988)</a> independently arrived at a method to
 diminish the impact of a poor selection of $a_n$. They suggested larger
 step sizes than the typical $a_n = 1/n$ and using
@@ -143,13 +143,13 @@ asymptotic rate of convergence as standard RM-SA yet with better
 finite-time characteristics (missing reference), and is now very commonly
 used in practice <a class="citation" href="#Asmussen2007">(Asmussen &amp; Glynn, 2007)</a>. An in-depth look at all stochastic
 approximation techniques and results can be found in <a class="citation" href="#Kushner2003">(Kushner &amp; Yin, 2003)</a>,
-<a class="citation" href="#Chen2002">(Chen, 2002)</a>, and <a class="citation" href="#Spall2005">(Spall, 2005)</a>.
+<a class="citation" href="#Chen2002">(Chen, 2002)</a>, and <a class="citation" href="#Spall2005">(Spall, 2005)</a>.</p>
 <p>Discussions of averaging lead to the major rival of stochastic
 approximation algorithms, which is known as the stochastic counterpart
 method (SC) or sample average approximation, or the sample-path method).
 In its simplest form, the stochastic counterpart the method replaces
 $g(x)$ with $\hat{g}(x)$ which is simply defined as the sample mean of
-$G(x)$ after $N$ samples, i.e.
+$G(x)$ after $N$ samples, i.e.</p>
 <script type="math/tex; mode=display">\hat{g}(x) = \frac{1}{N} \sum_{i=0}^N G(x).</script>
 <p>For an $N$ chosen
 sufficiently large (relative to ${\mathrm{Var}}[G(x)]$) then the root of
@@ -160,7 +160,7 @@ the vast array of algorithms in that field (many can be found in
 conceptually simple and that it is powerful as the tools developed for
 DRFPs can be utilised. In modern times SC is likely to be preferred over
 SA as it is easily parallelisable. Also SC allows examination of
-non-differentiable functions which would confuse SA methods <a class="citation" href="#Wang2008">(Wang &amp; Schmeiser, 2008)</a>.
+non-differentiable functions which would confuse SA methods <a class="citation" href="#Wang2008">(Wang &amp; Schmeiser, 2008)</a>.</p>
 <p>Initial work on the stochastic counterpart method arose from
 <a class="citation" href="#Healy1991">(Healy &amp; Schruben, 1991)</a> looking at a related concept which is retrospective
 optimization methodology. This work discussed the notion of optimizing
@@ -171,19 +171,19 @@ stochastic root finding, and Schmeiser’s PhD student Pasupathy
 generalised the results to multiple dimensions <a class="citation" href="#Pasupathy2005">(Pasupathy, 2005)</a>. Initial
 results on convergence were already proved by <a class="citation" href="#Shapiro1991">(Shapiro, 1991)</a> in the
 context of stochastic optimization. The topic is well-explained by many
-books, including: <a class="citation" href="#Rubinstein1993">(Rubinstein &amp; Shapiro, 1993)</a>, <a class="citation" href="#Spall2005">(Spall, 2005)</a>, and (missing reference).
+books, including: <a class="citation" href="#Rubinstein1993">(Rubinstein &amp; Shapiro, 1993)</a>, <a class="citation" href="#Spall2005">(Spall, 2005)</a>, and (missing reference).</p>
 <p><a class="citation" href="#Rubinstein1997">(Rubinstein, 1997)</a> built on the original work on the stochastic
 counterpart method and produced a landmark application of the method for
 rare-event simulations. A simplified explanation can be found in
 (missing reference), which describes how stochastic counterpart is a vital
-component of the cross-entropy method.
+component of the cross-entropy method.</p>
 <p>Modern work on stochastic approximation techniques seeks to automate the
 task of parameter selection. <a class="citation" href="#Spall2000">(Spall, 2000)</a> outlines an adaptive extension
 to SPSA. Very recently <a class="citation" href="#Broadie2014">(Broadie et al., 2014)</a> outlined a fully adaptive
 extension to both RMSA and KWSA which works well in practice, yet has
 little founding in rigorous proofs. Another recent application of
 stochastic approximation is in evaluating portfolio risk, cf
-<a class="citation" href="#Dunkel2010">(Dunkel &amp; Weber, 2010)</a>.
+<a class="citation" href="#Dunkel2010">(Dunkel &amp; Weber, 2010)</a>.</p>
 <p>To conclude, a completely different approach to solving SRFPs called the
 probabilistic bisection method by <a class="citation" href="#Waeber2011">(Waeber et al., 2011)</a> will be described.
 Instead of iterating a single point $X_n$ towards $x^*$ in some form of
@@ -195,21 +195,21 @@ of the root (typically constant over the considered range), and
 successive iterations add information from querying $G(x)$. Each
 iteration selects a point
 $X_n = {\mathrm{Median}}(f_n(x)) = F_n^{-1}(1/2)$ and queries the sign
-of this point
+of this point</p>
 <script type="math/tex; mode=display">Z_n(X_n) = {\mathrm{sgn}}(G(X_n)).</script>
 <p>In this stylised
-problem the authors considered the case where
+problem the authors considered the case where</p>
 <script type="math/tex; mode=display">p(x) = {\mathbb{P}}({\mathrm{sgn}}(G(x)) = {\mathrm{sgn}}(g(x)))</script>
 <p>is
 known to the user. The values of $Z_n$ and $p(x)$ describes how to
-update the next posterior, i.e. if $Z_n = +1$ then
+update the next posterior, i.e. if $Z_n = +1$ then</p>
 <script type="math/tex; mode=display">% <![CDATA[
 f_{n+1}(x) =
  \begin{cases}
   2p(x) f_n(x),     & \text{if }x > X_n    \\
   2(1-p(x)) f_n(x), & \text{if }x \leq X_n
  \end{cases} %]]></script>
-<p>else $Z_n = -1$ and
+<p>else $Z_n = -1$ and</p>
 <script type="math/tex; mode=display">% <![CDATA[
 f_{n+1}(x) =
  \begin{cases}
@@ -223,14 +223,14 @@ appears to have much potential when competing against the existing
 methods; as SA &amp; SC form Markov chains then all the work involved
 calculating $G(X_n)$ is thrown away after each step, whereas the
 Bayesian approach incorporates all previous queries of $G$ into
-$f_n$.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
+$f_n$.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 <h1 id="main-theorems">Main Theorems</h1>
-<p><em>Proof of Robbins-Monro convergence almost surely:</em>
-<p>Results listed below are adapted from the original proof by <a class="citation" href="#Blum1954">(Blum, 1954)</a>.
+<p><em>Proof of Robbins-Monro convergence almost surely:</em></p>
+<p>Results listed below are adapted from the original proof by <a class="citation" href="#Blum1954">(Blum, 1954)</a>.</p>
 <p>Say $g(x)$ is a Lebesgue measurable function and our available estimator
 $G(x)$ is unbiased (i.e. ${\mathbb{E}}[G(x)] = g(x)$) and that
 ${a_n : n \in {\mathbb{N}}}$ is the user-supplied step sequence. The
-following conditions must be satisfied:
+following conditions must be satisfied:</p>
 <script type="math/tex; mode=display">\textstyle \sum_{n=1}^\infty a_n = \infty \tag{A}\label{A}</script>
 <script type="math/tex; mode=display">% <![CDATA[
 \textstyle \sum_{n=1}^\infty a_n^2 < \infty \tag{B}\label{B} %]]></script>
@@ -246,68 +246,68 @@ of the step sequence, $\eqref{C}$ ensures the function isn’t too steep
 for root-finding, $\eqref{D}$ ensures the noise in our measurements is
 finite, $\eqref{E}$ states that there is at most one root and
 $\eqref{F}$ “ensures that the iterates do not accumulate at any finite
-point” <a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>.
+point” <a class="citation" href="#Pasupathy2011">(Pasupathy &amp; Kim, 2011)</a>.</p>
 <p><strong>Lemma 1</strong> If $\eqref{B}$ and $\eqref{D}$ hold then the sequence
 ${ X_{n+1} + \sum_{j=1}^n a_j g(X_j) }$ converges to a random variable
-with probability one.
+with probability one.</p>
 <p><a class="citation" href="#Blum1954">(Blum, 1954)</a> cites Lemma 1 as a minor extension of Lemma 5.2
-in <a class="citation" href="#Loeve1951">(Loève &amp; others, 1951)</a>.
+in <a class="citation" href="#Loeve1951">(Loève &amp; others, 1951)</a>.</p>
 <p><strong>Lemma 2</strong> If $\eqref{B}$, $\eqref{C}$, $\eqref{D}$ and $\eqref{E}$
-hold then $X_n$ converges w.p.1.
-<p>First want to show
+hold then $X_n$ converges w.p.1.</p>
+<p>First want to show</p>
 <p>\begin{equation} \label{conv:fin}
 {\mathbb{P}}\left(\lim_{n\rightarrow \infty} X_n = \pm \infty\right) = 0.
-\end{equation}
+\end{equation}</p>
 <p>Suppose ${X_n }$ is a sample sequence which diverges to $+\infty$ (a
 similar argument holds for $-\infty$). This means $X_n \leq \theta$ for
 only finitely many $n$, so $\eqref{E}$ $\Rightarrow a_ng(X_n) &gt; 0$ for
-large enough $n$. Then in the limit
+large enough $n$. Then in the limit</p>
 <script type="math/tex; mode=display">\lim_{n\rightarrow \infty} X_{n+1} + \sum_{j=1}^n a_jg(X_j) =+\infty</script>
 <p>whereas Lemma 1 states this limit converges with probability
 one. Therefore the limit diverges with probability zero and we have
-shown $\eqref{conv:fin}$ to be true.
+shown $\eqref{conv:fin}$ to be true.</p>
 <p>Assume the statement of the lemma is false and it will be proved by
 contradiction. Lemma 1 and $\eqref{conv:fin}$ imply that
-there exist sample sequences with positive probability such that
+there exist sample sequences with positive probability such that</p>
 <p>\begin{equation} \label{contr1}
   X_{n+1} + \sum_{j=1}^n a_jg(X_j) \text{ converges to a finite number.}
-\end{equation}
-<p>and the assumption of the lemma being false implies
+\end{equation}</p>
+<p>and the assumption of the lemma being false implies</p>
 <p>\begin{equation} \label{contr2}
   \lim \inf X_n &lt; \lim \sup X_n.
-\end{equation}
+\end{equation}</p>
 <p>Select such a sequence of $X_n$ and
 w.l.o.g assume $\lim \sup X_n &gt; \theta$. We can select numbers $a$ and
-$b$ such that
+$b$ such that</p>
 <script type="math/tex; mode=display">% <![CDATA[
 a > \theta, \quad \lim \inf X_n < a < b < \lim \sup X_n %]]></script>
 <p>Now for $N$
-large enough then $N \leq n &lt; m$ means
+large enough then $N \leq n &lt; m$ means</p>
 <p>\begin{equation} \label{anbounds}
   a_n \leq \min \left\{ \frac{1}{3d}, \frac{b-a}{3(c + d|\theta|)} \right\}
-\end{equation}
-<p>which is fine since $\eqref{B}$ implies $a_n \rightarrow 0$, and also
+\end{equation}</p>
+<p>which is fine since $\eqref{B}$ implies $a_n \rightarrow 0$, and also</p>
 <p>\begin{equation} \label{bound}
   \left| X_m - X_n + \sum_{j=n}^{m-1} a_j g(X_j) \right| \leq \frac{b-a}{3}
-\end{equation}
+\end{equation}</p>
 <p>which is justified by $\eqref{contr1}$. Fix values for $m$ and $n$ so
-that
+that</p>
 <p>\begin{equation} \label{summands}
   N \leq n &lt; m, \quad X_n &lt; a, \quad X_m &gt; b, \quad n &lt; j &lt; m \Rightarrow a \leq X_j \leq b.
-\end{equation}
+\end{equation}</p>
 <p>In particular note that for $n&lt;j&lt;m$ then $\eqref{summands}$ &amp;
 $\eqref{E}$ means that $a_jg(X_j) &gt; 0$. By rearranging $\eqref{bound}$
-and applying this note we can see that
+and applying this note we can see that</p>
 <p>\begin{equation} \label{ineq}
   X_m - X_n \leq \frac{b-a}{3} - \sum_{j=n}^{m-1} a_jg(X_j)
   \leq \frac{b-a}{3} - a_ng(X_n)
-\end{equation}
+\end{equation}</p>
 <p>To finish the proof we take cases. If
-$\theta &lt; X_n$ then $g(X_n) &gt; 0$ so $\eqref{ineq}$ states that
+$\theta &lt; X_n$ then $g(X_n) &gt; 0$ so $\eqref{ineq}$ states that</p>
 <script type="math/tex; mode=display">X_m - X_n \leq \frac{b-a}{3}</script>
 <p>but $\eqref{summands}$ implies that
 $X_m - X_n &gt; b-a$, so a contradiction! This leaves considering the case
-where $X_n \leq \theta$, so $g(X_n) &lt; 0$ and by $\eqref{C}$:
+where $X_n \leq \theta$, so $g(X_n) &lt; 0$ and by $\eqref{C}$:</p>
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{align}
   -g(X_n) & = |g(X_n)| \notag \\
@@ -315,7 +315,7 @@ where $X_n \leq \theta$, so $g(X_n) &lt; 0$ and by $\eqref{C}$:
       & \leq c + d|\theta| + d|\theta - X_n| \notag  \\
       & \leq c + d|\theta| + d(X_m - X_n)  \label{ineq2}
 \end{align} %]]></script>
-<p>So plugging $\eqref{ineq2}$ into $\eqref{ineq}$ gives
+<p>So plugging $\eqref{ineq2}$ into $\eqref{ineq}$ gives</p>
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
  \label{anothercontr}
@@ -325,43 +325,43 @@ where $X_n \leq \theta$, so $g(X_n) &lt; 0$ and by $\eqref{C}$:
         & \leq \frac{b-a}{3} + \frac{b-a}{3} + \frac{X_m - X_n}{3}
 \end{aligned} %]]></script>
 <p>Collecting $X_m - X_n$ terms together and multiplying
-by $\frac{3}{2}$ gives
+by $\frac{3}{2}$ gives</p>
 <script type="math/tex; mode=display">(X_m-X_n) \leq b-a</script>
 <p>which again contradicts
 $X_m - X_n &gt; b-a$ from $\eqref{summands}$! Therefore all cases lead to a
-contradiction so the lemma is proved.
+contradiction so the lemma is proved.</p>
 <p>If conditions $\eqref{A}$-$\eqref{F}$ hold then the Robbins-Monro
-iterates $X_n$ converge to the root $\theta$ w.p.1.
-<p>We have from Lemma 2 that
+iterates $X_n$ converge to the root $\theta$ w.p.1.</p>
+<p>We have from Lemma 2 that</p>
 <script type="math/tex; mode=display">{\mathbb{P}}\left(\lim_{n\rightarrow\infty} X_n = X\right) = 1</script>
 <p>for
-some $X$. Again seek a contradiction by assuming that
+some $X$. Again seek a contradiction by assuming that</p>
 <script type="math/tex; mode=display">{\mathbb{P}}\left(X \not= \theta\right) > 0.</script>
 <p>Choose some
 $\epsilon_1, \epsilon_2$ s.t.
-$\theta &lt; \epsilon_1 &lt; \epsilon_2 &lt; \infty$<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and
+$\theta &lt; \epsilon_1 &lt; \epsilon_2 &lt; \infty$<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and</p>
 <p>\begin{equation} \label{epsilon}
   {\mathbb{P}}(\epsilon_1 &lt; X &lt; \epsilon_2) &gt; 0
-\end{equation}
+\end{equation}</p>
 <p>Consider all the
 sequences $X_n$ that, for a chosen $(\epsilon_1, \epsilon_2)$, satisfy
-$\eqref{epsilon}$. For $n$ large enough then
+$\eqref{epsilon}$. For $n$ large enough then</p>
 <script type="math/tex; mode=display">\epsilon_1 \leq X_n \leq \epsilon_2.</script>
 <p>The set of all such sequences
-has positive probability. Lemma 1 states that
+has positive probability. Lemma 1 states that</p>
 <script type="math/tex; mode=display">X_{n+1} + \sum_{j=1}^n a_j g(X_j) \text{ converges w.p.1}.</script>
 <p>Yet
-consider applying $\eqref{F}$ so that
+consider applying $\eqref{F}$ so that</p>
 <script type="math/tex; mode=display">g(X_n) > 0</script>
 <p>eventually and as
 $\eqref{A}$ states the $a_n$ also diverge so overall this sum would
-diverge almost surely. This is contradiction!
+diverge almost surely. This is contradiction!</p>
 <p>See <a class="citation" href="#Kushner2003">(Kushner &amp; Yin, 2003)</a> for many more proofs on convergence guarantees and
-convergence speed of stochastic approximation algorithms.
+convergence speed of stochastic approximation algorithms.</p>
 <h1 id="algorithms">Algorithms</h1>
-<p><img src="/images/pseudocode_srf.png" alt="image" class="image post_image" />
+<p><img src="/images/pseudocode_srf.png" alt="image" class="image post_image" /></p>
 <p>The probabilistic bisection algorithm was sufficiently described in the
-text of the literature review.
+text of the literature review.</p>
 <h2 id="matlab-implementation">MATLAB Implementation</h2>
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="n">Xs</span> <span class="o">=</span> <span class="n">sa</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">rm</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="nb">alpha</span><span class="p">,</span> <span class="n">n0</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="nb">gamma</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">maxIters</span><span class="p">)</span>
   <span class="c1">% Cannot have empty G or x0 arguments</span>
@@ -508,9 +508,9 @@ text of the literature review.
 <span class="k">end</span>
 </code></pre></div></div>
 <p>report to reduce scope, and because it isn’t as interesting a topic
-to cover.
+to cover.</p>
 <p>a symmetric function. Perhaps caused by a bug or a result of the
-function’s strangeness.
+function’s strangeness.</p>
 <ol class="bibliography"><li><span id="Pasupathy2011">Pasupathy, R., &amp; Kim, S. (2011). The stochastic root-finding problem: Overview, solutions, and open questions. <i>ACM Transactions on Modeling and Computer Simulation (TOMACS)</i>, <i>21</i>(3), 19.</span>
 <li><span id="Robbins1951">Robbins, H., &amp; Monro, S. (1951). A stochastic approximation method. <i>The Annals of Mathematical Statistics</i>, 400–407.</span>
 <li><span id="Wolfowitz1952">Wolfowitz, J. A. C. O. B. (1952). On the stochastic approximation method of Robbins and Monro. <i>The Annals of Mathematical Statistics</i>, 457–461.</span>
@@ -541,9 +541,9 @@ function’s strangeness.
 <div class="footnotes">
  <ol>
    <li id="fn:1">
-     <p>Note: the question of convergence speed was omitted from this <a href="#fnref:1" class="reversefootnote">&#8617;</a>
+     <p>Note: the question of convergence speed was omitted from this <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
    <li id="fn:2">
-     <p>Also could choose $-\infty &lt; \epsilon_1 &lt; \epsilon_2 &lt; \theta$. <a href="#fnref:2" class="reversefootnote">&#8617;</a>
+     <p>Also could choose $-\infty &lt; \epsilon_1 &lt; \epsilon_2 &lt; \theta$. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
  </ol>
 </div>
    </div>
@@ -567,7 +567,7 @@ function’s strangeness.
     <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="/assets/js/main.js"></script>
    <section id="footer">
-     <p class="copyright">&copy; Patrick Laub. Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a>. Jekyll integration: <a href="https://github.com/andrewbanchich/" target="_blank" rel="noopener">Andrew Banchich</a>.
+     <p class="copyright">&copy; Patrick Laub. Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a>. Jekyll integration: <a href="https://github.com/andrewbanchich/" target="_blank" rel="noopener">Andrew Banchich</a>.</p>
    </section>
    </div>
   
