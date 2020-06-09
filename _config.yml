@@ -21,6 +21,7 @@ plugins:
   - jekyll-gist
   - jekyll-paginate-v2
   - jekyll-redirect-from
+  - jekyll-gallery-generator
 sass:
     style: compressed
 compress_html:
@@ -51,5 +52,21 @@ pagination:
   limit: 0
   sort_field: 'date'
   sort_reverse: true
+
+
+gallery:
+  dir: portfolios               # Path to the gallery
+  title_prefix: ""  # Title prefix for gallery pages. Gallery title = title_prefix + gallery_name
+  thumbnail_size:
+    x: 500                  # max width of thumbnails (in pixels)
+    y: 375                  # max height of thumbnails (in pixels)
+  scale_method: "fill"
+  galleries:
+    "2018":
+      sort_reverse: true
+    "2019":
+      sort_field: "name"
+    decade:
+      sort_field: "name"
 
 ############################################################

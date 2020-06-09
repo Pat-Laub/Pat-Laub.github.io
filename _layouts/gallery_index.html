@@ -2,7 +2,6 @@
 layout: default
 # This page is used for the main index of galleries
 ---
-
 <div id="main">
 <article class="post">
 
@@ -17,12 +16,11 @@ layout: default
 
         {% for gallery in page.galleries %}
         <article class="mini-post">
-        <header><h3><a href="{{ gallery['link'] }}">{{ gallery["title"] }}</a></h3>
+        <header><h3><a href="{{ gallery['gallery'] }}">{{ gallery["title"] }}</a></h3>
         </header>
-        <a href="{{ gallery['link'] }}" class="image">
-            <img class="gallery-best-image" src="{{ gallery['link'] }}/thumbs/front_{{ gallery['best_image'] }}">
+        <a href="{{ gallery['gallery'] }}" class="image">
+            <img class="gallery-best-image" src="{{ gallery['gallery'] }}/thumbs/{{ gallery['best_image'] }}">
         </a>
-
         </article>
         {% endfor %}
     </ul>

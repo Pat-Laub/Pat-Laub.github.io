@@ -20,19 +20,19 @@ header:
 <div class="mini-posts-grid">
 
         {% for image in page.images %}
-        {% if page.captions[image] == nil %}
-          {% assign caption_words = image | split: "." | first | replace: "_", " " |  replace: "-", " " | split: " "%}
+        {% if page.captions[image.name] == nil %}
+          {% assign caption_words = image.name | split: "." | first | replace: "_", " " |  replace: "-", " " | split: " "%}
           {% capture titlecase %}{% for word in caption_words %}{{ word | capitalize }} {% endfor %}{% endcapture %}
           {% assign caption = titlecase %}
         {% else %}
-          {% assign caption = page.captions[image] %}
+          {% assign caption = page.captions[image.name] %}
         {% endif %}
         <article class="mini-post">
-            <header><h3><a href="{{ image }}">
+            <header><h3><a href="{{ image.name }}">
             {{ caption }}
             </a></h3></header>
-            <a data-fancybox="gallery" href="{{ image }}" data-caption="{{ caption }}"  class="image">
-                <img src="thumbs/{{ image }}" alt="{{ caption }}" title="{{ caption }}">
+            <a data-fancybox="gallery" href="{{ image.name }}" data-caption="{{ caption }}"  class="image">
+                <img src="thumbs/{{ image.name }}" alt="{{ caption }}" title="{{ caption }}">
             </a>
         </article>
 

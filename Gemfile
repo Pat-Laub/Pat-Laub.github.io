@@ -36,3 +36,5 @@ gem 'unicode_utils'
 
 gem 'jekyll-redirect-from'
 gem 'ffi', '1.9.23'
+
+gem 'jekyll-gallery-generator'
