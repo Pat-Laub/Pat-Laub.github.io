@@ -13,8 +13,9 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 # Papers:
 
-- [Jinjing Li](https://www.jinjingli.com/), [Michael J. Zyphur](https://findanexpert.unimelb.edu.au/profile/238494-michael-zyphur), [George Sugihara](https://deepeco.ucsd.edu/sugihara/), Patrick J. Laub (2020), _Beyond Linearity, Stability, and Equilibrium: The edm Package for Empirical Dynamic Modeling and Convergent Cross Mapping in Stata_, Stata Journal (to appear) [[__preprint__](https://jinjingli.github.io/edm/edm-wp.pdf), [__code__](https://jinjingli.github.io/edm/sj-edm.do), [__package__](https://jinjingli.github.io/edm/)]
-- [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2020), _Approximate Bayesian Computations to fit and compare insurance loss models_ (submitted), [[__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://github.com/Pat-Laub/abcre)]
+- [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_ (revision under review by IME), [[__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://github.com/Pat-Laub/abcre)]
+- [Young Lee](https://statistics.fas.harvard.edu/people/young-lee), Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), [Hongbiao Zhao](http://hongbiaozhao.weebly.com/), [Jiancang Zhuang](http://bemlar.ism.ac.jp/zhuang/) (2021), *Exact simulation of extrinsic stress-release processes*, Journal of Applied Probability, 59(1) (to appear in March 2022)  [[__code__](https://github.com/Pat-Laub/exact-simulation-of-extrinsic-stress-release-processes)]
+- [Jinjing Li](https://www.jinjingli.com/), [Michael J. Zyphur](https://findanexpert.unimelb.edu.au/profile/238494-michael-zyphur), [George Sugihara](https://deepeco.ucsd.edu/sugihara/), Patrick J. Laub (2021), _Beyond Linearity, Stability, and Equilibrium: The edm Package for Empirical Dynamic Modeling and Convergent Cross Mapping in Stata_, Stata Journal, 21(1), pp. 220-258 [[__pdf__](https://journals.sagepub.com/doi/10.1177/1536867X211000030), [__preprint__](https://jinjingli.github.io/edm/edm-wp.pdf), [__code__](https://jinjingli.github.io/edm/sj-edm.do), [__package__](https://jinjingli.github.io/edm/)]
 - Patrick J. Laub, [Nicole El Karoui](http://www.cmap.polytechnique.fr/~elkaroui/), [Stéphane Loisel](http://pages.isfa.fr/~stephane/), [Yahia Salhi](http://salhi.yahia.free.fr/) (2020), _Quickest detection in practice in presence of seasonality: An illustration with call center data_, Insurance data analytics: some case studies of advanced algorithms and applications, Economica [[__arxiv__](https://arxiv.org/abs/2006.04576), [__book__](https://www.economica.fr/insurance-data-analytics-some-case-studies-of-advanced-algorithms-and-applications-c2x32609183), [__code__](https://www.github.com/Pat-Laub/SeasonalCUSUM)]
 - [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2020), _Orthogonal polynomial expansions to evaluate stop-loss premiums_, Journal of Computational and Applied Mathematics [[__pdf__](https://www.sciencedirect.com/science/article/pii/S0377042719306533), [__arxiv__](https://arxiv.org/abs/1712.03468), [__code__](https://github.com/Pat-Laub/ActuarialOrthogonalPolynomials)]
 - [Søren Asmussen](http://home.math.au.dk/asmus/), [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2019), _Orthonormal polynomial expansions and lognormal sum densities_, Risk and Stochastics: Ragnar Norberg at 70 (Mathematical Finance Economics), World Scientific [[__amazon__](https://www.amazon.co.uk/Risk-Stochastics-Norberg-Mathematical-Economics/dp/1786341948), [__arxiv__](https://arxiv.org/abs/1601.01763), [__code__](https://github.com/Pat-Laub/SLNOrthogonalPolynomials)]
@@ -36,11 +37,14 @@ Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://
 
 # Open source software:
 
-Creator of [__EMpht.jl__](https://github.com/Pat-Laub/EMpht.jl), and [__abcre__](https://github.com/Pat-Laub/abcre). Minor contributor to [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) and [__pyABC__](https://github.com/ICB-DCM/pyABC).
+Maintainer of the Stata [__edm__](https://github.com/EDM-Developers/EDM) package (the C++ backend in particular).
+Creator of the Python package [__abcre__](https://github.com/Pat-Laub/abcre) (and an initial C++ version [__cppabc__](https://github.com/Pat-Laub/cppabc)) and the Julia package [__EMpht.jl__](https://github.com/Pat-Laub/EMpht.jl).
+
+Minor contributor to [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) and [__pyABC__](https://github.com/ICB-DCM/pyABC).
 
 # Reviewer:
 
-Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Journal of Computational and Graphical Statistics, and Methodology and Computing in Applied Probability.
+Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Journal of Computational and Graphical Statistics, Methodology and Computing in Applied Probability, and Statistics & Probability Letters.
 
 # Presentations:
 - Sydney (via Zoom) 2021, _Approximate Bayesian Computation & Writing Performant Python Code_, UNSW Risk and Actuarial Group Seminar [[__YouTube__](https://youtu.be/SFXk_A5UBpc), [__slides__](https://slides.com/plaub/abc)]
