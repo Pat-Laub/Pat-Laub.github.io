@@ -13,7 +13,7 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 # Papers:
 
-- [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_ (revision under review by IME), [[__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://github.com/Pat-Laub/approxbayescomp)]
+- [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_, Insurance: Mathematics and Economics (to appear), [[__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://pypi.org/project/approxbayescomp/)]
 - [Young Lee](https://statistics.fas.harvard.edu/people/young-lee), Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), [Hongbiao Zhao](http://hongbiaozhao.weebly.com/), [Jiancang Zhuang](http://bemlar.ism.ac.jp/zhuang/) (2021), *Exact simulation of extrinsic stress-release processes*, Journal of Applied Probability, 59(1) (to appear in March 2022)  [[__code__](https://github.com/Pat-Laub/exact-simulation-of-extrinsic-stress-release-processes)]
 - [Jinjing Li](https://www.jinjingli.com/), [Michael J. Zyphur](https://findanexpert.unimelb.edu.au/profile/238494-michael-zyphur), [George Sugihara](https://deepeco.ucsd.edu/sugihara/), Patrick J. Laub (2021), _Beyond Linearity, Stability, and Equilibrium: The edm Package for Empirical Dynamic Modeling and Convergent Cross Mapping in Stata_, Stata Journal, 21(1), pp. 220-258 [[__pdf__](https://journals.sagepub.com/doi/10.1177/1536867X211000030), [__preprint__](https://jinjingli.github.io/edm/edm-wp.pdf), [__code__](https://jinjingli.github.io/edm/sj-edm.do), [__package__](https://jinjingli.github.io/edm/)]
 - Patrick J. Laub, [Nicole El Karoui](http://www.cmap.polytechnique.fr/~elkaroui/), [Stéphane Loisel](http://pages.isfa.fr/~stephane/), [Yahia Salhi](http://salhi.yahia.free.fr/) (2020), _Quickest detection in practice in presence of seasonality: An illustration with call center data_, Insurance data analytics: some case studies of advanced algorithms and applications, Economica [[__arxiv__](https://arxiv.org/abs/2006.04576), [__book__](https://www.economica.fr/insurance-data-analytics-some-case-studies-of-advanced-algorithms-and-applications-c2x32609183), [__code__](https://www.github.com/Pat-Laub/SeasonalCUSUM)]
@@ -37,10 +37,11 @@ Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://
 
 # Open source software:
 
-- Maintainer of the Stata [__edm__](https://github.com/EDM-Developers/EDM) package (the C++ backend in particular).
-- Creator (along with Pierre-Olivier Goffard) of the Python package [__approxbayescomp__](https://github.com/Pat-Laub/approxbayescomp) (and an initial C++ version [__cppabc__](https://github.com/Pat-Laub/cppabc)).
-- Creator of the Julia package [__EMpht.jl__](https://github.com/Pat-Laub/EMpht.jl).
-- Minor contributor to the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package.
+- Maintainer of the Stata [__edm__](https://github.com/EDM-Developers/EDM) package (the C++ backend in particular) for Empirical Dynamical Modelling.
+- Co-creator of the Python package [__approxbayescomp__](https://pypi.org/project/approxbayescomp/) (and an initial C++ version [__cppabc__](https://github.com/Pat-Laub/cppabc)) which implements an efficient Approximate Bayesian Computation method (with actuaries as the primary audience).
+- Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes.
+- Creator of the Julia package [__EMpht.jl__](https://github.com/Pat-Laub/EMpht.jl) which fits phase-type distributions.
+- Minor contributor to the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package (added parallel computing) and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package (added bug/performance fix).
 
 # Reviewer:
 
