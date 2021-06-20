@@ -13,7 +13,7 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 # Papers:
 
-- [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_, Insurance: Mathematics and Economics (to appear), [[__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://pypi.org/project/approxbayescomp/)]
+- [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_, Insurance: Mathematics and Economics (to appear) [[__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://pypi.org/project/approxbayescomp/)]
 - [Young Lee](https://statistics.fas.harvard.edu/people/young-lee), Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), [Hongbiao Zhao](http://hongbiaozhao.weebly.com/), [Jiancang Zhuang](http://bemlar.ism.ac.jp/zhuang/) (2021), *Exact simulation of extrinsic stress-release processes*, Journal of Applied Probability, 59(1) (to appear in March 2022)  [[__code__](https://github.com/Pat-Laub/exact-simulation-of-extrinsic-stress-release-processes)]
 - [Jinjing Li](https://www.jinjingli.com/), [Michael J. Zyphur](https://findanexpert.unimelb.edu.au/profile/238494-michael-zyphur), [George Sugihara](https://deepeco.ucsd.edu/sugihara/), Patrick J. Laub (2021), _Beyond Linearity, Stability, and Equilibrium: The edm Package for Empirical Dynamic Modeling and Convergent Cross Mapping in Stata_, Stata Journal, 21(1), pp. 220-258 [[__pdf__](https://journals.sagepub.com/doi/10.1177/1536867X211000030), [__preprint__](https://jinjingli.github.io/edm/edm-wp.pdf), [__code__](https://jinjingli.github.io/edm/sj-edm.do), [__package__](https://jinjingli.github.io/edm/)]
 - Patrick J. Laub, [Nicole El Karoui](http://www.cmap.polytechnique.fr/~elkaroui/), [Stéphane Loisel](http://pages.isfa.fr/~stephane/), [Yahia Salhi](http://salhi.yahia.free.fr/) (2020), _Quickest detection in practice in presence of seasonality: An illustration with call center data_, Insurance data analytics: some case studies of advanced algorithms and applications, Economica [[__arxiv__](https://arxiv.org/abs/2006.04576), [__book__](https://www.economica.fr/insurance-data-analytics-some-case-studies-of-advanced-algorithms-and-applications-c2x32609183), [__code__](https://www.github.com/Pat-Laub/SeasonalCUSUM)]
@@ -37,20 +37,21 @@ Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://
 
 # Open source software:
 
-- Maintainer of the Stata [__edm__](https://github.com/EDM-Developers/EDM) package (the C++ backend in particular) for Empirical Dynamical Modelling.
-- Co-creator of the Python package [__approxbayescomp__](https://pypi.org/project/approxbayescomp/) (and an initial C++ version [__cppabc__](https://github.com/Pat-Laub/cppabc)) which implements an efficient Approximate Bayesian Computation method (with actuaries as the primary audience).
-- Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes.
-- Creator of the Julia package [__EMpht.jl__](https://github.com/Pat-Laub/EMpht.jl) which fits phase-type distributions.
-- Minor contributor to the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package (added parallel computing) and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package (added bug/performance fix).
+- Maintainer of the Stata [__edm__](https://jinjingli.github.io/edm/) package (the C++ backend in particular) for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/EDM)]
+- Co-creator of the Python package [__approxbayescomp__](https://pypi.org/project/approxbayescomp/) (and an initial C++ version [__cppabc__](https://github.com/Pat-Laub/cppabc)) which implements an efficient Approximate Bayesian Computation method (with actuaries as the primary audience) [[__github__](https://github.com/Pat-Laub/approxbayescomp/)]
+- Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes [[__github__](https://github.com/Pat-Laub/hawkesbook)]
+- Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/EMpht/lpgEz/0.1.0) which fits phase-type distributions [[__github__](https://github.com/Pat-Laub/EMpht.jl)]
+- During my Google internship, I ported the Dart package manager 'pub' to Chrome OS for use in the Spark IDE [[__code reviews__](https://codereview.appspot.com/search?closed=1&owner=pajamallama&reviewer=&cc=&repo_guid=&base=&private=1&format=html&keys_only=False&with_messages=False&cursor=&limit=50)] (look for my reviews under the account pajamallama@google.com ha)
+- Drive-by contributor to: the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package (added multithreading) and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package (bug/performance fix).
 
 # Reviewer:
 
 Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Journal of Computational and Graphical Statistics, Methodology and Computing in Applied Probability, and Statistics & Probability Letters.
 
 # Presentations:
-- Online (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, Insurance Data Science conference [[__slides__](https://slides.com/plaub/abc-at-ids)]	
-- Melbourne (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, UniMelb Actuarial Group & Applied Probability Group seminars [[__slides__](https://slides.com/plaub/abc-at-uom)]
+- Online (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, Insurance Data Science conference [[__YouTube__](https://youtu.be/EtZdCWoFMBA), [__slides__](https://slides.com/plaub/abc-at-ids)]
 - Melbourne (via Zoom) 2021, _A Software Engineer's Toolkit for Quantitative Research_, UniMelb Quantitative Methods Network Seminar [[__YouTube__](https://youtu.be/vXTNkCsdrF8), [__slides__](https://slides.com/plaub/software-tools-for-quantitative-research)]
+- Melbourne (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, University of Melbourne Actuarial Group & Applied Probability Group seminars [[__slides__](https://slides.com/plaub/abc-at-uom)]
 - Sydney (via Zoom) 2021, _Approximate Bayesian Computation & Writing Performant Python Code_, UNSW Risk and Actuarial Group Seminar [[__YouTube__](https://youtu.be/SFXk_A5UBpc), [__slides__](https://slides.com/plaub/abc-at-unsw)]
 - Paris (via Webex) 2020, _Approximate Bayesian Computation and Insurance_, Chaire DAMI Technical Seminar [[__YouTube__](https://youtu.be/pwVgIh1495A), [__slides__](/talks/abc)]
 - Munich 2019, _Phase-Type Models in Life Insurance_, Insurance: Mathematics and Economics (IME 2019) [[__actuview__](https://www.actuview.com/phase-type-models-in-life-insurance-fitting-and-valuation-of-equity-linked-benefits_80ba6000c.html)]
