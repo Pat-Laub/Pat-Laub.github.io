@@ -35,7 +35,7 @@ gem 'jekyll-paginate-v2'
 gem 'unicode_utils'
 
 gem 'jekyll-redirect-from'
-gem 'ffi', '1.9.23'
+gem 'ffi', '1.9.24'
 
 gem 'jekyll-gallery-generator'
 #gem 'kramdown-parser-gfm'
