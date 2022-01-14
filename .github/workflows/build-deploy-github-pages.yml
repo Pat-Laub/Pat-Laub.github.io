@@ -15,4 +15,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           jekyll_build_options: --lsi
           target_branch: 'gh-pages'
-          pre_build_commands: apk --update add imagemagick
+          pre_build_commands: apk add --update --no-cache build-base imagemagick6 imagemagick6-c++ imagemagick6-dev imagemagick6-lib
