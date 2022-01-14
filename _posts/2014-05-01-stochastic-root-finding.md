@@ -417,7 +417,7 @@ convergence speed of stochastic approximation algorithms.
 Algorithms
 ==========
 
-![image](/images/pseudocode_srf.png){: .image .post_image}
+![image]({% link /images/pseudocode_srf.png %}){: .image .post_image}
 
 The probabilistic bisection algorithm was sufficiently described in the
 text of the literature review.

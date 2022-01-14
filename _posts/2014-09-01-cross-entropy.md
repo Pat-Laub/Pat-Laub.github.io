@@ -21,7 +21,7 @@ defined by
 $$S(x) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).$$
 
 This is how it looks:
-![image](/images/math6006/rastrigin.png){: .image .post_image}
+![image]({% link /images/math6006/rastrigin.png %}){: .image .post_image}
 
 One cross-entropy approach could be as follows.
 
@@ -64,13 +64,13 @@ Implementation
 ==============
 
 These are the samples evolving over time.
-![image](/images/math6006/rast.gif){: .image .post_image}
+![image]({% link /images/math6006/rast.gif %}){: .image .post_image}
 
 For those samples, these are the multivariate normal distributions which are fitted to the elite samples.
-![image](/images/math6006/rastImpDens.gif){: .image .post_image}
+![image]({% link /images/math6006/rastImpDens.gif %}){: .image .post_image}
 
 The objective function drops across iterations.
-![image](/images/math6006/progress.jpg){: .image .post_image}
+![image]({% link /images/math6006/progress.jpg %}){: .image .post_image}
 
 This is the same plot as above but on a log scale.
-![image](/images/math6006/progress2.jpg){: .image .post_image}
+![image]({% link /images/math6006/progress2.jpg %}){: .image .post_image}
