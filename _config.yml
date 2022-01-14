@@ -6,17 +6,10 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: https://pat-laub.github.io
 twitter_username: PatrickLaub
 github_username: Pat-Laub
-google_analytics: UA-102813844-1
-disqus:
-  shortname: pat-laub-github-io
 
-# Build settings`
+# Build settings
 markdown: kramdown
-# highlighter: pygments
-# theme: minima
-# plugins_dir: [jekyll-feed, jekyll-scholar]
-# plugins_dir:
-#   - jekyll-feed
+
 plugins:
   - jekyll-gist
   - jekyll-paginate-v2
@@ -45,7 +38,7 @@ pagination:
   per_page: 3
   permalink: '/page/:num/' # Pages are index.html inside this folder (default)
 
-  # Optional the title format for the paginated pages (supports :title for original page titl e, :num for pagination page number, :max for total number of pages)
+  # Optional the title format for the paginated pages (supports :title for original page title, :num for pagination page number, :max for total number of pages)
   title: ':title'
 
   # Limit how many pagenated pages to create (default: 0, means all)
@@ -55,8 +48,8 @@ pagination:
 
 
 gallery:
-  dir: portfolios               # Path to the gallery
-  title_prefix: ""  # Title prefix for gallery pages. Gallery title = title_prefix + gallery_name
+  dir: portfolios           # Path to the gallery
+  title_prefix: ""          # Title prefix for gallery pages. Gallery title = title_prefix + gallery_name
   thumbnail_size:
     x: 500                  # max width of thumbnails (in pixels)
     y: 375                  # max height of thumbnails (in pixels)
@@ -68,5 +61,3 @@ gallery:
       sort_field: "name"
     decade:
       sort_field: "name"
-
-############################################################
