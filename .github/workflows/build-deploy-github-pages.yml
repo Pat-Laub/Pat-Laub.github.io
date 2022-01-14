@@ -1,0 +1,18 @@
+name: Build and deploy Jekyll site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # or main after October 2020
+
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: helaili/jekyll-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          jekyll_build_options: --lsi
+          target_branch: 'gh-pages'
+          pre_build_commands: apk add --update --no-cache build-base imagemagick6 imagemagick6-c++ imagemagick6-dev imagemagick6-libs
