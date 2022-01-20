@@ -8,7 +8,8 @@ author: pjl
 banner: edm-youtube.png
 banner_alt: A screenshot from the Sugihara youtube video showing off the Lorenz butterfly attractor
 excerpt: >
-    I've been working on a plugin for Stata which implements [Empirical Dynamic Modelling](https://www.researchgate.net/publication/317339714_Empirical_dynamic_modeling_for_beginners), a stats tool with the funnily misleading acronym EDM. Have you ever heard the line "correlation does not equal causation"? Well EDM aims to fix that.
+    Have you ever heard the line "correlation does not equal causation"? Well Empirical Dynamic Modeling (EDM) aims to fix that.
+    I've been working on a plugin for Stata which implements EDM methods. 
 ---
 
 Since starting at Uni Melbourne, I've been working on a plugin for Stata which implements [Empirical Dynamic Modelling](https://jinjingli.github.io/edm), a stats tool with the funnily misleading acronym EDM.
@@ -37,7 +38,7 @@ It's quite hypnotising to watch these animations; some of them show really bimod
 
 ![image]({% link /images/emotions.gif %}){: .image .post_image}
 
-The plugin's [homepage](https://jinjingli.github.io/edm/) hosts installation instructions & some documentation.
+The plugin's [homepage](https://edm-developers.github.io/EDM/) hosts installation instructions & some documentation.
 While our Stata Journal paper really goes into detail about the method, there's another paper [EDM for beginners](https://www.researchgate.net/publication/317339714_Empirical_dynamic_modeling_for_beginners) which is also a good place to start.
 
 If you're a software developer, I'd be interested in hearing any feedback or suggestions for this codebase!

@@ -23,7 +23,7 @@
         </header>
 
         {% if post.banner %}
-        <a href="{{ post.url | relative_url }}"><img src="/images/{{ post.banner }}" title="{{ post.banner_alt }}" class="image featured"/></a>
+        <a href="{{ post.url | relative_url }}"><img src="{{ site.baseurl }}/images/{{ post.banner }}" title="{{ post.banner_alt }}" class="image featured"/></a>
         {% endif %}
 
         {{ post.excerpt }}

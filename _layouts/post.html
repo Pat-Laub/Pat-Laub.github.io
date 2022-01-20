@@ -10,7 +10,7 @@ layout: default
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
       <div class="title">
-      <h2>{{ page.title | escape }}</h2>
+      <h1>{{ page.title | escape }}</h1>
       <p>{{ page.subtitle }}</p>
       </div>
 
@@ -21,7 +21,7 @@ layout: default
     </header>
 
     {% if page.banner %}
-        <img src="/images/{{ page.banner }}" title="{{ page.banner_alt }}" class="image featured" />
+        <img src="{{ site.baseurl }}/images/{{ page.banner }}" title="{{ page.banner_alt }}" class="image featured" />
     {% endif %}
 
     <div class="post-content" itemprop="articleBody">

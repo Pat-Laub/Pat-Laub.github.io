@@ -13,7 +13,7 @@ I have worked at the [Faculty of Business and Economics](https://fbe.unimelb.edu
 I have taught programming and probability at universities for over 8 years.
 For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub) or my publications below.
 
-# Papers:
+## Papers:
 
 - [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_, Insurance: Mathematics and Economics, 100, pp. 350-371 [[__article__](https://www.sciencedirect.com/science/article/pii/S0167668721000998), [__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://pat-laub.github.io/approxbayescomp/)]
 - [Young Lee](https://statistics.fas.harvard.edu/people/young-lee), Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), [Hongbiao Zhao](http://hongbiaozhao.weebly.com/), [Jiancang Zhuang](http://bemlar.ism.ac.jp/zhuang/) (2021), *Exact simulation of extrinsic stress-release processes*, Journal of Applied Probability, 59(1) (to appear in March 2022)  [[__arxiv__](https://arxiv.org/abs/2106.14415), [__code__](https://github.com/Pat-Laub/exact-simulation-of-extrinsic-stress-release-processes)]
@@ -28,16 +28,16 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 - Patrick J. Laub, [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html), [Jens Ledet Jensen](https://pure.au.dk/portal/en/persons/jens-ledet-jensen(a58c9c5a-0879-4606-a387-ebc8b984b134)/persons/jens-ledet-jensen(a58c9c5a-0879-4606-a387-ebc8b984b134).html), [Leonardo Rojas-Nandayapa](https://facultad.itam.mx/en/facultad/41165-leonardo-rojas-nandayapa-0) (2015), _Approximating the Laplace transform of the sum of dependent lognormals_, Advances in Applied Probability, 48(A), pp. 203–215 [[__article__](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/E13F4689C7C791C45340D5276FDF3A78/S0001867816000501a.pdf/approximating_the_laplace_transform_of_the_sum_of_dependent_lognormals.pdf), [__arxiv__](https://arxiv.org/abs/1507.03750), [__code__](https://github.com/Pat-Laub/SLNLaplaceTransformApprox)]
 - Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), [Philip K. Pollett](https://people.smp.uq.edu.au/PhilipPollett/) (2015), _Hawkes Processes_, Technical report [[__arxiv__](https://arxiv.org/abs/1507.02822)]
 
-# Theses:
+## Theses:
 - Doctor of Philosophy (Applied Probability) 2018, _Computational methods for sums of random variables_ [[__pdf__]({% link /pdfs/phd_thesis.pdf %}), [__tex__](https://github.com/Pat-Laub/phd-thesis)]
 - Bachelor of Science (Mathematics, Hons. I) 2014, _Hawkes Processes: Simulation, Estimation, and Validation_ [[__pdf__]({% link /pdfs/honours_thesis.pdf %})]
 - Bachelor of Engineering (Software, Hons. I)/Science (Mathematics) 2013, _Tradeoffs In Geophysical Inversion_  [[__pdf__]({% link /pdfs/software_thesis.pdf %})]
 
-# Teaching:
+## Teaching:
 
 Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://pat-laub.github.io/rare-events/), [__lecture recordings__](https://www.youtube.com/playlist?list=PLKsJFg6SO0Ujr6tZHSImQ50vuNPoZ3NOl)]
 
-# Open source software:
+## Open source software:
 
 - Maintainer of the Stata [__edm__](https://edm-developers.github.io/EDM/) package for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/EDM)]
 - Maintainer of the R [__fastEDM__](https://edm-developers.github.io/fastEDM/) package for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/fastEDM)]
@@ -47,11 +47,11 @@ Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://
 - During my Google internship, I ported the Dart package manager 'pub' to Chrome OS for use in the Spark IDE [[__code reviews__](https://codereview.appspot.com/search?closed=1&owner=pajamallama&reviewer=&cc=&repo_guid=&base=&private=1&format=html&keys_only=False&with_messages=False&cursor=&limit=50)] (look for my reviews under the account pajamallama@google.com ha)
 - Drive-by contributor to: the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package (added multithreading) and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package (bug/performance fix).
 
-# Reviewer:
+## Reviewer:
 
 Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Insurance: Mathematics and Economics, Journal of Computational and Graphical Statistics, Methodology and Computing in Applied Probability, and Statistics & Probability Letters.
 
-# Presentations:
+## Presentations:
 - Online (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, Insurance Data Science conference [[__YouTube__](https://youtu.be/EtZdCWoFMBA), [__slides__](https://slides.com/plaub/abc-at-ids)]
 - Melbourne (via Zoom) 2021, _A Software Engineer's Toolkit for Quantitative Research_, UniMelb Quantitative Methods Network Seminar [[__YouTube__](https://youtu.be/vXTNkCsdrF8), [__slides__](https://slides.com/plaub/software-tools-for-quantitative-research)]
 - Melbourne (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, University of Melbourne Actuarial Group & Applied Probability Group seminars [[__slides__](https://slides.com/plaub/abc-at-uom)]
@@ -66,6 +66,6 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, Eu
 - Brisbane 2016, _Asymptotic adventures in the Scandinavian wilderness_, a talk at the UQ [ACEMS](http://acems.org.au/) Seminar series on my PhD's first year in Denmark [[__slides__]({% link /pdfs/asymptotic_adventures.pdf %})]
 - Aarhus 2015, _Rare-event simulation for maxima of dependent random variables_, a T.N. Thiele Centre seminar [[__slides__]({% link /pdfs/aarhus.pdf %})]
 
-# Posters:
+## Posters:
 - Brisbane 2017, _Sums of lognormal random variables: density estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_density_poster.pdf %})]
 - Brisbane 2017, _Sums of lognormal random variables: Laplace transform estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_laplace_poster.pdf %})]

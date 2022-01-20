@@ -33,7 +33,7 @@
 				-ms-flex: 1;
 				padding: (_size(section-spacing) * 1.25) _size(section-spacing) (_size(section-spacing) * 1.1) _size(section-spacing);
 
-				h2 {
+				h1 {
 					font-weight: _font(weight-heading-extrabold);
 					font-size: 1.5em;
 				}
@@ -190,7 +190,7 @@
 				width: calc(100% + #{_size(section-spacing-small) * 2});
 
 				.title {
-					h2 {
+					h1 {
 						font-size: 1.1em;
 					}
 				}
