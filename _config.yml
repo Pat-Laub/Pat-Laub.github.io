@@ -15,12 +15,17 @@ plugins:
   - jekyll-paginate-v2
   - jekyll-redirect-from
   - jekyll-gallery-generator
+  - jekyll-tidy
+
 sass:
     style: compressed
+
+jekyll_tidy:
+  compress_html: false
+
 compress_html:
   clippings: all
   comments:  ["<!-- ", " -->"]
-  endings:   all
   blanklines: true
 
 scholar:
