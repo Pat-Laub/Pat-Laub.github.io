@@ -55,11 +55,11 @@
 			border-left: solid 1px _palette(border);
 			height: inherit;
 			line-height: inherit;
-			margin-left: 1.5em;
+			margin-left: 0;
 			overflow: hidden;
-			padding-left: 1.5em;
 
 			ul {
+				
 				li {
 					border-left: solid 1px _palette(border);
 					line-height: 1;
@@ -69,7 +69,10 @@
 					&:first-child {
 						border-left: 0;
 						margin-left: 0;
-						padding-left: 0;
+						padding-left: 2em;
+						a {
+							font-weight: 800;
+						}
 					}
 
 					a {
@@ -81,10 +84,11 @@
 						text-transform: uppercase;
 					}
 				}
+
 			}
 
 			@include breakpoint(small) {
-				margin-left: 0.5em;
+				margin-left: 0;
 				padding-left: 0.5em;
 
 				ul {
@@ -95,7 +99,7 @@
 						&:first-child {
 							border-left: 0;
 							margin-left: 0;
-							padding-left: 0;
+							padding-left: 1em;
 						}
 					}
 				}
