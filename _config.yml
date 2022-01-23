@@ -2,7 +2,7 @@ title: Patrick Laub
 email: some.email@domain.com
 description: >
   Maths and programming etc.
-baseurl: "/homepage" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: https://pat-laub.github.io
 twitter_username: PatrickLaub
 github_username: Pat-Laub
