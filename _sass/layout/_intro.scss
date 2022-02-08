@@ -12,9 +12,9 @@
 
 	#intro {
 
-
 		text-align: center;
-
+		margin: 0 0 _size(section-spacing) 0;
+		
 		.logo {
 			border-bottom: 0;
 			display: inline-block;
@@ -48,13 +48,13 @@
 			h1 {
 				font-size: 2em;
 				font-weight: _font(weight-heading-extrabold);
-				margin-bottom: 1em;
+				margin-bottom: 0em;
 				color: _palette(fg-bold);
 			}
 
 			p {
 				font-size: 1em;
-				margin-bottom: 1em;
+				margin: 1em 0em;
 			}
 		}
 
@@ -63,7 +63,7 @@
 		}
 
 		@include breakpoint(large) {
-			margin: 0 0 0 0;
+			margin: 0 0 _size(section-spacing) 0;
 
 
 			header {
@@ -78,8 +78,7 @@
 		}
 
 		@include breakpoint(small) {
-			margin: 0 0 0 0;
-			padding: 1.25em 0;
+			margin: 0 0 _size(section-spacing-small) 0;
 
 			> :last-child {
 				margin-bottom: 0;

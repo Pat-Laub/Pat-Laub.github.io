@@ -1,10 +1,8 @@
 <div id="main">
 
 {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-
 {% assign url_len = page.url | size %}
 {% assign filename = page.url | remove: "/" | split: '.' | first %}
-
 
 {% for post in paginator.posts %}
   <article class="post">

@@ -1,6 +1,6 @@
 ---
 layout: category_home
-title: Code | pjl
+title: Code
 permalink: /code/
 pagination:
   enabled: true

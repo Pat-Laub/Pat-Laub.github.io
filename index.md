@@ -72,3 +72,5 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, Eu
 ## Posters:
 - Brisbane 2017, _Sums of lognormal random variables: density estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_density_poster.pdf %})]
 - Brisbane 2017, _Sums of lognormal random variables: Laplace transform estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_laplace_poster.pdf %})]
+
+_This site was adapted from the 'Future Imperfect' design from [HTML5 UP](https://html5up.net), and specifically the Jekyll-integrated version made by [Andrew Banchich](https://github.com/andrewbanchich/")._

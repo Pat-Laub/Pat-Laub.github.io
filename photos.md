@@ -1,6 +1,6 @@
 ---
 layout: category_home
-title: Photos | pjl
+title: Photos
 permalink: /photos/
 pagination:
   enabled: true

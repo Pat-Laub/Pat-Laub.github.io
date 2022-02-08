@@ -1,6 +1,6 @@
 ---
 layout: category_home
-title: Books | pjl
+title: Books
 permalink: /books/
 pagination:
   enabled: true

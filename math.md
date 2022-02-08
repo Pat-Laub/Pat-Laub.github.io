@@ -1,6 +1,6 @@
 ---
 layout: category_home
-title: Math | pjl
+title: Maths
 permalink: /math/
 pagination:
   enabled: true
