@@ -6,7 +6,7 @@ tags: [code]
 mathjax: false
 author: pjl
 banner: bluey.png
-banner_alt: A frame from the Bluey episode 'Chest' (S3E11). Bluey, Bingo and Bandit are setting up a chess board, and Bingo had just asked 'Where's the dice?', and Bandit's resigned internal sigh cracks me up every time... 
+banner_alt: A frame from the Bluey episode 'Chest' (S3E11). Bluey, Bingo and Bandit are setting up a chess board, and Bingo had just asked 'Where's the dice?', and Bandit's resigned internal sigh cracks me up every time...
 excerpt: >
     I've been listening to the Syntax podcast for the last few months, and I was very surprised that in one episode they recommended a great Bluey episode.
     Though I forgot which episode contained the recommendation.
@@ -20,7 +20,7 @@ I've been enjoying listening to the [Syntax Web Development](https://syntax.fm) 
 About a month after the podcast episode, I decided to watch that recommended Bluey episode.
 But I couldn't remember which Bluey episode was recommended, nor could I remember which Syntax episode the hosts went on this tangent about children's TV.
 The podcast releases new episodes at a furious rate, and the episodes go for about 30 mins to an hour.
-I couldn't find any transcripts of the episodes provided by the hosts, and after a few days of intermittently relistening to old episodes to find that section, I gave up.
+I couldn't find any transcripts of the episodes provided by the hosts, and after a few days of intermittently re-listening to old episodes to find that section, I gave up.
 
 As I'm teaching deep-learning later in the year, I thought I'd use this as an example of using Python & machine learning to side-step a long and tedious manual search for this information.
 
@@ -66,7 +66,7 @@ resorting to santa bianca with its tastes we toiletries out there strap yourself
 ```
 
 Admittedly, this introduction is played over the top of some music and in an unusual delivery, so I wouldn't expect too much for this section.
-And later, for the technical discussions about Javascript and Typescript etc., I hadn't expected a generic speech-to-text method to work well on those parts of the episodes.
+And later, for the technical discussions about JavaScript and TypeScript etc., I hadn't expected a generic speech-to-text method to work well on those parts of the episodes.
 
 ### Looking for nearly-perfect transcripts, a la YouTube's auto-captions
 
@@ -163,13 +163,13 @@ Inference took 532.887s for 1995.677s audio file.
 Inference took 1180.540s for 3843.344s audio file.
 ```
 
-Searching for "blue" in the sludge of error-filled text that was generated, I did find 
+Searching for "blue" in the sludge of error-filled text that was generated, I did find
 
 ```
 ... like one example is bluely or kissed favours the world is blue and bethabara characters is a buoy oh i intoshes know that my kids go bananas for it mykenai's very cute were ...
 ```
 
-towards the end of episode 417. After relistening to that part of the episode, I found this is exactly what I was looking for! 
+towards the end of episode 417. After re-listening to that part of the episode, I found this is exactly what I was looking for!
 It was the [Flat Pack episode](https://blueypedia.fandom.com/wiki/Flat_Pack) that was recommended (S2E24).
 Now that I just watched it, I agree it was quite a good episode!
 It should have been a 'sick pick' haha.
@@ -180,5 +180,7 @@ What did I learn from this experience?
 
 - I need to remember to solve the simplest version of the problem (here I needed to find the word "Bluey", not get perfect transcripts for the episodes).
 - That we get used to great machine-learning algorithms, like the YouTube automatic captioning system, and forget that problems like speech-to-text are _really hard_ to solve.
-- I should be sceptical of small Python packages which are just dumped on the Python package index.
-- That the 'automated'/AI solution can be slower than the manual version (here, I certainly could have relistened to a month's worth of podcasts faster than solving this problem with software; heck, I probably could have watched all of Bluey in this time!).
+- I should be skeptical of small Python packages which are just dumped on the Python package index.
+- That the automated/AI solution can be slower than the manual version (here, I certainly could have re-listened to a month's worth of podcasts faster than solving this problem with software; heck, I probably could have watched all of Bluey in this time!).
+
+![image]({% link /images/bluey-swing-chair.png %}){: .image .post_image}
