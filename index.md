@@ -15,11 +15,11 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 ## Software Packages:
 
-- Maintainer of the Stata [__edm__](https://edm-developers.github.io/EDM/) package for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/EDM)]
-- Maintainer of the R [__fastEDM__](https://edm-developers.github.io/fastEDM/) package for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/fastEDM)]
-- Creator of the Python package [__approxbayescomp__](https://pat-laub.github.io/approxbayescomp/) which implements an efficient Approximate Bayesian Computation method (with actuaries as the primary audience) [[__github__](https://github.com/Pat-Laub/approxbayescomp/)]
-- Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes [[__github__](https://github.com/Pat-Laub/hawkesbook)]
-- Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/EMpht/lpgEz/0.1.0) which fits phase-type distributions [[__github__](https://github.com/Pat-Laub/EMpht.jl)]
+- Maintainer of the Stata [__edm__](https://edm-developers.github.io/EDM/) package for Empirical Dynamical Modelling
+- Maintainer of the R [__fastEDM__](https://edm-developers.github.io/fastEDM/) package for Empirical Dynamical Modelling
+- Creator of the Python package [__approxbayescomp__](https://pat-laub.github.io/approxbayescomp/) which implements an efficient Approximate Bayesian Computation method (with actuaries as the primary audience)
+- Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes
+- Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/EMpht/lpgEz/0.1.0) which fits phase-type distributions
 
 ## Papers:
 
