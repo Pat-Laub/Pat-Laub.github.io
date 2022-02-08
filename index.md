@@ -13,6 +13,14 @@ I have worked at the [Faculty of Business and Economics](https://fbe.unimelb.edu
 I have taught programming and probability at universities for over 8 years.
 For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub) or my publications below.
 
+## Software Packages:
+
+- Maintainer of the Stata [__edm__](https://edm-developers.github.io/EDM/) package for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/EDM)]
+- Maintainer of the R [__fastEDM__](https://edm-developers.github.io/fastEDM/) package for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/fastEDM)]
+- Creator of the Python package [__approxbayescomp__](https://pat-laub.github.io/approxbayescomp/) which implements an efficient Approximate Bayesian Computation method (with actuaries as the primary audience) [[__github__](https://github.com/Pat-Laub/approxbayescomp/)]
+- Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes [[__github__](https://github.com/Pat-Laub/hawkesbook)]
+- Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/EMpht/lpgEz/0.1.0) which fits phase-type distributions [[__github__](https://github.com/Pat-Laub/EMpht.jl)]
+
 ## Papers:
 
 - [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_, Insurance: Mathematics and Economics, 100, pp. 350-371 [[__article__](https://www.sciencedirect.com/science/article/pii/S0167668721000998), [__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://pat-laub.github.io/approxbayescomp/)]
@@ -37,19 +45,14 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://pat-laub.github.io/rare-events/), [__lecture recordings__](https://www.youtube.com/playlist?list=PLKsJFg6SO0Ujr6tZHSImQ50vuNPoZ3NOl)]
 
-## Open source software:
-
-- Maintainer of the Stata [__edm__](https://edm-developers.github.io/EDM/) package for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/EDM)]
-- Maintainer of the R [__fastEDM__](https://edm-developers.github.io/fastEDM/) package for Empirical Dynamical Modelling [[__github__](https://github.com/EDM-Developers/fastEDM)]
-- Creator of the Python package [__approxbayescomp__](https://pat-laub.github.io/approxbayescomp/) which implements an efficient Approximate Bayesian Computation method (with actuaries as the primary audience) [[__github__](https://github.com/Pat-Laub/approxbayescomp/)]
-- Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes [[__github__](https://github.com/Pat-Laub/hawkesbook)]
-- Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/EMpht/lpgEz/0.1.0) which fits phase-type distributions [[__github__](https://github.com/Pat-Laub/EMpht.jl)]
-- During my Google internship, I ported the Dart package manager 'pub' to Chrome OS for use in the Spark IDE [[__code reviews__](https://codereview.appspot.com/search?closed=1&owner=pajamallama&reviewer=&cc=&repo_guid=&base=&private=1&format=html&keys_only=False&with_messages=False&cursor=&limit=50)] (look for my reviews under the account pajamallama@google.com ha)
-- Drive-by contributor to: the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package (added multithreading) and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package (bug/performance fix).
-
 ## Reviewer:
 
 Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Insurance: Mathematics and Economics, Journal of Computational and Graphical Statistics, Methodology and Computing in Applied Probability, and Statistics & Probability Letters.
+
+## Other software:
+
+- During my Google internship, I ported the Dart package manager 'pub' to Chrome OS for use in the Spark IDE [[__code reviews__](https://codereview.appspot.com/search?closed=1&owner=pajamallama&reviewer=&cc=&repo_guid=&base=&private=1&format=html&keys_only=False&with_messages=False&cursor=&limit=50)] (look for my reviews under the account pajamallama@google.com ha)
+- Drive-by contributor to: the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package (added multithreading) and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package (bug/performance fix).
 
 ## Presentations:
 - Online (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, Insurance Data Science conference [[__YouTube__](https://youtu.be/EtZdCWoFMBA), [__slides__](https://slides.com/plaub/abc-at-ids)]
