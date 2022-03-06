@@ -47,7 +47,7 @@ Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://
 
 ## Reviewer:
 
-Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Insurance: Mathematics and Economics, Journal of Computational and Graphical Statistics, Methodology and Computing in Applied Probability, and Statistics & Probability Letters.
+Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Insurance: Mathematics and Economics, Journal of Computational and Graphical Statistics, Lifetime Data Analysis, Methodology and Computing in Applied Probability, and Statistics & Probability Letters.
 
 ## Other software:
 
