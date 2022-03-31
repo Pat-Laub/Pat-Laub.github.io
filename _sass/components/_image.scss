@@ -28,20 +28,16 @@
 
 		&.front_image {
 			width: auto;
-			max-width: 40%;
+			max-width: 30%;
 			margin-bottom: 1em;
 			float: right;
 			padding: 0 15px;
 		}
 
 		@include breakpoint(small) {
-
-
 			&.front_image {
-				max-width: 100%;
+				max-width: 60%;
 				margin-bottom: 1em;
 			}
-
 		}
-
 	}
