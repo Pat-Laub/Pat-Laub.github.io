@@ -7,10 +7,12 @@ redirect_from:
 title: Patrick Laub
 ---
 
-Hi! I'm Pat Laub, a mathematician & software engineer, currently working as a [Lecturer at UNSW](https://research.unsw.edu.au/people/dr-patrick-laub) in the [School of Risk and Actuarial Studies](https://www.unsw.edu.au/business/our-schools/risk-actuarial). My PhD was in applied probability with a focus on computational methods, and it was jointly conducted between Aarhus University and University of Queensland. I was lucky to have as supervisors [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/).
-I'm interested in the intersection of maths/stats and computing.
-I have worked at the [Faculty of Business and Economics](https://fbe.unimelb.edu.au/) at the [University of Melbourne](https://www.unimelb.edu.au/), at the [Institut de Science Financière et d'Assurances](https://isfa.univ-lyon1.fr/) (ISFA) in the [Université Claude Bernard Lyon 1](https://www.univ-lyon1.fr/en/) (Lyon, France), at [Google (Sydney)](https://careers.google.com/locations/sydney/) & [Data61](https://www.data61.csiro.au/) (then called National ICT Australia).
-I have taught programming and probability at universities for over 8 years.
+Hi, my name's Patrick Laub. I'm a [Lecturer at UNSW](https://research.unsw.edu.au/people/dr-patrick-laub) in the [School of Risk and Actuarial Studies](https://www.unsw.edu.au/business/our-schools/risk-actuarial).
+My PhD was in applied probability with a focus on computational methods, and it was jointly conducted between Aarhus University and University of Queensland. I was lucky to have as supervisors [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/).
+I'm interested in the intersection of maths/stats and computing in actuarial science.
+
+I have worked at the [University of Melbourne](https://www.unimelb.edu.au/), at [ISFA](https://isfa.univ-lyon1.fr/) in the [Université Claude Bernard Lyon 1](https://www.univ-lyon1.fr/en/) (Lyon, France), at [Google (Sydney)](https://careers.google.com/locations/sydney/) & [Data61](https://www.data61.csiro.au/) (then called National ICT Australia).
+I have taught programming and probability at universities since 2009.
 For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub) or my publications below.
 
 ## Software Packages:
