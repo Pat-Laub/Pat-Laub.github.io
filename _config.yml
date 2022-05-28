@@ -66,3 +66,6 @@ gallery:
       sort_field: "name"
     decade:
       sort_field: "name"
+    travel:
+      sort_field: "name"
+

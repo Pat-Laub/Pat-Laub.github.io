@@ -6,6 +6,12 @@ header:
     background-color: "#6B8A78"
 ---
 
+<style>
+.fancybox-caption {
+    border-top: 0 !important;
+}
+</style>
+
 <div id="main">
 <article class="post">
 
@@ -31,7 +37,7 @@ header:
             <header><h3><a href="{{ image.name }}">
             {{ caption }}
             </a></h3></header>
-            <a data-fancybox="gallery" href="{{ image.name }}" data-caption="{{ caption }}"  class="image">
+            <a data-fancybox="gallery" href="{{ image.name }}" class="image">
                 <img src="thumbs/{{ image.name }}" alt="{{ caption }}" title="{{ caption }}">
             </a>
         </article>
