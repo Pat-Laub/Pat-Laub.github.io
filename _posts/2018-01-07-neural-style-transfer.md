@@ -43,7 +43,7 @@ This is the algorithm in progress:
 
 # Some background
 
-I'll start this explanation with a bit of AI history (I got some historical details from this interesting article [The data that transformed AI research—and possibly the world](https://qz.com/1034972/the-data-that-changed-the-direction-of-ai-research-and-possibly-the-world/)).
+I'll start this explanation with a bit of AI history (I got some historical details from this interesting article [The data that transformed AI research—and possibly the world](https://web.archive.org/web/20220429151447/http://qz.com/1034972/the-data-that-changed-the-direction-of-ai-research-and-possibly-the-world/)).
 
 In 2009 Fei-Fei Li, now the chief scientist at Google Cloud, released for free online a gigantic database of [3.2 million images](http://image-net.org/explore) called ImageNet. Each image also contained a label describing the contents of the image, specifically, specifying which category the image belonged to out of thousands of different categories, like "car mirror", "cello", "guacamole", "kimono", "prison" etc. This spawned the _ImageNet competition_.
 
@@ -139,7 +139,7 @@ and with an even larger resolution
 
 ![image]({% link /images/qwave_large.jpg %}){: .image .post_image}
 
-But anyway, I hope this was interesting for you! Let me know if you had a different experience in the comment section below.
+But anyway, I hope this was interesting for you! Let me know if you had a different experience.
 
 # Footnotes
 
