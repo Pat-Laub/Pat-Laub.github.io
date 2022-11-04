@@ -8,6 +8,7 @@ title: Patrick Laub
 ---
 
 Hi, my name's Patrick Laub. I'm a [Lecturer at UNSW](https://research.unsw.edu.au/people/dr-patrick-laub) in the [School of Risk and Actuarial Studies](https://www.unsw.edu.au/business/our-schools/risk-actuarial).
+I teach courses on [deep learning for actuaries](https://pat-laub.github.io/DeepLearningForActuaries/).
 My PhD was in applied probability with a focus on computational methods, and it was jointly conducted between Aarhus University and University of Queensland. I was lucky to have as supervisors [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/).
 I'm interested in the intersection of maths/stats and computing in actuarial science.
 
@@ -45,7 +46,9 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 ## Teaching:
 
-Lecturer for a short course on _Rare Event Estimation_ [[__materials__](https://pat-laub.github.io/rare-events/), [__lecture recordings__](https://www.youtube.com/playlist?list=PLKsJFg6SO0Ujr6tZHSImQ50vuNPoZ3NOl)]
+I created and am the lecturer-in-charge for UNSW's courses _ACTL3143 Artificial Intelligence and Deep Learning Models for Actuarial Applications_ and _ACTL5111 Artificial Intelligence and Deep Learning Models for Risk and Insurance_ [[__materials__](https://pat-laub.github.io/DeepLearningForActuaries/)].
+
+Previously, at Université Claude Bernard Lyon 1, I created and lectured short courses on _Rare Event Estimation_ [[__materials__](https://pat-laub.github.io/rare-events/), [__lecture recordings__](https://www.youtube.com/playlist?list=PLKsJFg6SO0Ujr6tZHSImQ50vuNPoZ3NOl)].
 
 ## Reviewer:
 
