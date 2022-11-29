@@ -2,8 +2,7 @@ name: Build and deploy Jekyll site to GitHub Pages
 
 on:
   push:
-    branches:
-      - master # or main after October 2020
+    branches: [ "main" ]
 
 jobs:
   github-pages:
