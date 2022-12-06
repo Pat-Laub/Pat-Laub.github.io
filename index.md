@@ -19,8 +19,8 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 ## Software Packages:
 
 - Maintainer of the Stata [__edm__](https://edm-developers.github.io/edm-stata/) package for Empirical Dynamical Modelling
-- Maintainer of the R [__fastEDM__](https://edm-developers.github.io/fastEDM-R/) package for Empirical Dynamical Modelling
-- Maintainer of the Python [__fastEDM__](https://www.github.com/EDM-Developers/fastEDM-python/) package for Empirical Dynamical Modelling
+- Maintainer of the R [__fastEDM__](https://edm-developers.github.io/fastEDM-r/) package for Empirical Dynamical Modelling
+- Maintainer of the Python [__fastEDM__](https://edm-developers.github.io/fastEDM-python/) package for Empirical Dynamical Modelling
 - Creator of the Python package [__approxbayescomp__](https://pat-laub.github.io/approxbayescomp/) which implements an efficient Approximate Bayesian Computation method (with actuaries as the primary audience)
 - Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes
 - Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/EMpht/lpgEz/0.1.0) which fits phase-type distributions
