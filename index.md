@@ -61,6 +61,8 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, Eu
 - Drive-by contributor to: the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package (added multithreading) and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package (bug/performance fix).
 
 ## Presentations:
+
+- University of Sydney 2022, _Empirical Dynamic Modelling: Automatic Causal Inference and Forecasting_, Time Series and Forecasting Symposium [[__YouTube__](https://youtu.be/ZYKoqt_nzfI), [__slides__](/EDM-TSF2022/)]
 - Online (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, Insurance Data Science conference [[__YouTube__](https://youtu.be/EtZdCWoFMBA), [__slides__](https://slides.com/plaub/abc-at-ids)]
 - Melbourne (via Zoom) 2021, _A Software Engineer's Toolkit for Quantitative Research_, UniMelb Quantitative Methods Network Seminar [[__YouTube__](https://youtu.be/vXTNkCsdrF8), [__slides__](https://slides.com/plaub/software-tools-for-quantitative-research)]
 - Melbourne (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, University of Melbourne Actuarial Group & Applied Probability Group seminars [[__slides__](https://slides.com/plaub/abc-at-uom)]
