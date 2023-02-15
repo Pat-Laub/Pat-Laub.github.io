@@ -63,7 +63,7 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, Eu
 ## Presentations:
 
 - Strasbourg 2023,  _Empirical Dynamic Modelling: Automatic Causal Inference and Forecasting_,  Probability Group Seminar, Université de Strasbourg [[__slides__](/EDM-Strasbourg)]
-- Valencia 2023, _Approximate Bayesian Computation and Insurance_, PARTY Conference 2023 [[__slides__](/ABC-PARTY)]
+- Valencia 2023, _Approximate Bayesian Computation and Insurance_, PARTY Conference 2023 [[__slides__](/abc-party)]
 - University of Sydney 2022, _Empirical Dynamic Modelling: Automatic Causal Inference and Forecasting_, Time Series and Forecasting Symposium [[__YouTube__](https://youtu.be/ZYKoqt_nzfI), [__slides__](/EDM-TSF2022/)]
 - Online (via Zoom) 2021, _Approximate Bayesian Computation in Insurance_, Insurance Data Science conference [[__YouTube__](https://youtu.be/EtZdCWoFMBA), [__slides__](https://slides.com/plaub/abc-at-ids)]
 - Melbourne (via Zoom) 2021, _A Software Engineer's Toolkit for Quantitative Research_, UniMelb Quantitative Methods Network Seminar [[__YouTube__](https://youtu.be/vXTNkCsdrF8), [__slides__](https://slides.com/plaub/software-tools-for-quantitative-research)]
