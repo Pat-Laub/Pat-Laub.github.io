@@ -1,0 +1,140 @@
+---
+title: Teaching AI to Actuaries
+subtitle: UNSW Risk and Actuarial's ACTL3143 & ACTL5110
+author: Dr Patrick Laub
+format:
+  revealjs:
+    theme: [serif, custom.scss]
+    controls: true
+    controls-tutorial: true
+    logo: unsw-logo.svg
+    title-slide-attributes:
+      data-background-image: unsw-yellow-shape.png
+      data-background-size: contain !important
+    slide-number: false
+    strip-comments: true
+    margin: 0.2
+    chalkboard:
+      boardmarker-width: 5
+      grid: false
+    include-before: <div class="line right"></div>
+highlight-style: breeze
+execute:
+  echo: true
+---
+
+## Deep learning for actuaries
+
+> "ohohoh loving him was red touching him was like realizing all of drop it all eyes and i hope you know that everytime i don't i almost do i have..." (Taylor-Swift-like AI submission)
+
+<!-- > ... deep learning is not an exact science, but a set of ever-changing, empirically derived engineering best practices, woven together by unreliable narratives (Chollet 2021) -->
+
+::: columns
+::: column
+
+<br>
+
+- New in 2022
+- Practical orientation
+- Python
+
+:::
+::: column
+
+- Tabular data
+- Sequence data (RNN)
+- Image data (CNN)
+- Text data (NLP)
+- Generative nets
+
+:::
+:::
+
+## Weekly tasks
+
+::: columns
+::: column
+
+- **Chess AI**
+- **Motor**: predict claims frequencies for a portfolio of French motor contracts.
+- **Stroke**: prediction incidents of strokes given health information.
+- **Stocks**: Use RNNs for time series forecasting of stocks.
+
+:::
+::: column
+
+- **Hurricane damage**: Given a satellite image, use CNNs to classify whether a hurricane caused damage to the property or not. 
+- **Police reports**: Given police reports of motor accidents, use NLP to classify whether or not serious bodily injury was caused by the accident.
+
+:::
+:::
+
+
+## {.smaller}
+
+<div style="border: 5px dashed #555"><img src="template-tight.png" /></div>
+
+::: columns
+::: {.column width="45%"}
+![](projects/Jovana Kolar/log_mx_male.svg)
+:::
+::: {.column width="55%"}
+![](projects/Jovana Kolar/male_mx.svg)
+:::
+:::
+
+Source: Jovana Kolar, ACTL3143 Project 2022
+
+## Sydney house price prediction {.smaller}
+
+::: columns
+::: column
+
+![](projects/Rishi Dhushiyandan/sydney-house-price-gbm-error-by-lga.png)
+
+:::
+::: column
+
+![](projects/Rishi Dhushiyandan/rnn.png)
+
+![](projects/Rishi Dhushiyandan/wide-and-deep.png)
+
+:::
+:::
+
+Source: Rishi Dhushiyandan, ACTL3143 Project 2022
+
+## The search for exoplanets {.smaller}
+
+<center>
+
+![  ](projects/Tara Dabrowski/exoplanet.jpeg)
+
+</center>
+
+Source: Tara Dabrowski, ACTL3143 Project 2022
+
+## Get involved!
+
+::: columns
+::: column
+
+<br>
+
+- *Guest lecture*
+- Assessment
+  - A week-long task
+  - A term-long task
+- Next in T2
+
+Email: [p.laub@unsw.edu.au](mailto:p.laub@unsw.edu.au)
+
+:::
+::: column
+
+![Scan for open-source lecture slides](qr-code.svg)
+
+:::
+:::
+
+
