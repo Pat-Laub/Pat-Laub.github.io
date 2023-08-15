@@ -8,7 +8,7 @@ title: Patrick Laub
 ---
 
 Hi, my name's Patrick Laub. I'm a [Lecturer at UNSW](https://research.unsw.edu.au/people/dr-patrick-laub) in the [School of Risk and Actuarial Studies](https://www.unsw.edu.au/business/our-schools/risk-actuarial).
-I teach courses on [deep learning for actuaries](https://pat-laub.github.io/DeepLearningForActuaries/).
+I teach courses on [deep learning](https://pat-laub.github.io/DeepLearningForActuaries/) and on [statistical machine learning](https://www.unsw.edu.au/course-outlines/course-outline#year=2023&term=Term%202&deliveryMode=Multimodal&deliveryFormat=Standard&teachingPeriod=T2&deliveryLocation=Kensington&courseCode=ACTL5110) for actuaries.
 My PhD was in applied probability with a focus on computational methods, and it was jointly conducted between Aarhus University and University of Queensland. I was lucky to have as supervisors [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/).
 I'm interested in the intersection of maths/stats and computing in actuarial science.
 
@@ -16,7 +16,7 @@ I have worked at the [University of Melbourne](https://www.unimelb.edu.au/), at 
 I have taught programming and probability at universities since 2009.
 For more background you can check out my [LinkedIn profile](https://www.linkedin.com/in/plaub) or my publications below.
 
-## Software Packages:
+## Software Packages
 
 - Maintainer of the Stata [__edm__](https://edm-developers.github.io/edm-stata/) package for Empirical Dynamical Modelling
 - Maintainer of the R [__fastEDM__](https://edm-developers.github.io/fastEDM-r/) package for Empirical Dynamical Modelling
@@ -25,7 +25,7 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 - Creator of the Python package [__hawkesbook__](https://pypi.org/project/hawkesbook) to accompany our book on Hawkes processes
 - Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/EMpht/lpgEz/0.1.0) which fits phase-type distributions
 
-## Papers:
+## Papers
 
 - [Young Lee](https://statistics.fas.harvard.edu/people/young-lee), Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), [Hongbiao Zhao](http://hongbiaozhao.weebly.com/), [Jiancang Zhuang](http://bemlar.ism.ac.jp/zhuang/) (2022), *Exact simulation of extrinsic stress-release processes*, Journal of Applied Probability, 59(1) [[__article__](https://www.doi.org/10.1017/jpr.2021.35), [__arxiv__](https://arxiv.org/abs/2106.14415), [__code__](https://github.com/Pat-Laub/exact-simulation-of-extrinsic-stress-release-processes)]
 - [Pierre-Olivier Goffard](http://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_, Insurance: Mathematics and Economics, 100, pp. 350-371 [[__article__](https://www.sciencedirect.com/science/article/pii/S0167668721000998), [__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://pat-laub.github.io/approxbayescomp/)]
@@ -40,27 +40,30 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 - Patrick J. Laub, [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html), [Jens Ledet Jensen](https://pure.au.dk/portal/en/persons/jens-ledet-jensen(a58c9c5a-0879-4606-a387-ebc8b984b134)/persons/jens-ledet-jensen(a58c9c5a-0879-4606-a387-ebc8b984b134).html), [Leonardo Rojas-Nandayapa](https://facultad.itam.mx/en/facultad/41165-leonardo-rojas-nandayapa-0) (2015), _Approximating the Laplace transform of the sum of dependent lognormals_, Advances in Applied Probability, 48(A), pp. 203–215 [[__article__](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/E13F4689C7C791C45340D5276FDF3A78/S0001867816000501a.pdf/approximating_the_laplace_transform_of_the_sum_of_dependent_lognormals.pdf), [__arxiv__](https://arxiv.org/abs/1507.03750), [__code__](https://github.com/Pat-Laub/SLNLaplaceTransformApprox)]
 - Patrick J. Laub, [Thomas Taimre](http://researchers.uq.edu.au/researcher/1299), [Philip K. Pollett](https://people.smp.uq.edu.au/PhilipPollett/) (2015), _Hawkes Processes_, Technical report [[__arxiv__](https://arxiv.org/abs/1507.02822)]
 
-## Theses:
+## Theses
+
 - Doctor of Philosophy (Applied Probability) 2018, _Computational methods for sums of random variables_ [[__pdf__]({% link /pdfs/phd_thesis.pdf %}), [__tex__](https://github.com/Pat-Laub/phd-thesis)]
 - Bachelor of Science (Mathematics, Hons. I) 2014, _Hawkes Processes: Simulation, Estimation, and Validation_ [[__pdf__]({% link /pdfs/honours_thesis.pdf %})]
 - Bachelor of Engineering (Software, Hons. I)/Science (Mathematics) 2013, _Tradeoffs In Geophysical Inversion_  [[__pdf__]({% link /pdfs/software_thesis.pdf %})]
 
-## Teaching:
+## Teaching
 
 I created and am the lecturer-in-charge for UNSW's courses _ACTL3143 Artificial Intelligence and Deep Learning Models for Actuarial Applications_ and _ACTL5111 Artificial Intelligence and Deep Learning Models for Risk and Insurance_ [[__materials__](https://pat-laub.github.io/DeepLearningForActuaries/)].
 
+I'm also the co-lecturer for UNSW's courses titled _Statistical Machine Learning for Risk and Actuarial Applications_ (coded ACTL3142 & ACTL5110).
+
 Previously, at Université Claude Bernard Lyon 1, I created and lectured short courses on _Rare Event Estimation_ [[__materials__](https://pat-laub.github.io/rare-events/), [__lecture recordings__](https://www.youtube.com/playlist?list=PLKsJFg6SO0Ujr6tZHSImQ50vuNPoZ3NOl)].
 
-## Reviewer:
+## Reviewer
 
 Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, European Actuarial Journal, Insurance: Mathematics and Economics, Journal of Computational and Graphical Statistics, Lifetime Data Analysis, Methodology and Computing in Applied Probability, and Statistics & Probability Letters.
 
-## Other software:
+## Other software
 
 - During my Google internship, I ported the Dart package manager 'pub' to Chrome OS for use in the Spark IDE [[__code reviews__](https://codereview.appspot.com/search?closed=1&owner=pajamallama&reviewer=&cc=&repo_guid=&base=&private=1&format=html&keys_only=False&with_messages=False&cursor=&limit=50)] (look for my reviews under the account pajamallama@google.com ha)
 - Drive-by contributor to: the R [__hawkes__](https://cran.r-project.org/web/packages/hawkes/index.html) package (added multithreading) and the Python [__pyABC__](https://github.com/ICB-DCM/pyABC) package (bug/performance fix).
 
-## Presentations:
+## Presentations
 
 - Strasbourg 2023,  _Empirical Dynamic Modelling: Automatic Causal Inference and Forecasting_,  Probability Group Seminar, Université de Strasbourg [[__slides__](/EDM-Strasbourg)]
 - Valencia 2023, _Approximate Bayesian Computation and Insurance_, PARTY Conference 2023 [[__slides__](/abc-party)]
@@ -79,8 +82,9 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, Eu
 - Brisbane 2016, _Asymptotic adventures in the Scandinavian wilderness_, a talk at the UQ [ACEMS](http://acems.org.au/) Seminar series on my PhD's first year in Denmark [[__slides__]({% link /pdfs/asymptotic_adventures.pdf %})]
 - Aarhus 2015, _Rare-event simulation for maxima of dependent random variables_, a T.N. Thiele Centre seminar [[__slides__]({% link /pdfs/aarhus.pdf %})]
 
-## Posters:
+## Posters
+
 - Brisbane 2017, _Sums of lognormal random variables: density estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_density_poster.pdf %})]
 - Brisbane 2017, _Sums of lognormal random variables: Laplace transform estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_laplace_poster.pdf %})]
 
-_This site was adapted from the 'Future Imperfect' design from [HTML5 UP](https://html5up.net), and specifically the Jekyll-integrated version made by [Andrew Banchich](https://github.com/andrewbanchich/")._
+<!-- _This site was adapted from the 'Future Imperfect' design from [HTML5 UP](https://html5up.net), and specifically the Jekyll-integrated version made by [Andrew Banchich](https://github.com/andrewbanchich/"). -->
