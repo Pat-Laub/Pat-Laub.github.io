@@ -78,7 +78,10 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, Eu
 - Brisbane 2017, _Rare-event asymptotics and estimation for dependent random sums_, a talk at the UQ [SMORS](https://www.smp.uq.edu.au/smor-seminars) Seminar series [[__slides__](http://slides.com/plaub/rare-event-asymptotics-and-estimation-for-dependent-random-sums-an-exit-talk-with-applications-to-finance-and-insurance/)]
 - Sydney 2017, _Efficient simulation for dependent rare events with applications to extremes_, a UNSW Probability and Statistics seminar [[__slides__]({% link /pdfs/sydney.pdf %})]
 - Uluru 2017, _Tail asymptotics of light-tailed Weibull-like sums_, a short talk at the [Probability @ the Rock conference in honour of Phil Pollett](https://acems.org.au/news/phil-pollett-APatR-conf). This presentation was "highly commended" [[__slides__]({% link /pdfs/uluru.pdf %})]
+
+<!--
 - Greenland 2016, _Simple and efficient estimators for rare-event maxima and sums_, a talk at the [Applied Probability Symposium](http://thiele.au.dk/events/conferences/2016/ilulissat/) which was a celebration for Søren Asmussen's 70th birthday [[__slides__]({% link /pdfs/greenland.pdf %})]
+
 - Brisbane 2016, _Asymptotic adventures in the Scandinavian wilderness_, a talk at the UQ [ACEMS](http://acems.org.au/) Seminar series on my PhD's first year in Denmark [[__slides__]({% link /pdfs/asymptotic_adventures.pdf %})]
 - Aarhus 2015, _Rare-event simulation for maxima of dependent random variables_, a T.N. Thiele Centre seminar [[__slides__]({% link /pdfs/aarhus.pdf %})]
 
@@ -86,5 +89,7 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, Eu
 
 - Brisbane 2017, _Sums of lognormal random variables: density estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_density_poster.pdf %})]
 - Brisbane 2017, _Sums of lognormal random variables: Laplace transform estimation_, for the UQ School of Mathematics and Physics poster day [[__pdf__]({% link /pdfs/sln_laplace_poster.pdf %})]
+
+-->
 
 <!-- _This site was adapted from the 'Future Imperfect' design from [HTML5 UP](https://html5up.net), and specifically the Jekyll-integrated version made by [Andrew Banchich](https://github.com/andrewbanchich/"). -->
