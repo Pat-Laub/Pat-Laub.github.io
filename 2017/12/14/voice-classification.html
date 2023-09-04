@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Who is it?</title>
+    <meta name="description" content="Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practi...">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="canonical" href="https://pat-laub.github.io/2017/12/14/voice-classification.html">
+    <link rel="alternate" type="application/rss+xml" title="Patrick Laub" href="/feed.xml">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+  </head>
+  <body class="single">
+    <div id="wrapper">
+      <!--{ include header.html }-->
+      <div id="main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+            <div class="title">
+              <h1>Who is it?</h1>
+              <p>Playing with machine learning to classify voices</p>
+            </div>
+            <div class="meta">
+              <time class="published" datetime="2017-12-14T00:00:00+00:00">Dec 14, 2017</time>
+            </div>
+          </header>
+          <img src="/images/spectra.jpg" title="Spectra for a voice actor" class="image featured" />
+          <div class="post-content" itemprop="articleBody">
+            <h1 id="problem">Problem</h1>
+            <p>Someone calls you on the phone, and within a few words you can work out who it is. Can a computer do this just as accurately? For a bit of fun, and to practice some machine learning, I made to program which does this. I give the program a few minutes of recorded speech from 13 people to learn from originally, and it can tell after a few seconds who is speaking with an accuracy of 95% (using Mathematica) to 97% (using Python). I like this problem since it’s a task that humans (without the benefit of caller-id) often fail at.</p>
+            <h1 id="input-data">Input data</h1>
+            <p>Since I am addicted to <a href="http://www.audible.com">audiobooks</a>, it seemed natural to use the first few minutes of different audiobooks for this experiment; specifically, I took:</p>
+            <ul>
+              <li><a href="https://www.audible.com/pd/Self-Development/The-Elements-of-Eloquence-Audiobook/B00O1GCA5M">The Elements of Eloquence</a> by Mark Forsyth, narrated by Don Hagen</li>
+              <li><a href="https://www.audible.com/pd/Language-Instruction/Learn-German-with-Paul-Noble-Part-1-Audiobook/B00A2XEA0Q/">Learn German with Paul Noble</a> by Paul Noble</li>
+              <li><a href="https://www.audible.com/pd/Nonfiction/Homo-Deus-Audiobook/B01HH0PH6M">Homo Deus</a> by Yuval Noah Harari, narrated by Derek Perkins</li>
+              <li><a href="https://www.audible.com/pd/History/The-Industrial-Revolution-Audiobook/B00NMPA3P2">The Industrial Revolution</a> by Professor Patrick N. Allitt</li>
+              <li><a href="https://www.audible.com/pd/History/On-China-Audiobook/B0050ISJPA">On China</a> by Henry Kissinger, narrated by Nicholas Hormann</li>
+              <li><a href="https://www.audible.com/pd/Fiction/Lolita-Audiobook/B0032N2TYC/">Lolita</a> by Vladimir Nabokov, narrated by Jeremy Irons</li>
+              <li><a href="https://www.audible.com/pd/Nonfiction/Beyond-Good-and-Evil-Audiobook/B004TBQRKS">Beyond Good and Evil</a> by Friedrich Nietzsche, narrated by Steven Crossley</li>
+              <li><a href="https://www.audible.com/pd/Nonfiction/Outliers-Audiobook/B002UZDRK8/">Outliers</a> by Malcolm Gladwell</li>
+              <li><a href="https://www.audible.com/pd/Science-Technology/The-Red-Queen-Audiobook/B004J1CQC6">The Red Queen</a> by Matt Ridley, narrated by Simon Prebble</li>
+              <li><a href="https://www.audible.com/pd/Classics/William-Shakespeare-Comedies-Histories-and-Tragedies-Audiobook/B00DJ7ITC2">William Shakespeare: Comedies, Histories, and Tragedies</a> by Professor Peter Saccio</li>
+              <li><a href="https://www.audible.com/pd/Self-Development/The-Economics-of-Uncertainty-Audiobook/B00XP35LM6">The Economics of Uncertainty</a> by Professor Connel Fullenkamp</li>
+            </ul>
+            <p>This collection is somewhat eclectic — I mainly chose these since they had narrators with distinctive voices (to make my task easier), and I took the chance to throw in some books I love (e.g. Elements of Eloquence, Homo Deus, and Peter Saccio’s course on Shakespeare).</p>
+            <p>After I showed this to my partner-in-crime Vivian, she asked about two potential flaws: i) as voice actors, these samples are from people who are paid to speak very clearly, perhaps the program would break with normal people talking, ii) is the program somehow dependent on English to work. So, we recorded ourselves dictating from different books, Viv from the Mandarin edition of Homo Deus and myself from <a href="https://web.stanford.edu/~hastie/CASI/">Computer Age Statistical Inference</a> by Efron &amp; Hastie.</p>
+            <h1 id="data-wrangling-downgrading-quality">Data wrangling: downgrading quality</h1>
+            <p>After recording, I found it took 607 MB of space to store, so I downgraded the quality of the audio to match the quality of a telephone call (8 kHz) and converted everything from stereo to mono — this reduced the space footprint to 54.2 MB. The following Mathematica code does this quality downgrading:</p>
+            <details>
+              <summary>Show/hide code</summary>
+              <script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=down_sample.nb"></script>
+            </details>
+            <p>Now the first 3 second chunk of each voice looks like:</p>
+            <p><img src="/images/start_of_each.gif" alt="image" class="image post_image" /></p>
+            <h1 id="data-wrangling-converting-to-spectral-density-estimates">Data wrangling: converting to spectral density estimates</h1>
+            <p>More importantly, I transformed the input from the 3 second audio slices to their <a href="https://en.wikipedia.org/wiki/Spectral_density_estimation">spectral density estimates</a>. Since I wanted to separate voices, I didn’t care really <strong>what</strong> each person was saying, but just <strong>how</strong> they were saying it, and the spectral density gives this information — it tells us which frequencies a person’s voice favours (e.g. do they have squeaky-high voice, or a deep rumble). Without this transformation, none of the algorithms had an accuracy greater than 11-12% (with 13 voices, simply guessing at random would given an accuracy of 7.69%).</p>
+            <details>
+              <summary>Show/hide: how to read a spectral density graph</summary>
+              When we speak, we generate a lot of frequencies at once, and we tend to use some unique range of frequencies more than others. This is why we can say the same words as each other but sound different, it's our "voice fingerprint" if you like. A spectral density graph shows how much power (i.e. how loud) we give to all the available frequencies.
+              Imagine hearing two extreme voices: a loud and deep voice (e.g. Darth Vader), or a quiet and high-pitched voice (e.g. a squeaky librarian). If you recorded their voice, and looked at their spectral densities, you'd see something like:
+              <div>
+                <p><img src="/images/cartoon_spectrum.jpg" alt="image" class="image post_image" /></p>
+              </div>
+              Which one is the red and which is the blue? Vader uses deeper tones, which means lower frequencies, so his spectral curve will have a peak on the left side. As he bellows louder than a librarian, we'd expect his spectral curve to be higher as a general fact. So, Vader would generate the red curve.
+            </details>
+            <p>One 3 second chunk’s spectral density looks like:</p>
+            <p><img src="/images/individual_spectrum.gif" alt="image" class="image post_image" /></p>
+            <p>All of the spectra for each 3 second chunk of Don Hagen’s <em>The Elements of Eloquence</em> plotted together looks like:</p>
+            <p><img src="/images/eloquence_spectra.gif" alt="image" class="image post_image" /></p>
+            <p>Similarly, the spectra of Paul Noble’s <em>Learn German</em> together looks like:</p>
+            <p><img src="/images/german_spectra.gif" alt="image" class="image post_image" /></p>
+            <p>My hypothesis was that a machine learning algorithm could tell the difference between the 13 plots like this.</p>
+            <details>
+              <summary>Show/hide code</summary>
+              <script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=split_and_spectral_estimate.nb"></script>
+            </details>
+            <p>To be honest, I thought the spectra shown above were far too spiky. Spectral density estimation is a fiddly business (as is probability density estimation — see our <a href="https://arxiv.org/abs/1711.11218">great new paper</a> on this :P), as you can choose how smooth you want the estimates to look (by setting the size of the rolling window used). I originally thought that the above spikiness was just noise, and used the following smoother spectra for <em>The Elements of Eloquence</em> but found it didn’t perform as well as the above plots:</p>
+            <p><img src="/images/smooth_eloquence_spectra.gif" alt="image" class="image post_image" /></p>
+            <p>Another avenue I considered, was stripping the pauses in speech from the input. This seemed to slightly reduce accuracy (though I should test this again with the final setup) — then I realised there was useful information in the different ways the speakers paused (e.g. between sentences) that should not be thrown away.</p>
+            <h1 id="preparing-for-a-machine-learning-test">Preparing for a machine learning test</h1>
+            <p>Next, I needed to split the data into a training and test set. This proved to be quite cumbersome — and I’m a bit surprised Mathematica has nothing for this built-in.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I split the 75% of the data into the training set, and the last 25% to the test set, with the split done randomly but also stratified across each different voice.</p>
+            <details>
+              <summary>Show/hide code</summary>
+              <script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=train_test_stratified_split.nb"></script>
+            </details>
+            <h1 id="classifying">Classifying</h1>
+            <p>If we just run the most hands-free classification (the level of simplicity of this is very impressive) we do the following.</p>
+            <details>
+              <summary>Show/hide code</summary>
+              <script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=simple_classifer.nb"></script>
+            </details>
+            <p>This creates a classifier in 1.92 secs which has an accuracy of 94.54%. I got Mathematica to print some details of the fitted classifier, and of the confusion matrix over the test set:</p>
+            <p><img src="/images/builtin_classifier_info.png" alt="image" class="image post_image" /></p>
+            <p><img src="/images/builtin_confusion.gif" alt="image" class="image post_image" /></p>
+            <p>At first I thought: i) this could just be a lucky split of the data, and ii) “logistic regression is nothing fancy..”; so I tried all the different built-in methods and ran with 10 different random train-test splits of the data.</p>
+            <details>
+              <summary>Show/hide code</summary>
+              <script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=multiple_classifiers.nb"></script>
+            </details>
+            <p>Remarkably, logistic regression turns out to be best option (without playing with any of the method’s hyper-parameters). The following box plots show the accuracies over the different test runs for each method:</p>
+            <p><img src="/images/different_methods.gif" alt="image" class="image post_image" /></p>
+            <p>In summary, logistic regression is the best options with an average of 95.76% accuracy, followed by a neural network (94.54%) and a random forest (91.88%).</p>
+            <h1 id="in-python">In Python</h1>
+            <p>I tried to pry into the classifiers which Mathematica had created for me, but found it to be almost impossible. So, I exported the data so that I could compare with Python’s ML options.</p>
+            <details>
+              <summary>Show/hide code</summary>
+              <script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=export_data.nb"></script>
+            </details>
+            <p>The resulting CSV file is <a href="/data/audioData.csv">available here</a> if you’d like to have a play with this.</p>
+            <p>The Python code to recreate these results is much simpler — <a href="http://scikit-learn.org/">scikit-learn</a> has a function which does the randomized shuffle training/test split which took 30 lines of Mathematica earlier:</p>
+            <details>
+              <summary>Show/hide code</summary>
+              <script src="https://gist.github.com/Pat-Laub/41d7d5380a9693c37991e845ae15f3b9.js?file=voices.py"></script>
+            </details>
+            <p>This code reports an average accuracy of 97.21%, a slight improvement over the Mathematica.</p>
+            <h1 id="conclusion">Conclusion</h1>
+            <p>While this exercise didn’t delve into great details of the available methods (we did quite well with just default hyper-parameters!), I did learn a few things in the process.</p>
+            <ol>
+              <li>The quality of the input data is crucial to success.</li>
+              <li>Mathematica has very nice support for audio editing, and Python’s support for routine ML operations is impressive.</li>
+              <li>Sometimes it’s not the sexiest ML algorithm which wins.</li>
+            </ol>
+            <p>I’ll probably come back to this example when I get time to explore it further.</p>
+            <div class="footnotes">
+              <ol>
+                <li id="fn:1">
+                  <p>Please get in touch if you know a better way to do this! <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </article>
+      </div>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="/assets/js/main.js"></script>
+      <section id="footer">
+        <p class="copyright">&copy; Patrick Laub.
+        </section>
+      </div>
+    </body>
+  </html>

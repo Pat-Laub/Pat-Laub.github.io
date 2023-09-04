@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research network plot</title>
+    <meta name="description" content="Recently I made a visualization in Javascript to show the collaborations of the researchers in our lab here in Lyon. The plot shows each researcher as a node...">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="canonical" href="https://pat-laub.github.io/2020/02/20/network-plot.html">
+    <link rel="alternate" type="application/rss+xml" title="Patrick Laub" href="/feed.xml">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+    <script src="/assets/js/vis.js"></script>
+    <script src="/assets/js/network_plot.js"></script>
+    <link href="/assets/css/vis.css" rel="stylesheet">
+    <link href="/assets/css/network_plot.css" rel="stylesheet">
+  </head>
+  <body class="single">
+    <div id="wrapper">
+      <!--{ include header.html }-->
+      <div id="main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+            <div class="title">
+              <h1>Research network plot</h1>
+              <p>Visualising research collaborations</p>
+            </div>
+            <div class="meta">
+              <time class="published" datetime="2020-02-20T00:00:00+00:00">Feb 20, 2020</time>
+            </div>
+          </header>
+          <img src="/images/network_plot.gif" title="Visualisation of the collaborations between research staff at Labo'SAF." class="image featured" />
+          <div class="post-content" itemprop="articleBody">
+            <p>Recently I made a visualization in Javascript to show the collaborations of the researchers in our lab here in Lyon. The plot shows each researcher as a node in the network, and edges are added to signify joint research papers between the (permanent) staff of the lab. The inner circles are coloured acccording to the field of research each person specialises in, and the outer circles show their membership in the many different research groups between our lab and external parties. New research groups which are about to start can be selected by the drop-down box.</p>
+            <p>The <strong>interactive version</strong> is below. <strong>Try dragging a circle around</strong> and watch the physics animation redraw the positions of the entire network (this is a bit easier with a real mouse than on a phone). Hover over a person see their name, or hover over an edge to see the number of joint papers.</p>
+            <div id="network">
+              <div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+                <canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+                </canvas>
+                <div class="vis-manipulation" style="display: none;"></div>
+                <div class="vis-edit-mode" style="display: block;">
+                  <div class="vis-button vis-edit vis-edit-mode" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                    <div class="vis-label">Edit</div>
+                  </div>
+                </div>
+                <div class="vis-close" style="display: none;"></div>
+              </div>
+            </div>
+            <div>
+              <br />
+              <p>Select which new research group/s to draw:</p>
+              <select id="newResearchGroup" onchange="draw()">
+                <option value="None" selected="">None</option>
+                <option value="All">All</option>
+              </select>
+              <p>Researcher's fields of interest:</p>
+              <ul class="legend">
+                <li><span class="Economics"></span> Economics</li>
+                <li><span class="Management"></span> Management Sciences</li>
+                <li><span class="Applied"></span> Applied Mathematics</li>
+                <li><span class="Computer"></span> Computer Science</li>
+              </ul>
+              <br />
+              <br />
+              <p>Current research groups:</p>
+              <ul class="legend">
+                <li><span class="Actuariat"></span> Actuariat Durable</li>
+                <li><span class="Chaire"></span> Chaire DAMI</li>
+                <li><span class="Lolita"></span> Lolita</li>
+                <li><span class="Prevent"></span> Prevent'Horizon</li>
+                <li><span class="Reference"></span> Reference Value</li>
+              </ul>
+              <br />
+              <br />
+            </div>
+            <p>It was quite gratifying to see it used in a real-world scenario (an external evaluation of the lab).</p>
+            <p><img src="/images/network_plot_in_meeting.jpg" alt="image" class="image post_image" /></p>
+            <p>The <a href="https://visjs.org/">vis.js</a> Javascript library is the main backbone of the code; <a href="/assets/js/network_plot.js">this is the javascript</a> I wrote to use the vis.js library.</p>
+          </div>
+        </article>
+      </div>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="/assets/js/main.js"></script>
+      <section id="footer">
+        <p class="copyright">&copy; Patrick Laub.
+        </section>
+      </div>
+    </body>
+  </html>

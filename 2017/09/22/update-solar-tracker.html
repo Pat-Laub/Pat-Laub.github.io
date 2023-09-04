@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Here comes the sun</title>
+    <meta name="description" content="A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit ce...">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="canonical" href="https://pat-laub.github.io/2017/09/22/update-solar-tracker.html">
+    <link rel="alternate" type="application/rss+xml" title="Patrick Laub" href="/feed.xml">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+  </head>
+  <body class="single">
+    <div id="wrapper">
+      <!--{ include header.html }-->
+      <div id="main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+            <div class="title">
+              <h1>Here comes the sun</h1>
+              <p>Communicating with a panel which tracks the sun</p>
+            </div>
+            <div class="meta">
+              <time class="published" datetime="2017-09-22T00:00:00+00:00">Sep 22, 2017</time>
+            </div>
+          </header>
+          <img src="/images/solar_tracker.jpg" title="The solar tracker in its natural environment" class="image featured" />
+          <div class="post-content" itemprop="articleBody">
+            <p>A few years back a family friend, Guy, asked for some help setting up the software on his home-made solar panel setup. He wanted an accessible way to edit certain necessary parameters (latitude/longitude, angle to return to at night etc.), so I threw together this Windows app.</p>
+            <p><img src="/images/solar_tracker_login.jpg" alt="image" class="image post_image" /></p>
+            <p>These parameters were hidden in some big incomprehensible XML file, which one needs to access via FTP. My app was built in C#/.NET using the WPF (Windows Presentation Foundation) framework. It connects with Google Maps to easily set the lat./long. by using their magic search.</p>
+            <p><img src="/images/solar_tracker_map.jpg" alt="image" class="image post_image" /></p>
+            <p>I’m quite impressed how the entire system has been running for nearly 5 years now (the app only came to mind recently as the Google Maps API I used was being deprecated, so I just fixed this); these panels which track the sun are significantly more effective than the fixed panel design.</p>
+          </div>
+        </article>
+      </div>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="/assets/js/main.js"></script>
+      <section id="footer">
+        <p class="copyright">&copy; Patrick Laub.
+        </section>
+      </div>
+    </body>
+  </html>

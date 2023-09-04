@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hunting for a Bluey episode with AI</title>
+    <meta name="description" content="I&#39;ve been listening to the Syntax podcast for the last few months, and I was very surprised that in one episode they recommended a great Bluey episode. Thoug...">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="canonical" href="https://pat-laub.github.io/2022/02/08/hunting-for-great-bluey-episodes-with-ai.html">
+    <link rel="alternate" type="application/rss+xml" title="Patrick Laub" href="/feed.xml">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+  </head>
+  <body class="single">
+    <div id="wrapper">
+      <!--{ include header.html }-->
+      <div id="main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+            <div class="title">
+              <h1>Hunting for a Bluey episode with AI</h1>
+              <p>Looking for a throw-away TV recommendation in a prolific podcast</p>
+            </div>
+            <div class="meta">
+              <time class="published" datetime="2022-02-08T00:00:00+00:00">Feb 8, 2022</time>
+            </div>
+          </header>
+          <img src="/images/bluey.png" title="A frame from the Bluey episode 'Chest' (S3E11). Bluey, Bingo and Bandit are setting up a chess board, and Bingo had just asked 'Where's the dice?', and Bandit's resigned internal sigh cracks me up every time..." class="image featured" />
+          <div class="post-content" itemprop="articleBody">
+            <h2 id="problem">Problem</h2>
+            <p>I’ve been enjoying listening to the <a href="https://syntax.fm">Syntax Web Development</a> podcast in the last few months, and I was very surprised that in one episode the hosts went way off-track to recommended a great <a href="https://www.imdb.com/title/tt7678620/">Bluey</a> episode. Bluey is a phenomenal kids show, and it’s even based in the part of Australia that I used to lived in (Brisbane, Queensland) so I enjoy all the background references to Brisbane that pop up in the show.</p>
+            <p>About a month after the podcast episode, I decided to watch that recommended Bluey episode.
+              But I couldn’t remember which Bluey episode was recommended, nor could I remember which Syntax episode the hosts went on this tangent about children’s TV.
+              The podcast releases new episodes at a furious rate, and the episodes go for about 30 mins to an hour.
+              I couldn’t find any transcripts of the episodes provided by the hosts, and after a few days of intermittently re-listening to old episodes to find that section, I gave up.</p>
+            <p>As I’m teaching deep-learning later in the year, I thought I’d use this as an example of using Python &amp; machine learning to side-step a long and tedious manual search for this information.</p>
+            <h2 id="downloading-the-podcast-episodes">Downloading the podcast episodes</h2>
+            <p>Python has a package for everything, so my first reaction was to Google “Python package to download podcast episodes”, and this returned a bunch of libraries focusing on this specific task.
+              However, none of them worked as intended.
+              After testing a few different packages, and variously getting some kind of HTTP or file-system errors, I gave up on this approach (I think either the packages were tested on Mac while I am currently stuck on Windows, or my anti-virus was intercepting the requests).</p>
+            <p>Eventually, I remembered that podcasts are just defined as RSS feeds, which are just text files which have links to where to find each episode as an MP3.
+              So, I just opened up the podcast homepage and found the <a href="http://feed.syntax.fm/rss">RSS link</a> and searched for “.mp3” to manually download the last few episodes.</p>
+            <p>For example, here is a chunk of the RSS file:</p>
+            <div class="language-html highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code>...
+<span class="nt">&lt;enclosure</span> <span class="na">length=</span><span class="s">"58157223"</span> <span class="na">type=</span><span class="s">"audio/mpeg"</span> <span class="na">url=</span><span class="s">"https://traffic.libsyn.com/secure/syntax/Syntax_-_428.mp3?dest-id=532671"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;itunes:duration&gt;</span>01:00:31<span class="nt">&lt;/itunes:duration&gt;</span>
+...
+</code></pre>
+              </div>
+            </div>
+            <h2 id="trying-various-free-speech-to-text-solutions">Trying various free Speech-To-Text solutions</h2>
+            <h3 id="got-some-rough-transcript-using-mozillas-deepspeech">Got some rough transcript using Mozilla’s DeepSpeech</h3>
+            <p>In the past I used <a href="https://deepspeech.readthedocs.io/en/r0.9/?badge=latest">Mozilla’s DeepSpeech</a> software to convert speech to text for free.
+              This is a pre-trained neural network model which can process the podcast audio files and generate transcripts for the episodes.
+              I didn’t want to run the conversion on my local computer, so I found an <a href="https://colab.research.google.com/github/tugstugi/dl-colab-notebooks/blob/master/notebooks/MozillaDeepSpeech.ipynb">example Jupyter Notebook on Google Colab</a> which did something similar (it transcribed YouTube videos with DeepSpeech) and adapted it.</p>
+            <p>After a few quick adjustments to the example notebook (using ‘!wget &lt;url/to/podcast&gt;.mp3’ instead of the YouTube video downloading, and updating the DeepSpeech version numbers to the latest pre-trained models) I could get some automatically generated transcripts.</p>
+            <p>However the output was so error-prone rate that is was mostly garbage.
+              For example, episode 428 starts with (here I am transcribing manually):</p>
+            <div class="highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code>You're listening to Syntax, the podcast with the tastiest web development treats out there. Strap yourself in and get ready, here is Scott Tolinski and Wes Bos.
+</code></pre>
+              </div>
+            </div>
+            <p>whereas the auto-generated transcript for this introduction was:</p>
+            <div class="highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code>resorting to santa bianca with its tastes we toiletries out there strap yourself in and get ready personality and west boss egadean as ...
+</code></pre>
+              </div>
+            </div>
+            <p>Admittedly, this introduction is played over the top of some music and in an unusual delivery, so I wouldn’t expect too much for this section.
+              And later, for the technical discussions about JavaScript and TypeScript etc., I hadn’t expected a generic speech-to-text method to work well on those parts of the episodes.</p>
+            <h3 id="looking-for-nearly-perfect-transcripts-a-la-youtubes-auto-captions">Looking for nearly-perfect transcripts, a la YouTube’s auto-captions</h3>
+            <p>When recording lectures for my students in 2020, I found that YouTube’s auto-captioning worked miracles.
+              I would simply upload my lecture recording to YouTube, wait until their machines got around to auto-generating the captions (usually within a few hours), download the AI transcripts and adjust the infrequent error if needed.
+              The DeepSpeech output was nowhere near the level of accuracy that YouTube could do.</p>
+            <p>Presumably, YouTube was running <a href="https://cloud.google.com/speech-to-text/">Google’s Speech API</a> in the background.
+              As Google (and the comparable offers from Microsoft and Amazon) only allowed a relatively short amount of audio to be transcribed for free as part of a trial period, I couldn’t use this to solve my podcast problem.</p>
+            <p>I did use <a href="https://www.ffmpeg.org/">ffmpeg</a> to turn one of the podcast episodes from an audio file to a video file, which I uploaded to YouTube (as a private video, now deleted) in order to <a href="https://support.google.com/youtube/answer/2734705?hl=en#">download the auto-captions</a>; this created one transcript with almost no errors.
+              For example, the subtitle file (in the ‘.srt’ file format) for episode 427 starts with:</p>
+            <div class="highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code>1
+00:00:01,120 --&gt; 00:00:07,120
+monday monday monday open wide dev fans
+
+2
+00:00:04,720 --&gt; 00:00:09,519
+get ready to stuff your face with
+
+3
+00:00:07,120 --&gt; 00:00:11,679
+javascript css node modules barbecue
+
+4
+00:00:09,519 --&gt; 00:00:14,080
+tips get workflows break dancing soft
+
+5
+00:00:11,679 --&gt; 00:00:16,800
+skills web development the hastiest the
+
+6
+00:00:14,080 --&gt; 00:00:19,680
+craziest the tastiest web development
+
+7
+00:00:16,800 --&gt; 00:00:24,240
+treats coming in hot here is wes
+</code></pre>
+              </div>
+            </div>
+            <p>Even though this worked very well, I dared not repeat this process for the month’s worth of podcasts in case YouTube banned me for breaking some terms of service (or in case the Syntax guys sued me or something).
+              In any case, it wouldn’t be a great example of utilising deep learning for my future students.
+              While converting the audio to video, I did try the auto-captioning available in <a href="https://www.techsmith.com/video-editor.html">Camtasia</a> (since I just coincidentally installed the software). This generated garbage outputs, potentially worse than Deep Speech.</p>
+            <h3 id="taking-another-go-at-deepspeech">Taking another go at DeepSpeech</h3>
+            <p>Upon returning to DeepSpeech, I thought that the obvious next step would be to <em>fine-tune</em> the model so that it would become great at recognising just the voices of the two hosts on the Syntax podcast.
+              The DeepSpeech documentation has <a href="https://deepspeech.readthedocs.io/en/v0.9.3/TRAINING.html#fine-tuning-same-alphabet">a guide to fine-tuning</a> the speech models.
+              So I manually transcribed the first few minutes of the latest Syntax episode, with the idea of feeding in the audio &amp; transcript to the fine-tuning process.
+              However, I found this really great <a href="https://discourse.mozilla.org/t/fine-tuning-with-limited-data-questions-on-fine-tuning-in-general/68014">discussion about fine-tuning with a small dataset</a> and basically abandoned this direction; I didn’t have the patience to produce hours of transcripts that appeared necessary for this approach to pay-off.
+              Other parts of the Mozilla forums did mention that <a href="https://stt.readthedocs.io/en/latest/index.html">Coqui STT</a> may be a better alternative to DeepSpeech, though I didn’t want to give up on it just yet.</p>
+            <p>Looking around the Mozilla forums a bit more gave me an important insight.
+              I didn’t need a speech model that recognised <em>every word</em> the podcasts hosts spoke, but in fact I just needed something that would find the word “Bluey” in a long audio file.
+              Alexa, Cortana, and Siri act in exactly this way.
+              They are always listening to us, but normally they are just listening for their specific <em>wake words</em> like “Hey Siri, …” or “Alexa, …”.
+              If I could add “Bluey” as a kind of wake-word, I’d be set, and the newest DeepSpeech versions have a similar concept called <a href="https://deepspeech.readthedocs.io/en/master/HotWordBoosting-Examples.html">hot word boosting</a> which appears to make the model more sensitive to picking up specific words.</p>
+            <p>After all of this reading and mucking around, I thought I better just try the obvious thing first, and just run the unaltered/vanilla DeepSpeech on the last month’s worth of podcasts and check that “Bluey” didn’t already appear in the mostly gibberish auto-generated transcripts.
+              Here is the <a href="/notebooks/Using_DeepSpeech_on_Podcasts.ipynb">Jupyter Notebook</a> I wrote to run this process.</p>
+            <p>From the example Jupyter notebook I was really happy/shocked to find that the Jupyter exclamation mark syntax, which is used to call Linux command-line programs, could be integrated into Python code.
+              So to download and transcribe the latest batch of episodes, I could simply run:</p>
+            <div class="language-python highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code><span class="k">for</span> <span class="n">episodeNumber</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">427</span><span class="p">,</span> <span class="mi">406</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+  <span class="n">podName</span> <span class="o">=</span> <span class="s">f"Syntax_-_</span><span class="si">{</span><span class="n">episodeNumber</span><span class="si">}</span><span class="s">"</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">podName</span> <span class="o">+</span> <span class="s">".mp3"</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">f"https://traffic.libsyn.com/secure/syntax/</span><span class="si">{</span><span class="n">podName</span><span class="si">}</span><span class="s">.mp3"</span>
+    <span class="err">!</span><span class="n">wget</span> <span class="p">{</span><span class="n">url</span><span class="p">}</span>
+    <span class="err">!</span><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="p">{</span><span class="n">podName</span><span class="p">}.</span><span class="n">mp3</span> <span class="p">{</span><span class="n">podName</span><span class="p">}.</span><span class="n">wav</span>
+    <span class="err">!</span><span class="n">deepspeech</span> <span class="o">--</span><span class="n">model</span> <span class="n">deepspeech</span><span class="o">-</span><span class="mf">0.9</span><span class="p">.</span><span class="mi">3</span><span class="o">-</span><span class="n">models</span><span class="p">.</span><span class="n">pbmm</span> <span class="o">--</span><span class="n">scorer</span> <span class="n">deepspeech</span><span class="o">-</span><span class="mf">0.9</span><span class="p">.</span><span class="mi">3</span><span class="o">-</span><span class="n">models</span><span class="p">.</span><span class="n">scorer</span> <span class="o">--</span><span class="n">audio</span> <span class="p">{</span><span class="n">podName</span><span class="p">}.</span><span class="n">wav</span>
+</code></pre>
+              </div>
+            </div>
+            <p>I left Google Colab to feed the recent podcast episodes into DeepSpeech in reverse order, and after I returned from lunch I found Colab had kicked me off due to inactivity, but beforehand it had processed 14 episodes:</p>
+            <div class="highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code>Inference took 366.552s for 1359.543s audio file.
+Inference took 1305.095s for 3634.286s audio file.
+Inference took 276.029s for 1119.660s audio file.
+Inference took 449.628s for 1574.165s audio file.
+Inference took 1329.048s for 3324.264s audio file.
+Inference took 34.462s for 164.963s audio file.
+Inference took 344.598s for 1372.630s audio file.
+Inference took 82.053s for 24347.887s audio file.
+Inference took 468.245s for 1808.327s audio file.
+Inference took 1119.990s for 3788.669s audio file.
+Inference took 272.974s for 1148.056s audio file.
+Inference took 1129.176s for 3481.417s audio file.
+Inference took 532.887s for 1995.677s audio file.
+Inference took 1180.540s for 3843.344s audio file.
+</code></pre>
+              </div>
+            </div>
+            <p>Searching for “blue” in the sludge of error-filled text that was generated, I did find</p>
+            <div class="highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code>... like one example is bluely or kissed favours the world is blue and bethabara characters is a buoy oh i intoshes know that my kids go bananas for it mykenai's very cute were ...
+</code></pre>
+              </div>
+            </div>
+            <p>towards the end of episode 417. After re-listening to that part of the episode, I found this is exactly what I was looking for!
+              It was the <a href="https://blueypedia.fandom.com/wiki/Flat_Pack">Flat Pack episode</a> that was recommended (S2E24).
+              Now that I just watched it, I agree it was quite a good episode!
+              It should have been a ‘sick pick’ haha.</p>
+            <h2 id="conclusions">Conclusions</h2>
+            <p>What did I learn from this experience?</p>
+            <ul>
+              <li>I need to remember to solve the simplest version of the problem (here I needed to find the word “Bluey”, not get perfect transcripts for the episodes).</li>
+              <li>That we get used to great machine-learning algorithms, like the YouTube automatic captioning system, and forget that problems like speech-to-text are <em>really hard</em> to solve.</li>
+              <li>I should be skeptical of small Python packages which are just dumped on the Python package index.</li>
+              <li>That the automated/AI solution can be slower than the manual version (here, I certainly could have re-listened to a month’s worth of podcasts faster than solving this problem with software; heck, I probably could have watched all of Bluey in this time!).</li>
+            </ul>
+            <p><img src="/images/bluey-swing-chair.png" alt="image" class="image post_image" /></p>
+          </div>
+        </article>
+      </div>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="/assets/js/main.js"></script>
+      <section id="footer">
+        <p class="copyright">&copy; Patrick Laub.
+        </section>
+      </div>
+    </body>
+  </html>

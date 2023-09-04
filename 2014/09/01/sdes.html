@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stochastic differential equations</title>
+    <meta name="description" content="Notes for an informal lecture on simulating SDEs, considering basic diffusion processes with Matlab code.">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="canonical" href="https://pat-laub.github.io/2014/09/01/sdes.html">
+    <link rel="alternate" type="application/rss+xml" title="Patrick Laub" href="/feed.xml">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+  </head>
+  <body class="single">
+    <div id="wrapper">
+      <!--{ include header.html }-->
+      <div id="main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+            <div class="title">
+              <h1>Stochastic differential equations</h1>
+              <p>Brownian motion, Itô and diffusion processes, simulation</p>
+            </div>
+            <div class="meta">
+              <time class="published" datetime="2014-09-01T00:00:00+00:00">Sep 1, 2014</time>
+            </div>
+          </header>
+          <img src="/images/math6006/multi.png" title="A multidimensional SDE" class="image featured" />
+          <div class="post-content" itemprop="articleBody">
+            <h2 id="background-brownian-motion">Background: Brownian Motion</h2>
+            <p>$\newcommand{\dif}{\,\mathrm{d}} $
+              A process $(B(t, \omega) : t \geq 0, \omega \in \Omega)$ is a standard
+              Brownian Motion iff<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>:</p>
+            <ul>
+              <li>$B(0) = 0$,</li>
+              <li>
+                <p>Independent increments, i.e
+                  $\forall~0 \leq t_1 \leq t_2 \leq t_3 \leq t_4$ then</p>
+                <script type="math/tex; mode=display">
+                  \left( B(t_4)-B(t_3)~|~B(t_2)-B(t_1) \right) \sim B(t_4)-B(t_3),
+                </script>
+              </li>
+              <li>$\forall~t,h\geq0 : B(t+h)-B(t) \sim \mathrm{N}(0,h)$,</li>
+              <li>$B(t)$ is almost-surely continuous w.r.t $t$.</li>
+            </ul>
+            <h2 id="itô-integral">Itô Integral</h2>
+            <p>An Itô integral on $[0, T]$ is first defined for step processes. Say
+              that the process $(X_n(t, \omega) : t \geq 0, \omega \in \Omega)$ is of
+              the form</p>
+            <script type="math/tex; mode=display">
+              X_n(t, \omega) = \sum_{i=1}^n A_i(\omega) {\boldsymbol{1}}_{(t_i, t_{i+1}]}(t)
+            </script>
+            <p>for $\omega \in \Omega$, $0 \leq t_1 \leq t_2 \leq {…}\leq t_n \leq T$
+              and ${\mathcal{F}}(t_i)$-measurable $A_i$. Then define the Itô integral
+              to be</p>
+            <script type="math/tex; mode=display">
+              \int_0^T X(s, \omega) \dif B(s) = \sum_{i=1}^n A_i(\omega)(B(t_{i+1})-B(t_i)).
+            </script>
+            <p>Next consider an $(X(t, \omega) : t \geq 0, \omega \in \Omega)$
+              process<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>. We will approximate the process by a sequence of step
+              processes
+              ${ X_n(t, \omega) : n \in {\mathbb{N}}, \omega \in \Omega }$. For all
+              such $X(t, \omega)$ there exists an approximating sequence that, for all
+              $t \geq 0$, satisfies</p>
+            <script type="math/tex; mode=display">
+              \lim_{n \rightarrow \infty} {\mathbb{E}}\left[ (X_n(t,\omega) - X(t,\omega))^2 \right] = 0.
+            </script>
+            <p>So define the general Itô integral to be the limit of integrals of step
+              processes, i.e.</p>
+            <script type="math/tex; mode=display">
+              \int_0^T X(s, \omega) \dif B(s) = \lim_{n\rightarrow\infty} \int_0^T X_n(s, \omega) \dif B(s).
+            </script>
+            <h2 id="itô-processes">Itô Processes</h2>
+            <p>For measurable processes $(a(t, \omega) : t \geq 0, \omega \in \Omega)$
+              and $(b(t, \omega) : t \geq 0, \omega \in \Omega)$ then an Itô process
+              $(X(t, \omega) : t \geq 0, \omega \in \Omega)$ is written as</p>
+            <script type="math/tex; mode=display">
+              \dif X(t, \omega) = a(t, \omega) \dif t + b(t, \omega) \dif B(t, \omega)
+            </script>
+            <p>which is shorthand for</p>
+            <script type="math/tex; mode=display">
+              X(t, \omega) = \int_0^t a(s, \omega) \dif s + \int_0^t b(s, \omega) \dif B(s, \omega).
+            </script>
+            <h2 id="diffusion-processes-subset-itô-processes">Diffusion Processes $\subset$ Itô Processes</h2>
+            <p>A pair of deterministic functions $a(t, x)$ and $b(t, x)$ define a
+              diffusion process $(X(t, \omega) : t \geq 0, \omega \in \Omega)$ by</p>
+            <script type="math/tex; mode=display">
+              \dif X(t, \omega) = a(t, X(t, \omega)) \dif t + b(t, X(t,\omega)) \dif B(t, \omega)
+            </script>
+            <p>which is shorthand for</p>
+            <script type="math/tex; mode=display">
+              X(t, \omega) = \int_0^t a(s, X(s,\omega)) \dif s + \int_0^t b(s, X(s, \omega)) \dif B(s, \omega).
+            </script>
+            <h2 id="simulating-brownian-motion">Simulating Brownian Motion</h2>
+            <h3 id="at-some-fixed-time-t">At some fixed time $T$</h3>
+            <p>As $B(T) \sim N(0, T)$ then simply generate (noting that MATLAB uses
+              standard deviation instead of variance for many functions)</p>
+            <div class="language-matlab highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code><span class="n">T</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">% Time to sample the Brownian motion</span>
+<span class="n">B_T</span> <span class="o">=</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">));</span> <span class="c1">% Generate sample</span>
+</code></pre>
+              </div>
+            </div>
+            <h3 id="on-some-finite-mesh">On some finite mesh</h3>
+            <p>Say for a mesh ${ t_1, {…}, t_n }$ then we know that
+              $B(t_{i+1})-B_(t_i) \sim \mathrm{N}(0, t_{i+1}-t_i)$ so</p>
+            <script type="math/tex; mode=display">
+              B(t_k,\omega) = B(t_1,\omega) + \sum_{i=1}^k B(t_i,\omega)-B(t_{i-1},\omega).
+            </script>
+            <p>Then to simulate</p>
+            <div class="language-matlab highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span> <span class="c1">% Setup time mesh (need not be an evenly spaced grid)</span>
+<span class="n">timeDiffs</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)];</span> <span class="c1">% Calculate the time increments</span>
+<span class="n">incs</span> <span class="o">=</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">timeDiffs</span><span class="p">);</span> <span class="c1">% Generate the BM increments</span>
+<span class="n">B</span> <span class="o">=</span> <span class="nb">cumsum</span><span class="p">(</span><span class="n">incs</span><span class="p">);</span> <span class="c1">% Add them all up</span>
+</code></pre>
+              </div>
+            </div>
+            <p>or in one line</p>
+            <div class="language-matlab highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code><span class="n">B</span> <span class="o">=</span> <span class="nb">cumsum</span><span class="p">(</span><span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)]));</span>
+</code></pre>
+              </div>
+            </div>
+            <h2 id="simulating-diffusion-processes-by-the-euler-maruyama-scheme">Simulating diffusion processes by the Euler-Maruyama scheme</h2>
+            <p>Consider some time mesh ${ t_1, {…}, t_n }$. Approximate
+              $\dif t_i, \dif B(t_i)$ by</p>
+            <script type="math/tex; mode=display">
+              \Delta t_i := t_i-t_{i-1}, \quad \Delta B(t_i) := B(t_i)-B(t_{i-1})
+            </script>
+            <p>respectively and say</p>
+            <script type="math/tex; mode=display">
+              \Delta X(t_i,\omega) := a(t_i, X(t_{i-1},\omega)) \Delta t_i + b(t_i, X(t_{i-1},\omega)) \Delta B(t_i).
+            </script>
+            <p>The Euler-Maruyama scheme approximates a diffusion process on a given
+              time mesh by <script type="math/tex">
+                \dif X(t_i,\omega) \approx \Delta X(t_i,\omega)
+              </script> so</p>
+            <script type="math/tex; mode=display">
+              X(t_n,\omega) \approx X(0,\omega) + \sum_{i=1}^n \Delta X(t_i,\omega).
+            </script>
+            <p>Say for example geometric Brownian motion is being simulated, i.e.</p>
+            <script type="math/tex; mode=display">
+              \dif X(t,\omega) = \mu X(t,\omega) \dif t + \sigma X(t,\omega) \dif B(t)
+            </script>
+            <p>for $\mu, \sigma \in {\mathbb{R}}$.</p>
+            <div class="language-matlab highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code><span class="c1">% Constants</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span> <span class="c1">% Time grid</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="c1">% Drift</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span> <span class="c1">% Diffusion</span>
+<span class="n">X_0</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">% Starting value (could be random)</span>
+
+<span class="c1">% Output vector for realisation</span>
+<span class="n">X</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+<span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">X_0</span><span class="p">;</span>
+
+<span class="c1">% Helper functions</span>
+<span class="n">deltaB</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">deltaT</span><span class="p">)</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">deltaT</span><span class="p">));</span>
+<span class="n">deltaX</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">deltaT</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="n">mu</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">deltaT</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">deltaB</span><span class="p">(</span><span class="n">deltaT</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">deltaT</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">-</span><span class="n">t</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">X</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">X</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">deltaX</span><span class="p">(</span><span class="n">deltaT</span><span class="p">,</span> <span class="n">X</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+<span class="k">end</span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">);</span> <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'X(t)'</span><span class="p">);</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'Example GBM'</span><span class="p">);</span>
+</code></pre>
+              </div>
+            </div>
+            <p>Or simply use MATLAB’s builtin SDE toolbox, the ‘gbm’ function</p>
+            <div class="language-matlab highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">nPeriods</span> <span class="o">=</span> <span class="nb">numel</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">T</span><span class="p">);</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">gbm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="s1">'StartState'</span><span class="p">,</span> <span class="n">X_0</span><span class="p">);</span>
+<span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span><span class="o">=</span>  <span class="n">g</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">nPeriods</span><span class="p">,</span> <span class="s1">'DeltaTime'</span><span class="p">,</span> <span class="n">dt</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">);</span> <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'X(t)'</span><span class="p">);</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'Example GBM'</span><span class="p">);</span>
+</code></pre>
+              </div>
+            </div>
+            <p>or more generally just using the ‘sde’ function</p>
+            <div class="language-matlab highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">nPeriods</span> <span class="o">=</span> <span class="nb">numel</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">T</span><span class="p">);</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="n">mu</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="n">sigma</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">sde</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s1">'StartState'</span><span class="p">,</span> <span class="n">X_0</span><span class="p">);</span>
+<span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span><span class="o">=</span>  <span class="n">d</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">nPeriods</span><span class="p">,</span> <span class="s1">'DeltaTime'</span><span class="p">,</span> <span class="n">dt</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">);</span> <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'X(t)'</span><span class="p">);</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'Example GBM'</span><span class="p">);</span>
+</code></pre>
+              </div>
+            </div>
+            <p><img src="/images/math6006/gbm.png" alt="image" class="image post_image" /></p>
+            <h2 id="simulating-multi-dimensional-itô-processes-by-the-euler-maruyama-scheme">Simulating multi-dimensional Itô processes by the Euler-Maruyama scheme</h2>
+            <p>Equivalently the Euler-Maruyama method extends to multiple dimensions
+              and works on general Itô processes. For example, for
+              $({\boldsymbol{X}}(t, \omega) \in {\mathbb{R}}^2 : t \geq 0, \omega \in \Omega)$
+              then take</p>
+            <script type="math/tex; mode=display">
+              \dif {\boldsymbol{X}}(t, \omega) = -{\boldsymbol{X}}(t, \omega) \dif t + (\sin(t), \cos(t))^T \dif {\boldsymbol{B}}(t).
+            </script>
+            <p>The algorithm to simulate this is given below.</p>
+            <p><img src="/images/math6006/multi.png" alt="image" class="image post_image" /></p>
+            <div class="language-matlab highlighter-rouge">
+              <div class="highlight">
+                <pre class="highlight"><code><span class="c1">% Time step, and some useful functions to calculate dBt &amp; dXt</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">;</span>
+<span class="n">dBt</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">normrnd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">dX</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">-</span><span class="n">X</span> <span class="o">.*</span> <span class="n">dt</span> <span class="o">+</span> <span class="p">[</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="nb">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span> <span class="o">.*</span> <span class="n">dBt</span><span class="p">();</span>
+<span class="c1">% Time horizon to plot over</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
+<span class="c1">% Xt simulated values</span>
+<span class="n">X</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+<span class="c1">% Perform Euler-Maruyama simulation</span>
+<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">X</span><span class="p">(:,</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">X</span><span class="p">(:,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">dX</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">X</span><span class="p">(:,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+<span class="k">end</span>
+<span class="c1">% Plot the results</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">,:),</span> <span class="n">X</span><span class="p">(</span><span class="mi">2</span><span class="p">,:));</span>
+</code></pre>
+              </div>
+            </div>
+            <h2 id="milsteins-method">Milstein’s Method</h2>
+            <p>Remember Taylor’s expansion about $(x_0, y_0)$ of a bivariate function</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{aligned}
+              f(x,y) \approx &f(x_0,y_0)~+ \\
+                             &f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)~+ \\
+                             &\frac{1}{2}f_{xx}(x_0,y_0)(x-x_0)^2 + \frac{1}{2}f_{yy}(x_0,y_0)(y-y_0)^2 + f_{xy}(x_0,y_0)(x-x_0)(y-y_0)\end{aligned} %]]>
+            </script>
+            <p>so therefore if $(x,y)$ is close to $(x_0,y_0)$ then an approximation
+              for the derivative is</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{aligned}
+              f(x,y)-f(x_0,y_0) \approx &f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)~+ \\
+                     &\frac{1}{2}f_{xx}(x_0,y_0)(x-x_0)^2 + \frac{1}{2}f_{yy}(x_0,y_0)(y-y_0)^2 + f_{xy}(x_0,y_0)(x-x_0)(y-y_0)\end{aligned} %]]>
+            </script>
+            <p>If we apply this to our SDE then</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{aligned}
+              \Delta X(t_i) \approx &a(t_{i-1}, X(t_{i-1}))\Delta t_i + b(t_{i-1}, X(t_{i-1})) \Delta B(t_i)~+ \\
+                      & + \frac{1}{2}  \frac{\dif b(t_{i-1}, X(t_{i-1}))}{\dif X(t_{i-1})} \Delta t_i \end{aligned} %]]>
+            </script>
+            <p>as</p>
+            <script type="math/tex; mode=display">
+              \Delta t_i \approx 0, \quad \Delta t_i \Delta B(t_i) \approx 0, \quad \left(\Delta B(t_i)\right)^2 \approx \Delta t_i.
+            </script>
+            <p>References: Higham, D. J. (2001). An algorithmic introduction to
+              numerical simulation of stochastic differential equations. SIAM review,
+              43(3), 525-546.
+              Available at: http://www.caam.rice.edu/~cox/stoch/dhigham.pdf</p>
+            <div class="footnotes">
+              <ol>
+                <li id="fn:1">
+                  <p> writing $B(t)$ for $B(t,\omega)$ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+                </li>
+                <li id="fn:2">
+                  <p> which is progressively measurable and has
+                    ${\mathbb{E}}[\int_0^\infty X(s)^s \dif s] &lt; \infty$ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </article>
+      </div>
+      <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          TeX: { equationNumbers: { autoNumber: "AMS" } },
+          tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            displayMath: [ ['$$', '$$'] ],
+            processEscapes: true,
+          },
+        });
+      </script>
+      <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="/assets/js/main.js"></script>
+      <section id="footer">
+        <p class="copyright">&copy; Patrick Laub.
+        </section>
+      </div>
+    </body>
+  </html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cross-entropy example</title>
+    <meta name="description" content="Cross-entropy, when used for optimization, is almost like a genetic algorithm. It creates a sequence of distributions which describe the location and certain...">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="canonical" href="https://pat-laub.github.io/2014/09/01/cross-entropy.html">
+    <link rel="alternate" type="application/rss+xml" title="Patrick Laub" href="/feed.xml">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+  </head>
+  <body class="single">
+    <div id="wrapper">
+      <!--{ include header.html }-->
+      <div id="main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+            <div class="title">
+              <h1>Cross-entropy example</h1>
+              <p>Minimising Rastrigin’s function</p>
+            </div>
+            <div class="meta">
+              <time class="published" datetime="2014-09-01T00:00:00+00:00">Sep 1, 2014</time>
+            </div>
+          </header>
+          <img src="/images/math6006/rast.gif" title="Rastrigin's function" class="image featured" />
+          <div class="post-content" itemprop="articleBody">
+            <h1 id="problem">Problem</h1>
+            <p>Consider minimising the test function – named Rastrigin’s function –
+              defined by</p>
+            <script type="math/tex; mode=display">
+              S(x) = 20 + x_1^2 + x_2^2 - 10\cos(2\pi x_1) - 10\cos(2\pi x_2).
+            </script>
+            <p>This is how it looks:
+              <img src="/images/math6006/rastrigin.png" alt="image" class="image post_image" /></p>
+            <p>One cross-entropy approach could be as follows.</p>
+            <h1 id="formulation">Formulation</h1>
+            <p>State that</p>
+            <script type="math/tex; mode=display">
+              S(x^*) = \gamma^* = \max_{ x\in {\mathbb{R}}^2} S(x).
+            </script>
+            <p>Consider a family of pdfs
+              $\{ f(\cdot\,; v) : v \in \mathcal{V} \}$ on
+              ${\mathbb{R}}^2$. We will construct a sequence of pdfs</p>
+            <script type="math/tex; mode=display">
+              (f(\cdot\,; u), f(\cdot\,; v_1), f(\cdot\,; v_2), \dots, f(\cdot\,; v_N))
+            </script>
+            <p>which start with parameter $u=v_0$ and aim
+              to converge on the zero-variance distribution whose mass is on the point
+              $x^*$. In order to do this, we need to be able to solve
+              the program:</p>
+            <script type="math/tex; mode=display">
+              \boldsymbol{v}_t = \underset{ v}{\arg\max} \, \frac{1}{N} \sum_{i=1}^N I_{\\{S(X_i) \geq \hat{\gamma}_t\\}} \ln f(X_i; v)
+            </script>
+            <p>where the ${ X_i }  {\overset{\text{iid}}{\sim}} f(\cdot\,; v_{t-1})$.</p>
+            <p>Though this is simpler when $v_t$ is viewed as the
+              maximum likelihood estimates (MLEs) of $\{ X_i \}$, which
+              is known analytically for many distributions.
+              In this case we’ve chosen $f$ to be of family of bivariate normal
+              distributions, i.e.</p>
+            <script type="math/tex; mode=display">
+              f(x; v_i) = f(x; (\mu_i, \Sigma_i)) = (2\pi)^{-1} \Sigma_i^{-1/2} \exp \left\{ -\frac{1}{2} (x-\mu_i)^t \Sigma_i^{-1} (x-\mu_i) \right\}.
+            </script>
+            <p>The MLEs for $\mu_i$ and $\Sigma_i$ given some data
+              $\{ X_i\}$ is simply the sample mean and the sample
+              covariance matrix respectively.</p>
+            <h1 id="implementation">Implementation</h1>
+            <p>These are the samples evolving over time.
+              <img src="/images/math6006/rast.gif" alt="image" class="image post_image" /></p>
+            <p>For those samples, these are the multivariate normal distributions which are fitted to the elite samples.
+              <img src="/images/math6006/rastImpDens.gif" alt="image" class="image post_image" /></p>
+            <p>The objective function drops across iterations.
+              <img src="/images/math6006/progress.jpg" alt="image" class="image post_image" /></p>
+            <p>This is the same plot as above but on a log scale.
+              <img src="/images/math6006/progress2.jpg" alt="image" class="image post_image" /></p>
+          </div>
+        </article>
+      </div>
+      <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          TeX: { equationNumbers: { autoNumber: "AMS" } },
+          tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            displayMath: [ ['$$', '$$'] ],
+            processEscapes: true,
+          },
+        });
+      </script>
+      <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="/assets/js/main.js"></script>
+      <section id="footer">
+        <p class="copyright">&copy; Patrick Laub.
+        </section>
+      </div>
+    </body>
+  </html>

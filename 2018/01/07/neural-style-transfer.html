@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>On neural style transfer</title>
+    <meta name="description" content="Neural Style Transfer is a technique for transforming an image (like this photo of the seascape in Qingdao) into the style of another image, typically a pain...">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="canonical" href="https://pat-laub.github.io/2018/01/07/neural-style-transfer.html">
+    <link rel="alternate" type="application/rss+xml" title="Patrick Laub" href="/feed.xml">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+  </head>
+  <body class="single">
+    <div id="wrapper">
+      <!--{ include header.html }-->
+      <div id="main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+            <div class="title">
+              <h1>On neural style transfer</h1>
+              <p></p>
+            </div>
+            <div class="meta">
+              <time class="published" datetime="2018-01-07T00:00:00+00:00">Jan 7, 2018</time>
+            </div>
+          </header>
+          <img src="/images/qwave.jpg" title="The seascape in Qingdao in the style of Hokusai's Great Wave off Kanagawa" class="image featured" />
+          <div class="post-content" itemprop="articleBody">
+            <p>I’ve been playing around with <em>Neural Style Transfer</em> (NST) for a while, and after sharing some creations with friends I got two questions: “how did you make this?” and “can you explain a bit about what is happening here?”. So, this post will do both.</p>
+            <p>After explaining the <a href="#what-is-neural-style-transfer">basic premise of NST</a>, I’ll give <a href="#some-background">some relevant background</a> on neural networks, describe <a href="#the-nst-algorithm">the NST algorithm</a>, and outline <a href="#what-specific-steps-did-i-take-to-make-the-images">the specific steps for generating these</a>.</p>
+            <h1 id="what-is-neural-style-transfer">What is Neural Style Transfer?</h1>
+            <p>Neural Style Transfer is a technique for transforming an image called the <em>content image</em> into the style of another image, typically a painting, called the <em>style image</em>. The banner above shows an example where the content image, a photo of the seascape in Qingdao, is</p>
+            <p><img src="/images/qingdao.jpg" alt="image" class="image post_image" /></p>
+            <p>and the style image is Hokusai’s <em>The Great Wave off Kanagawa</em></p>
+            <p><img src="/images/wave.jpg" alt="image" class="image post_image" /></p>
+            <p>Another example is</p>
+            <p><img src="/images/ninja-wanderer.png" alt="image" class="image post_image" /></p>
+            <p>where the content is this photo of myself (looking a bit like a ninja) hiking in Greenland in 2016</p>
+            <p><img src="/images/ninja.jpg" alt="image" class="image post_image" /></p>
+            <p>with the style of my favourite painting Wanderer above the Sea of Fog by Caspar David Friedrich (1818):</p>
+            <p><img src="/images/wanderer.jpg" alt="image" class="image post_image" /></p>
+            <p>This is the algorithm in progress:</p>
+            <p><img src="/images/ninja.gif" alt="image" class="image post_image" /></p>
+            <h1 id="some-background">Some background</h1>
+            <p>I’ll start this explanation with a bit of AI history (I got some historical details from this interesting article <a href="https://web.archive.org/web/20220429151447/http://qz.com/1034972/the-data-that-changed-the-direction-of-ai-research-and-possibly-the-world/">The data that transformed AI research—and possibly the world</a>).</p>
+            <p>In 2009 Fei-Fei Li, now the chief scientist at Google Cloud, released for free online a gigantic database of <a href="http://image-net.org/explore">3.2 million images</a> called ImageNet. Each image also contained a label describing the contents of the image, specifically, specifying which category the image belonged to out of thousands of different categories, like “car mirror”, “cello”, “guacamole”, “kimono”, “prison” etc. This spawned the <em>ImageNet competition</em>.</p>
+            <p>From 2010, the ImageNet competition has been a yearly ritual to see which AI researchers can make an algorithm that <em>classifies</em> images the best. The competition organisers take researchers’ programs, asks each program to label the contents of some random images from the ImageNet database, and declares the winner to be the program which gives the correct label the highest fraction of the time (where “correct” means the label given by some poor humans on <a href="https://www.mturk.com/">Amazon’s Mechanical Turk</a>).<sup id="fnref:2"><a href="#fn:2" class="footnote">1</a></sup></p>
+            <p>The winning submission of the 2012 competition, created by Geoffrey Hinton’s team in Montréal, caused a sea-change in AI. It used deep convolutional neural networks, which is a variant of the relatively ancient idea (that is, from the 80’s) of neural networks designed specifically for image data.</p>
+            <p>All neural networks involve taking some input, like an image, and smacking it with gigabytes of uninterpretable number crunching and hoping the output is something sensible, like a label saying what is the content of the image. The computations are done in layers, like in the following figure:</p>
+            <p><img src="/images/fully_connected_nn.png" alt="image" class="image post_image" />
+              Image credit: <sup id="fnref:1"><a href="#fn:1" class="footnote">2</a></sup></p>
+            <p>Here, we read from left-to-right, that some input numbers get turned into different numbers in the “hidden layer 1”, which get turned into another collection of number in “hidden layer 2”, etc. The numbers are called “activations”, since the original inventors of this technique stole the main idea and the terminology from neurobiologists (the neurons in our brains consider inputs, from our senses or other neurons, and “activate” sending an electric signal to other brain regions).</p>
+            <p>One main criticism of neural networks is that, while it’s obvious they are <em>learning something</em> (they win competitions like ImageNet), we have almost no idea about <em>what specifically are they learning</em>. The whole thing is a mysterious magical black-box with a punchy name. For example, at a conference in Barcelona last year I heard an AI researcher declare that he would never get into a self-driving car since he knew that no-one can possibly understand what the car’s neural networks were thinking!</p>
+            <p><img src="https://imgs.xkcd.com/comics/machine_learning.png" alt="image" class="image post_image" /></p>
+            <p>One solution is to try to understand what each individual neuron in the network is trying to learn. The idea is, if we see one neuron which has very large activations when the network fed pictures of dogs, then we conclude this neuron’s task is to tell the network whether a dog is in the photo. Actually, it’s not quite an on/off switch, but really the neuron gives a number (its “activation” level) which is the “dogginess” level of the photo being shown - dogs get a huge activation number, cats and other furry four-legged animals get a moderate-sized activation, kimono and cacti (and everything else that doesn’t look like a dog) get a small activation.</p>
+            <p>This beautiful <a href="https://distill.pub/2017/feature-visualization/">Distill article</a> explain some sophisticated methods for generating images which really excite one designated neuron. They interpret the neurons in a convolution neural network called <em>GoogLeNet</em><sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> which has been trained to classify images from ImageNet.</p>
+            <p>The following images have been generated to excite neurons in level named “conv2d0”:</p>
+            <p><img src="/images/edges.png" alt="image" class="image post_image" /></p>
+            <p>So, it looks like the neurons here are recognising if the input image has edges or lines in different angles. In the layer named “mixed3a” the stimulating images are:</p>
+            <p><img src="/images/textures.png" alt="image" class="image post_image" /></p>
+            <p>Now they’re getting interesting! The neurons here look like they’re finding whether the image has different textures in it. The images for the layer “mixed4a” are:</p>
+            <p><img src="/images/patterns.png" alt="image" class="image post_image" /></p>
+            <p>This layer is deciding whether the image has elements of these psychedelic patterns.</p>
+            <p>Eventually, wee see that neurons in layers “mixed4d” and “mixed4e” get stimulated by recognisable objects. This neuron appears to quantify the level of ‘building-yness’ in the image.</p>
+            <p><img src="/images/object_building.png" alt="image" class="image post_image" /></p>
+            <p>The next looks like it’s recognising ants or bugs.</p>
+            <p><img src="/images/object_ant.png" alt="image" class="image post_image" /></p>
+            <p>And finally, the anticipated dog-iness neuron:</p>
+            <p><img src="/images/object_dog.png" alt="image" class="image post_image" /></p>
+            <p>The <a href="https://distill.pub/2017/feature-visualization/appendix/">appendix</a> to that Distill article has more of these really funky generated images.</p>
+            <p>An important detail, is the general trend that layers in the network which are earlier (further to the left in the figure above) recognise simple features, and later layers (further to the right) recognise more complicated features.</p>
+            <h1 id="the-nst-algorithm">The NST algorithm</h1>
+            <p>The style of a painting can be determined by feeding the painting’s photo into a well-trained neural network, like that described above. The network will produce some output describing what it thinks the painting’s contents are (e.g. it might output “dog” if the painting is a realistic depiction of a dog) but we simply ignore this. What we are interested in are the activations of the network at different layers.</p>
+            <p>At the early layers of the network, the neurons which correspond to smooth textures (like those produced by brushstrokes) will be highly activated, and neurons which respond to different colours will activate in response to the colours of the painting. Collectively, I’ll call the activation levels for the painting to be the <em>style activations</em>. In the same way, we will find the <em>content activations</em>, which are the activations of the neurons of the network when the content image is inputted to it.</p>
+            <p>The NST algorithm tries to make an image whose activations are similar to both the style and the content activations.
+              It starts with an image where the pixels are set randomly (this looks like the “white noise” you see on an out-of-tune old-school television), then it calculates the activation levels for this initial image. Using the magic of neural networks (specifically, the back-propagation algorithm) we can generate a new image whose activations are slightly more similar to the content activations and the style activations. If we continue taking more and more of these small steps (about 1000 iterations), then we end up with an output image like those above!</p>
+            <p>To be honest, the details of how the style image’s activations are used is not so simple. This is where the neural network’s convolutional structure begins to be handy. Convolutional NN’s work by scanning across the input image side-to-side and top-to-bottom, and producing activations for each subregion of the image. The NST algorithm considers each pair of neurons, over each subregion of the image, and calculates the correlation of their activations. This correlation is the <em>style</em> which the algorithm attempts to mimic in the output image. The original paper can be read on <a href="https://arxiv.org/pdf/1508.06576v2.pdf">arXiv</a>.</p>
+            <h1 id="what-specific-steps-did-i-take-to-make-the-images">What specific steps did I take to make the images?</h1>
+            <p>My first experience generating these transfers was during one of Andrew Ng’s Coursera courses, called <a href="https://www.coursera.org/learn/convolutional-neural-networks/">Convolutional Neural Networks</a>. One of the assignments is to write an implementation of NST, so I generated the hiking style transfer above within the Jupyter notebook for this assignment. This was convenient, as I didn’t need to install Tensorflow, Keras, and the other Python dependences for image manipulation (e.g. Pillow) which can take a little while.</p>
+            <p>However this method was phenomenally slow, since the Jupyter notebook was running just on a CPU. Also, this method required all images to be 400x300 resolution which is too small for 21st century sensibilities. I wanted to try training this on a GPU, so I followed this <a href="https://hackernoon.com/launch-a-gpu-backed-google-compute-engine-instance-and-setup-tensorflow-keras-and-jupyter-902369ed5272">remarkably clear guide</a> on how to rent<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> a virtual machine on Google Cloud which has access to an NVIDIA GPU.</p>
+            <p>Then I simply created the style transfers using this <a href="https://github.com/anishathalye/neural-style">Github repo</a>; I also needed to downloaded the 1.2 GB ImageNet-trained neural network to my Google Cloud virtual machine, but this only took about a minute.</p>
+            <p>Running on a GPU was about 40 times faster than on my laptop’s CPU. This speed-up was essential, since it took a lot of failed attempts to find some settings for the algorithm to create good style transfers.</p>
+            <h1 id="parameters-for-the-algorithm">Parameters for the algorithm</h1>
+            <p>Admittedly, I’m spent a long time generating images with different settings to produce just a few decent style transfers. It seems there aren’t many styles which are appropriate for the purpose; the best I could find were: the Great Wave, Starry Night, and Wanderer Above the Sea of Fog.</p>
+            <p>The number of iterations to give the algorithm is also difficult, since it’s often the case that earlier iterations create a more striking image (100 to 300 iterations) which has some strange pixelation artifacts, whereas later iterations (1000 or more iterations) are very clean but with less of the desired style.</p>
+            <p>There is a parameter describing the relative importance of matching the style versus matching the content, but also inside the style component you need to specify the relative importance of the different layers. Trying combinations of this can be a tedious process.</p>
+            <p>One frustrating matter is that if you perform two NST’s on the same pair of content &amp; style, except the resolution of the two content images is different, then you’ll get wildly different outputs for the same settings.</p>
+            <p>For example, when using a small resolution content image I get</p>
+            <p><img src="/images/qwave_small.jpg" alt="image" class="image post_image" /></p>
+            <p>but with a larger resolution</p>
+            <p><img src="/images/qwave.jpg" alt="image" class="image post_image" /></p>
+            <p>and with an even larger resolution</p>
+            <p><img src="/images/qwave_large.jpg" alt="image" class="image post_image" /></p>
+            <p>But anyway, I hope this was interesting for you! Let me know if you had a different experience.</p>
+            <h1 id="footnotes">Footnotes</h1>
+            <div class="footnotes">
+              <ol>
+                <li id="fn:2">
+                  <p>Actually, it’s a collection of challenges, and some require the programs to say exactly which part of the image contains the detected object. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+                </li>
+                <li id="fn:1">
+                  <p>This figure is from the free online book <a href="http://neuralnetworksanddeeplearning.com/chap6.html">Neural Networks and Deep Learning</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+                </li>
+                <li id="fn:3">
+                  <p>The meaning of this odd name is because the network was made by Google and inspired by an earlier net called <em>LeNet</em> by Yann LeCun. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+                </li>
+                <li id="fn:4">
+                  <p>For first-time users, you get <span>$</span>400 worth of credit for free, so I haven’t need to pay for this so far. One thing the guide skipped was that you need to email Google to request the GPU for your VM, then load your account with about <span>$</span>40 of credit to prove you’re serious about the request, and wait 1-2 days for a human to approve the request. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </article>
+      </div>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="/assets/js/main.js"></script>
+      <section id="footer">
+        <p class="copyright">&copy; Patrick Laub.
+        </section>
+      </div>
+    </body>
+  </html>

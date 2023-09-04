@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Variance reduction techniques</title>
+    <meta name="description" content="Notes made for an informal lecture on the Monte Carlo tricks available for variance reduction. This was made for a reading course when we worked through Søre...">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="canonical" href="https://pat-laub.github.io/2014/09/01/variance-reduction.html">
+    <link rel="alternate" type="application/rss+xml" title="Patrick Laub" href="/feed.xml">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.fancybox.min.js"></script>
+  </head>
+  <body class="single">
+    <div id="wrapper">
+      <!--{ include header.html }-->
+      <div id="main">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+            <div class="title">
+              <h1>Variance reduction techniques</h1>
+              <p>Antithetic sampling, control variates, and stratification</p>
+            </div>
+            <div class="meta">
+              <time class="published" datetime="2014-09-01T00:00:00+00:00">Sep 1, 2014</time>
+            </div>
+          </header>
+          <div class="post-content" itemprop="articleBody">
+            <h1 id="antithetic-sampling">Antithetic Sampling</h1>
+            <p>A typical CMC estimator for $l = {\mathbb{E}}[Z]$ is to take $N$ iid
+              replications $\{Z_1, Z_2, \dots, Z_N\}$ and use their sample average,
+              i.e.</p>
+            <script type="math/tex; mode=display">
+              \hat{l}_{CMC} = \frac{1}{N} \sum_{i=1}^N Z_i.
+            </script>
+            <p>This estimator will have variance</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{align}
+              \sigma^2_{CMC} &= \frac{1}{N^2} \mathrm{Var}\left[\sum_{i=1}^N Z_i\right] \\
+              &= \frac{N}{N^2} \mathrm{Var}[Z_1] \\
+              \Rightarrow \sigma^2_{CMC} &= \frac{\mathrm{Var}[Z_1]}{N}
+              \end{align} %]]>
+            </script>
+            <p>Another approach is to not sample $N$ random variables independently,
+              but $N/2$ pairs of variables which have negative correlation. I.e.
+              sample</p>
+            <script type="math/tex; mode=display">
+              \{ (Z_1, Z^*_1), (Z_2, Z^*_2), \dots, (Z_{N/2}, Z^*_{N/2}) \}
+            </script>
+            <p>where they are all of the same distribution and independent except for
+              $Z_i$ with $Z^*_i$. The estimator is then</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{align}
+                  \hat{l}_{AS} &= \frac{1}{N/2} \sum_{i=1}^{N/2} \frac{Z_i+Z^*_i}{2} \\
+                      &= \frac{1}{N} \sum_{i=1}^{N/2} Z_i+Z^*_i.\end{align} %]]>
+            </script>
+            <p>This has variance</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{align}
+              \sigma^2_{AS} &= \frac{1}{N^2} {\mathrm{Var}}\left[\sum_{i=1}^{N/2} Z_i+Z^*_i \right] \\
+                  &= \frac{N/2}{N^2} {\mathrm{Var}}\left[Z_1+Z^*_1] \right]  \\
+                  &= \frac{1}{2N} \left[{\mathrm{Var}}[Z_1]+{\mathrm{Var}}[Z^*_1] + 2{\mathrm{Cov}}[Z_1, Z^*_1] \right]  \\
+                  &= \frac{1}{2N} \left[2{\mathrm{Var}}[Z_1] + 2{\mathrm{Cov}}[Z_1, Z^*_1] \right]  \\
+                  &= \frac{\mathrm{Var}[Z_1] + {\mathrm{Cov}}[Z_1, Z^*_1]}{N} \\
+              \Rightarrow \sigma^2_{AS} &= \sigma^2_{CMC} + \frac{\mathrm{Cov}[Z_1, Z^*_1]}{N}\end{align} %]]>
+            </script>
+            <p>Therefore</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              {\mathrm{Cov}}[Z_i, Z^*_i] < 0 \Rightarrow \sigma^2_{AS} < \sigma^2_{CMC}. %]]>
+            </script>
+            <p>Say that random variables $X$ and $Y$ have the same marginal
+              distributions ($F_X(z) = F_Y(z) = F(z)$) but are generated using
+              $U_i {\overset{iid}{\sim}}U(0,1)$ by $X_i = F^{-1}(U_i)$ and
+              $Y_i = F^{-1}(1-U_i)$ then ${\mathrm{Cov}}(X,Y)$ is minimal (see Theorem
+              5.3 in Ripley 2009, p. 130).\
+              Introduce dependence (specifically negative correlation) in your
+              iterates to reduce variance.\</p>
+            <h1 id="control-variates">Control Variates</h1>
+            <p>Say a simulation produces an output $Y$, and the same simulation also
+              outputs another random variable $\tilde{Y}$ which is correlated with $Y$
+              and whose expectation $\tilde{l} = {\mathbb{E}}[\tilde{Y}]$ is known.
+              The $\tilde{Y}$ is called a control variable for $Y$. Use the estimator</p>
+            <script type="math/tex; mode=display">
+              \hat{l}_{CV}  = \frac{1}{N} \sum_{k=1}^N \left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right].
+            </script>
+            <p>This will have variance</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{align}
+               \sigma^2_{CV} &= \frac{1}{N^2} {\mathrm{Var}}\left[ \sum_{k=1}^N \left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right] \right] \\
+               &= \frac{1}{N^2} \left[ \sum_{k=1}^N {\mathrm{Var}}\left[ Y_k - \alpha (\tilde{Y_k} - \tilde{l}) \right] \right] \\
+                &= \frac{N}{N^2} \left[ {\mathrm{Var}}\left[ Y_1 - \alpha (\tilde{Y_1} - \tilde{l}) \right] \right] \\
+                &= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + {\mathrm{Var}}[-\alpha (\tilde{Y_1} - \tilde{l})] + 2{\mathrm{Cov}}[Y_1, -\alpha (\tilde{Y_1} - \tilde{l})] \right] \\
+                &= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + (-\alpha)^2 {\mathrm{Var}}[\tilde{Y_1}] + 2{\mathrm{Cov}}[Y_1, -\alpha (\tilde{Y_1} - \tilde{l})] \right] \\
+               \end{align} %]]>
+            </script>
+            <p>Note that:</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{align}
+                  {\mathrm{Cov}}[Y_1, -\alpha(\tilde{Y}_1 - \tilde{l})] &= {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(-\alpha(\tilde{Y}_1 - \tilde{l}) - {\mathbb{E}}[-\alpha(\tilde{Y}_1 - \tilde{l})])] \\
+                  &= {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(-\alpha)(\tilde{Y}_1 - \tilde{l})] \\
+                  &= -\alpha {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(\tilde{Y}_1 - \tilde{l})] \\
+                  &= -\alpha {\mathbb{E}}[(Y_1-{\mathbb{E}}[Y_1])(\tilde{Y}_1 - {\mathbb{E}}[\tilde{Y}_1])] \\
+                  &= -\alpha {\mathrm{Cov}}[Y_1, \tilde{Y}_1] \\\end{align} %]]>
+            </script>
+            <p>So therefore</p>
+            <script type="math/tex; mode=display">
+              \sigma^2_{CV} = \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \alpha^2 {\mathrm{Var}}[\tilde{Y_1}] - 2\alpha {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right]
+            </script>
+            <p>To find the $\alpha$ which minimises the variance then look for
+              stationary points</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{align}
+               \frac{\mathrm{d} \sigma^2_{CV}}{\mathrm{d} \alpha} = 0 &= \frac{1}{N} \left[ 2\alpha {\mathrm{Var}}[\tilde{Y_1}] - 2{\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
+               \Rightarrow 0 &= \left[ \alpha {\mathrm{Var}}[\tilde{Y_1}] - {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
+               \Rightarrow \alpha {\mathrm{Var}}[\tilde{Y_1}] &= {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \\
+               \Rightarrow \alpha  &= \frac{\mathrm{Cov}[Y_1, \tilde{Y_1}]}{\mathrm{Var}[\tilde{Y_1}]} \\
+               \end{align} %]]>
+            </script>
+            <p>So the minimum variance achieved by using control variates is</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{align}
+                  \hat{\sigma}^2_{CV} &= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \left(\frac{\mathrm{Cov}[Y_1, \tilde{Y_1}]}{\mathrm{Var}[\tilde{Y_1}]}\right)^2 {\mathrm{Var}}[\tilde{Y_1}] - 2\left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) {\mathrm{Cov}}[Y_1, \tilde{Y_1}] \right] \\
+                  &= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] + \left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) - 2\left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) \right] \\
+                  &= \frac{1}{N} \left[ {\mathrm{Var}}[Y_1] - \left(\frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{ {\mathrm{Var}}[\tilde{Y_1}]}\right) \right] \\
+                  &= \frac{ {\mathrm{Var}}[Y_1]}{N} - \frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{N{\mathrm{Var}}[\tilde{Y_1}]} \\\end{align} %]]>
+            </script>
+            <script type="math/tex; mode=display">
+              \Rightarrow \hat{\sigma}^2_{CV} = \sigma^2_{CMC} - \frac{ {\mathrm{Cov}}[Y_1, \tilde{Y_1}]^2}{N{\mathrm{Var}}[\tilde{Y_1}]}
+            </script>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \Rightarrow \hat{\sigma}^2_{CV} < \sigma^2_{CMC} %]]>
+            </script>
+            <p>For each simulation find another variable – the control variable – that
+              is highly correlated (positively or negatively) with the variable of
+              interest which has known expectation (and preferably small variance).</p>
+            <h1 id="stratification">Stratification</h1>
+            <p>Stratified sampling uses the form $l = {\mathbb{E}}[{\mathbb{E}}[Y|Z]]$
+              and calculates the ${\mathbb{E}}[Y|Z]$ by partitioning the state space
+              $\Omega$ into ${Z=i}, i=1, \dots, m$, the sections called <em>strata</em>.
+              The general equation utilised is the law of total expectation, i.e.</p>
+            <script type="math/tex; mode=display">
+              {\mathbb{E}}[Y|Z] = \sum_{i=1}^m {\mathbb{E}}[Y|Z=i] {\mathbb{P}}(Z=i).
+            </script>
+            <p>Say that ${\mathbb{P}}(Z=i)=p_i$ are known constants, then for each
+              strata choose $N_i$ (where $\sum_i N_i = N$) as the number to sample
+              from that strata, and use the estimator:</p>
+            <script type="math/tex; mode=display">
+              l_{S} = \sum_{i=1}^m p_i \frac{1}{N_i} \sum_{j=1}^{N_i} Y_{j|Z=i}
+            </script>
+            <p>Note that we are sampling from the conditional distributions of $Y$
+              given $Z=i$. The variance of this estimator is</p>
+            <script type="math/tex; mode=display">
+              % <![CDATA[
+              \begin{align}
+                  \sigma^2_{S} &= {\mathrm{Var}}\left[\sum_{i=1}^m p_i \frac{1}{N_i} \sum_{j=1}^{N_i} Y_{j|Z=i}\right] \\
+                  &= \sum_{i=1}^m \frac{p_i^2}{N_i^2} {\mathrm{Var}}\left[\sum_{j=1}^{N_i} Y_{j|Z=i}\right]\end{align} %]]>
+            </script>
+            <p>So say ${\mathrm{Var}}[Y_{j \mid Z=i}] = \sigma^2_i$ then</p>
+            <script type="math/tex; mode=display">
+              \sigma^2_{S} = \sum_{i=1}^m \frac{p_i^2\sigma^2_i}{N_i^2}
+            </script>
+            <p>In order to minimise the variance then select the $N_i$ by the rule</p>
+            <script type="math/tex; mode=display">
+              N_i = N \frac{p_i \sigma_i}{\sum_{k=1}^m p_k \sigma_k} , \qquad i=1,\dots,m.
+            </script>
+            <p>However it is rare that the variance of each strata is known so a pilot
+              run can be used to estimate $\sigma_i$ using the sample variance.
+              If using $N_i$ selected optimally as above, then the best variance of
+              the estimator is then</p>
+            <script type="math/tex; mode=display">
+              \hat{\sigma}^2_{S} = \frac{1}{N} \left( \sum_{i=1}^m p_i \sigma_i \right)^2
+            </script>
+            <p>Look for different “classes” in your state space (i.e strata) that
+              partition the space, and have small variance, so that you can sample
+              more effectively the noisy parts of the state space and infrequently
+              sample the less noisy parts.
+              See Ripley (2009, Chapter 5) for a detailed look at stratified sampling
+              in statistics/survey theory.</p>
+            <p>References:</p>
+            <ul>
+              <li>Cochran, W. G. (2007). Sampling techniques. John Wiley &amp; Sons.</li>
+              <li>Ripley, B. D. (2009). Stochastic simulation (Vol. 316). John Wiley &amp;
+                Sons.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          TeX: { equationNumbers: { autoNumber: "AMS" } },
+          tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            displayMath: [ ['$$', '$$'] ],
+            processEscapes: true,
+          },
+        });
+      </script>
+      <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/assets/js/skel.min.js"></script>
+      <script src="/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="/assets/js/main.js"></script>
+      <section id="footer">
+        <p class="copyright">&copy; Patrick Laub.
+        </section>
+      </div>
+    </body>
+  </html>
