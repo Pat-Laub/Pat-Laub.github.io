@@ -1,0 +1,375 @@
+NOTES FOR DC02D COMPLETED ON 01/12/2022
+____________________________________________________________________________________________
+____________________________________________________________________________________________
+
+DATA FILE
+
+
+
+Byte Location , Byte Size  , Explanation
+--------------------------------------------------------------------------------------------
+
+
+1-2           ,2           , Record identifier - dc
+4-9           ,6           , Bureau of Meteorology Station Number.
+11-20         ,10          , Year month day in YYYY,MM,DD format.
+22-27         ,6           , Precipitation in the 24 hours before 9am (local time). In mm.
+29            ,1           , * Quality of precipitation value.
+31-32         ,2           , Number of days of rain within the days of accumulation.
+34-35         ,2           , Accumulated number of days over which the precipitation was measured.
+37-42         ,6           , Precipitation since last observation, at 00 hours Local Time. In mm.
+44            ,1           , * Quality of precipitation since last observation value, at 00 hours Local Time.
+46-51         ,6           , Precipitation since last observation, at 03 hours Local Time. In mm.
+53            ,1           , * Quality of precipitation since last observation value, at 03 hours Local Time.
+55-60         ,6           , Precipitation since last observation, at 06 hours Local Time. In mm.
+62            ,1           , * Quality of precipitation since last observation value, at 06 hours Local Time.
+64-69         ,6           , Precipitation since last observation, at 09 hours Local Time. In mm.
+71            ,1           , * Quality of precipitation since last observation value, at 09 hours Local Time.
+73-78         ,6           , Precipitation since last observation, at 12 hours Local Time. In mm.
+80            ,1           , * Quality of precipitation since last observation value, at 12 hours Local Time.
+82-87         ,6           , Precipitation since last observation, at 15 hours Local Time. In mm.
+89            ,1           , * Quality of precipitation since last observation value, at 15 hours Local Time.
+91-96         ,6           , Precipitation since last observation, at 18 hours Local Time. In mm.
+98            ,1           , * Quality of precipitation since last observation value, at 18 hours Local Time.
+100-105       ,6           , Precipitation since last observation, at 21 hours Local Time. In mm.
+107           ,1           , * Quality of precipitation since last observation value, at 21 hours Local Time.
+109-113       ,5           , Evaporation in 24 hours before 9am (local time). In mm.
+115           ,1           , * Quality of evaporation in 24 hours before 9am (local time).
+117-118       ,2           , Days of accumulation for evaporation.
+120-124       ,5           , Maximum temperature in 24 hours after 9am (local time). In Degrees C.
+126           ,1           , * Quality of maximum temperature in 24 hours after 9am (local time).
+128-129       ,2           , Days of accumulation of maximum temperature.
+131-135       ,5           , Minimum temperature in 24 hours before 9am (local time). In Degrees C.
+137           ,1           , * Quality of minimum temperature in 24 hours before 9am (local time).
+139-140       ,2           , Days of accumulation of minimum temperature.
+142-146       ,5           , Air temperature observation at 00 hours Local Time. In Degrees C.
+148           ,1           , * Quality of air temperature observation at 00 hours Local Time.
+150-154       ,5           , Air temperature observation at 03 hours Local Time. In Degrees C.
+156           ,1           , * Quality of air temperature observation at 03 hours Local Time.
+158-162       ,5           , Air temperature observation at 06 hours Local Time. In Degrees C.
+164           ,1           , * Quality of air temperature observation at 06 hours Local Time.
+166-170       ,5           , Air temperature observation at 09 hours Local Time. In Degrees C.
+172           ,1           , * Quality of air temperature observation at 09 hours Local Time.
+174-178       ,5           , Air temperature observation at 12 hours Local Time. In Degrees C.
+180           ,1           , * Quality of air temperature observation at 12 hours Local Time.
+182-186       ,5           , Air temperature observation at 15 hours Local Time. In Degrees C.
+188           ,1           , * Quality of air temperature observation at 15 hours Local Time.
+190-194       ,5           , Air temperature observation at 18 hours Local Time. In Degrees C.
+196           ,1           , * Quality of air temperature observation at 18 hours Local Time.
+198-202       ,5           , Air temperature observation at 21 hours Local Time. In Degrees C.
+204           ,1           , * Quality of air temperature observation at 21 hours Local Time.
+206-208       ,3           , -*- Relative humidity for observation at 00 hours Local Time. In percentage %.
+210           ,1           , * Quality of relative humidity for observation at 00 hours Local Time.
+212-214       ,3           , -*- Relative humidity for observation at 03 hours Local Time. In percentage %.
+216           ,1           , * Quality of relative humidity for observation at 03 hours Local Time.
+218-220       ,3           , -*- Relative humidity for observation at 06 hours Local Time. In percentage %.
+222           ,1           , * Quality of relative humidity for observation at 06 hours Local Time.
+224-226       ,3           , -*- Relative humidity for observation at 09 hours Local Time. In percentage %.
+228           ,1           , * Quality of relative humidity for observation at 09 hours Local Time.
+230-232       ,3           , -*- Relative humidity for observation at 12 hours Local Time. In percentage %.
+234           ,1           , * Quality of relative humidity for observation at 12 hours Local Time.
+236-238       ,3           , -*- Relative humidity for observation at 15 hours Local Time. In percentage %.
+240           ,1           , * Quality of relative humidity for observation at 15 hours Local Time.
+242-244       ,3           , -*- Relative humidity for observation at 18 hours Local Time. In percentage %.
+246           ,1           , * Quality of relative humidity for observation at 18 hours Local Time.
+248-250       ,3           , -*- Relative humidity for observation at 21 hours Local Time. In percentage %.
+252           ,1           , * Quality of relative humidity for observation at 21 hours Local Time.
+254-258       ,5           , ***- Speed of maximum wind gust in km/h.
+260           ,1           , * Quality of maximum gust speed.
+262-266       ,5           , ***- Direction of maximum wind gust in degrees.
+268           ,1           , * Quality of maximum gust direction.
+270-273       ,4           , ***- Time of maximum wind gust in HHMI 24 hour mode.
+275           ,1           , * Quality of maximum wind gust time.
+277-281       ,5           , ***- Wind speed at 00 hours Local Time, measured in km/h.
+283           ,1           , * Quality of wind speed at 00 hours Local Time.
+285-289       ,5           , ***- Wind speed at 03 hours Local Time, measured in km/h.
+291           ,1           , * Quality of wind speed at 03 hours Local Time.
+293-297       ,5           , ***- Wind speed at 06 hours Local Time, measured in km/h.
+299           ,1           , * Quality of wind speed at 06 hours Local Time.
+301-305       ,5           , ***- Wind speed at 09 hours Local Time, measured in km/h.
+307           ,1           , * Quality of wind speed at 09 hours Local Time.
+309-313       ,5           , ***- Wind speed at 12 hours Local Time, measured in km/h.
+315           ,1           , * Quality of wind speed at 12 hours Local Time.
+317-321       ,5           , ***- Wind speed at 15 hours Local Time, measured in km/h.
+323           ,1           , * Quality of wind speed at 15 hours Local Time.
+325-329       ,5           , ***- Wind speed at 18 hours Local Time, measured in km/h.
+331           ,1           , * Quality of wind speed at 18 hours Local Time.
+333-337       ,5           , ***- Wind speed at 21 hours Local Time, measured in km/h.
+339           ,1           , * Quality of wind speed at 21 hours Local Time.
+341-345       ,5           , ***- Wind direction at 00 hours Local Time, measured in degrees.
+347           ,1           , * Quality of wind direction at 00 hours Local Time.
+349-353       ,5           , ***- Wind direction at 03 hours Local Time, measured in degrees.
+355           ,1           , * Quality of wind direction at 03 hours Local Time.
+357-361       ,5           , ***- Wind direction at 06 hours Local Time, measured in degrees.
+363           ,1           , * Quality of wind direction at 06 hours Local Time.
+365-369       ,5           , ***- Wind direction at 09 hours Local Time, measured in degrees.
+371           ,1           , * Quality of wind direction at 09 hours Local Time.
+373-377       ,5           , ***- Wind direction at 12 hours Local Time, measured in degrees.
+379           ,1           , * Quality of wind direction at 12 hours Local Time.
+381-385       ,5           , ***- Wind direction at 15 hours Local Time, measured in degrees.
+387           ,1           , * Quality of wind direction at 15 hours Local Time.
+389-393       ,5           , ***- Wind direction at 18 hours Local Time, measured in degrees.
+395           ,1           , * Quality of wind direction at 18 hours Local Time.
+397-401       ,5           , ***- Wind direction at 21 hours Local Time, measured in degrees.
+403           ,1           , * Quality of wind direction at 21 hours Local Time.
+405           ,1           , Total cloud amount at 00 hours Local Time, in eighths.
+407           ,1           , * Quality of total cloud amount at 00 hours Local Time.
+409           ,1           , Total cloud amount at 03 hours Local Time, in eighths.
+411           ,1           , * Quality of total cloud amount at 03 hours Local Time.
+413           ,1           , Total cloud amount at 06 hours Local Time, in eighths.
+415           ,1           , * Quality of total cloud amount at 06 hours Local Time.
+417           ,1           , Total cloud amount at 09 hours Local Time, in eighths.
+419           ,1           , * Quality of total cloud amount at 09 hours Local Time.
+421           ,1           , Total cloud amount at 12 hours Local Time, in eighths.
+423           ,1           , * Quality of total cloud amount at 12 hours Local Time.
+425           ,1           , Total cloud amount at 15 hours Local Time, in eighths.
+427           ,1           , * Quality of total cloud amount at 15 hours Local Time.
+429           ,1           , Total cloud amount at 18 hours Local Time, in eighths.
+431           ,1           , * Quality of total cloud amount at 18 hours Local Time.
+433           ,1           , Total cloud amount at 21 hours Local Time, in eighths.
+435           ,1           , * Quality of total cloud amount at 21 hours Local Time.
+437           ,1           , # symbol, end of record indicator.
+
+
+
+
+ACCUMULATED REPORTS
+___________________
+
+Daily elements are reported at 9am, however many Australian observers do
+not report over a weekend or holiday. In this case they may accumulate rainfall
+and other elements such as maximum temperature. Thus the rainfall total
+reported on a Monday morning may be the total since the previous Friday, not
+just for the last 24 hours. Similarly, the maximum temperature may be the
+highest over a period of 2 or 3 days. Where this happens, the 'days of
+accumulation' field gives the number of days involved.
+
+
+
+
+-*- MOISTURE EQUATIONS
+______________________
+
+The following formulas have been used: 
+
+Vapour pressure = exp (1.8096 + (17.269425 * Dew_Point)/(237.3 + Dew_Point))
+
+Saturated Vapour pressure =  exp (1.8096 + (17.269425 * Air_Temperature)/(237.3 + Air_Temperature))
+
+Relative Humidity = Vapour pressure / Saturated vapour pressure * 100
+
+Relative humidity (RH) is obtained either from measurements by an electronic relative humidity sensor or derived 
+via complex equations from wet and dry bulb temperature observations. There can be slight differences between RH 
+values measured directly by a relative humidity sensor and those derived using equations. Typically these 
+differences are less than 1%. The uncertainty associated with RH data increases at the extremes. That is, in 
+very dry air as RH approaches 0%, and in very humid conditions as RH approaches 100%. There are some occasions 
+when reported RH values may slightly exceed 100%. In these instances you should consider the value to be 100%.
+
+
+
+
+* QUALITY FLAG DESCRIPTIONS
+___________________________
+
+Y: quality controlled and acceptable
+N: not quality controlled
+W: quality controlled and considered wrong
+S: quality controlled and considered suspect
+I: quality controlled and inconsistent with other known information
+X: no quality information available
+
+
+
+
+***- WIND MEASUREMENTS
+______________________
+
+1. The Bureau's wind measurements are designed to satisfy weather and climate monitoring needs.
+The Bureau's current uncertainty tolerances for wind speed measurements are +/- 10% of the 
+wind speed for wind speeds greater than 10 m/s and +/- 1 m/s for wind speeds at or below 10 m/s.
+As equipment is modernised at observing sites, the Bureau's continuous improvement requirement
+is to ensure that no change in equipment or algorithm results in wind speed measurements with
+a higher uncertainty, and where possible decreases uncertainty.
+2. In 2010, with the incorporation of new monitoring equipment with improved algorithms to
+convert raw outputs into wind speed, a step change downwards in the wind speed measurements
+has occurred of the order of 0.5 m/s at some sites. Investigations have not lead to any evidence
+that the wind speed measurements using the Telvent AWS are outside the Bureau's uncertainty
+tolerance.  We are confident that the new measurements provide a better estimate of the true
+wind speed, and may ultimately result in revised and improved uncertainty tolerances for Bureau
+wind speed measurements of both the past and future. We are now investigating ways to apply this
+knowledge to the past wind record.
+
+
+
+
+GAPS AND MISSING DATA
+_____________________
+
+Very few sites have a complete unbroken record of climate information. A site
+may have been closed, reopened, upgraded to a full weather site or downgraded
+to a rainfall only site during its existence causing breaks in the record for
+some or all elements. Some gaps may be for one element due to a damaged
+instrument, others may be for all elements due to the absence or illness of
+an observer.
+
+
+
+
+INSTUMENTS AND OBSERVATIONAL PRACTICES
+______________________________________
+
+Historically a nearby site (within about 1 mile in earlier days) may have used the same 
+site number.  There may have been changes in instrumentation and/or observing practices
+over the period included in a dataset, which may have an effect on the long-term record.
+In recent years many sites have had observers replaced by Automatic Weather Stations,
+either completely or at certain times of the day.  
+
+
+
+
+TIME
+____
+
+For a part of the year some Australian States adopt Daylight Savings Time (DST), and
+observers continue to take observations according to the local clock.  Times provided 
+with this data are Local Time, unless otherwise noted. 
+
+Care needs to be taken when comparing values from year to year or month to month, because for
+some elements the effect of one hour can be marked, for example air temperature often rises 
+sharply between 8am and 9am.
+
+Daylight Savings has been used in many Australian states since 1973. The
+changeovers occur almost always in October and March, but exact dates vary
+from State to State and year to year. More information can be found at:
+http://www.bom.gov.au/climate/averages/tables/daysavtm.shtml
+
+
+
+
+ROUNDING
+________
+
+The primary way of sending current weather information around the world is via a coded message 
+known as a SYNOP.  This message only allows some measurements to be sent as rounded values.  
+Once manuscript records have been sent in many of these values are typed in with greater 
+precision (normally to one decimal place). This usually occurs within a few months.
+
+If consecutive values all have a zero in the decimal place, then it is almost certain that
+rounding was used earlier.  A new type of message format is progressively being introduced to
+overcome this situation.
+
+
+
+
+COPYRIGHT
+_________
+
+The copyright for any data is held in the Commonwealth of Australia and the purchaser
+shall give acknowledgement of the source in reference to the data.  Apart from dealings
+under the copyright Act, 1968, the purchaser shall not reproduce, modify or supply (by
+sale or otherwise) these data without written permission.  Enquiries should be made
+to the Bureau of Meteorology, PO Box 1289K, Melbourne 3001, marked to the attention of SRDS.
+
+
+
+
+LIABILITY
+_________
+
+While every effort is made to supply the best data available this may not be possible
+in all cases.  We do not give any warranty, nor accept any liability in relation
+to the information given, except that liability (if any), that is required by law.
+
+
+
+
+
+IF DATA IS NOT AS REQUESTED
+___________________________
+
+If the data provided are not as requested, the data will be repeated at no extra cost, 
+provided that:
+a) the Bureau is notified within 60 days.
+b) the printout/disc/data file is returned to the Bureau for checking.
+c) there has been a fault or error in providing the data.
+
+Where there has been no fault or error of provision, the cost involved in
+requested corrective action such as resending the data or providing alternative
+sites will be charged for as necessary.
+
+
+
+
+____________________________________________________________________________________________
+____________________________________________________________________________________________
+
+SITE DETAILS FILE
+
+This file contains the details for the current site or are those which applied when the site
+was closed.  Many sites have been moved, downgraded, upgraded etc over the years.
+
+Byte Location , Byte Size  , Explanation
+--------------------------------------------------------------------------------------------
+
+
+1-2           ,2           , Record identifier - st
+4-9           ,6           , Bureau of Meteorology Station Number.
+11-14         ,4           , Rainfall district code
+16-55         ,40          , Station Name.
+57-63         ,7           , Month/Year site opened. (MM/YYYY)
+65-71         ,7           , Month/Year site closed. (MM/YYYY)
+73-80         ,8           , Latitude to 4 decimal places, in decimal degrees.
+82-90         ,9           , Longitude to 4 decimal places, in decimal degrees.
+92-106        ,15          , Method by which latitude/longitude was derived.
+108-110       ,3           , State.
+112-117       ,6           , Height of station above mean sea level in metres.
+119-124       ,6           , Height of barometer above mean sea level in metres.
+126-130       ,5           , WMO (World Meteorological Organisation) Index Number.
+132-135       ,4           , First year of data supplied in data file.
+137-140       ,4           , Last year of data supplied in data file.
+142-144       ,3           , Percentage complete between first and last records.
+146-148       ,3           , Percentage of values with quality flag 'Y'.
+150-152       ,3           , Percentage of values with quality flag 'N'.
+154-156       ,3           , Percentage of values with quality flag 'W'.
+158-160       ,3           , Percentage of values with quality flag 'S'.
+162-164       ,3           , Percentage of values with quality flag 'I'.
+166           ,1           , # symbol, end of record indicator.
+
+
+
+
+LATITUDES AND LONGITUDES
+________________________
+
+Latitudes and longitudes are given to 4 decimal places, but in many cases will not be
+accurate to 4 decimal places.  This is because in the early days the positions of stations
+were estimated from maps. Gradually the network of open stations is being checked (and
+if necessary corrected) using GPS (Global Positioning System). The method used is given
+in the site details file.
+
+
+
+
+WMO INDEX NUMBER
+________________
+
+This is the number assigned to a site that makes international weather reports every day.
+The number is not actively used in the climate archive, and only a few hundred such 
+numbers are assigned at any time.  These are not perpetual but may be reassigned 
+where a site no longer makes the international reports (synops); thus a particular
+number cannot be regarded as unique and exclusive to any particular site.
+
+
+
+
+PERCENTAGE INFORMATION
+______________________
+
+In some cases the percentage completeness will be overestimated. This will occur if the
+database has incomplete information about the element being selected. In cases where several
+elements are selected, rows with a least one of the elements available are considered
+complete. Where only a limited amount of data is available and the percentage completeness
+is less than 0.5%, an "*" has been used.
+
+An "*" is also used if the percentage of values with a particular quality flag is non zero
+and less than 0.5%.

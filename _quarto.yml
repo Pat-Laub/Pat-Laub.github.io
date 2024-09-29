@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Patrick Laub"
+  sidebar: false
+  navbar: false
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    toc: false
+    grid: 
+      body-width: 1200px
+      sidebar-width: 0px
+      margin-width: 0px
+    backgroundcolor: "#f4f4f4"
+    fontcolor: "#646464"
+    fontsize: 14pt
+
+
+
