@@ -11,9 +11,11 @@ include-in-header:
 
 <div id="main">
 
+<h1></h1>
+
 <div id="intro">
   <header>
-    <h1><a href="/">Patrick Laub</a></h1>
+    <h1><a href="/"  style="font-weight:900;">Patrick Laub</a></h1>
     <p>Mathematician & software engineer</p>
     <ul class="icons">
       <li><a href="https://github.com/Pat-Laub" class="fa-brands fa-github" aria-label="GitHub"></a></li>
@@ -46,9 +48,10 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 ## Papers
 
+- [Jiwook Jang](https://researchers.mq.edu.au/en/persons/jiwook-jang), Patrick J. Laub, [Tak Kuen Siu](https://researchers.mq.edu.au/en/persons/ken-siu), [Hongbiao Zhao](http://hongbiaozhao.weebly.com/) (2025), _Arbitrage-free catastrophe reinsurance valuation for compound dynamic contagion claims_, submitted [[__arxiv__](https://arxiv.org/abs/2502.13325), [__code__](https://github.com/Pat-Laub/ReinsuranceEsscherDynamicContagion)]
+- [Francesco Ungolo](https://www.unsw.edu.au/staff/francesco-ungolo) & Patrick J. Laub (2025), _An Augmented Variable Dirichlet Process Mixture model for the analysis of dependent lifetimes_, ASTIN Bulletin, 55(1), pp. 50--75 [[__article__](https://doi.org/10.1017/asb.2024.34), [__code__](https://github.com/ungolof/AVDPM)]
 - [Benjamin Avanzi](https://findanexpert.unimelb.edu.au/profile/795204-benjamin-avanzi), [Eric Dong](https://www.unsw.edu.au/hdr/tian-eric-dong), Patrick J. Laub, [Bernard Wong](https://www.unsw.edu.au/staff/bernard-wong) (2024), _Distributional Refinement Network: Distributional Forecasting via Deep Learning_, submitted [[__arxiv__](http://arxiv.org/abs/2406.00998), [__code__](https://github.com/agi-lab/DRN), [__package__](https://github.com/EricTianDong/drn)]
-- [Francesco Ungolo](https://www.unsw.edu.au/staff/francesco-ungolo) & Patrick J. Laub (2024), _An Augmented Variable Dirichlet Process Mixture model for the analysis of dependent lifetimes_, ASTIN Bulletin [[__article__](https://doi.org/10.1017/asb.2024.34), [__code__](https://github.com/ungolof/AVDPM)]
-- Patrick J. Laub, [Young Lee](https://www.stat.nus.edu.sg/people/faculty-members/), [Philip K. Pollett](https://people.smp.uq.edu.au/PhilipPollett/), [Thomas Taimre](https://researchers.uq.edu.au/researcher/1299) (2024), _Hawkes Models and Their Applications_, Annual Review of Statistics and Its Application [[__article__](https://www.annualreviews.org/content/journals/10.1146/annurev-statistics-112723-034304), [__arxiv__](http://arxiv.org/abs/2405.10527)]
+- Patrick J. Laub, [Young Lee](https://www.stat.nus.edu.sg/people/faculty-members/), [Philip K. Pollett](https://people.smp.uq.edu.au/PhilipPollett/), [Thomas Taimre](https://researchers.uq.edu.au/researcher/1299) (2024), _Hawkes Models and Their Applications_, Annual Review of Statistics and Its Application [[__article__](https://www.annualreviews.org/content/journals/10.1146/annurev-statistics-112723-034304), [__arxiv__](http://arxiv.org/abs/2405.10527), [__code__](https://github.com/Pat-Laub/HawkesModelsReview)]
 - [Young Lee](https://www.stat.nus.edu.sg/people/faculty-members/), Patrick J. Laub, [Thomas Taimre](https://researchers.uq.edu.au/researcher/1299), [Hongbiao Zhao](http://hongbiaozhao.weebly.com/), [Jiancang Zhuang](http://bemlar.ism.ac.jp/zhuang/) (2022), *Exact simulation of extrinsic stress-release processes*, Journal of Applied Probability, 59(1) [[__article__](https://www.doi.org/10.1017/jpr.2021.35), [__arxiv__](https://arxiv.org/abs/2106.14415), [__code__](https://github.com/Pat-Laub/exact-simulation-of-extrinsic-stress-release-processes)]
 - [Pierre-Olivier Goffard](https://pierre-olivier.goffard.me/), Patrick J. Laub (2021), _Approximate Bayesian Computations to fit and compare insurance loss models_, Insurance: Mathematics and Economics, 100, pp. 350-371 [[__article__](https://www.sciencedirect.com/science/article/pii/S0167668721000998), [__arxiv__](https://arxiv.org/abs/2007.03833), [__code__](https://github.com/LaGauffre/ABCFitLoMo), [__package__](https://pat-laub.github.io/approxbayescomp/)]
 - [Jinjing Li](https://www.jinjingli.com/), [Michael J. Zyphur](https://findanexpert.unimelb.edu.au/profile/238494-michael-zyphur), [George Sugihara](https://deepeco.ucsd.edu/sugihara/), Patrick J. Laub (2021), _Beyond Linearity, Stability, and Equilibrium: The edm Package for Empirical Dynamic Modeling and Convergent Cross Mapping in Stata_, Stata Journal, 21(1), pp. 220-258 [[__article__](https://journals.sagepub.com/doi/10.1177/1536867X211000030), [__preprint__](https://jinjingli.github.io/edm/edm-wp.pdf), [__code__](https://jinjingli.github.io/edm/sj-edm.do), [__package__](https://edm-developers.github.io/edm-stata/)]
@@ -82,6 +85,8 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, An
 
 ## Presentations
 
+- UNSW 2024, _Neural Networks and Uncertainty: A Lightning Talk on Distributional Regression and our DRN Model_, Risk and Actuarial Frontiers – Data Science & AI in Actuarial Practice [[__slides__](pdfs/drn.pdf), [__YouTube__](https://youtu.be/S11GS8aGbzE)]
+- Melbourne 2024, _Actuarial Education Technology: Quarto & Kaggle_, Australasian Actuarial Education and Research Symposium [[__YouTube__](https://youtu.be/umALk-5psFQ)]
 - Strasbourg 2023,  _Empirical Dynamic Modelling: Automatic Causal Inference and Forecasting_,  Probability Group Seminar, Université de Strasbourg [[__slides__](https://pat-laub.github.io/EDM-Strasbourg)]
 - Valencia 2023, _Approximate Bayesian Computation and Insurance_, PARTY Conference 2023 [[__slides__](https://pat-laub.github.io/abc-party)]
 - University of Sydney 2022, _Empirical Dynamic Modelling: Automatic Causal Inference and Forecasting_, Time Series and Forecasting Symposium [[__YouTube__](https://youtu.be/ZYKoqt_nzfI), [__slides__](https://pat-laub.github.io/EDM-TSF2022/)]
@@ -94,7 +99,7 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, An
 - Lyon 2018, _Phase-Type Models in Life Insurance_, Institut de Science Financière et d'Assurances Séminaire Labo [[__YouTube__](https://youtu.be/8Ih2NxrLrmg)]
 - Brisbane 2017, _Rare-event asymptotics and estimation for dependent random sums_, a talk at the UQ [SMORS](https://www.smp.uq.edu.au/smor-seminars) Seminar series [[__slides__](https://slides.com/plaub/rare-event-asymptotics-and-estimation-for-dependent-random-sums-an-exit-talk-with-applications-to-finance-and-insurance/)]
 - Sydney 2017, _Efficient simulation for dependent rare events with applications to extremes_, a UNSW Probability and Statistics seminar [[__slides__](/pdfs/sydney.pdf )]
-- Uluru 2017, _Tail asymptotics of light-tailed Weibull-like sums_, a short talk at the [Probability @ the Rock conference in honour of Phil Pollett](https://acems.org.au/news/phil-pollett-APatR-conf). This presentation was "highly commended" [[__slides__](/pdfs/uluru.pdf )]
+- Uluru 2017, _Tail asymptotics of light-tailed Weibull-like sums_, a short talk at the [Probability @ the Rock conference in honour of Phil Pollett](https://acems.org.au/news/phil-pollett-APatR-conf). <!--This presentation was "highly commended" --> [[__slides__](/pdfs/uluru.pdf )]
 
 <!--
 - Greenland 2016, _Simple and efficient estimators for rare-event maxima and sums_, a talk at the [Applied Probability Symposium](https://thiele.au.dk/events/conferences/2016/ilulissat/) which was a celebration for Søren Asmussen's 70th birthday [[__slides__](/pdfs/greenland.pdf )]

@@ -21,5 +21,13 @@ format:
     fontcolor: "#646464"
     fontsize: 14pt
 
+    resources:
+      - ai
+      - mine
+      - ml
+      - ras
+      - thesis
+      - favicon.ico
+
 
 

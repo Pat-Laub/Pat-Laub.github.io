@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blockchain Hash Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background-color: #f6f6f6;
+            color: #333;
+        }
+
+        h1, h2 {
+            text-align: center;
+            padding-bottom: 0.5em;
+        }
+        
+        h1 {
+            border-bottom: 1px solid #ddd;
+        }
+
+        label, input, button {
+            margin: 0.5em;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .equation {
+            font-size: 1.2em;
+            margin-top: 1em;
+            font-weight: bold;
+        }
+
+        .section {
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin: 1em 0;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .nonce-section {
+            background-color: #e9f7ea;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            max-width: 250px;
+            max-height: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: 2em;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>UNSW Bitcoin Mining</h1>
+
+    <div class="flex-container">
+        <div class="section">
+            <h2>Message Input</h2>
+            <label for="message">Message:</label>
+            <input type="text" id="message" value="Hello World"><br>
+            <label for="difficulty">Difficulty:</label>
+            <input type="number" id="difficulty" value="8"><br>
+            <label for="nonce">Nonce:</label>
+            <input type="number" id="nonce" value="0"><br>
+            <button onclick="computeHash()">Compute Hash</button>
+            <button onclick="tryRandomNonce()">Try Random Nonce</button>
+        </div>
+
+        <img src="bitcoin.png" alt="Bitcoin Image">
+    </div>
+
+    <div class="center">
+        <h2>Combined Message:</h2>
+        <div id="combinedMessage" class="equation"></div>
+    </div>
+
+    <div class="center">
+        <h2>SHA-256 Hash:</h2>
+        <div id="hashValue" class="equation"></div>
+    </div>
+
+    <script>
+        async function computeHash() {
+            const message = document.getElementById('message').value;
+            const nonce = parseInt(document.getElementById('nonce').value);
+            const difficulty = parseInt(document.getElementById('difficulty').value);
+            
+            const combinedMessage = nonce + message;
+            
+            // Display the combined message
+            document.getElementById('combinedMessage').textContent = combinedMessage;
+            
+            // Compute SHA-256 hash
+            const encoder = new TextEncoder();
+            const data = encoder.encode(combinedMessage);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+            
+            // The Bitcoin difficulty is a ratio of the maximum hash value to the target hash value
+            const threshold = 2 ** (256 - (difficulty - 1));
+            
+            // Compare the numeric hash value to the threshold
+            const hashValue = parseInt(hashHex, 16);
+            const color = hashValue < threshold ? 'green' : 'red';
+
+            // Display the truncated hash value
+            const quarterLength = Math.floor(hashHex.length / 4);
+            const truncatedHashHex = hashHex.substring(0, quarterLength) + "...";
+            const truncatedHashBinary = parseInt(hashHex.substring(0, 4), 16).toString(2).padStart(16, '0') + "...";
+
+            const hashElement = document.getElementById('hashValue');
+            hashElement.innerHTML = `<span style="color:${color}">Hash("${combinedMessage}") = ${truncatedHashHex} (Hex), ${truncatedHashBinary} (Binary)</span>`;
+        }
+
+        function tryRandomNonce() {
+            // Set the nonce input to a random integer between 0 and 2^31 - 1
+            const maxGuess = 10_000;
+            const randomNonce = Math.floor(Math.random() * maxGuess);
+            document.getElementById('nonce').value = randomNonce;
+            computeHash();
+        }
+        
+        // Compute initial hash on page load
+        computeHash();
+    </script>
+</body>
+</html>
