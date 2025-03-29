@@ -6,6 +6,7 @@ website:
   title: "Patrick Laub"
   sidebar: false
   navbar: false
+  google-analytics: "G-43924RE904"
 
 format:
   html:
