@@ -42,7 +42,7 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 - Creator of the Python [__hawkesbook__](https://pypi.org/project/hawkesbook) package to accompany our book on Hawkes processes
 - Creator of the Python [__approxbayescomp__](https://pat-laub.github.io/approxbayescomp/) & R [__approxbayescomp__](https://github.com/Pat-Laub/approxbayescomp-r) packages for efficient Approximate Bayesian Computation
-- Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/EMpht/lpgEz/0.1.0) which fits phase-type distributions
+- Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/General/EMpht/) which fits phase-type distributions
 - Creator of the Python [__fastEDM__](https://edm-developers.github.io/fastEDM-python/) & R [__fastEDM__](https://edm-developers.github.io/fastEDM-r/) packages, and maintainer of the Stata [__edm__](https://edm-developers.github.io/edm-stata/) package for Empirical Dynamical Modelling
 - Contributor to the Python [__drn__](https://github.com/EricTianDong/drn) package for distributional regression using neural networks
 
