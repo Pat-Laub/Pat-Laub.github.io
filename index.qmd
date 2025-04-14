@@ -75,7 +75,7 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 I created and am the lecturer-in-charge for UNSW's courses _ACTL3143 Artificial Intelligence and Deep Learning Models for Actuarial Applications_ and _ACTL5111 Artificial Intelligence and Deep Learning Models for Risk and Insurance_ [[__materials__](https://pat-laub.github.io/DeepLearningForActuaries/)].
 
-I'm also the co-lecturer for UNSW's courses titled _Statistical Machine Learning for Risk and Actuarial Applications_ (coded ACTL3142 & ACTL5110).
+I was also the co-lecturer for UNSW's courses titled _Statistical Machine Learning for Risk and Actuarial Applications_ (coded ACTL3142 & ACTL5110) in 2023 and 2024 (not in 2025).
 
 Previously, at Université Claude Bernard Lyon 1, I created and lectured short courses on _Rare Event Estimation_ [[__materials__](https://pat-laub.github.io/rare-events/), [__lecture recordings__](https://www.youtube.com/playlist?list=PLKsJFg6SO0Ujr6tZHSImQ50vuNPoZ3NOl)].
 
