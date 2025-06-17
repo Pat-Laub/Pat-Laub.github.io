@@ -85,6 +85,7 @@ Peer-reviewer for Annals of Actuarial Science, Annals of Operations Research, An
 
 ## Presentations
 
+- Kenya 2025, _Actuarial Neural Networks and Uncertainty_, Actuarial, Finance, Risk and Insurance Congress 2 [[__slides__](pdfs/afric.pdf)]
 - UNSW 2024, _Neural Networks and Uncertainty: A Lightning Talk on Distributional Regression and our DRN Model_, Risk and Actuarial Frontiers – Data Science & AI in Actuarial Practice [[__slides__](pdfs/drn.pdf), [__YouTube__](https://youtu.be/S11GS8aGbzE)]
 - Melbourne 2024, _Actuarial Education Technology: Quarto & Kaggle_, Australasian Actuarial Education and Research Symposium [[__YouTube__](https://youtu.be/umALk-5psFQ)]
 - Strasbourg 2023,  _Empirical Dynamic Modelling: Automatic Causal Inference and Forecasting_,  Probability Group Seminar, Université de Strasbourg [[__slides__](https://pat-laub.github.io/EDM-Strasbourg)]
