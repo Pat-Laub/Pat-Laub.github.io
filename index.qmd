@@ -29,7 +29,7 @@ include-in-header:
 
 <img src="/images/patrick-laub.jpg" alt="Photo of Patrick Laub" class="image front_image"/>
 
-My name's Patrick Laub, I'm a [Lecturer at UNSW](https://research.unsw.edu.au/people/dr-patrick-laub) in the [School of Risk and Actuarial Studies](https://www.unsw.edu.au/business/our-schools/risk-actuarial).
+My name's Patrick Laub, I'm a [Senior Lecturer at UNSW](https://research.unsw.edu.au/people/dr-patrick-laub) in the [School of Risk and Actuarial Studies](https://www.unsw.edu.au/business/our-schools/risk-actuarial).
 I teach courses on [deep learning](https://pat-laub.github.io/DeepLearningForActuaries/) and on [statistical machine learning](https://www.unsw.edu.au/course-outlines/course-outline#year=2023&term=Term%202&deliveryMode=Multimodal&deliveryFormat=Standard&teachingPeriod=T2&deliveryLocation=Kensington&courseCode=ACTL5110) for actuaries.
 My PhD was in applied probability with a focus on computational methods, and it was jointly conducted between Aarhus University and University of Queensland. I was lucky to have as supervisors [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/).
 I'm interested in the intersection of maths/stats and computing in actuarial science.
