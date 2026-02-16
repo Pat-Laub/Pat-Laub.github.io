@@ -31,7 +31,7 @@ include-in-header:
 
 My name's Patrick Laub, I'm a [Senior Lecturer at UNSW](https://research.unsw.edu.au/people/dr-patrick-laub) in the [School of Risk and Actuarial Studies](https://www.unsw.edu.au/business/our-schools/risk-actuarial).
 I teach courses on [deep learning](https://pat-laub.github.io/DeepLearningForActuaries/) and on [statistical machine learning](https://www.unsw.edu.au/course-outlines/course-outline#year=2023&term=Term%202&deliveryMode=Multimodal&deliveryFormat=Standard&teachingPeriod=T2&deliveryLocation=Kensington&courseCode=ACTL5110) for actuaries.
-My PhD was in applied probability with a focus on computational methods, and it was jointly conducted between Aarhus University and University of Queensland. I was lucky to have as supervisors [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/).
+My PhD was in applied probability with a focus on computational methods, and it was jointly conducted between Aarhus University and University of Queensland. My primary supervisors were [Søren Asmussen](https://pure.au.dk/portal/en/persons/soeren-asmussen(be9c4660-125f-4cc3-97f7-fda28dc4722a).html) (Aarhus) and [Phil Pollett](https://people.smp.uq.edu.au/PhilipPollett/) (UQ), with [Jens Ledet Jensen](https://pure.au.dk/portal/en/persons/jens-ledet-jensen(a58c9c5a-0879-4606-a387-ebc8b984b134)/persons/jens-ledet-jensen(a58c9c5a-0879-4606-a387-ebc8b984b134).html) as secondary supervisor at Aarhus.
 I'm interested in the intersection of maths/stats and computing in actuarial science.
 
 I have worked at the [University of Melbourne](https://www.unimelb.edu.au/), at [ISFA](https://isfa.univ-lyon1.fr/) in the [Université Claude Bernard Lyon 1](https://www.univ-lyon1.fr/en/) (Lyon, France), at [Google (Sydney)](https://careers.google.com/locations/sydney/) & [Data61](https://www.data61.csiro.au/) (then called National ICT Australia).
@@ -40,11 +40,11 @@ For more background you can check out my [LinkedIn profile](https://www.linkedin
 
 ## Software Packages
 
-- Creator of the Python [__hawkesbook__](https://pypi.org/project/hawkesbook) package to accompany our book on Hawkes processes
-- Creator of the Python [__approxbayescomp__](https://pat-laub.github.io/approxbayescomp/) & R [__approxbayescomp__](https://github.com/Pat-Laub/approxbayescomp-r) packages for efficient Approximate Bayesian Computation
+- Creator of the Python [__hawkesbook__](https://pypi.org/project/hawkesbook) package to accompany our book on Hawkes processes ([68k downloads](https://clickpy.clickhouse.com/dashboard/hawkesbook))
+- Creator of the Python [__approxbayescomp__](https://pat-laub.github.io/approxbayescomp/) <!-- & R [__approxbayescomp__](https://github.com/Pat-Laub/approxbayescomp-r) --> package for efficient Approximate Bayesian Computation ([13k downloads](https://clickpy.clickhouse.com/dashboard/approxbayescomp))
+- Contributor to the Python [__drn__](https://github.com/EricTianDong/drn) package for distributional regression using neural networks ([1.6k downloads](https://clickpy.clickhouse.com/dashboard/drn))
 - Creator of the Julia package [__EMpht.jl__](https://juliahub.com/ui/Packages/General/EMpht/) which fits phase-type distributions
 - Creator of the Python [__fastEDM__](https://edm-developers.github.io/fastEDM-python/) & R [__fastEDM__](https://edm-developers.github.io/fastEDM-r/) packages, and maintainer of the Stata [__edm__](https://edm-developers.github.io/edm-stata/) package for Empirical Dynamical Modelling
-- Contributor to the Python [__drn__](https://github.com/EricTianDong/drn) package for distributional regression using neural networks
 
 ## Papers
 
