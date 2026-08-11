@@ -27,6 +27,7 @@ format:
       - cc
       - mine
       - ml
+      - ps
       - ras
       - thesis
       - favicon.ico
