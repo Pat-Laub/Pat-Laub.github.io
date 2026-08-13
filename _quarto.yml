@@ -29,6 +29,7 @@ format:
       - ml
       - ps
       - ras
+      - scribble
       - thesis
       - favicon.ico
       - afric
